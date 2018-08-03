@@ -1,0 +1,27 @@
+
+ Value of counters at end of run:
+ setrandom time (sec) =    2.0000000000000000E-003
+ upper bound failure in inclusive cross section =    38.000000000000000     
+ vetoed calls in inclusive cross section =    2981.0000000000000     
+ upper bound failures in generation of radiation =    0.0000000000000000     
+ vetoed radiation =    20083.000000000000     
+ virt time (sec) =    8.0000000000000002E-003
+ negative pdf values =    19809.000000000000     
+ real time (sec) =   0.18400000000000014     
+ btilde cross section used: =    2.8003136823899790E-002
+ btilde cross section estimate: =    2.7857264553843363E-002
+ btilde cross section estimate num. points: =    4497.0000000000000     
+ btilde cross section error estimate: =    2.2505130180764708E-004
+ btilde bound violation correction factor: =    1.0014518015678393     
+ btilde time (sec) =   0.25900000000000017     
+ radiation time (sec) =   0.97300000000000075     
+ btilde event =    2625.0000000000000     
+ remnant cross section used: =    3.9784635040317875E-003
+ remnant cross section estimate: =    3.8660766730576872E-003
+ remnant cross section error estimate: =    7.6833837769863805E-005
+ remnant cross section estimate num. points: =    2348.0000000000000     
+ remnant bound violation correction factor: =    1.0092039060779274     
+ remnant time (sec) =    4.8000000000000036E-002
+ remnant event =    371.00000000000000     
+ regular event =    4.0000000000000000     
+

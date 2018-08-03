@@ -1,0 +1,122 @@
+----------------------------------------------------------------------------
+                                                   Fri Aug  3 16:45:59 2018
+
+ Hello Ludovic Michel Scyboz,
+
+                                                       
+ Welcome to the MPP/Tier2 cluster (Scientific Linux 6). 
+
+ 
+============================================================================
+
+- IMPORTANT: There are NO system backup done on this system (except for
+        parts of /afs). You have to archive your data by yourself.
+
+============================================================================
+----------------------------------------------------------------------------
+/bin/bash: /afs/ipp-garching.mpg.de/home/l/lscyboz/.bash_profile: Permission denied
+>>>> Beginning of output file
+>>>> Host name:
+kt01.t2.rzg.mpg.de
+>>>> Loading my bashrc
+>>>> Ulimit command
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 257350
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) 4096000
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 1024
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+>>>> Enviromental variables
+SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
+SLURM_NODELIST=kt01
+SLURM_JOB_NAME=bsfu_f1-r1_heftnlo_run-3-17.log
+SLURMD_NODENAME=kt01
+SLURM_TOPOLOGY_ADDR=kt01
+SYS=amd64_rhel6
+HOSTNAME=kt01.t2.rzg.mpg.de
+SLURM_PRIO_PROCESS=0
+SLURM_NODE_ALIASES=(null)
+TERM=xterm
+SHELL=/bin/bash
+SLURM_JOB_QOS=normal
+HISTSIZE=1000
+TMPDIR=/tmp/15077901
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+SSH_CLIENT=134.107.5.241 55795 22
+SGE_CELL=MPPMU
+SBATCH_CPU_BIND_LIST=0x0100001000
+SSH_TTY=/dev/pts/1
+SLURM_MEM_PER_CPU=2000
+SLURM_NNODES=1
+USER=lscyboz
+LD_LIBRARY_PATH=/ptmp/mpp/lscyboz/PYTHON-2.7.6/lib/:/afs/cern.ch/sw/lcg/external/gcc/6.3/x86_64-slc6-gcc63-opt/lib64:/ptmp/mpp/lscyboz/PYTHON-2.7.6/lib/:/afs/cern.ch/sw/lcg/external/gcc/6.3/x86_64-slc6-gcc63-opt/lib64:/ptmp/mpp/lscyboz/GOSAM-2.0.4/lib:
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.tbz=01;31:*.tbz2=01;31:*.bz=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+SLURM_JOBID=15077901
+SLURM_NTASKS=1
+AFS=localhost
+SLURM_TASKS_PER_NODE=1
+MAIL=/var/spool/mail/lscyboz
+PATH=/ptmp/mpp/lscyboz:/ptmp/mpp/lscyboz/FASTJET-3.2.2/bin:/ptmp/mpp/lscyboz/PYTHIA-8.200/bin:/ptmp/mpp/lscyboz/LHAPDF-6.1.6/bin:/ptmp/mpp/lscyboz/PYTHON-2.7.6/bin/:/afs/cern.ch/sw/lcg/external/gcc/6.3/x86_64-slc6-gcc63-opt/bin:/opt/containers/singularity/bin/:/opt/containers/singularity/bin/:/ptmp/mpp/lscyboz:/ptmp/mpp/lscyboz/FASTJET-3.2.2/bin:/ptmp/mpp/lscyboz/PYTHIA-8.200/bin:/ptmp/mpp/lscyboz/LHAPDF-6.1.6/bin:/ptmp/mpp/lscyboz/PYTHON-2.7.6/bin/:/afs/cern.ch/sw/lcg/external/gcc/6.3/x86_64-slc6-gcc63-opt/bin:/ptmp/mpp/lscyboz/GOSAM-2.0.4/bin:/opt/containers/singularity/bin/:/opt/containers/singularity/bin/:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/afs/ipp/amd64_rhel6/bin:/afs/ipp-garching.mpg.de/home/l/lscyboz/bin:/afs/ipp/amd64_rhel6/bin
+SBATCH_CPU_BIND_VERBOSE=quiet
+SLURM_JOB_ID=15077901
+SLURM_JOB_USER=lscyboz
+PWD=/ptmp/mpp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/testcHHH2.0
+DOMAIN=t2.rzg.mpg.de
+CELL=ipp-garching.mpg.de
+LANG=en_US.UTF-8
+SLURM_JOB_UID=54552
+SLURM_NODEID=0
+SLURM_SUBMIT_DIR=/ptmp/mpp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/testcHHH2.0
+SLURM_TASK_PID=28887
+SLURM_NPROCS=1
+SLURM_CPUS_ON_NODE=2
+SLURM_PROCID=0
+ENVIRONMENT=BATCH
+CXX=/afs/cern.ch/sw/lcg/external/gcc/6.3/x86_64-slc6-gcc63-opt/bin/g++
+HISTCONTROL=ignoredups
+KRB5CCNAME=FILE:/tmp/krb5cc_54552_famnMr
+SLURM_JOB_NODELIST=kt01
+SHLVL=3
+HOME=/afs/ipp-garching.mpg.de/home/l/lscyboz
+SLURM_LOCALID=0
+SBATCH_CPU_BIND_TYPE=mask_cpu:
+SLURM_JOB_GID=10800
+SLURM_JOB_CPUS_PER_NODE=2
+SLURM_CLUSTER_NAME=tier2
+SLURM_GTIDS=0
+SLURM_SUBMIT_HOST=mppui2.t2.rzg.mpg.de
+FC=/afs/cern.ch/sw/lcg/external/gcc/6.3/x86_64-slc6-gcc63-opt/bin/gfortran
+SLURM_JOB_PARTITION=short
+PYTHONPATH=/ptmp/mpp/lscyboz:/ptmp/mpp/lscyboz/PYTHON-2.7.6/lib/python2.7/site-packages
+LOGNAME=lscyboz
+CVS_RSH=ssh
+INTERACTIVE=TRUE
+SLURM_JOB_ACCOUNT=mpp
+SSH_CONNECTION=134.107.5.241 55795 130.183.37.3 22
+SLURM_JOB_NUM_NODES=1
+CLUSTER=MPP
+COMPILER_PATH=/afs/cern.ch/sw/lcg/external/gcc/6.3/x86_64-slc6-gcc63-opt/lib/gcc/x86_64-unknown-linux-gnu/6.3.0
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+SBATCH_CPU_BIND=quiet,mask_cpu:0x0100001000
+CC=/afs/cern.ch/sw/lcg/external/gcc/6.3/x86_64-slc6-gcc63-opt/bin/gcc
+G_BROKEN_FILENAMES=1
+_=/bin/env
+>>>> where I am now (job beginning)
+/ptmp/mpp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/testcHHH2.0
+>>>> RNDSEED of job
+17
+>>>> time now (job beginning)
+Fri Aug  3 16:45:59 CEST 2018
+>>>> run Powheg:
+>>>> time now (job end)
+Fri Aug  3 16:46:22 CEST 2018
