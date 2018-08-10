@@ -1,7 +1,6 @@
-subroutine initgrids(cHHH)
+subroutine initgrids()
   use, intrinsic :: iso_c_binding
   implicit none
-  real * 8 cHHH
   real(c_double) :: s, t, result, expected
   type(c_ptr) :: grid
   common/cbgrid/grid
@@ -28,13 +27,6 @@ subroutine initgrids(cHHH)
        implicit none
      end subroutine python_printinfo
 
-     subroutine combine_grids(grid_m1, grid_0, grid_1, cHHH) bind(c)
-       use, intrinsic :: iso_c_binding
-       implicit none
-       real(c_double), intent(in), value :: cHHH
-       character(kind=c_char) :: grid_m1(*), grid_0(*), grid_1(*)
-     end subroutine combine_grids
-
      type(c_ptr) function grid_initialize(grid_name) bind(c)
        use, intrinsic :: iso_c_binding
        implicit none
@@ -51,10 +43,6 @@ subroutine initgrids(cHHH)
 
   call python_initialize
   call python_printinfo
-
-  call combine_grids(C_CHAR_"Virt_full_cHHH_-1.0.grid"//C_NULL_CHAR, &
-                C_CHAR_"Virt_full_cHHH_0.0.grid"//C_NULL_CHAR, & 
-                C_CHAR_"Virt_full_cHHH_1.0.grid"//C_NULL_CHAR, cHHH)
 
   grid = grid_initialize(C_CHAR_"Virt_full.grid"//C_NULL_CHAR)
 
