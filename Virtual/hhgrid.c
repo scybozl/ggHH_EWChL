@@ -40,20 +40,24 @@ void python_printinfo()
 
 void combine_grids(const char* grid_temp, double cHHH)
 {
+    char* cHHH_values[3] = {"-1.0", "0.0", "1.0"};
+
     int search_paths = 1;
     char* grid_file_path;
     char* delims = ":";
     char* path_sep = "/";
     size_t len_path_sep = strlen(path_sep);
-    size_t len_grid_name = strlen(grid_temp) + 15;  // +14 for _(cHHH).grid
     char* pythonpath = strdup(getenv("PYTHONPATH"));
     char* result = strtok( pythonpath, delims );
 
-    char* grid_name = (char*) malloc(len_grid_name);
-
-    memcpy(grid_name, grid_temp, strlen(grid_temp));
-    memcpy(grid_name + strlen(grid_temp), "cHHH_-1.0.grid", 15);
-    grid_name[len_grid_name-1] = '\0';
+    for (int i=0; i<3; ++i) {
+      size_t len_grid_name = strlen(grid_temp) + strlen("cHHH_") + strlen(cHHH_values[i]) + strlen(".grid") + 1;  // +14 for _(cHHH).grid
+      char* grid_name = (char*) malloc(len_grid_name);
+      memcpy(grid_name, grid_temp, strlen(grid_temp));
+      memcpy(grid_name + strlen(grid_temp), "cHHH_", strlen("cHHH_"));
+      memcpy(grid_name + strlen(grid_temp) + strlen("cHHH_"), cHHH_values[i], strlen(cHHH_values[i]));
+      memcpy(grid_name + strlen(grid_temp) + strlen("cHHH_") + strlen(cHHH_values[i]), ".grid", strlen(".grid"));
+      grid_name[len_grid_name-1] = '\0';
 
     // Check if grid_name is accessible as-is    
     if( access(grid_name, F_OK) != -1 && access(grid_name, R_OK) != -1 )
@@ -88,6 +92,7 @@ void combine_grids(const char* grid_temp, double cHHH)
                 exit(1);
             }
         }
+    }
     }
 
     printf("PYTHONPATH: %s\n", getenv("PYTHONPATH"));

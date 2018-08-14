@@ -498,7 +498,7 @@ def combinegrids(selected_grid, cHHH):
 
 	print "Started with", selected_grid, " and cHHH = ", cHHH
         # Build grid for give value of cHHH
-        incr = selected_grid.split('_cHHH_-1.0.grid')[0]
+        incr = selected_grid.split('_cHHH')[0]
         cHHH_grids = [incr + '_cHHH_-1.0.grid',
                       incr + '_cHHH_0.0.grid',
                       incr + '_cHHH_1.0.grid']
@@ -517,5 +517,5 @@ def combinegrids(selected_grid, cHHH):
         cHHH_amp = 1/2.*amps[2][2] * cHHH*(cHHH + 1.0) + amps[0][2] * 1/2.*cHHH*(cHHH - 1.0) - amps[1][2] * (cHHH - 1.0)*(cHHH + 1.0)
         cHHH_err = np.sqrt( 1/4.*pow(amps[2][3]*cHHH*(cHHH+1.0),2) + 1/4.*pow(amps[0][3]*cHHH*(cHHH-1.0),2) + pow(amps[1][3]*(cHHH-1.0)*(cHHH+1.0),2) )
 
-        np.savetxt(selected_grid, np.transpose([amps[0][0], amps[0][1], cHHH_amp, cHHH_err]))
+        np.savetxt(incr + '.grid', np.transpose([amps[0][0], amps[0][1], cHHH_amp, cHHH_err]))
 	print "Saved grid"
