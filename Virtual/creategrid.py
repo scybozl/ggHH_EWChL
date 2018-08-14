@@ -271,7 +271,7 @@ class Grid:
         return temp
 
 class CreateGrid:
-    def __init__(self,selected_grid):
+    def __init__(self,selected_grid,cHHH):
         self.selected_grid = selected_grid
         self.selected_grid_dirname = os.path.dirname(self.selected_grid)
         self.mHs = 125.**2
@@ -493,3 +493,29 @@ class CreateGrid:
         #  ##with np.loadtxt(selected_grid) as data:
         #  ##  for d in data:
         #  #
+
+def combinegrids(selected_grid, cHHH):
+
+	print "Started with", selected_grid, " and cHHH = ", cHHH
+        # Build grid for give value of cHHH
+        incr = selected_grid.split('_cHHH_-1.0.grid')[0]
+        cHHH_grids = [incr + '_cHHH_-1.0.grid',
+                      incr + '_cHHH_0.0.grid',
+                      incr + '_cHHH_1.0.grid']
+	print cHHH_grids
+        amps = []
+
+        for grid in cHHH_grids: amps.append(np.loadtxt( grid, unpack=True ))
+	print "Loaded grids"
+
+        # Check that the grids have the same values for s, t
+
+        for amp in amps[1:]:
+            if not ( np.array_equal(amp[0], amps[0][0]) and np.array_equal(amp[1], amps[0][1]) ):
+              print "The virtual grids do not contain the same phase-space points!"
+
+        cHHH_amp = 1/2.*amps[2][2] * cHHH*(cHHH + 1.0) + amps[0][2] * 1/2.*cHHH*(cHHH - 1.0) - amps[1][2] * (cHHH - 1.0)*(cHHH + 1.0)
+        cHHH_err = np.sqrt( 1/4.*pow(amps[2][3]*cHHH*(cHHH+1.0),2) + 1/4.*pow(amps[0][3]*cHHH*(cHHH-1.0),2) + pow(amps[1][3]*(cHHH-1.0)*(cHHH+1.0),2) )
+
+        np.savetxt(selected_grid, np.transpose([amps[0][0], amps[0][1], cHHH_amp, cHHH_err]))
+	print "Saved grid"
