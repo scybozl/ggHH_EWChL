@@ -95,9 +95,6 @@ void combine_grids(const char* grid_temp, double cHHH)
     }
     }
 
-    printf("PYTHONPATH: %s\n", getenv("PYTHONPATH"));
-    printf("Grid Path: %s\n", grid_file_path);
-
     PyObject* pModule = PyImport_ImportModule("creategrid");
     assert(pModule != NULL);
 
@@ -112,8 +109,8 @@ void combine_grids(const char* grid_temp, double cHHH)
     PyObject* pGridNameTuple = PyTuple_Pack(2,pGridName,pcHHHValue);
     assert(pGridNameTuple != NULL);
 
-    PyObject* pResult = PyObject_CallObject(pFct, pGridNameTuple);
-    assert(pResult != NULL);
+    PyObject* pFunct = PyObject_CallObject(pFct, pGridNameTuple);
+    assert(pFunct != NULL);
 
     // Cleanup
     free(pythonpath);
@@ -123,7 +120,7 @@ void combine_grids(const char* grid_temp, double cHHH)
     Py_DECREF(pGridName);
     Py_DECREF(pcHHHValue);
     Py_DECREF(pGridNameTuple);
-    Py_DECREF(pResult);
+    Py_DECREF(pFunct);
 };
 
 PyObject* grid_initialize(const char* grid_name)
@@ -203,7 +200,6 @@ PyObject* grid_initialize(const char* grid_name)
 
 double grid_virt(PyObject* grid, double s, double t)
 {
-
     PyObject* pResult = PyObject_CallMethod(grid, "GetAmplitude", "(ff)", s, t);
     assert(pResult != NULL);
 

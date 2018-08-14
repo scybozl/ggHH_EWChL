@@ -31,7 +31,7 @@ subroutine initgrids(cHHH)
      subroutine combine_grids(grid_temp, cHHH) bind(c)
        use, intrinsic :: iso_c_binding
        implicit none
-       real(c_double) :: cHHH
+       real(c_double), intent(in), value :: cHHH
        character(kind=c_char) :: grid_temp
      end subroutine combine_grids
 
