@@ -147,6 +147,15 @@ c      call check_gosam_err(param,ierr)
 c      call OLP_Option_qp(line,ierr)
 c      call check_gosam_err(param,ierr)
 
+      param = 'cHHH='
+      write(value,'(F20.10)') ph_cHHH
+      line = trim(param)//trim(adjustl(value))
+      write(*,*) "cHHH set in GoSam to ", ph_cHHH
+      call OLP_Option(line,ierr)
+      call check_gosam_err(param,ierr)
+c      call OLP_Option_qp(line,ierr)
+c      call check_gosam_err(param,ierr)
+
 c$$$      param = 'wZ='
 c$$$      write(value,'(F20.10)') ph_Zwidth
 c$$$      line = trim(param)//trim(adjustl(value))

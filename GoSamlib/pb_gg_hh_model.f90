@@ -49,6 +49,7 @@ module     pb_gg_hh_model
    real(ki) :: wtau =        0.000000000000000_ki
    real(ki) :: wW =        2.124000000000000_ki
    real(ki) :: wZ =        2.495200000000000_ki
+   real(ki) :: cHHH =      1.000000000000000_ki
    complex(ki) :: gUa
    complex(ki) :: gWWZZ
    complex(ki) :: gBa
@@ -174,7 +175,7 @@ module     pb_gg_hh_model
 
    integer, parameter, private :: line_length = 80
    integer, parameter, private :: name_length = max(7,24)
-   character(len=name_length), dimension(20) :: names = (/&
+   character(len=name_length), dimension(21) :: names = (/&
       & "alpha  ", &
       & "gauge1z", &
       & "gauge2z", &
@@ -194,7 +195,8 @@ module     pb_gg_hh_model
       & "wphi   ", &
       & "wtau   ", &
       & "wW     ", &
-      & "wZ     "/)
+      & "wZ     ", &
+      & "cHHH   "/)
    character(len=1), dimension(3) :: cc = (/'#', '!', ';'/)
 
 
@@ -266,6 +268,7 @@ contains
    write(unit,'(A1,1x,A7,G23.16)') "#", "mtau = ", mtau
    write(unit,'(A1,1x,A7,G23.16)') "#", "wtau = ", wtau
    write(unit,'(A1,1x,A14)') "#", "Couplings etc.:"
+   write(unit,'(A1,1x,A9,G23.16)') "#", "cHHH = ", cHHH
    write(unit,'(A1,1x,A9,G23.16)') "#", "alphaS = ", gs*gs/4._ki/pi
    write(unit,'(A1,1x,A9,G23.16)') "#", "gs     = ", gs
    write(unit,'(A1,1x,A9,"(",G23.16,G23.16,")")') "#", "sw     = ", sw
@@ -698,6 +701,8 @@ contains
             wW = re
          case(20)
             wZ = re
+         case(21)
+            cHHH = re
          end select
       elseif (name(1:5).eq."mass(") then
          idx = scan(name, ')', .false.)
@@ -1246,6 +1251,9 @@ if (name.eq."Gf") then
          case(20)
             wZ = re
             must_be_real=.true.
+         case(21)
+            cHHH = re
+            must_be_real=.true.
          end select
      else
          if (name(1:3) /= "mdl") then
@@ -1313,7 +1321,7 @@ if (name.eq."Gf") then
       reg20 = mH*mH
       reg7 = reg2*sw
       reg8 = reg20/reg7
-      gHHH = (-3.0_ki/2.0_ki)*reg8
+      gHHH = (-3.0_ki/2.0_ki)*reg8*cHHH
       gGWX = (-1.0_ki/2.0_ki)*reg2*i_/sw
       gH = ((1.0_ki/24.0_ki)/(reg7*pi*pi))
       reg9 = reg2*sqrt2*sw

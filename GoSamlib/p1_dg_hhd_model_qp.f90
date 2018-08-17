@@ -31,7 +31,6 @@ module     p1_dg_hhd_model_qp
    real(ki) :: mT =      171.199999999999989_ki
    real(ki),parameter :: mtau =        0.000000000000000_ki
    real(ki),parameter :: mU =        0.000000000000000_ki
-   real(ki),parameter :: cHHH =        1.000000000000000_ki
    real(ki) :: mW =       80.376000000000005_ki
    real(ki) :: mZ =       91.187600000000003_ki
    real(ki) :: NC =        3.000000000000000_ki
@@ -48,6 +47,7 @@ module     p1_dg_hhd_model_qp
    real(ki) :: wtau =        0.000000000000000_ki
    real(ki) :: wW =        2.124000000000000_ki
    real(ki) :: wZ =        2.495200000000000_ki
+   real(ki) :: cHHH =        1.000000000000000_ki
    complex(ki) :: gUa
    complex(ki) :: gWWZZ
    complex(ki) :: gBa
@@ -172,7 +172,7 @@ module     p1_dg_hhd_model_qp
    complex(ki) :: gPS
    integer, parameter, private :: line_length = 80
    integer, parameter, private :: name_length = max(7,24)
-   character(len=name_length), dimension(19) :: names = (/&
+   character(len=name_length), dimension(20) :: names = (/&
       & "alpha  ", &
       & "gauge2z", &
       & "mBMS   ", &
@@ -191,7 +191,8 @@ module     p1_dg_hhd_model_qp
       & "wphi   ", &
       & "wtau   ", &
       & "wW     ", &
-      & "wZ     "/)
+      & "wZ     ", &
+      & "cHHH   "/)
    character(len=1), dimension(3) :: cc = (/ '#', '!', ';'/)
    private :: digit, parsereal, names, cc
 contains
@@ -242,7 +243,6 @@ contains
    end if
    write(unit,'(A1,1x,A27)') "#", "--- PARAMETERS Overview ---"
    write(unit,'(A1,1x,A22)') "#", "Boson masses & widths:"
-   write(unit,'(A1,1x,A5,G23.16)') "#", "cHHH = ", cHHH
    write(unit,'(A1,1x,A5,G23.16)') "#", "mZ = ", mZ
    write(unit,'(A1,1x,A5,G23.16)') "#", "mW = ", mW
    write(unit,'(A1,1x,A5,G23.16)') "#", "mH = ", mH
@@ -267,6 +267,7 @@ contains
    write(unit,'(A1,1x,A7,G23.16)') "#", "mtau = ", mtau
    write(unit,'(A1,1x,A7,G23.16)') "#", "wtau = ", wtau
    write(unit,'(A1,1x,A14)') "#", "Couplings etc.:"
+   write(unit,'(A1,1x,A9,G23.16)') "#", "cHHH = ", cHHH
    write(unit,'(A1,1x,A9,G23.16)') "#", "alphaS = ", gs*gs/4._ki/pi
    write(unit,'(A1,1x,A9,G23.16)') "#", "gs     = ", gs
    write(unit,'(A1,1x,A9,"(",G23.16,G23.16,")")') "#", "sw     = ", sw
@@ -688,6 +689,8 @@ contains
             wW = re
          case(19)
             wZ = re
+         case(20)
+            cHHH = re
          end select
       elseif (name(1:5).eq."mass(") then
          idx = scan(name, ')', .false.)
@@ -1219,6 +1222,9 @@ contains
             must_be_real=.true.
          case(19)
             wZ = re
+            must_be_real=.true.
+         case(20)
+            cHHH = re
             must_be_real=.true.
          end select
      else
