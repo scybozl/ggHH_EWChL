@@ -7,7 +7,7 @@ mtdep 3              ! 0: Higgs effective field theory (HEFT)
 hmass 125            ! Higgs boson mass
 topmass 173          ! top quark mass (THIS VALUE IS HARD CODED IN THE VIRTUAL
                      ! MATRIX ELEMENT AND FOR CONSISTENCY HAS NOT TO BE CHANGED WHEN
-		     ! RUNNING FULL THEORY PREDICTIONS - i.e. mtdep=3)
+                     ! RUNNING FULL THEORY PREDICTIONS - i.e. mtdep=3)
 hdecaymode -1        ! PDG code for Higgs boson decay products (it affects only the SMC)
 !                      allowed values are:  
 !                      0 all decay channels open
@@ -17,7 +17,7 @@ hdecaymode -1        ! PDG code for Higgs boson decay products (it affects only 
 !                      11  ZZ
 !                      12  gamma gamma      
 !                      -1  all decay channels closed
-cHHH 1.0             ! Higgs self-coupling w.r.t SM
+cHHH 1.0
 
 ! general parameters:
 numevts  3000        ! number of events to be generated
