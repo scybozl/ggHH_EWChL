@@ -22,6 +22,7 @@ else
 fi
 
 function runthem {
+    export PYTHONPATH=$PWD:$PYTHONPATH
     for i in $(seq 1 $ncores)
     do
 	if [ "$1" = "3" ]
