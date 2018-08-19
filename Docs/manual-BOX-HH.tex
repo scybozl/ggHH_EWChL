@@ -32,7 +32,7 @@
 
 
 \title{The POWHEG BOX V2 user manual:\\
-  double Higgs boson production} \vfill
+  double Higgs boson production with variations of the Higgs self-coupling} \vfill
 
 \author{G.~Heinrich\\ 
   Max-Planck Institut f{\"u}r Physik, F\"ohringer 6, D-80805 Munich, Germany\\
@@ -143,8 +143,8 @@ The grid is generated using a python code and, in the newest version
 (after revision number 3507), the code is directly interfaced to the
 \POWHEGBOX{} fortran code. The procedure for the computation with full
 top quark mass dependence is similar to the one for the other running
-modes. However, in order for the grid to be found by the code, three
-files ({\tt events.cdf, createdgrid.py, Virt\_full.grid}) from the
+modes. However, in order for the grid to be found by the code, the
+files ({\tt events.cdf, createdgrid.py, Virt\_full\_cHHH\_$\lbrace$-1.0,0.0,1.0$\rbrace$.grid}) from the
 folder {\tt Virtual} need to be copied into the local folder where the
 code is run. Instead of copying the files, we suggest to create a
 symbolic link of the needed files. Assuming the code is run from a
@@ -152,10 +152,10 @@ subfolder of the process folder, the link can be created as follows:
 \begin{description}
 \item{\tt ln -s ../Virtual/events.cdf events.cdf}
 \item{\tt ln -s ../Virtual/creategrid.py creategrid.py}
-\item{\tt ln -s ../virtual/Virt\_full.grid Virt\_full.grid}
+\item{\tt for grid in ../Virtual/Virt\_full\_cHHH\_*.grid; do ln -s \$grid \$$\lbrace$grid\#\#*/$\rbrace$; done}
 \end{description}
 Once the links are in place, the code can be run with {\tt mtdep=3} as
-usual.
+usual. To ensure that the linked files are found, we recommend to add the run subfolder to {\tt PYTHONPATH}. The python code {\tt creategrid.py} will then combine the virtual grids generated with the three values of $c_{hhh} = -1,0,1$ to produce a new file {\tt Virt\_full.grid} suited to the value of {\tt cHHH} chosen in the {\tt powheg.input} file.
 
 \section{Physical input parameters}
 
