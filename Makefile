@@ -140,7 +140,7 @@ pwhg_cpHTO_reweight.o: pwhg_cpHTO_reweight.f $(INCLUDE)
 	$(CXX) $(DEBUG) -c -o $(OBJDIR)/$@ $^
 
 %.o: %.cc
-	$(CXX) $(DEBUG) -c -o $(OBJDIR)/$@ $^ $(NINJAFLAGS) $(FJCXXFLAGS)
+	$(CXX) $(DEBUG) -c -o $(OBJDIR)/$@ $^ $(NINJAFLAGS) $(FJCXXFLAGS) $(LIBHEPMC)
 
 %.o: quadsources/%.cc
 	$(CXX) $(DEBUG) -c -o $(OBJDIR)/$@ $^ $(NINJAFLAGSQP) $(FJCXXFLAGS)
