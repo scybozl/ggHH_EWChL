@@ -1,0 +1,4 @@
+pdflatex main_varylambda.tex
+bibtex   main_varylambda
+pdflatex main_varylambda.tex
+pdflatex main_varylambda.tex

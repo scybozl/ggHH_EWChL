@@ -1,0 +1,168 @@
+\documentclass[12pt]{article}
+
+%\textwidth=20cm
+%\textheight=16cm
+%\setlength{\oddsidemargin}{-1cm}
+\pdfoutput=1
+\setlength\parindent{0pt}
+
+\usepackage{jheppub}
+\usepackage{graphicx,epsfig,amsmath,amssymb,mathtools}
+%\usepackage{multirow,bigdelim,lscape}
+%\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{xspace}
+%\usepackage{listings}
+%\lstset{basicstyle=\ttfamily}
+%% 
+%\usepackage{titlesec}
+\graphicspath{{feyndiags/}}
+
+
+%%% Macros
+\newcommand\TwoFigBottom{-2}
+%
+\newcommand{\eqn}[1]{Eq.~(\ref{#1})}
+\newcommand{\ab}{\ensuremath{\alpha_0}}
+\newcommand{\als}{\ensuremath{\alpha_s}}
+\newcommand{\gb}{\ensuremath{g_0}}
+\newcommand{\gs}{\ensuremath{g}}
+\newcommand{\mub}{\ensuremath{\mu_0}}
+\newcommand{\mur}{\ensuremath{\mu_R}}
+\newcommand{\amp}{\ensuremath{\mathcal{A}}}
+\newcommand{\se}{\ensuremath{S_\epsilon}}
+\newcommand{\msbar}{\ensuremath{\overline{\mathrm{MS}}}}
+\newcommand{\gghh}{\ensuremath{{gg \rightarrow HH}}}
+\newcommand{\gghhg}{\ensuremath{{gg \rightarrow HH + g}}}
+\newcommand{\gqhhq}{\ensuremath{{gq \rightarrow HH + q}}}
+\newcommand{\gqhhqb}{\ensuremath{{g\bar{q} \rightarrow HH + \bar{q}}}}
+\newcommand{\qqhhg}{\ensuremath{{q\bar{q} \rightarrow HH + g}}}
+
+\def\as{\frac{\alpha_s}{2\pi}}
+\def\asm{\frac{\alpha_s^-}{2\pi}}
+\def\ll{\log(M^2/\mu^2)}
+\def\eps{\epsilon}
+\def\shat{\hat{s}}
+\def\that{\hat{t}}
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\nn{\nonumber}
+\def\Ga{\Gamma}
+\def\ket#1{|{#1}\rangle}
+\def\bra#1{\langle{#1}|}
+\def\braket#1#2{\langle #1 |#2 \rangle}
+\def\bom#1{{\mbox{\boldmath $\mathrm{#1}$}}}
+
+\newcommand{\powheg}{{\tt POWHEG}}
+\newcommand{\powhegbox}{{\tt POWHEG-BOX}}
+\newcommand{\secdec}{\textsc{SecDec}}
+\newcommand{\gosam}{\textsc{GoSam}{}}
+\newcommand{\form}{{\tt FORM}}
+\newcommand{\golem}{{\tt Golem95}}
+\newcommand{\ninja}{{\tt Ninja}}
+\newcommand{\avholo}{{\tt OneLOop}}
+\newcommand{\pythia}{{\tt Pythia\,8}\xspace}
+\newcommand{\pythiaold}{{\tt Pythia\,6}\xspace}
+\newcommand{\idel}{i\,\delta}
+\newcommand{\rd}{{\mathrm{d}}}
+\newcommand{\loopint}[1]{\int \!\!\! \frac{d^D #1}{\left(2\pi\right)^D}\!}
+\newcommand{\dd}[1]{\mathrm{d}#1\,}
+\newcommand{\deltafun}{\,\delta}
+\newcommand{\thetafun}{\,\theta}
+\newcommand{\GeV}{\ensuremath{\mathrm{GeV}}}
+\newcommand{\TeV}{\ensuremath{\mathrm{TeV}}}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+
+\newcommand{\chhh}{c_{hhh}}
+\newcommand{\mhh}{m_{hh}}
+\newcommand{\pth}{p_{T,h}}
+\newcommand{\ftapprox}{FT$_{\mathrm{approx}}$}
+
+
+
+
+\def\ait#1{{\color{red}[~\textbf{#1}~]}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frontmatter}
+
+\title{Probing the trilinear Higgs boson coupling in di-Higgs production at NLO QCD with full $m_t$-dependence}
+
+\author[a]{G.~Heinrich,}
+\author[a]{S.~Jones,}
+\author[a]{M.~Kerner,}
+\author[b]{G.~Luisoni,}
+\author[a]{L.~Scyboz}
+
+ 
+\affiliation[a]{Max Planck Institute for Physics, F\"ohringer Ring 6,  80805 M\"unchen, Germany}
+\affiliation[a]{M\"unchen, Germany}
+
+\emailAdd{gudrun@mpp.mpg.de}
+\emailAdd{sjones@mpp.mpg.de}
+\emailAdd{kerner@mpp.mpg.de}
+\emailAdd{luisonig@gmail.com}
+\emailAdd{scyboz@mpp.mpg.de}
+
+
+\preprint{{\small  MPP-2018-xxx}}
+
+\abstract{
+ We present  NLO QCD results for Higgs boson pair 
+  production with the trilinear Higgs boson coupling  left as a free
+  parameter, and with full top quark mass dependence.
+  We provide differential results at 14\,TeV and 27\,TeV and discuss
+  the implications of anomalous trilinear couplings.
+ The matrix elements have been implemented in the {\tt POWHEG-BOX}
+  Monte Carlo framework and the corresponding generator is publicly available.
+}
+ 
+
+\keywords{Higgs phenomenology, NLO QCD, BSM, future colliders}
+%\end{frontmatter}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\input{intro.tex}
+
+
+\section{Overview of the calculation}
+\label{sec:calculation}
+
+\input{calculation.tex}
+
+\section{Total and differential cross sections at non-SM trilinear couplings}
+\label{sec:results}
+
+\input{results.tex}
+
+
+\section{Conclusions}
+
+\input{conclusions.tex}
+
+
+
+\section*{Acknowledgements}
+We would like to thank Stephan Jahn and Matteo Capozi for helpful discussions.
+This research was supported in part by the COST Action CA16201 (`Particleface') of the European Union.
+We gratefully acknowledge resources provided by the Max Planck Computing and Data Facility (MPCDF).
+
+%\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\bibliographystyle{JHEP}
+ 
+\bibliography{refs_HH_lambda}
+
+\end{document}

@@ -1,0 +1,69 @@
+The calculation builds on the one presented in Ref.~\cite{Heinrich:2017kxx} and therefore will be described only briefly here. 
+
+The leading order amplitude in the full theory and  all the
+amplitudes in the HEFT were implemented analytically, whereas the
+one-loop real radiation contribution and the two-loop virtual
+amplitudes in the full SM rely on numerical or semi-numerical
+codes.
+
+The real radiation matrix elements in the full SM were implemented
+using the interface~\cite{Luisoni:2013cuh}
+between \gosam~\cite{Cullen:2011ac,Cullen:2014yla} and
+the \powhegbox~\cite{Nason:2004rx,Frixione:2007vw,Alioli:2010xd}, modified
+accordingly to compute the real corrections instead of the virtual
+ones. The one-loop real amplitudes we generated with the new version
+2.0 of \gosam{}~\cite{Cullen:2014yla}, that
+uses {\tt Qgraf}~\cite{Nogueira:1991ex}, \form~\cite{Kuipers:2012rf} and
+{\tt spinney}~\cite{Cullen:2010jv} for the generation of the Feynman
+diagrams, and offers a choice from {\tt
+Samurai}~\cite{Mastrolia:2010nb,vanDeurzen:2013pja}, {\tt
+golem95C}~\cite{Binoth:2008uq,Cullen:2011kv,Guillet:2013msa}
+and \ninja{}~\cite{Peraro:2014cba} for the
+reduction.  At run time the amplitudes were computed using
+\ninja{}~\cite{Peraro:2014cba} and \avholo{}~\cite{vanHameren:2010cp}
+for the evaluation of the scalar one-loop integrals.
+
+For the virtual two-loop amplitudes, we have used the results of the
+calculation presented in Refs.~\cite{Borowka:2016ehy,Borowka:2016ypz},
+which is based on an extension of the program
+\gosam{}~\cite{Cullen:2014yla} to two loops~\cite{Jones:2016bci},
+using also {\sc Reduze}\,2~\cite{vonManteuffel:2012np} and {\sc
+ SecDec}\,3~\cite{Borowka:2015mxa}.
+
+The values for the Higgs boson and top quark masses have been set to
+$m_h=125$\,GeV and $m_t=173$\,GeV, such that the two-loop amplitudes
+only depend on two independent variables, the Mandelstam invariants
+$\hat{s}$ and $\hat{t}$.  We have constructed a grid in these
+variables together with an interpolation framework, such that an
+external program can call the virtual two-loop amplitude at any phase space
+point without having to do costly two-loop integrations.
+We used the same setup for the grid as described in Ref.~\cite{Heinrich:2017kxx} and extended it in the following way:
+We can write the squared matrix element as a polynomial of degree two in $\lambda$, 
+\begin{align}
+M_\lambda& \equiv |{\cal M}_\lambda|^2=A+B\,\lambda + C\,\lambda^2\;.
+\end{align}
+Therefore it is sufficient to know the amplitude at three different values of $\lambda$ in order to reconstruct the full $\lambda$-dependence. 
+Choosing $\lambda=-1,0,1$ we obtain
+\begin{align}
+A&=M_0\;,\; B=(M_1-M_{-1})/2\;,\; C=(M_1+M_{-1}-M_0)/2\;.
+\end{align}
+In practice we used the representation 
+\begin{align}
+M_\lambda &=M_0\,(1-\lambda^2)+M_1\,(\frac{\lambda}{2}+\lambda^2) + M_{-1}\,(-\frac{\lambda}{2}+\lambda^2)\;
+\end{align}
+in order to get a more straightforward uncertainty estimate.
+
+In order to allow for comparisons and cross checks, we implemented
+both the $m_t\to\infty$ limit as well as the full SM amplitudes at
+NLO. This allows to run the code in four different modes by changing
+the flag {\tt mtdep} in the \powhegbox{} run card. The possible
+choices and the corresponding calculation, as presented in the
+previous section, are the following:
+\begin{description}
+ \item[{\tt mtdep=0}:]{computation using basic HEFT,}
+ \item[{\tt mtdep=1}:]{computation using Born-improved HEFT,}
+ \item[{\tt mtdep=2}:]{computation in the approximation \ftapprox (full
+   mass dependence in the Born and in the real radiation, Born-improved HEFT
+   for the virtual part),}
+ \item[{\tt mtdep=3}:]{computation in the full SM.}
+\end{description}
