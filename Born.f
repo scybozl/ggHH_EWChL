@@ -344,15 +344,14 @@ c     invariants, abbreviations:
       real * 8 s,t,MH2
       real * 8 NA,nf
       parameter(NA=8.0d0)
-      real * 8 grid_born
+      real * 8 gridborn
 
       MH2   = ph_Hmass2
       s     = square_Lorentz_vector(p(:,1)+p(:,2))
       t     = square_Lorentz_vector(p(:,1)-p(:,3)) ! Conventions: t=(p1-p3)^2
       ao2pi = st_alpha/(2d0*pi)
 
-c  note that grid.in should be symlink to Born.grid in this case!
-      born = grid_born(s,t)
+      born = gridborn(s,t)
 
 c     born = ! Prefactors here
 
@@ -361,65 +360,65 @@ c     born = ! Prefactors here
 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 c Wrapper function for calling the python grid function
-      function grid_born(s,t)
-      implicit none
-      include 'pwhg_rnd.h' ! rndiwhichseed
-      real * 8 grid_born
-      real * 8 s,t
-      character(len=500) :: res  ! Buffer for function result
-      character(len=500) :: arg  ! Buffer for function argument
-      character(len=16) :: pyin
-      character(len=17) :: pyout
-      integer parallelstage,rndiwhichseed
-      common/cpwhg_info/parallelstage,rndiwhichseed
-      logical verbose
+c      function grid_born(s,t)
+c      implicit none
+c      include 'pwhg_rnd.h' ! rndiwhichseed
+c      real * 8 grid_born
+c      real * 8 s,t
+c      character(len=500) :: res  ! Buffer for function result
+c      character(len=500) :: arg  ! Buffer for function argument
+c      character(len=16) :: pyin
+c      character(len=17) :: pyout
+c      integer parallelstage,rndiwhichseed
+c      common/cpwhg_info/parallelstage,rndiwhichseed
+c      logical verbose
 
-      verbose = .false.
+c      verbose = .false.
 
 c     Use input seed to determine which FIFOs to use, e.g. seed = 1 => FIFOs: pyInputPipe-0001, pyOutputPipe-0001
-      pyin = "pyInputPipe-"
-      pyout = "pyOutputPipe-"
-      write(pyin,'(A12,I0.4)') pyin,rndiwhichseed
-      write(pyout,'(A13,I0.4)') pyout,rndiwhichseed
-      if (verbose) then
-         write(*,*) "Using FIFOs:"
-         write(*,*) pyin
-         write(*,*) pyout
+c      pyin = "pyInputPipe-"
+c      pyout = "pyOutputPipe-"
+c      write(pyin,'(A12,I0.4)') pyin,rndiwhichseed
+c      write(pyout,'(A13,I0.4)') pyout,rndiwhichseed
+c      if (verbose) then
+c         write(*,*) "Using FIFOs:"
+c         write(*,*) pyin
+c         write(*,*) pyout
 
 c         Build input to python grid
-         write(*,*) "Input to grid_born:"
-         write(*,*) s
-         write(*,*) t
-      endif
-      write(arg,'(ES50.40E4,A,ES50.40E4)') s,',',t
-      if (verbose) then
-         write(*,*) "Will send the following char(len=500) to python:"
-         write(*,*) arg
-      endif
+c         write(*,*) "Input to grid_born:"
+c         write(*,*) s
+c         write(*,*) t
+c      endif
+c      write(arg,'(ES50.40E4,A,ES50.40E4)') s,',',t
+c      if (verbose) then
+c         write(*,*) "Will send the following char(len=500) to python:"
+c         write(*,*) arg
+c      endif
 
 c     Send input to python script
-      open(1,file=pyin,position='asis',action='write')
-      write(1,'(A)',advance='no') arg
-      close(1)
+c      open(1,file=pyin,position='asis',action='write')
+c      write(1,'(A)',advance='no') arg
+c      close(1)
 
 c     Receive result from python script
-      open(2,file=pyout,position='asis',action='read')
-      read(2,'(A)') res
-      close(2)
+c      open(2,file=pyout,position='asis',action='read')
+c      read(2,'(A)') res
+c      close(2)
 
 c     Parse result of python grid
 
-      if (verbose) then
-         write(*,*) "Got the following character(len=500) from python:"
-         write(*,*) res
-      endif
-      read(res,*) grid_born
+c      if (verbose) then
+c         write(*,*) "Got the following character(len=500) from python:"
+c         write(*,*) res
+c      endif
+c      read(res,*) grid_born
 
-      if (verbose) then
-         write(*,*) "Output of grid_born:"
-         write(*,*) grid_born
-      endif
-      end function grid_born
+c      if (verbose) then
+c         write(*,*) "Output of grid_born:"
+c         write(*,*) grid_born
+c      endif
+c      end function grid_born
 
 
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
