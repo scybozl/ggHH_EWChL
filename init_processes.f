@@ -111,7 +111,7 @@ c     index of the first LIGHT coloured parton in the final state
 ***********            INITIALIZE VIRTUAL             ***************
 *********************************************************************
 
-      if (mtdep.eq.3) then
+      if (mtdep.eq.3.or.mtdep.eq.5) then
          cHHH = powheginput('#cHHH')
          call initgrids(cHHH)
       endif

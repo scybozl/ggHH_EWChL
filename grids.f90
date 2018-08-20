@@ -52,9 +52,9 @@ subroutine initgrids(cHHH)
   call python_initialize
   call python_printinfo
 
-  call combine_grids(C_CHAR_"Virt_full_"//C_NULL_CHAR, cHHH)
+!  call combine_grids(C_CHAR_"Virt_full_"//C_NULL_CHAR, cHHH)
   call combine_grids(C_CHAR_"Born_"//C_NULL_CHAR, cHHH)
-  grid = grid_initialize(C_CHAR_"Virt_full.grid"//C_NULL_CHAR)
+!  grid = grid_initialize(C_CHAR_"Virt_full.grid"//C_NULL_CHAR)
   gridb = grid_initialize(C_CHAR_"Born.grid"//C_NULL_CHAR)
 
   ! s = 2.56513D6
