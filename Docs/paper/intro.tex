@@ -1,3 +1,25 @@
-The Higgs potential is the least explored sector of the Standard Model so far, and therefore measuring its parameters beyond the Higgs boson mass, i.e. the Higgs boson self-coupling(s), may offer surprises.
+The Higgs potential is the least explored sector of the Standard Model so far, and therefore measurements of its parameters beyond the Higgs boson mass, i.e. of the Higgs boson self-coupling(s), may offer surprises.
+Experimental constraints from current LHC data~\cite{Khachatryan:2016vau,Sirunyan:2018iwt,Aaboud:2018ftw} suggest that the trilinear Higgs boson coupling, relative to its Standard Model (SM) value, should be in the range $-8.2\leq \kappa_\lambda\leq 13.2$~\cite{Aaboud:2018ftw}, which still leaves quite some room for physics beyond the SM.
+While it is unlikely that New Physics alters just the Higgs boson self-couplings but leave the Higgs couplings to vector bosons and fermions unchanged, there is a plethora of consistent models where the deviations of the measured Higgs couplings from their SM values are so small that they have escaped detection so far. 
+%while $|\kappa_\lambda|$ still can be large.
+Therefore it is very important to have precise predictions for observables which allow to measure the Higgs boson couplings. 
+This is particularly true for the trilinear Higgs self-coupling $\lambda$.
+The most promising channel being Higgs boson pair production in gluon fusion~\cite{Baglio:2012np,Frederix:2014hta}, we present results at next-to-leading order (NLO) QCD with full top quark mass dependence for this process, where we study the dependence of total cross sections and distributions at $\sqrt{s}=14$\,TeV and $\sqrt{s}=27$\,TeV on the trilinear coupling, assuming that the deviations in the other couplings are at the (sub-)percent level.
+As there is destructive interference in the squared amplitude between contributions containing $\lambda$ and those without the Higgs boson self-coupling (corresponding to triangle- and box diagrams at LO), 
+%where the destructive interference is maximal at $\lambda\sim 2.4$, 
+small changes in $\lambda$ can have a substantial effect on the cross sections.
 
+Our predictions are based on an NLO calculation of the process $gg\to HH$ described in Refs.~\cite{Borowka:2016ehy,Borowka:2016ypz}. 
+To obtain a full-fledged NLO generator which also offers the possibility of parton showering, we implemented the calculation in the 
+\powhegbox~\cite{Nason:2004rx,Frixione:2007vw,Alioli:2010xd}, building on the SM code presented in Ref.~\cite{Heinrich:2017kxx}.
 
+The scale uncertainties at NLO are still at the 10\% level, while they are decreased to about 5\% when including the NNLO corrections
+in the $m_t\to\infty$ limit~\cite{deFlorian:2013jea,Grigo:2015dia,deFlorian:2016uhr}. The calculation of Ref.~\cite{deFlorian:2016uhr} has been combined with results including the top quark mass dependence as far as available in Ref.~\cite{Grazzini:2018bsd}, and the latter has been supplemented by soft gluon resummation in Ref.~\cite{deFlorian:2018tah}.
+However, as shown in Ref.~\cite{Buchalla:2018yce}, the dependence of the K-factors on the value for $\lambda$ (and other BSM couplings) is stronger than the $m_t\to\infty$ limit may suggest. This is particularly true for differential K-factors, 
+in combination with the $b\bar{b}$ decay channel of the Higgs boson, where in the boosted regime large-$p_T$ Higgs bosons are involved, which means that the top quark loops are resolved, such that the  $m_t\to\infty$ limit is clearly invalid.
+The top quark mass corrections in the large $\mhh$ or $\pth$ regime being of the order of 20-30\% or higher, and increasing with larger centre-of-mass energy (e.g. $\sqrt{s}=27$or 100\,TeV), these corrections clearly exceed the scale uncertainties and therefore have to be taken into account.
+
+The purpose of this paper is twofold: Based on our differential results, we discuss how the deviations from the SM can be cornered and how this changes with increasing centre-of-mass energy. \\
+Further, we present the public code {\tt POWHEG-BOX-V2/ggHH-varylambda} where the user can choose the value of the trilinear coupling as an input parameter.
+
+This paper is organised as follows. In Section~\ref{sec:calculation} we briefly describe the calculation and give instructions for the usage of the program within the \powhegbox. Section~\ref{sec:results} contains the discussion of our results, before we conclude in Section~\ref{sec:conclusions}.
