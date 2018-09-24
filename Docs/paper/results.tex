@@ -19,3 +19,87 @@ $\mu_{R,F}=c_{R,F}\,\mu_0$, where $c_R,c_F\in \{2,1,0.5\}$ where the
 extreme variations $(c_R,c_F)=(2,0.5)$ and $(c_R,c_F)=(0.5,2)$ have
 been omitted.
 
+\subsection{Total cross sections at different values of the trilinear coupling}
+
+In Table \ref{tab:sigmatot} we list total cross sections at 14\,TeV and 27\,TeV for various values of the trilinear Higgs coupling $\lambda$. 
+\begin{table}[htb]
+\begin{center}
+%\setlength{\extrarowheight}{3.0pt}
+\begin{tabular}{| c | c | c |c|c|}
+%\Xhline{2\arrayrulewidth}
+\hline
+&&&&\\
+$\lambda_{\mathrm{BSM}}/\lambda_{\mathrm{SM}}$ & $\sigma_{\rm{NLO}}@14 \mathrm{TeV}$\,[fb] & $\sigma_{\rm{NLO}}@27 \mathrm{TeV}$\,[fb] &K-fac.@14TeV&K-fac.@27TeV\\
+&&&&\\
+\hline
+1& 32.88$^{+13.5\%}_{-12.5\%}$&127.7$^{+11.5\%}_{-10.4\%}$ &1.66&1.62\\
+\hline
+2 & 14.91 &  59.10&&\\
+\hline
+2.4 & xx& yy&&\\
+\hline
+3& 19.82 & 69.84&&\\
+\hline 
+5 & 98.42& &&\\
+\hline 
+0 & 73.84& 275.29&&\\
+\hline 
+-1 & 137.69& &&\\
+\hline
+%\Xhline{2\arrayrulewidth}
+\end{tabular}
+\end{center}
+\caption{Total cross sections for Higgs boson pair production at full NLO. The given uncertainties are scale uncertainties. 
+\label{tab:sigmatot}}
+\end{table}
+Table~\ref{tab:sigmatot} shows that the K-factors vary substantially as functions of the trilinear coupling.
+This fact is illustrated in Fig.~\ref{fig:Kfacvariation}, showing that the K-factor takes values between 1.57 and 2.16
+if the trilinear coupling is varied between $-5\leq \chhh\leq 12$.
+
+\begin{figure}[htb]
+  \centering
+    \includegraphics[width=0.4\textwidth]{plots/Kfac_varlambda.pdf}
+%  \includegraphics[width=\textwidth]{plots/}
+%    \caption{\label{fig:lambda_large_27}}
+\caption{Variation of the NLO K-factor with the trilinear coupling, $\sqrt{s}=14$\,TeV.}
+\label{fig:Kfacvariation}
+\end{figure}
+
+
+\subsection{Differential cross sections}
+
+In Figs.~\ref{fig:lambda_small} and ~\ref{fig:lambda_large} we show the $\mhh$ distribution for various values of $\chhh=\lambda_{\mathrm{BSM}}/\lambda_{\mathrm{SM}}$. 
+The ratio plots show the differential K-factors. 
+
+\begin{figure}[htb]
+ \begin{subfigure}{0.495\textwidth}
+\includegraphics[width=\textwidth]{plots/mhh_Kfac_14TeV_varylambda_small.pdf}
+%    \vspace{\TwoFigBottom em}
+ \caption{Higgs boson pair invariant mass distributions for various values of $\lambda$ (relative to $\lambda_{\mathrm{SM}}$)  at 14\,TeV.}
+\label{fig:lambda_small}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.495\textwidth}
+    \includegraphics[width=\textwidth]{plots/mhh_Kfac_14TeV_varylambda_large.pdf}
+\caption{Higgs boson pair invariant mass distributions for $\lambda/\lambda_{\mathrm{SM}}=-1,3,5$)  at 14\,TeV.}
+\label{fig:lambda_large}
+\end{subfigure}
+\label{fig:lambdavar14TeV}
+\end{figure}
+
+
+\begin{figure}[ht]
+\begin{center}
+  \includegraphics[width=0.45\textwidth]{plots/3D_mhh_chhh.pdf}    
+\end{center}
+\caption{3-dimensional visualisation of the $\mhh$ distribution at
+  14\,TeV, as a function  $\chhh$ and $\mhh$. The units on the y-axis are [fb/GeV].}
+\label{fig:chhh_3D}
+\end{figure}
+Fig.~\ref{fig:chhh_3D} shows the Higgs boson pair invariant mass
+distributions at NLO as a function of $\chhh$  as 3-dimensional heat maps.
+The other couplings are fixed to their SM values.
+ 
+%\bibliography{bib/refs_HH_lambda}
+
+
