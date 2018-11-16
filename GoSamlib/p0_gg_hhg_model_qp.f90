@@ -49,8 +49,8 @@ module     p0_gg_hhg_model_qp
    real(ki) :: wphi =        0.000000000000000_ki
    real(ki),parameter :: wT =        0.000000000000000_ki
    real(ki) :: wtau =        0.000000000000000_ki
-   real(ki) :: wW =        2.124000000000000_ki
-   real(ki) :: wZ =        2.495200000000000_ki
+   real(ki) :: wW =        0.000000000000000_ki
+   real(ki) :: wZ =        0.000000000000000_ki
    real(ki) :: cHHH =        1.000000000000000_ki
    complex(ki) :: gUa
    complex(ki) :: gWWZZ
