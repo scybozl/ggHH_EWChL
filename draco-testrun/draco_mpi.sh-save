@@ -20,7 +20,7 @@ LOGFILE='%(powheg_log_filename)s'
 export PYTHONPATH="%(python_path)s:$PYTHONPATH"
 #---- ----------------------- ----#
 
-module load gcc/6.3.0 anaconda/2/5.1 mpi4py/3.0.0
+module load gcc/7 anaconda/2/5.1 mpi4py/3.0.0
 
 RUNDIR=$PWD
 
