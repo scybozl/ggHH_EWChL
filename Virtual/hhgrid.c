@@ -96,20 +96,46 @@ void combine_grids(const char* grid_temp, double cHHH)
     }
 
     PyObject* pModule = PyImport_ImportModule("creategrid");
+    if(pModule == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to load creategrid.py: please check that you have numpy and scipy installed\n");
+    }
     assert(pModule != NULL);
 
     PyObject* pFct = PyObject_GetAttrString(pModule, "combinegrids");
+    if(pFct == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to locate combinegrids function: please check that you have the latest version of creategrid.py and Python 2.7.x\n");
+    }
     assert(pFct != NULL);
 
     PyObject* pGridName = PyString_FromString(grid_file_path);
+    if(pGridName == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create Python string from grid_file_path: please check that grid_file_path is a valid string\n");
+    }
     assert(pGridName != NULL);
+
     PyObject* pcHHHValue = PyFloat_FromDouble(cHHH);
     assert(pcHHHValue != NULL);
 
     PyObject* pGridNameTuple = PyTuple_Pack(2,pGridName,pcHHHValue);
+    if(pGridNameTuple == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create Python tuple: please check that your Python version is 2.7.x\n");
+    }
     assert(pGridNameTuple != NULL);
 
     PyObject* pFunct = PyObject_CallObject(pFct, pGridNameTuple);
+    if(pFunct == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to call combinegrids: please check that your Python version is 2.7.x\n");
+    }
     assert(pFunct != NULL);
 
     // Cleanup
@@ -173,18 +199,43 @@ PyObject* grid_initialize(const char* grid_name)
     printf("Grid Path: %s\n", grid_file_path);
 
     PyObject* pModule = PyImport_ImportModule("creategrid");
+    if(pModule == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to load creategrid.py: please check that you have numpy and scipy installed\n");
+    }
     assert(pModule != NULL);
 
     PyObject* pClass = PyObject_GetAttrString(pModule, "CreateGrid");
+    if(pClass == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to locate CreateGrid class: please check that you have the latest version of creategrid.py and Python 2.7.x\n");
+    }
     assert(pClass != NULL);
 
     PyObject* pGridName = PyString_FromString(grid_file_path);
+    if(pGridName == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create Python string from grid_file_path: please check that grid_file_path is a valid string\n");
+    }
     assert(pGridName != NULL);
 
     PyObject* pGridNameTuple = PyTuple_Pack(1,pGridName);
+    if(pGridNameTuple == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create Python tuple: please check that your Python version is 2.7.x\n");
+    }
     assert(pGridNameTuple != NULL);
 
     PyObject* pInstance = PyInstance_New(pClass, pGridNameTuple, NULL);
+    if(pInstance == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create instance of CreateGrid: please check that you have the latest version of creategrid.py and Python 2.7.x\n");
+    }
     assert(pInstance != NULL);
 
     // Cleanup
