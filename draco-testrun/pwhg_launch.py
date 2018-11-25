@@ -26,13 +26,15 @@ if __name__ == '__main__':
                         metavar='parallelstage (for powheg.input)', help="The parallelstage to set in the powheg.input.")
     parser.add_argument('-x', '--xgriditeration', required=True, type=int, dest="XGRIDITERATION",
                         metavar='xgriditeration (for powheg.input)', help="The xgriditeration to be set in the powheg.input.")
-
+    parser.add_argument('-d', '--dependency', required=False, type=str, dest="DEPENDENCY",
+                        default='', metavar='dependency (slurm)', help="The dependency of the slurm job e.g... afterok:JOBID.")
     # Parse arguments
     args = parser.parse_args()
     configuration_file = args.CONFIGURATION
     startseed = args.STARTSEED
     parallelstage = args.PARALLELSTAGE
     xgriditeration = args.XGRIDITERATION
+    dependency = args.DEPENDENCY
 
     # Parse configuration YAML
     with open(configuration_file, 'r') as f:
@@ -45,6 +47,7 @@ if __name__ == '__main__':
     configuration["startseed"] = startseed
     configuration["parallelstage"] = parallelstage
     configuration["xgriditeration"] = xgriditeration
+    configuration["dependency"] = dependency
 
     # Parse file paths/names
     configuration_filename_base = os.path.splitext(os.path.basename(str(configuration_file)))[0]
