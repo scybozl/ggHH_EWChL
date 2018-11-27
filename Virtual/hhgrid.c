@@ -50,13 +50,17 @@ void combine_grids(const char* grid_temp, double cHHH)
     char* pythonpath = strdup(getenv("PYTHONPATH"));
     char* result = strtok( pythonpath, delims );
 
+    char grid_tmp[16];
+    strncpy(grid_tmp, grid_temp, 10); // Only take the first characters to look for the three basic cHHH grids
+    grid_tmp[10]='\0';
+
     for (int i=0; i<3; ++i) {
-      size_t len_grid_name = strlen(grid_temp) + strlen("cHHH_") + strlen(cHHH_values[i]) + strlen(".grid") + 1;  // +14 for _(cHHH).grid
+      size_t len_grid_name = strlen(grid_tmp) + strlen("cHHH_") + strlen(cHHH_values[i]) + strlen(".grid") + 1;  // +14 for _(cHHH).grid
       char* grid_name = (char*) malloc(len_grid_name);
-      memcpy(grid_name, grid_temp, strlen(grid_temp));
-      memcpy(grid_name + strlen(grid_temp), "cHHH_", strlen("cHHH_"));
-      memcpy(grid_name + strlen(grid_temp) + strlen("cHHH_"), cHHH_values[i], strlen(cHHH_values[i]));
-      memcpy(grid_name + strlen(grid_temp) + strlen("cHHH_") + strlen(cHHH_values[i]), ".grid", strlen(".grid"));
+      memcpy(grid_name, grid_tmp, strlen(grid_tmp));
+      memcpy(grid_name + strlen(grid_tmp), "cHHH_", strlen("cHHH_"));
+      memcpy(grid_name + strlen(grid_tmp) + strlen("cHHH_"), cHHH_values[i], strlen(cHHH_values[i]));
+      memcpy(grid_name + strlen(grid_tmp) + strlen("cHHH_") + strlen(cHHH_values[i]), ".grid", strlen(".grid"));
       grid_name[len_grid_name-1] = '\0';
 
     // Check if grid_name is accessible as-is    
@@ -111,14 +115,13 @@ void combine_grids(const char* grid_temp, double cHHH)
     }
     assert(pFct != NULL);
 
-    PyObject* pGridName = PyString_FromString(grid_file_path);
+    PyObject* pGridName = PyString_FromString(grid_temp);
     if(pGridName == NULL)
     {
         PyErr_Print();
         printf("ERROR: Failed to create Python string from grid_file_path: please check that grid_file_path is a valid string\n");
     }
     assert(pGridName != NULL);
-
     PyObject* pcHHHValue = PyFloat_FromDouble(cHHH);
     assert(pcHHHValue != NULL);
 

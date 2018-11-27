@@ -3,6 +3,8 @@ subroutine initgrids(cHHH)
   implicit none
   real(c_double) :: s, t, result, expected
   real * 8 cHHH
+  character(len=50) :: gridname
+  character(len=32,kind=C_CHAR) :: c_gridname
   type(c_ptr) :: grid
   common/cbgrid/grid
   
@@ -52,8 +54,12 @@ subroutine initgrids(cHHH)
   call python_initialize
   call python_printinfo
 
-  call combine_grids(C_CHAR_"Virt_full_"//C_NULL_CHAR, cHHH)
-  grid = grid_initialize(C_CHAR_"Virt_full.grid"//C_NULL_CHAR)
+  write(gridname, "(A15,SP,ES11.4,A5)") "Virt_full_cHHH_", cHHH, ".grid"
+
+  c_gridname = TRIM(gridname)//C_NULL_CHAR
+
+  call combine_grids(c_gridname, cHHH)
+  grid = grid_initialize(c_gridname)
 
   ! s = 2.56513D6
   ! t = -482321.D0
