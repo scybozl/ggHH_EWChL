@@ -7,7 +7,7 @@ import scipy
 import scipy.optimize
 from math import sqrt
 import random
-import os
+import os, time
 
 #import matplotlib as mpl
 #import matplotlib.pyplot as plt
@@ -18,8 +18,21 @@ import os
 
 def combinegrids(grid_temp, cHHH):
 
-	np.set_printoptions(formatter={'float':'{:.18E}'.format})
+	# Lock to prevent other parallel processes from writing to the grid
 
+	os.system("touch lock")
+
+	if os.stat("lock").st_nlink > 1:
+	    if os.path.exists(grid_temp): return
+	    else:
+	       while not os.path.exists(grid_temp): time.sleep(5)
+	       return
+
+	os.link("lock", grid_temp+'.lock')
+
+	# Grid numbering format
+
+	np.set_printoptions(formatter={'float':'{:.18E}'.format})
 	print "Combining grids for cHHH = ", cHHH
 
         # Build grid for give value of cHHH
@@ -41,8 +54,8 @@ def combinegrids(grid_temp, cHHH):
         cHHH_amp = 1/2.*amps[2][2] * cHHH*(cHHH + 1.0) + amps[0][2] * 1/2.*cHHH*(cHHH - 1.0) - amps[1][2] * (cHHH - 1.0)*(cHHH + 1.0)
         cHHH_err = np.sqrt( 1/4.*pow(amps[2][3]*cHHH*(cHHH+1.0),2) + 1/4.*pow(amps[0][3]*cHHH*(cHHH-1.0),2) + pow(amps[1][3]*(cHHH-1.0)*(cHHH+1.0),2) )
 
-        np.savetxt(incr + '.grid', np.transpose([amps[0][0], amps[0][1], cHHH_amp, cHHH_err]))
-	print "Saved grid ", incr + '.grid'
+        np.savetxt(grid_temp, np.transpose([amps[0][0], amps[0][1], cHHH_amp, cHHH_err]))
+	print "Saved grid ", grid_temp
 
 class Bin:
     def __init__(self):
