@@ -68,7 +68,7 @@ void combine_grids(const char* grid_temp, double cHHH)
     {
         printf("Looking for %s in current directory. Found\n", grid_name);
         grid_file_path = (char*) malloc(len_grid_name + 1); // +1 for null terminator
-        memcpy(grid_file_path, grid_name, len_grid_name);
+        memcpy(grid_file_path, grid_name, len_grid_name + 1);
         search_paths = 0;
         setenv("PYTHONPATH", ".", 1); // Set PYTHONPATH to look here
     }
