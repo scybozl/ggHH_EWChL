@@ -21,14 +21,14 @@ def combinegrids(grid_temp, cHHH):
 	# Lock to prevent other parallel processes from writing to the grid
 
 	os.system("touch lock")
+	lockname = grid_temp+'.%s.lock' % os.getpid()
+	os.link("lock", lockname)
 
-	if os.stat("lock").st_nlink > 1:
+	if os.stat("lock").st_nlink > 2:
 	    if os.path.exists(grid_temp): return
 	    else:
 	       while not os.path.exists(grid_temp): time.sleep(5)
 	       return
-
-	os.link("lock", grid_temp+'.lock')
 
 	# Grid numbering format
 
@@ -56,6 +56,8 @@ def combinegrids(grid_temp, cHHH):
 
         np.savetxt(grid_temp, np.transpose([amps[0][0], amps[0][1], cHHH_amp, cHHH_err]))
 	print "Saved grid ", grid_temp
+
+	os.system("rm -f *.lock lock")
 
 class Bin:
     def __init__(self):
