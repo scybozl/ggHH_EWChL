@@ -38,37 +38,43 @@ void python_printinfo()
 };
 // EOF - Helper Functions (mostly for Fortran)
 
-void combine_grids(const char* grid_temp, double cHHH)
+void combine_grids(const char* grid_temp_name, double cHHH)
 {
     char* cHHH_values[3] = {"-1.0", "0.0", "1.0"};
 
     int search_paths = 1;
     char* grid_file_path;
+    char* grid_file_dirname;
     char* delims = ":";
     char* path_sep = "/";
     size_t len_path_sep = strlen(path_sep);
     char* pythonpath = strdup(getenv("PYTHONPATH"));
     char* result = strtok( pythonpath, delims );
 
-    char grid_tmp[16];
-    strncpy(grid_tmp, grid_temp, 10); // Only take the first characters to look for the three basic cHHH grids
-    grid_tmp[10]='\0';
+    char grid_temp_prefix[16];
+    strncpy(grid_temp_prefix, grid_temp_name, 10); // Only take the first characters to look for the three basic cHHH grids
+    grid_temp_prefix[10]='\0';
 
     for (int i=0; i<3; ++i) {
-      size_t len_grid_name = strlen(grid_tmp) + strlen("cHHH_") + strlen(cHHH_values[i]) + strlen(".grid") + 1;  // +14 for _(cHHH).grid
+      size_t len_grid_name = strlen(grid_temp_prefix) + strlen("cHHH_") + strlen(cHHH_values[i]) + strlen(".grid") + 1;  // +14 for _(cHHH).grid
       char* grid_name = (char*) malloc(len_grid_name);
-      memcpy(grid_name, grid_tmp, strlen(grid_tmp));
-      memcpy(grid_name + strlen(grid_tmp), "cHHH_", strlen("cHHH_"));
-      memcpy(grid_name + strlen(grid_tmp) + strlen("cHHH_"), cHHH_values[i], strlen(cHHH_values[i]));
-      memcpy(grid_name + strlen(grid_tmp) + strlen("cHHH_") + strlen(cHHH_values[i]), ".grid", strlen(".grid"));
+      memcpy(grid_name, grid_temp_prefix, strlen(grid_temp_prefix));
+      memcpy(grid_name + strlen(grid_temp_prefix), "cHHH_", strlen("cHHH_"));
+      memcpy(grid_name + strlen(grid_temp_prefix) + strlen("cHHH_"), cHHH_values[i], strlen(cHHH_values[i]));
+      memcpy(grid_name + strlen(grid_temp_prefix) + strlen("cHHH_") + strlen(cHHH_values[i]), ".grid", strlen(".grid"));
       grid_name[len_grid_name-1] = '\0';
 
     // Check if grid_name is accessible as-is    
     if( access(grid_name, F_OK) != -1 && access(grid_name, R_OK) != -1 )
     {
         printf("Looking for %s in current directory. Found\n", grid_name);
+        
         grid_file_path = (char*) malloc(len_grid_name + 1); // +1 for null terminator
         memcpy(grid_file_path, grid_name, len_grid_name);
+        
+        grid_file_dirname = (char*) malloc (1); // +1 for null terminator
+        grid_file_dirname = '\0';
+    
         search_paths = 0;
         setenv("PYTHONPATH", ".", 1); // Set PYTHONPATH to look here
     }
@@ -81,7 +87,13 @@ void combine_grids(const char* grid_temp, double cHHH)
         memcpy(grid_file_path, result, len_result);
         memcpy(grid_file_path + len_result, path_sep, len_path_sep);
         memcpy(grid_file_path + len_result + len_path_sep, grid_name, len_grid_name + 1); // +1 for null terminator
-        printf("Searching for %s in: %s ", grid_name, grid_file_path);
+        
+        grid_file_dirname = (char*) malloc (len_result + len_path_sep + 1); // +1 for null terminator
+        memcpy(grid_file_dirname, result, len_result);
+        memcpy(grid_file_dirname + len_result, path_sep, len_path_sep); // +1 for null terminator
+        grid_file_dirname[len_result + len_path_sep] = '\0'; // null terminator
+
+        printf("Searching for %s in: %s ", grid_name, grid_file_dirname);
         if( access(grid_file_path, F_OK) != -1 && access(grid_file_path, R_OK) != -1 )
         {
             printf("found\n");
@@ -115,17 +127,24 @@ void combine_grids(const char* grid_temp, double cHHH)
     }
     assert(pFct != NULL);
 
-    PyObject* pGridName = PyString_FromString(grid_temp);
+    PyObject* pGridDirname = PyString_FromString(grid_file_dirname);
+    if(pGridDirname == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create Python string from grid_file_dirname: please check that grid_file_dirname is a valid string\n");
+    }
+    assert(pGridDirname != NULL);
+    PyObject* pGridName = PyString_FromString(grid_temp_name);
     if(pGridName == NULL)
     {
         PyErr_Print();
-        printf("ERROR: Failed to create Python string from grid_file_path: please check that grid_file_path is a valid string\n");
+        printf("ERROR: Failed to create Python string from grid_temp_name: please check that grid_temp_name is a valid string\n");
     }
     assert(pGridName != NULL);
     PyObject* pcHHHValue = PyFloat_FromDouble(cHHH);
     assert(pcHHHValue != NULL);
 
-    PyObject* pGridNameTuple = PyTuple_Pack(2,pGridName,pcHHHValue);
+    PyObject* pGridNameTuple = PyTuple_Pack(3,pGridDirname,pGridName,pcHHHValue);
     if(pGridNameTuple == NULL)
     {
         PyErr_Print();
@@ -144,8 +163,10 @@ void combine_grids(const char* grid_temp, double cHHH)
     // Cleanup
     free(pythonpath);
     free(grid_file_path);
+    free(grid_file_dirname);
     Py_DECREF(pModule);
     Py_DECREF(pFct);
+    Py_DECREF(pGridDirname);
     Py_DECREF(pGridName);
     Py_DECREF(pcHHHValue);
     Py_DECREF(pGridNameTuple);

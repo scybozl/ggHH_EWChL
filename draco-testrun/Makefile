@@ -73,3 +73,5 @@ veryclean: clean
 	rm -f *.log
 	rm -f *.shx
 	rm -f *.btr
+	rm -f *.lock
+	rm -f lock

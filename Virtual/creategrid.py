@@ -16,48 +16,66 @@ import os, time
 #import statsmodels.api as sm
 #from phasespace import *
 
-def combinegrids(grid_temp, cHHH):
+def combinegrids(grids_path, grid_temp, cHHH):
 
-	# Lock to prevent other parallel processes from writing to the grid
+    #
+    # Lock to prevent other parallel processes from writing to the grid
+    #
 
-	os.system("touch lock")
-	lockname = grid_temp+'.%s.lock' % os.getpid()
-	os.link("lock", lockname)
+    # Grid exists, proceed
+    if os.path.exists(grid_temp):
+        return
 
-	if os.stat("lock").st_nlink > 2:
-	    if os.path.exists(grid_temp): return
-	    else:
-	       while not os.path.exists(grid_temp): time.sleep(5)
-	       return
+    # Ensure lock file exists and create unique symlink to lock file
+    os.system("touch lock")
+    lockname = grid_temp+'.%s.lock' % os.getpid()
+    os.link("lock", lockname)
 
-	# Grid numbering format
+    # If more than 1 symlink to lock file
+    if os.stat("lock").st_nlink > 2:
 
-	np.set_printoptions(formatter={'float':'{:.18E}'.format})
-	print "Combining grids for cHHH = ", cHHH
+        # Wait for other instance to create grid
+        while not os.path.exists(grid_temp):
+            print "Waiting for ", str(grid_temp), " to be created"
+            time.sleep(5)
 
-        # Build grid for give value of cHHH
-        incr = grid_temp.split('_cHHH')[0]
-        cHHH_grids = [incr + '_cHHH_-1.0.grid',
-                      incr + '_cHHH_0.0.grid',
-                      incr + '_cHHH_1.0.grid']
-        amps = []
+        # Cleanup our symlink and return
+        os.system("rm -f " + lockname)
+        return
+    # else this instance should produce the grid
 
-        for grid in cHHH_grids: amps.append(np.loadtxt( grid, unpack=True ))
-	print "Loaded grids ", cHHH_grids
+    #
+    # Produce grid
+    #
 
-        # Check that the grids have the same values for s, t
+    # Grid numbering format
+    np.set_printoptions(formatter={'float':'{:.18E}'.format})
+    print "Combining grids for cHHH = ", cHHH
 
-        for amp in amps[1:]:
-            if not ( np.array_equal(amp[0], amps[0][0]) and np.array_equal(amp[1], amps[0][1]) ):
-              print "The virtual grids do not contain the same phase-space points!"
+    # Build grid for give value of cHHH
+    incr = grid_temp.split('_cHHH')[0]
+    cHHH_grids = [incr + '_cHHH_-1.0.grid',
+                  incr + '_cHHH_0.0.grid',
+                  incr + '_cHHH_1.0.grid']
+    amps = []
+
+    for grid in cHHH_grids:
+        amps.append(np.loadtxt( os.path.join(grids_path,grid), unpack=True ))
+    print "Loaded grids ", cHHH_grids
+
+    # Check that the grids have the same values for s, t
+    for amp in amps[1:]:
+        if not ( np.array_equal(amp[0], amps[0][0]) and np.array_equal(amp[1], amps[0][1]) ):
+            print "The virtual grids do not contain the same phase-space points!"
 
         cHHH_amp = 1/2.*amps[2][2] * cHHH*(cHHH + 1.0) + amps[0][2] * 1/2.*cHHH*(cHHH - 1.0) - amps[1][2] * (cHHH - 1.0)*(cHHH + 1.0)
         cHHH_err = np.sqrt( 1/4.*pow(amps[2][3]*cHHH*(cHHH+1.0),2) + 1/4.*pow(amps[0][3]*cHHH*(cHHH-1.0),2) + pow(amps[1][3]*(cHHH-1.0)*(cHHH+1.0),2) )
 
         np.savetxt(grid_temp, np.transpose([amps[0][0], amps[0][1], cHHH_amp, cHHH_err]))
-	print "Saved grid ", grid_temp
 
-	os.system("rm -f *.lock lock")
+    print "Saved grid ", grid_temp
+
+    os.system("rm -f " + lockname)
 
 class Bin:
     def __init__(self):
