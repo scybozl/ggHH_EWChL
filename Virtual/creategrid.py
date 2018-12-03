@@ -16,7 +16,7 @@ import os, time
 #import statsmodels.api as sm
 #from phasespace import *
 
-def combinegrids(grids_path, grid_temp, cHHH):
+def combinegrids(grid_temp, cHHH):
 
     # Grid exists, proceed
     if os.path.exists(grid_temp):
@@ -53,7 +53,7 @@ def combinegrids(grids_path, grid_temp, cHHH):
     amps = []
 
     for grid in cHHH_grids:
-        amps.append(np.loadtxt(os.path.join(grids_path, grid), unpack=True))
+        amps.append(np.loadtxt(grid, unpack=True))
     print "Loaded grids ", cHHH_grids
 
     # Check that the grids have the same values for s, t
