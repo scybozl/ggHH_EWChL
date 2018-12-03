@@ -47,7 +47,7 @@ date
 
 echo '>>>> run Powheg:'
 
-srun python pwhg_run.py -s $STARTSEED -p $PRG -l $LOGFILE
+srun ./pwhg_run.sh $STARTSEED $PRG $LOGFILE
 
 echo '>>>> time now (job end)'
 date
