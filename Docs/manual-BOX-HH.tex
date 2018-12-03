@@ -40,19 +40,19 @@
 }
 
 \author{S.~P.~Jones \\ 
-  Max-Planck Institut f{\"u}r Physik, F\"ohringer 6, D-80805 Munich, Germany\\
-  E-mail: \email{sjones@mpp.mpg.de}
+Theoretical Physics Department, CERN, CH-1211 Geneva, Switzerland  \\
+  E-mail: \email{s.jones@cern.ch}
 }
 
 \author{M.~Kerner \\ 
-  Max-Planck Institut f{\"u}r Physik, F\"ohringer 6, D-80805 Munich, Germany\\
+  Institut f{\"u}r Physik, Universit{\"a}t Z{\"u}rich, Winterthurerstr. 190, 8057 Z{\"u}rich, Switzerland\\
   E-mail: \email{kerner@mpp.mpg.de}
 }
 
 
-\author{G.~Luisoni\\
-  Theoretical Physics Department, CERN, CH-1211 Geneva, Switzerland,\\
-  E-mail: \email{gionata.luisoni@cern.ch}
+\author{L.~Scyboz\\
+ Max-Planck Institut f{\"u}r Physik, F\"ohringer 6, D-80805 Munich, Germany\\ 
+  E-mail: \email{scyboz@mpp.mpg.de}
 }
 \vskip -0.5truecm
 
@@ -61,9 +61,9 @@
 \abstract{This note documents the use of the package \POWHEGBOXV{} for
   the production of a Higgs boson pair by gluon fusion. The code
   allows to produce NLO results matched to parton shower for $HH$
-  production in the Standard Model with full mass dependence, and also
-  in the Higgs effective field theory (HEFT) approximation, in the
-  so-called Born-improved HEFT approximation, and in the \ftapprox
+  production with full mass dependence, and also allows variations of the Higgs boson trilinear coupling $c_{hhh}=\lambda/\lambda_{SM}$.
+  Other run modes of the program allow to calculate approximations: the Higgs effective field theory (HEFT) approximation,  the
+  so-called Born-improved HEFT approximation, and  the \ftapprox
   scheme.}
 
 \preprint{\today\\ {\tt POWHEG BOX RES} 1.0}
@@ -88,7 +88,11 @@ Generator Authors and Users'' and can be found at the web page
 In this manual, we describe the \POWHEG{} implementation of Higgs
 boson pair production in gluon fusion, as described in
 ref.~\cite{Heinrich:2017kxx}, based on the calculation reported in
-refs.~\cite{Borowka:2016ehy,Borowka:2016ypz}.  This document describes
+refs.~\cite{Borowka:2016ehy,Borowka:2016ypz}.  
+The variations of the trilinear Higgs boson coupling are based on Ref.~\cite{Buchalla:2018yce}.
+
+
+This document describes
 the input parameters that are specific to this implementation. The
 parameters that are common to all \POWHEGBOX{} processes can be found
 in the manual in the \POWHEGBOXV{}/{\tt Docs} directory.
@@ -278,6 +282,13 @@ to choose values for {\tt hdamp} below $250$.
   JHEP {\bf 0909} (2009) 111
    Erratum: [JHEP {\bf 1002} (2010) 011]
   [arXiv:0907.4076].
+  
+  \bibitem{Buchalla:2018yce}
+  G.~Buchalla, M.~Capozi, A.~Celis, G.~Heinrich and L.~Scyboz,
+  ``Higgs boson pair production in non-linear Effective Field Theory with full $m_t$-dependence at NLO QCD,''
+  JHEP {\bf 1809} (2018) 057
+   [APS Physics {\bf 2018} (2018) 57]
+  [arXiv:1806.05162 [hep-ph]].
   
 \end{thebibliography}
 
