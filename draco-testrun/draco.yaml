@@ -4,7 +4,7 @@ ntasks-per-node: 32
 partition: "general"
 time: "24:00:00"
 email: "sjones@mpp.mpg.de"
-python_path: "/u/sjones/POWHEG-BOX-V2/ggHH_EWChL/draco-testrun:/u/sjones/POWHEG-BOX-V2/ggHH_EWChL/Virtual:/mpcdf/soft/SLE_12_SP3/packages/x86_64/anaconda/2.5.1.0/lib/python2.7/site-packages/"
+python_path: ".:/mpcdf/soft/SLE_12_SP3/packages/x86_64/anaconda/2.5.1.0/lib/python2.7/site-packages/"
 batch_command: "sbatch"
 script_template: "draco_mpi.sh-save"
 powheg_input_template: "powheg.input-save"
