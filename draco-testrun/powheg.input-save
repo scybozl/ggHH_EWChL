@@ -98,3 +98,7 @@ maxseeds    9999
 #py8hepmc 1
 #py8nohad 1
 #py8nompi 1
+
+check_bad_st1 1
+check_bad_st2 1
+
