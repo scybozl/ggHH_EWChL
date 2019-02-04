@@ -27,22 +27,22 @@ In Table \ref{tab:sigmatot} we list total cross sections at 14\,TeV and 27\,TeV 
 %\Xhline{2\arrayrulewidth}
 \hline
 &&&&\\
-$\lambda_{\mathrm{BSM}}/\lambda_{\mathrm{SM}}$ & $\sigma_{\rm{NLO}}@14 \mathrm{TeV}$\,[fb] & $\sigma_{\rm{NLO}}@27 \mathrm{TeV}$\,[fb] &K-fac.@14TeV&K-fac.@27TeV\\
+$\lambda_{\mathrm{BSM}}/\lambda_{\mathrm{SM}}$ & $\sigma_{\rm{NLO}}@13 \mathrm{TeV}$\,[fb]& $\sigma_{\rm{NLO}}@14 \mathrm{TeV}$\,[fb] & $\sigma_{\rm{NLO}}@27 \mathrm{TeV}$\,[fb] &K-fac.@14TeV\\
 &&&&\\
 \hline
-1& 32.88$^{+13.5\%}_{-12.5\%}$&127.7$^{+11.5\%}_{-10.4\%}$ &1.66&1.62\\
+1& & 32.88$^{+13.5\%}_{-12.5\%}$&127.7$^{+11.5\%}_{-10.4\%}$ &1.66\\
 \hline
-2 & 14.91 &  59.10 & 1.58 & 1.52\\
+2 & & 14.91 &  59.10 & 1.58 \\
 \hline
-2.4 & 13.81& 53.67 & 1.65 & 1.60\\
+2.4&  & 13.79$^{+13.5\%}_{-12.5\%}$& 53.67 & 1.65 \\
 \hline
-3& 19.82 & 69.84 & 1.97 & 1.89\\
+3& & 19.07$^{+17.1\%}_{-14.1\%}$ & 69.84 & 1.97 \\
 \hline 
-5 & 95.22$^{+19.7\%}_{-11.5\%}$& 330.61 & 2.21 & 2.18\\
+5&  & 95.22$^{+19.7\%}_{-11.5\%}$& 330.61 & 2.21 \\
 \hline 
-0 & 73.64$^{+15.4\%}_{-13.4\%}$& 275.29& 1.79 & 1.78 \\
+0& & 73.64$^{+15.4\%}_{-13.4\%}$& 275.29& 1.79  \\
 \hline 
--1 & 136.91$^{+16.4\%}_{-13.9\%}$& 504.9 & 1.87 & 1.83\\
+-1& & 136.91$^{+16.4\%}_{-13.9\%}$& 504.9 & 1.87 \\
 \hline
 %\Xhline{2\arrayrulewidth}
 \end{tabular}
@@ -67,22 +67,38 @@ if the trilinear coupling is varied between $-5\leq \chhh\leq 12$.
 \subsection{Differential cross sections}
 
 In Figs.~\ref{fig:lambda_small} and ~\ref{fig:lambda_large} we show the $\mhh$ distribution for various values of $\chhh=\lambda_{\mathrm{BSM}}/\lambda_{\mathrm{SM}}$. 
-The ratio plots show the differential K-factors. 
+The ratio plots show the ratio to the result with $\lambda_{\mathrm{SM}}$. 
+Due to the characteristic dip which develops in the $\mhh$ distribution around $\chhh=2.4$, which is the value of maximal destructive interference between diagrams containing the trilinear coupling (triangle constribution at LO) and ``background" diagrams (box contribution at LO), we provide results for a denser spacing of $\chhh$ values aroumnf this point.
 
 \begin{figure}[htb]
  \begin{subfigure}{0.495\textwidth}
-\includegraphics[width=\textwidth]{plots/mhh_Kfac_14TeV_varylambda_small.pdf}
+\includegraphics[width=\textwidth]{plots/{NLO_cHHH_1_2_2.4_0_mHH-paper}.pdf}
 %    \vspace{\TwoFigBottom em}
  \caption{Higgs boson pair invariant mass distributions for various values of $\lambda$ (relative to $\lambda_{\mathrm{SM}}$)  at 14\,TeV.}
 \label{fig:lambda_small}
 \end{subfigure}
 \hfill
 \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\textwidth]{plots/mhh_Kfac_14TeV_varylambda_large.pdf}
+    \includegraphics[width=\textwidth]{plots/NLO_cHHH_1_-1_3_5_mHH-paper.pdf}
 \caption{Higgs boson pair invariant mass distributions for $\lambda/\lambda_{\mathrm{SM}}=-1,3,5$)  at 14\,TeV.}
 \label{fig:lambda_large}
 \end{subfigure}
 \label{fig:lambdavar14TeV}
+\end{figure}
+
+\begin{figure}[htb]
+ \begin{subfigure}{0.495\textwidth}
+%\includegraphics[width=\textwidth]{plots/{NLO_cHHH_1_2_2.4_0_ptH}.pdf}
+ \caption{Higgs boson transverse momentum distributions for various values of $\lambda$ (relative to $\lambda_{\mathrm{SM}}$)  at 14\,TeV.}
+\label{fig:lambda_small_pTH}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.495\textwidth}
+    \includegraphics[width=\textwidth]{plots/NLO_cHHH_1_-1_3_5_ptH.pdf}
+\caption{Higgs boson transverse momentum  distributions for $\lambda/\lambda_{\mathrm{SM}}=-1,3,5$)  at 14\,TeV.}
+\label{fig:lambda_large_pTH}
+\end{subfigure}
+\label{fig:lambdavar14TeV_pTH}
 \end{figure}
 
 
