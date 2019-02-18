@@ -73,6 +73,7 @@ fi
 #if shower is false, also hadronization is switched off
 echo "Enabling shower, hadronization and the underlying event. To disable it, modify the values of the \`shower\`, \`hadr\` and \`ue\` variables correspondingly."
 shower=true
+showeralg='dipole'
 hadr=false
 
 #Underliyng event flag
@@ -86,9 +87,17 @@ bmass=0.0
 wmass=80.376
 wwidth=2.1155
 
+# No dipoles for massive b's
+if (( $(echo "$bmass > 0" |bc -l) )) && [ $showeralg == dipole ]
+then
+   echo "Cannot have massive b's in the dipole shower."
+   echo "exiting ..."
+   exit -1
+fi
+   
 #Flag to activate QED, QCD shower
-echo "Enabling QCD and disabling QED showers. See the \`QCD\` and \`QED\` variables in the script."
-QED=false
+echo "Enabling QCD and QED showers. See the \`QCD\` and \`QED\` variables in the script."
+QED=true
 QCD=true
 
 if !($shower) then
@@ -189,7 +198,13 @@ EOF
 
 if ($shower)
 then
-    echo "set myLesHouchesHandler:CascadeHandler /Herwig/Shower/ShowerHandler" >> $fout$index.in
+    if [ $showeralg == default ]
+    then
+      echo "set myLesHouchesHandler:CascadeHandler /Herwig/Shower/ShowerHandler" >> $fout$index.in
+    elif [ $showeralg == dipole ]
+    then
+      echo "set myLesHouchesHandler:CascadeHandler /Herwig/DipoleShower/DipoleShowerHandler" >> $fout$index.in
+    fi
     if ($hadr)
     then
 	cat <<EOF  >> $fout$index.in
@@ -222,14 +237,21 @@ if($ue)
 then
     #set /Herwig/Shower/ShowerHandler:MPIHandler    NULL
     :
-else 
-    echo "set /Herwig/Shower/ShowerHandler:MPIHandler    NULL">> $fout$index.in
+else
+    if [ $showeralg == default ]
+    then
+      echo "set /Herwig/Shower/ShowerHandler:MPIHandler    NULL">> $fout$index.in
+    elif [ $showeralg == dipole ]
+    then
+      echo "set /Herwig/DipoleShower/DipoleShowerHandler:MPIHandler    NULL">> $fout$index.in
+    fi
 fi
 
 
 
-
-cat <<EOF     >> $fout$index.in
+if [ $showeralg == default ]
+then
+  cat <<EOF     >> $fout$index.in
 ##################################################
 #  Shower parameters
 ##################################################
@@ -261,6 +283,20 @@ elif($QED)
 then
     echo "set /Herwig/Shower/ShowerHandler:Interactions QED " >> $fout$index.in
 fi   
+elif [ $showeralg == dipole ]
+then
+  cat <<EOF     >> $fout$index.in
+##################################################
+#  Shower parameters
+##################################################
+# normally, especially for POWHEG, you want
+# the scale supplied in the event files (SCALUP)
+# to be used as a pT veto scale in the parton shower
+set /Herwig/DipoleShower/DipoleShowerHandler:MaxPtIsMuF Yes
+set /Herwig/DipoleShower/DipoleShowerHandler:RestrictPhasespace Yes
+read snippets/DipoleShowerFiveFlavours.in
+EOF
+fi
 
 cat <<EOF >> $fout$index.in
 ###################################################################
