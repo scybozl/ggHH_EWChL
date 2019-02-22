@@ -10,6 +10,11 @@
 void python_initialize()
 {
     Py_Initialize();
+    if (!Py_IsInitialized())
+    {
+        printf("ERROR: Failed to initialize Python interpreter\n");
+        exit(1);
+    }
 };
 
 void python_decref(PyObject* grid)
@@ -43,9 +48,9 @@ void combine_grids(const char* grid_temp, double cHHH)
     char* cHHH_values[3] = {"-1.0", "0.0", "1.0"};
 
     int search_paths = 1;
-    char* grid_file_path;
     char* delims = ":";
     char* path_sep = "/";
+    char* grid_file_path;
     size_t len_path_sep = strlen(path_sep);
     char* pythonpath = strdup(getenv("PYTHONPATH"));
     char* result = strtok( pythonpath, delims );
@@ -161,9 +166,9 @@ void combine_grids(const char* grid_temp, double cHHH)
 PyObject* grid_initialize(const char* grid_name)
 {
     int search_paths = 1;
-    char* grid_file_path;
     char* delims = ":";
     char* path_sep = "/";
+    char* grid_file_path;
     size_t len_path_sep = strlen(path_sep);
     size_t len_grid_name = strlen(grid_name);
     char* pythonpath = strdup(getenv("PYTHONPATH"));
