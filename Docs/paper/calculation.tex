@@ -38,7 +38,7 @@ point without having to do costly two-loop integrations.
 We used the same setup for the grid as described in Ref.~\cite{Heinrich:2017kxx} and extended it in the following way:
 We can write the squared matrix element as a polynomial of degree two in $\lambda$, 
 \begin{align}
-M_\lambda& \equiv |{\cal M}_\lambda|^2=A+B\,\lambda + C\,\lambda^2\;.
+M_\lambda& \equiv |{\cal M}_\lambda|^2=A+B\,\lambda + C\,\lambda^2\;. \label{eq-amplambdadep}
 \end{align}
 Therefore it is sufficient to know the amplitude at three different values of $\lambda$ in order to reconstruct the full $\lambda$-dependence. 
 Choosing $\lambda=-1,0,1$ we obtain
@@ -50,6 +50,20 @@ In practice we used the representation
 M_\lambda &=M_0\,(1-\lambda^2)+\frac{M_1}{2}\,(\lambda+\lambda^2) + \frac{M_{-1}}{2}\,(-\lambda+\lambda^2)\;
 \end{align}
 in order to get a more straightforward uncertainty estimate.
+
+In fact, to any order in QCD, we can separate the matrix element into a 
+piece that depends only on the top quark Yukawa coupling $y_t$ (``box diagrams'') and a 
+piece that depends on the Higgs boson tri-linear self coupling $\lambda$ (``triangle diagrams''):
+\begin{align}
+{\cal M} = y_t^2 {\cal M}_B + y_t \lambda {\cal M}_T.
+\end{align}
+The squared amplitude at each order can then be written as
+\begin{align}
+|{\cal M}|^2 = y_t^4 \left[ {\cal M}_B {\cal M}_B^* + \frac{\lambda}{y_t} ({\cal M}_B {\cal M}_T^* + {\cal M}_T {\cal M}_B^* ) +  \frac{\lambda^2}{y_t^2} {\cal M}_T {\cal M}_T^*  \right].
+\end{align}
+The above parametrisation makes it clear that the dependence of the cross section on
+both the Yukawa coupling and the Higgs boson self coupling can be reconstructed
+from only the 3 terms present in Eq.~\ref{eq-amplambdadep}.
 
 In order to allow for comparisons and cross checks, we implemented
 both the $m_t\to\infty$ limit as well as the full SM amplitudes at
