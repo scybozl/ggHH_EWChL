@@ -71,14 +71,14 @@ A characteristic dip develops in the $\mhh$ distribution around $\chhh=2.4$, whi
 Therefore we provide results for a denser spacing of $\chhh$ values around this point.
 
 \begin{figure}[htb]
- \begin{subfigure}{0.495\textwidth}
+ \begin{subfigure}[t]{0.495\textwidth}
 \includegraphics[width=\textwidth]{plots/{NLO_cHHH_1_2_2.4_0_mHH-paper}.pdf}
 %    \vspace{\TwoFigBottom em}
  \caption{Higgs boson pair invariant mass distributions for various values of $\lambda$ (relative to $\lambda_{\mathrm{SM}}$)  at 14\,TeV.}
 \label{fig:lambda_small}
 \end{subfigure}
 \hfill
-\begin{subfigure}{0.495\textwidth}
+\begin{subfigure}[t]{0.495\textwidth}
     \includegraphics[width=\textwidth]{plots/NLO_cHHH_1_-1_3_5_mHH-paper.pdf}
 \caption{Higgs boson pair invariant mass distributions for $\lambda/\lambda_{\mathrm{SM}}=-1,3,5$)  at 14\,TeV.}
 \label{fig:lambda_large}
@@ -87,13 +87,13 @@ Therefore we provide results for a denser spacing of $\chhh$ values around this 
 \end{figure}
 
 \begin{figure}[htb]
- \begin{subfigure}{0.495\textwidth}
-%\includegraphics[width=\textwidth]{plots/{NLO_cHHH_1_2_2.4_0_ptH}.pdf}
+ \begin{subfigure}[t]{0.495\textwidth}
+\includegraphics[width=\textwidth]{plots/{NLO_cHHH_1_2_2.4_0_ptH}.pdf}
  \caption{Higgs boson transverse momentum distributions for various values of $\lambda$ (relative to $\lambda_{\mathrm{SM}}$)  at 14\,TeV.}
 \label{fig:lambda_small_pTH}
 \end{subfigure}
 \hfill
-\begin{subfigure}{0.495\textwidth}
+\begin{subfigure}[t]{0.495\textwidth}
     \includegraphics[width=\textwidth]{plots/NLO_cHHH_1_-1_3_5_ptH.pdf}
 \caption{Higgs boson transverse momentum  distributions for $\lambda/\lambda_{\mathrm{SM}}=-1,3,5$)  at 14\,TeV.}
 \label{fig:lambda_large_pTH}
@@ -104,6 +104,23 @@ Therefore we provide results for a denser spacing of $\chhh$ values around this 
 \subsection{Discussion of parton shower related uncertainties} 
  
 In this section we show distributions of the transverse momentum of the Higgs boson pair, where NLO is the first non-trivial order.
-We compare the \pythia~\cite{Sjostrand:2014zea} and \herwig~\cite{Bellm:2017bvx} parton showers combined with the \powheg{} LHE events.
-In the \herwig case, we also compare the default shower (angular ordered) with the Dipole shower.
-In addition we assess the uncertainties stemming from the matching and show results where the \herwig{} {\tt HardScale} is varied.
+We compare the \pythia~\cite{Sjostrand:2014zea} and \herwig~\cite{Bellm:2017bvx} parton showers, applied directly to the \powheg{} LHE events.
+In the \herw case, we also compare the default shower (the angular-ordered $\tilde{q}-$shower) with the dipole shower.
+In addition, we assess the uncertainties stemming from the matching and show results where the \herw parameter {\tt HardScale} is varied between $0.5$ and $2$. For all shower algorithms considered, the default tune of the corresponding version is used. Multiple-parton interactions (MPI) and hadronization are switched off. Finally, in the rest of the section, the \hdamp{} parameter in \powheg{} is set to $\hdamp=250$\,GeV.
+
+\begin{figure}[htb]
+ \begin{subfigure}[t]{0.495\textwidth}
+\includegraphics[width=\textwidth]{plots/{NLO_PP8_PH7_PH7D_cHHH_1_ptHH}.pdf}
+ \caption{Transverse momentum of the Higgs boson pair for the fixed-order NLO calculation and all three shower setups at 14\,TeV for $\lambda=1$.}
+\label{fig:lambda_ptHH_cHHH1}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.495\textwidth}
+    \includegraphics[width=\textwidth]{plots/{NLO_PP8_PH7_PH7D_cHHH_2.4_ptHH}.pdf}
+\caption{}
+\label{fig:lambda_ptHH_cHHH2.4}
+\end{subfigure}
+\label{fig:lambdavar14TeV_pTHH_showers}
+\end{figure}
+
+In Fig.~\ref{fig:lambda_ptHH_cHHH1} and \ref{fig:lambda_ptHH_cHHH2.4}, the transverse momentum of the Higgs boson pair system $\pthh$ is shown for the fixed-order NLO case, as well as for the \pyth (PP8) and both \herw showers (angular-ordered PH7-$\tilde{q}$, and PH7-dipole) for  $\lambda=1$ and $\lambda=2.4$. In all cases, the \pyth and \herw showers agree very well in the small-$\pthh$ range, but then start to deviate at $\pthh \approx 100$\,GeV. Where both \herw showers converge back to the fixed-order calculation at high-$\pthh$, the \pyth shower produces much harder additional radiation and the ratio to the fixed-order result stagnates at $\sim 2.0$ over the full range. On the other hand, the \herw $\tilde{q}-$ and dipole showers give very similar results.
