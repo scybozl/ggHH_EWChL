@@ -15,11 +15,14 @@ estimated by varying the factorisation/renormalisation scales
 $\mu_{F}, \mu_{R}$. The scale variation bands 
 represent scale variations around the central scale $\mu_0 =\mhh/2$, with
 $\mu_{R,F}=c_{R,F}\,\mu_0$, where $c_R=c_F= \{0.5,0.5\}$ and $c_R=c_F= \{2,2\}$.
-For the case $\lambda=1$ we checked that the bands obtained from these variations coincide with the bands resulting from 7-point scale variations.
+For the case $\lambda=\lambda_{\mathrm{SM}}$ we checked that the bands
+obtained from these variations coincide with the bands resulting from
+7-point scale variations. The PDF uncertainties have been studied in
+\cite{deFlorian:2016spz} and found to be in general considerably smaller than the scale uncertainties.
 
 \subsection{Total cross sections at different values of the trilinear coupling}
 
-In Table \ref{tab:sigmatot} we list total cross sections at 14\,TeV and 27\,TeV for various values of the trilinear Higgs coupling $\lambda$. 
+In Table \ref{tab:sigmatot} we list total cross sections at 13, 14 and 27\,TeV for various values of the trilinear Higgs coupling $\lambda$. 
 \begin{table}[htb]
 \begin{center}
 %\setlength{\extrarowheight}{3.0pt}
@@ -49,8 +52,8 @@ $\lambda_{\mathrm{BSM}}/\lambda_{\mathrm{SM}}$ & $\sigma_{\rm{NLO}}@13 \mathrm{T
 \caption{Total cross sections for Higgs boson pair production at full NLO. The given uncertainties are scale uncertainties. 
 \label{tab:sigmatot}}
 \end{table}
-Table~\ref{tab:sigmatot} shows that the K-factors vary substantially as functions of the trilinear coupling.
-This fact is illustrated in Fig.~\ref{fig:Kfacvariation}, showing that the K-factor takes values between 1.57 and 2.16
+Table~\ref{tab:sigmatot} also shows that the K-factors vary substantially as functions of the trilinear coupling.
+This fact is illustrated in Fig.~\ref{fig:Kfacvariation}, showing that the K-factor takes values between 1.56 and 2.16
 if the trilinear coupling is varied between $-5\leq \chhh\leq 12$.
 
 \begin{figure}[htb]
@@ -58,7 +61,7 @@ if the trilinear coupling is varied between $-5\leq \chhh\leq 12$.
     \includegraphics[width=0.4\textwidth]{plots/Kfac_varlambda.pdf}
 %  \includegraphics[width=\textwidth]{plots/}
 %    \caption{\label{fig:lambda_large_27}}
-\caption{Variation of the NLO K-factor with the trilinear coupling, $\sqrt{s}=14$\,TeV.}
+\caption{Variation of the NLO K-factor with the trilinear coupling at $\sqrt{s}=14$\,TeV.}
 \label{fig:Kfacvariation}
 \end{figure}
 
@@ -74,53 +77,52 @@ Therefore we provide results for a denser spacing of $\chhh$ values around this 
  \begin{subfigure}[t]{0.495\textwidth}
 \includegraphics[width=\textwidth]{plots/{NLO_cHHH_1_2_2.4_0_mHH-paper}.pdf}
 %    \vspace{\TwoFigBottom em}
- \caption{Higgs boson pair invariant mass distributions for various values of $\lambda$ (relative to $\lambda_{\mathrm{SM}}$)  at 14\,TeV.}
-\label{fig:lambda_small}
+\caption{\label{fig:lambda_small}}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.495\textwidth}
     \includegraphics[width=\textwidth]{plots/NLO_cHHH_1_-1_3_5_mHH-paper.pdf}
-\caption{Higgs boson pair invariant mass distributions for $\lambda/\lambda_{\mathrm{SM}}=-1,3,5$)  at 14\,TeV.}
-\label{fig:lambda_large}
+\caption{\label{fig:lambda_large}}
 \end{subfigure}
+\caption{Higgs boson pair invariant mass distributions for various
+  values of $\chhh$  at $\sqrt{s}=14$\,TeV. The uncertainty bands are from
+  scale variations as described in the text.}
 \label{fig:lambdavar14TeV}
 \end{figure}
 
 \begin{figure}[htb]
  \begin{subfigure}[t]{0.495\textwidth}
 \includegraphics[width=\textwidth]{plots/{NLO_cHHH_1_2_2.4_0_ptH}.pdf}
- \caption{Higgs boson transverse momentum distributions for various values of $\lambda$ (relative to $\lambda_{\mathrm{SM}}$)  at 14\,TeV.}
-\label{fig:lambda_small_pTH}
+\caption{\label{fig:lambda_small_pTH}}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.495\textwidth}
     \includegraphics[width=\textwidth]{plots/NLO_cHHH_1_-1_3_5_ptH.pdf}
-\caption{Higgs boson transverse momentum  distributions for $\lambda/\lambda_{\mathrm{SM}}=-1,3,5$)  at 14\,TeV.}
-\label{fig:lambda_large_pTH}
+\caption{\label{fig:lambda_large_pTH}}
 \end{subfigure}
-\label{fig:lambdavar14TeV_pTH}
+\caption{Higgs boson transverse momentum distributions for various values of $\lambda$ (relative to $\lambda_{\mathrm{SM}}$)  at 14\,TeV.
+\label{fig:lambdavar14TeV_pTH}}
 \end{figure}
 
 \subsection{Discussion of parton shower related uncertainties} 
  
 In this section we show distributions of the transverse momentum of the Higgs boson pair, where NLO is the first non-trivial order.
-We compare the \pythia~\cite{Sjostrand:2014zea} and \herwig~\cite{Bellm:2017bvx} parton showers, applied directly to the \powheg{} LHE events.
+We compare the \pythia~\cite{Sjostrand:2014zea} and \herwig~\cite{Bellm:2017bvx} parton showers, applied directly to the \powheg{} Les Houches events (LHE).
 In the \herw case, we also compare the default shower (the angular-ordered $\tilde{q}-$shower) with the dipole shower.
-In addition, we assess the uncertainties stemming from the matching and show results where the \herw parameter {\tt HardScale} is varied between $0.5$ and $2$. For all shower algorithms considered, the default tune of the corresponding version is used. Multiple-parton interactions (MPI) and hadronization are switched off. Finally, in the rest of the section, the \hdamp{} parameter in \powheg{} is set to $\hdamp=250$\,GeV.
+In addition, we assess the uncertainties stemming from the matching and show results where the \herw parameter {\tt HardScale} is varied between $0.5$ and $2$. For all shower algorithms considered, the default tune of the corresponding version is used. Multiple-parton interactions (MPI) and hadronisation are switched off. The \hdamp{} parameter in \powheg{} is set to $\hdamp=250$\,GeV.
 
 \begin{figure}[htb]
  \begin{subfigure}[t]{0.495\textwidth}
 \includegraphics[width=\textwidth]{plots/{NLO_PP8_PH7_PH7D_cHHH_1_ptHH}.pdf}
- \caption{Transverse momentum of the Higgs boson pair for the fixed-order NLO calculation and all three shower setups at 14\,TeV for $\lambda=1$.}
-\label{fig:lambda_ptHH_cHHH1}
+ \caption{\label{fig:lambda_ptHH_cHHH1}}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.495\textwidth}
     \includegraphics[width=\textwidth]{plots/{NLO_PP8_PH7_PH7D_cHHH_2.4_ptHH}.pdf}
-\caption{}
-\label{fig:lambda_ptHH_cHHH2.4}
+\caption{\label{fig:lambda_ptHH_cHHH2.4}}
 \end{subfigure}
-\label{fig:lambdavar14TeV_pTHH_showers}
+\caption{Transverse momentum of the Higgs boson pair for the fixed-order NLO calculation and all three shower setups at 14\,TeV for $\lambda=1$.
+\label{fig:lambdavar14TeV_pTHH_showers}}
 \end{figure}
 
-In Fig.~\ref{fig:lambda_ptHH_cHHH1} and \ref{fig:lambda_ptHH_cHHH2.4}, the transverse momentum of the Higgs boson pair system $\pthh$ is shown for the fixed-order NLO case, as well as for the \pyth (PP8) and both \herw showers (angular-ordered PH7-$\tilde{q}$, and PH7-dipole) for  $\lambda=1$ and $\lambda=2.4$. In all cases, the \pyth and \herw showers agree very well in the small-$\pthh$ range, but then start to deviate at $\pthh \approx 100$\,GeV. Where both \herw showers converge back to the fixed-order calculation at high-$\pthh$, the \pyth shower produces much harder additional radiation and the ratio to the fixed-order result stagnates at $\sim 2.0$ over the full range. On the other hand, the \herw $\tilde{q}-$ and dipole showers give very similar results.
+In Figs.~\ref{fig:lambda_ptHH_cHHH1} and \ref{fig:lambda_ptHH_cHHH2.4}, the transverse momentum $\pthh$ of the Higgs boson pair system is shown for the fixed-order NLO case, as well as for the \pythia (PP8) and both \herw showers (angular-ordered PH7-$\tilde{q}$, and PH7-dipole) for  $\chhh=1$ and $\chhh=2.4$. In all cases, the \pyth and \herw showers agree very well in the small-$\pthh$ range, but then start to deviate at $\pthh \approx 100$\,GeV. Where both \herw showers converge back to the fixed-order calculation at high-$\pthh$, the \pyth shower produces much harder additional radiation and the ratio to the fixed-order result stagnates at $\sim 2.0$ over the full range. On the other hand, the \herw $\tilde{q}-$ and dipole showers give very similar results.
