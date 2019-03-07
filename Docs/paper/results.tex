@@ -49,11 +49,11 @@ $\lambda_{\mathrm{BSM}}/\lambda_{\mathrm{SM}}$ & $\sigma_{\rm{NLO}}@13 \mathrm{T
 \hline 
 \end{tabular}
 \end{center}
-\caption{Total cross sections for Higgs boson pair production at full NLO. The given uncertainties are scale uncertainties. 
+\caption{Total cross sections for Higgs boson pair production at full NLO QCD. The given uncertainties are scale uncertainties. 
 \label{tab:sigmatot}}
 \end{table}
 Table~\ref{tab:sigmatot} also shows that the K-factors vary substantially as functions of the trilinear coupling.
-This fact is illustrated in Fig.~\ref{fig:Kfacvariation}, showing that the K-factor takes values between 1.56 and 2.16
+This fact is illustrated in Fig.~\ref{fig:Kfacvariation}, showing that the K-factor takes values between 1.56 and 2.14
 if the trilinear coupling is varied between $-5\leq \chhh\leq 12$.
 
 \begin{figure}[htb]
@@ -68,7 +68,7 @@ if the trilinear coupling is varied between $-5\leq \chhh\leq 12$.
 
 \subsection{Differential cross sections}
 
-In Figs.~\ref{fig:lambda_small} and ~\ref{fig:lambda_large} we show the $\mhh$ distribution for various values of $\chhh=\lambda_{\mathrm{BSM}}/\lambda_{\mathrm{SM}}$. 
+In Fig.~\ref{fig:lambdavar14TeV} we show the $\mhh$ distribution for various values of $\chhh=\lambda_{\mathrm{BSM}}/\lambda_{\mathrm{SM}}$. 
 The ratio plots show the ratio to the result with $\lambda_{\mathrm{SM}}$. 
 A characteristic dip develops in the $\mhh$ distribution around $\chhh=2.4$, which is the value of maximal destructive interference between diagrams containing the trilinear coupling (triangle-type constributions) and ``background" diagrams (box-type contributions).
 Therefore we provide results for a denser spacing of $\chhh$ values around this point.
@@ -100,9 +100,14 @@ Therefore we provide results for a denser spacing of $\chhh$ values around this 
     \includegraphics[width=\textwidth]{plots/NLO_cHHH_1_-1_3_5_ptH.pdf}
 \caption{\label{fig:lambda_large_pTH}}
 \end{subfigure}
-\caption{Higgs boson transverse momentum distributions for various values of $\lambda$ (relative to $\lambda_{\mathrm{SM}}$)  at 14\,TeV.
+\caption{Higgs boson transverse momentum distributions for various values of $\chhh$  at 14\,TeV.
 \label{fig:lambdavar14TeV_pTH}}
 \end{figure}
+In Fig.~\ref{fig:lambdavar14TeV_pTH} we show the transverse momentum
+distributions $p_T^h$ of one (any) Higgs boson for different $\chhh$
+values. The dip for $\chhh\sim 2.4$ is still present, however much
+less pronounced than in the $\mhh$ distribution.
+
 
 \subsection{Discussion of parton shower related uncertainties} 
  
@@ -127,16 +132,17 @@ are switched off. The \hdamp{} parameter in \powheg{} is set to $\hdamp=250$\,Ge
     \includegraphics[width=\textwidth]{plots/{NLO_PP8_PH7_PH7D_cHHH_1_dRHH}.pdf}
 \caption{\label{fig:lambda_dRHH}}
 \end{subfigure}
-\caption{The transverse momentum of one (any) Higgs boson and the angular distance between 
-both Higgs bosons are shown for the fixed-order NLO calculation and three shower setups, in 
+\caption{The transverse momentum of one (any) Higgs boson and the $R$-separation between 
+the two Higgs bosons are shown for the fixed-order NLO calculation and three shower setups, in 
 the $\chhh=1$ case.
 \label{fig:lambdavar14TeV_pTH_dRHH_showers}}
 \end{figure}
 
-In general, observables that are inclusive in the additional radiation, like the average 
-transverse momentum of one (any) Higgs $p_T^h$, show little sensitivity to the details of 
+In general, observables that are inclusive in the additional radiation, like the 
+transverse momentum of one (any) Higgs boson, $p_T^h$, show little sensitivity to the details of 
 the parton showering, as highlighted in Fig.~\ref{fig:lambda_pTh}. In contrast, Fig.~\ref{fig:lambda_dRHH} 
-shows the distribution of the angular distance $\Delta R^{\mathrm{hh}}$ between both Higgs 
+shows the distribution of the distance $\Delta
+R^{\mathrm{hh}}=\sqrt{(\eta_1-\eta_2)^2+(\Phi_1-\Phi_2)^2}$ between the two Higgs 
 bosons. There, the Sudakov exponent and the parton shower effectively resum the fixed-order 
 prediction in the region where the two Higgs bosons are close to a back-to-back configuration, 
 and the parton shower increases the fixer-order real radiation contribution in the region $\Delta R^{\mathrm{hh}}<\pi$.
@@ -152,7 +158,7 @@ and the parton shower increases the fixer-order real radiation contribution in t
 \caption{\label{fig:lambda_ptHH_cHHH2.4}}
 \end{subfigure}
 \caption{Transverse momentum of the Higgs boson pair for the fixed-order NLO calculation 
-and all three shower setups at 14\,TeV for $\chhh=1$, $\chhh=2.4$.
+and all three shower setups at 14\,TeV for (a) $\chhh=1$, (b) $\chhh=2.4$.
 \label{fig:lambdavar14TeV_pTHH_showers}}
 \end{figure}
 
@@ -160,14 +166,14 @@ In Figs.~\ref{fig:lambda_ptHH_cHHH1} and \ref{fig:lambda_ptHH_cHHH2.4}, the tran
 momentum $\pthh$ of the Higgs boson pair system is shown for the fixed-order NLO prediction, 
 as well as for the \pythia (PP8) and both \herw showers (angular-ordered PH7-$\tilde{q}$, 
 and PH7-dipole) for  $\chhh=1$ and $\chhh=2.4$. In all cases, the \pyth and \herw showers 
-agree very well in the small-$\pthh$ range, but start to deviate at $\pthh \sim 100$\,GeV. 
-Where both \herw showers converge back to the fixed-order calculation at high-$\pthh$, the 
+agree very well in the small-$\pthh$ range, but start to deviate already at $\pthh \sim 100$\,GeV. 
+While both \herw showers converge back to the fixed-order calculation at high-$\pthh$, the 
 \pyth shower produces much harder additional radiation and the ratio to the fixed-order result 
 stagnates at $\sim 2.0$ over the remaining range. On the other hand, the \herw $\tilde{q}$- 
 and dipole showers give very similar results. 
 Specifically, in the \herw default shower, systematic uncertainties can be estimated by 
-varying the maximal transverse momentum allowed for shower emissions $\mu_Q$, the so-called 
-hard scale. We apply a factor $c_Q=\{0.5,\,2.0\}$ on the shower central hard scale separately 
+varying the maximal transverse momentum allowed for shower emissions, the so-called 
+hard scale $\mu_Q$. We apply a factor $c_Q=\{0.5,\,2.0\}$ on the shower central hard scale, separately 
 for all variations of the factorisation/renormalisation scales $\mu_{R,F}$, which is the 
 standard use in the \herw setup. Fig.~\ref{fig:lambdavar14TeV_muQvar} shows the $\pthh$ and 
 $\Delta R^{\mathrm{hh}}$ distributions as examples of the SM case, $\chhh=1$, and underlines 
@@ -176,9 +182,9 @@ inflate the former factorisation/renormalisation scale uncertainties by a factor
 the regions where the \herw and \pythia showers were in disagreement (see Figs.~\ref{fig:lambda_dRHH} 
 and \ref{fig:lambdavar14TeV_pTHH_showers}). If the envelope of all scale variations, including 
 the shower hard scale, was to be taken as a theoretical systematic uncertainty, the resulting 
-uncertainty would be of the order of 50\% in these bins. It will be enlightening to study 
-parton-shower (and non-perturbative) effects in the particular context of Higgs boson pair 
-production at NLO, and try to reduce discrepancies among the different algorithms. 
+uncertainty would be of the order of 50\% in these bins. It would be enlightening to further study 
+parton-shower (and non-perturbative) effects, in the particular context of Higgs boson pair 
+production at NLO, as well as for loop-induced colour singlet production in general, and try to reduce discrepancies among the different algorithms. 
 
 
 \begin{figure}[htb]
@@ -190,6 +196,6 @@ production at NLO, and try to reduce discrepancies among the different algorithm
 \begin{subfigure}[t]{0.495\textwidth}
     \includegraphics[width=\textwidth]{plots/{PH7_PH7QUp_PH7QDown_cHHH_1_dRHH}.pdf}
 \caption{\label{fig:lambda_dRHH_muQvar}}\end{subfigure}
-\caption{Higgs boson pair transverse momentum and relative angular distance for variations of the \herw $\tilde{q}$-shower hard scale.
+\caption{Higgs boson pair transverse momentum and $R$-separation for variations of the \herw $\tilde{q}$-shower hard scale.
 \label{fig:lambdavar14TeV_muQvar}}
 \end{figure}
