@@ -1,3 +1,5 @@
+c Implementation of D0 function copied from VBFNLO
+c
 c        FUNCTION D04(P1,P2,P3,P4,P12,P23,M1,M2,M3,M4)
         FUNCTION D04(P1t,P2t,P3t,P4t,P12t,P23t,M1t,M2t,M3t,M4t)
 ************************************************************************
