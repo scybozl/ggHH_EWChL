@@ -212,14 +212,14 @@ to choose values for {\tt hdamp} below $\sim 200$. Our default value is  {\tt hd
 
 \section{Trouble shooting}
 
-Problems that could occur: 
+Below is a list of potential issues:
 
 \begin{itemize}
-\item With {\tt mtdep=3}, an error message containing ``grid not found" appears: make sure your run folder contains the following files 
-(or a symbolic link to these files located in the folder `Virtual'): {\tt events.cdf, creategrid.py} and the grid file  {\tt Virt\_full\_cHHH\_*.grid}, where {\tt cHHH} is the value for the trilinear Higgs coupling chosen in the input card {\tt powheg.input-save}.
+\item With {\tt mtdep=3}, the powheg *.log files contain the string ``grid not found": make sure your run folder contains the following files 
+(or symbolic links to these files located in the folder `Virtual'): {\tt events.cdf, creategrid.py} and the grid files  {\tt Virt\_full\_cHHH\_*.grid}.
 \item The distributions contain spikes: make sure the flags {\tt check\_bad\_st1} and {\tt check\_bad\_st2} (present in \POWHEG{} svn revisions $\geq 3600$) are set to 1. These flags discard outliers in the xgrid files. If you still find outliers with these flags switched on, the ``bad" runs should be removed 
 (manually, or using the script {\tt automated\_removal.py} present in the subfolder {\tt shell}).
-\item After parallelstage 2, many of the *.dat files are empty: this seems to be a problem related to the {\tt gcc 6.3.0} compiler. It should not occur when using a more recent {\tt gcc} compiler.
+\item Problems related to the {\tt gcc 6.3.0} compiler have been reported. They should not occur when using a more recent {\tt gcc} compiler.
 \end{itemize}
 
 
