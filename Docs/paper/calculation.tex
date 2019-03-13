@@ -29,7 +29,7 @@ which used also {\sc Reduze}\,2~\cite{vonManteuffel:2012np} and {\sc
 
 The values for the Higgs boson and top quark masses have been set to
 $m_h=125$\,GeV and $m_t=173$\,GeV, such that the two-loop amplitudes
-only depend on two independent variables, the parton-level Mandelstam invariants
+are only functions of two independent variables, the parton-level Mandelstam invariants
 $\hat{s}$ and $\hat{t}$.  We have constructed a grid in these
 variables together with an interpolation framework, such that an
 external program can call the virtual two-loop amplitude at any phase space
@@ -85,7 +85,7 @@ choices are the following:
    computed as in the Born-improved HEFT. }
  \item[{\tt mtdep=3}:]{computation with full top quark mass dependence.}
 \end{description}
-Detailed instructions how to run the code can be found in the
+Detailed instructions on how to run the code can be found in the
 file {\tt manual-BOX-HH.pdf } in the folder {\tt ggHH\_EWChL/Docs} of the program.
 
 When {\tt mtdep=3} is selected, the result of the virtual matrix element is based on a grid of pre-sampled phase-space points as described above. The phase-space points present in the grid are distributed such that they optimally sample the Standard Model (SM) Born matrix element. The same grid of points is used regardless of the value of $\lambda$ selected. Due to the finite number of points present in the grid, there is an associated statistical uncertainty which amounts to $0.1\%$ on the total cross section at $14\ \TeV$ for $\lambda=\lambda_\mathrm{SM}$. However, for $\lambda \neq \lambda_\mathrm{SM}$ the virtual matrix element can differ significantly in shape from the SM prediction, as is apparent from examining the $\mhh$ and $\pth$ distributions for different values of the Higgs boson self coupling. The uncertainty associated with the use of the grid is therefore larger for non-SM values of $\lambda$. The uncertainty increases as $\lambda$ is decreased below the SM value reaching $0.6\%$ on the total cross section at $14\ \TeV$ for $\chhh = -1$. Increasing $\lambda$ above the SM value, we obtain an uncertainty of $3\%$ on the total cross section at $14\ \TeV$ for $\chhh = 3$ and  $\chhh = 5$. Furthermore, for differential distributions the total uncertainty is not distributed uniformly in each bin but instead increases when the shape of the matrix element most differs from the SM prediction. Focusing on the invariant mass distribution, amongst the values of the Higgs boson self-coupling considered here, the largest uncertainty is obtained for the smallest values of $\mhh$ and $\chhh=3$. The uncertainty reaches $6\%$ for the lowest bin when a $40\ \GeV$ bin width is used.
