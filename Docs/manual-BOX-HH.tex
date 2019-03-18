@@ -147,6 +147,8 @@ generation of the importance sampling grid for the Monte Carlo integration;
 
 \noindent Please note: if you use the script {\tt run.sh [mtdep]}, the value for {\tt mtdep} given as an argument to {\tt run.sh} will be used, even if you specified a different value for {\tt mtdep} in {\tt powheg.input-save}.
 
+After running {\tt parallelstage=4}, the LHE files produced by \POWHEG{} can be directly showered by either \PYTHIA{} or \HERWIG{}. We provide a minimal setup for producing parton-shower matched distributions in {\tt test-pythia8}, respectively {\tt test-herwig7}. Both the angular-ordered and the dipole-shower implemented in \HERWIG{} can be operated by changing the {\tt showeralg} flag to either {\tt 'default'} or {\tt 'dipole'} in {\tt HerwigRun.sh}.
+
 \section{Running with full top quark mass dependence ({\tt mtdep=3})}
 The 2-loop virtual amplitudes in the NLO calculation with full top quark mass dependence are computed via a grid
 which encodes the dependence of the virtual 2-loop amplitude on the
@@ -173,7 +175,7 @@ to produce a new file {\tt Virt\_full.grid} corresponding to the value of {\tt c
 
 \section{Physical input parameters}
 
-The bottom quark is considered massless in all four{\tt mtdep} modes. The Higgs
+The bottom quark is considered massless in all four {\tt mtdep} modes. The Higgs
 bosons are generated on-shell with zero width. A decay can be attached
 through the parton shower in the narrow-width approximation. However,
 the decay is by default switched off (see the {\tt hdecaymode} flag in the
@@ -191,7 +193,7 @@ However, when running with {\tt mtdep = 3},
 the top mass should be kept fixed at $m_h=125$\,GeV and $m_t=173$\,GeV}, and the widths should be zero.
 Otherwise the two-loop virtual part would contain a different top or Higgs mass than the rest of the calculation.
 
-The \POWHEGBOX{} offers the possibility to use a damping factor $h=${\tt hdamp} of the
+The \POWHEGBOX{} offers the possibility to use a damping factor $h=\texttt{hdamp}$ of the
 form~\cite{Alioli:2008tz,Alioli:2009je}
 \begin{align}
   F=\frac{h^{2}}{(\pthh)^2+h^{2}}\,,
