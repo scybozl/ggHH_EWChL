@@ -73,8 +73,9 @@ fi
 #if shower is false, also hadronization is switched off
 echo "Enabling shower, hadronization and the underlying event. To disable it, modify the values of the \`shower\`, \`hadr\` and \`ue\` variables correspondingly."
 shower=true
-showeralg='dipole'
+showeralg='default'
 hadr=false
+hardscalefactor=1.0
 
 #Underliyng event flag
 ue=false
@@ -294,7 +295,7 @@ then
 # to be used as a pT veto scale in the parton shower
 set /Herwig/DipoleShower/DipoleShowerHandler:MaxPtIsMuF Yes
 set /Herwig/DipoleShower/DipoleShowerHandler:RestrictPhasespace Yes
-read snippets/DipoleShowerFiveFlavours.in
+read snippets/DipoleShowerFourFlavours.in
 EOF
 fi
 
@@ -302,6 +303,11 @@ cat <<EOF >> $fout$index.in
 ###################################################################
 # Technical parameters for this run and setup the event generator #
 ###################################################################
+
+set /Herwig/MatrixElements/Matchbox/MEMatching:HardScaleFactor $hardscalefactor
+set /Herwig/DipoleShower/DipoleShowerHandler:HardScaleFactor $hardscalefactor
+set /Herwig/Shower/ShowerHandler:HardScaleFactor $hardscalefactor
+
 cd /Herwig/Generators
 
 # theGenerator represents the Les Houches Handler generator
