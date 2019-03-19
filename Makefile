@@ -151,7 +151,7 @@ FJCXXFLAGS+=-I$(PYTHIA8LOCATION)/include -I$(PYTHIA8LOCATION)/include/Pythia8 -I
 LIBPYTHIA8=-L$(PYTHIA8LOCATION)/lib/ -lpythia8  -lstdc++ -ldl -lz
 LIBHEPMC=$(shell pythia8-config --hepmc)
 
-USER=init_couplings.o init_processes.o Born_phsp.o Born.o virtual.o MEborn.o grids.o \
+USER=init_couplings.o init_processes.o Born_phsp.o Born.o virtual.o MEborn.o grids.o D0functions.o \
         real.o btilde_gghh.o pt2maxreg.o LesHouchesreg.o pwhg_cpHTO_reweight.o hhgrid.o \
 	$(PWHGANAL)
 
@@ -232,7 +232,7 @@ veryclean:
 
 include GoSamlib/Makefile.virt.dep
 
-MEborn.o:  precision_golem.o parametre.o matrice_s.o form_factor_type.o form_factor_4p.o form_factor_3p.o cache.o constante.o array.o spinor.o
+MEborn.o:  precision_golem.o parametre.o matrice_s.o form_factor_type.o form_factor_4p.o form_factor_3p.o cache.o constante.o array.o spinor.o D0functions.o
 
 Born.o: MEborn.o
 
