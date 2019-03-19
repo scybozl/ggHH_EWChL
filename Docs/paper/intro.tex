@@ -1,14 +1,14 @@
-The Higgs potential is the least explored part of the Standard Model (SM) so far, and therefore measurements of the Higgs boson self-coupling(s) may offer surprises.
-While the Higgs boson couplings to vector bosons and third generation fermions are increasingly well measured meanwhile~\cite{Khachatryan:2016vau,Aaboud:2017vzb,ATLAS:2018doi,Sirunyan:2018koj,Sirunyan:2018sgc}, constraints on the trilinear coupling $\lambda$ are weak due to the small cross sections of Higgs boson pair production~\cite{Baglio:2012np,Frederix:2014hta}.  
+The Higgs potential is currently the least explored part of the Standard Model (SM), measurements of the Higgs boson self-coupling(s) may therefore offer surprises.
+Although the Higgs boson couplings to vector bosons and third generation fermions are increasingly well measured~\cite{Khachatryan:2016vau,Aaboud:2017vzb,ATLAS:2018doi,Sirunyan:2018koj,Sirunyan:2018sgc}, constraints on the trilinear coupling $\lambda$ are relatively weak due to the small Higgs boson pair production cross section~\cite{Baglio:2012np,Frederix:2014hta}.  
 Nonetheless, measurements of double Higgs production in gluon fusion, combining various decay channels,  have led to impressive experimental results already~\cite{Sirunyan:2018two,Sirunyan:2018iwt,ATLAS-CONF-2018-043,Aaboud:2018ftw}, 
 the most stringent constraints on the trilinear coupling being $-5\leq \kappa_\lambda\leq 12.1$
  at 95\% confidence level~\cite{ATLAS-CONF-2018-043}, based on the assumption that all other couplings have SM values.
-Individual limits on $\kappa_\lambda$ based on EFT benchmarks representing a certain combination of BSM couplings which leads to charactristic kinematic distributions~\cite{Carvalho:2015ttv,Carvalho:2016rys,Buchalla:2018yce} also have been extracted~\cite{Sirunyan:2018two,Sirunyan:2018iwt}.
+Individual limits on $\kappa_\lambda$ based on EFT benchmarks representing a certain combination of BSM couplings which leads to charactristic kinematic distributions~\cite{Carvalho:2015ttv,Carvalho:2016rys,Buchalla:2018yce} have also been extracted~\cite{Sirunyan:2018two,Sirunyan:2018iwt}.
 Therefore, the determination of the trilinear coupling has entered a level of precision where the assumption that the full NLO QCD corrections do not vary much with $\kappa_\lambda$, which has been used in the experimental analysis so far, needs to be revised.
 The variations of the K-factors with $\kappa_\lambda$ are mild in the $m_t\to \infty$ limit, where NLO~\cite{Grober:2015cwa,Grober:2017gut} and NNLO~\cite{deFlorian:2017qfk} corrections have been calculated within an effective Lagrangian framework.
 However, it will be shown in this paper that the NLO K-factor varies by about 35\% as $\kappa_\lambda$ is varied between $-1$ and 5 once the full top quark mass dependence is taken into account. 
 
-The question how large or small $\chhh$ can be from a theory point of view is not easy to answer in a model independent way. 
+The question of how large or small $\chhh$ can be from a theory point of view is not easy to answer in a model independent way. 
 Recent work based on rather general concepts like vacuum stability and perturbative unitarity suggests that $|\chhh|\lesssim 4$ for a New Physics scale in the few TeV range~\cite{Falkowski:2019tft,Chang:2019vez,DiLuzio:2017tfn,DiVita:2017eyz}.
 More specific models can lead to more stringent bounds, see e.g. Refs.~\cite{Braathen:2019pxr,Basler:2018dac,Babu:2018uik,Lewis:2017dme}.
 
@@ -46,25 +46,23 @@ In this work we study the dependence of total cross sections and differential di
 The study is based on results at NLO QCD with full top quark mass dependence for Higgs boson pair production in gluon fusion described in Refs.~\cite{Borowka:2016ehy,Borowka:2016ypz}. 
 While it is unlikely that New Physics alters just the Higgs boson self-couplings but leaves the Higgs couplings to vector bosons and fermions unchanged, it can be assumed that the deviations of the measured Higgs couplings from their SM values are so small that they have escaped detection at the current level of precision, for recent overviews see e.g. Refs.~\cite{Cepeda:2019klc,Brooijmans:2018xbu,deFlorian:2016spz}.
 
-Measuring Higgs boson pair production is a direct way to access the trilinear Higgs coupling. Indirect ways, through processes involving Higgs boson self-couplings at the level of electroweak corrections, also have been suggested~\cite{Gorbahn:2019lwq,Nakamura:2018bli,Borowka:2018pxx,Bizon:2018syu,Kilian:2018bhs,Vryonidou:2018eyv,Maltoni:2018ttu,Maltoni:2017ims,Kribs:2017znd,Degrassi:2017ucl,Bizon:2016wgr,Degrassi:2016wml,Gorbahn:2016uoy,McCullough:2013rea}.
+Measuring Higgs boson pair production is a direct way to access the trilinear Higgs coupling. The trilinear and quartic couplings can also be constrained in an indirect way, through measurements of processes which are sensitive to the Higgs boson self-couplings via electroweak corrections~\cite{Gorbahn:2019lwq,Nakamura:2018bli,Borowka:2018pxx,Bizon:2018syu,Kilian:2018bhs,Vryonidou:2018eyv,Maltoni:2018ttu,Maltoni:2017ims,Kribs:2017znd,Degrassi:2017ucl,Bizon:2016wgr,Degrassi:2016wml,Gorbahn:2016uoy,McCullough:2013rea}.
 Such processes offer important complementary information, however they are more susceptible to other BSM couplings entering the loop corrections 
 at the same level, and therefore the limits on $\chhh$ extracted this way may be more model dependent than the ones extracted from the direct production of Higgs boson pairs.
 
-As there is destructive interference in the squared amplitude between contributions containing $\lambda$ and those without the Higgs boson self-coupling (corresponding to triangle- and box diagrams at LO), 
+For Higgs Boson pair production, due to the destructive interference in the squared amplitude between contributions containing $\lambda$ and those without the Higgs boson self-coupling (corresponding to triangle- and box diagrams, respectively, at LO), 
 %where the destructive interference is maximal at $\lambda\sim 2.4$, 
-small changes in $\lambda$ modify the interference pattern and therefore can have a substantial effect on the cross sections.
+small changes in $\lambda$ modify the interference pattern and can therefore have a substantial effect on the total cross section and differential distributions.
 
-To obtain a full-fledged NLO generator which also offers the possibility of parton showering, we implemented the calculation in the 
+In order to obtain a fully-fledged NLO generator which also offers the possibility of parton showering, we have implemented our calculation in the 
 \powhegbox~\cite{Nason:2004rx,Frixione:2007vw,Alioli:2010xd}, building on the SM code presented in Ref.~\cite{Heinrich:2017kxx}.
 
-The dependence of the K-factors on the value for $\lambda$ (and other BSM couplings) is stronger than the $m_t\to\infty$ limit may suggest, as shown in Ref.~\cite{Buchalla:2018yce}. This is particularly true for differential K-factors, 
-in combination with the $b\bar{b}$ decay channel of the Higgs boson, where in the boosted regime large-$p_T$ Higgs bosons are involved, which means that the top quark loops are resolved, such that the  $m_t\to\infty$ limit is clearly invalid.
-The top quark mass corrections in the large $\mhh$ or $\pth$ regime being of the order of 20-30\% or higher, and increasing with larger centre-of-mass energy (e.g. $\sqrt{s}=27$ or 100\,TeV), these corrections clearly exceed the scale uncertainties and therefore have to be taken into account.
+The dependence of the K-factors on the value of $\lambda$ (and other BSM couplings) is stronger than the $m_t\to\infty$ limit may suggest, as shown in Ref.~\cite{Buchalla:2018yce}. This is particularly true for differential K-factors. For example, in the boosted regime, which is sometimes used by the experiments when reconstructing the $H \rightarrow b\bar{b}$ decay channel, Higgs bosons with a large-$p_T$ are involved. At large-$p_T$ the top quark loops are resolved and the $m_t\to\infty$ limit is invalid.
+The top quark mass corrections in the large $\mhh$ or $\pth$ regime are of the order of 20-30\% or higher, and increase with larger centre-of-mass energy (e.g. $\sqrt{s}=27$ or 100\,TeV), these corrections clearly exceed the scale uncertainties and therefore have to be taken into account.
 
-The purpose of this paper is twofold: Based on our differential results, we discuss how the deviations from the SM, resulting from non-SM $\lambda$ values, can be cornered based on the distributions for the Higgs boson pair invariant mass and Higgs boson transverse momentum distributions. 
+The purpose of this paper is twofold: Based on our differential results, we discuss how the deviations from the SM, resulting from non-SM $\lambda$ values, can be identified based on the distributions for the Higgs boson pair invariant mass and Higgs boson transverse momentum distributions. 
 In addition, we present the updated public code {\tt POWHEG-BOX-V2/ggHH}, where the user can choose the value of the trilinear coupling as an input parameter.
-We also explain how variations of the top-Higgs Yukawa coupling can be performed with this code.
+We also explain how variations of the top-Higgs Yukawa coupling can be studied using this code.
 Further, we compare the fixed order results to results obtained by matching the NLO calculation to a parton shower. In particular, we compare results from the \pythia~\cite{Sjostrand:2014zea} and \herwig~\cite{Bellm:2017bvx} parton showers and assess the parton-shower related uncertainties.
 
-This paper is organised as follows. In Section~\ref{sec:calculation} we briefly describe the calculation and give instructions for the usage of the program within the \powhegbox. Section~\ref{sec:results} contains the discussion of our results, focusing in the first part on variations of $\chhh$ and in the second part on differences between showered results, 
-before we conclude in Section~\ref{sec:conclusions}.
+This paper is organised as follows. In Section~\ref{sec:calculation} we briefly describe the calculation and give instructions for the usage of the program within the \powhegbox. Section~\ref{sec:results} contains the discussion of our results, focusing in the first part on variations of $\chhh$ and in the second part on differences between showered results. We present our conclusions in Section~\ref{sec:conclusions}.
