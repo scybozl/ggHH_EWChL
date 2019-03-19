@@ -157,7 +157,7 @@ $\hat{t}$~\cite{Heinrich:2017kxx}. Please be aware that the numerical
 values $m_H=125$\,GeV and $m_t=173$\,GeV are {\bf hardcoded} in this
 grid and therefore should not be changed in {\tt powheg.input-save} when running in the {\tt mtdep=3} mode.
 The grid is generated using python code and is directly interfaced to the
-\POWHEGBOX{} fortran code. In order for the grid to be found by the code, the
+\POWHEGBOX{} fortran code via the Python/C API. In order for the grid to be found by the code, the
 files ({\tt events.cdf, createdgrid.py, Virt\_full\_cHHH\_$\lbrace$-1.0,0.0,1.0$\rbrace$.grid}) from the
 folder {\tt Virtual} need to be copied into the local folder where the
 code is run. Instead of copying the files, we suggest to create a
@@ -172,6 +172,12 @@ Once the links are in place, the code can be run with {\tt mtdep=3} as
 usual. To ensure that the linked files are found, we recommend to add the run subfolder to {\tt PYTHONPATH}. 
 The python code {\tt creategrid.py} will then combine the virtual grids generated with the three values of $c_{hhh} = -1,0,1$ 
 to produce a new file {\tt Virt\_full.grid} corresponding to the value of {\tt cHHH} chosen in the {\tt powheg.input} file.
+
+The python code for the grid is written in python 2.7 and relies on the {\tt numpy} and {\tt sympy} packages, which 
+the user should install separately. When building the {\tt ggHH} process the Makefile will find the embedded python 2.7 library
+via a call to {\tt python2.7-config}, which the user should ensure is configured correctly and points to the correct library.
+Note that on some systems the Python/C API does not search for packages (such as {\tt numpy} and {\tt sympy}) in the same 
+paths as the python executable would. Therefore the user should ensure that these packages can be found also by an embedded python program.
 
 \section{Physical input parameters}
 
