@@ -3,11 +3,12 @@ import numpy
 
 #########################################################
 ##                                                      #
-## REMOVAL script for bad NLO files                     #
+## REMOVAL script for NLO.top files from unstable runs  #
 ##                                                      #
 #########################################################
 ## To be used if instabilities are present in the pro-  #
-## duced histograms pwg-****-NLO.top                    #
+## duced histograms pwg-****-NLO.top,                   #
+## leading to unphysical spikes in the histograms       #
 #########################################################
 
 def listfiles(d):
