@@ -255,7 +255,8 @@ c     invariants, abbreviations:
       MT2   = ph_topmass**2
       ao2pi = st_alpha/(2d0*pi)
 
-      call ME2born_gbij(p, MH2, MT2,st_muren2, ph_mdlchhh, mpol)
+      call ME2born_gbij(p, MH2, MT2,st_muren2, ph_mdlchhh, ph_mdlct,
+     $                  ph_mdlcthh, ph_mdlcgg, ph_mdlcgghh, mpol)
 
 c     sum over all helicity configurations:
       amp2 = mpol(1,1)*conjg(mpol(1,1)) + mpol(1,-1)*conjg(mpol(1,-1))
@@ -310,7 +311,8 @@ c     invariants, abbreviations:
          modg2 = 0
 
          call ME2born_gbij(kn_cmpborn, MH2, MT2,st_muren2,
-     $                     ph_mdlchhh, mpol)
+     $                     ph_mdlchhh, ph_mdlct, ph_mdlcthh,
+     $                     ph_mdlcgg, ph_mdlcgghh, mpol)
 
 c     sum over all helicity configurations:
          amp2full = mpol(1,1)*conjg(mpol(1,1)) +

@@ -1,5 +1,5 @@
 ! adapted from gitrepo/HH
-!subroutine ME2born_gbij(p, mh2, mt2, muren2, cHHH, modg1, modg2)
+!subroutine ME2born_gbij(p, mh2, mt2, muren2, chhh, modg1, modg2)
 module Born_amplitudes
   use precision_golem
   implicit none
@@ -10,7 +10,7 @@ module Born_amplitudes
    
   contains
 
-subroutine ME2born_gbij(p, mh2, mt2, muren2, cHHH, mpol)
+subroutine ME2born_gbij(p, mh2, mt2, muren2, chhh, ct, ctt, cg, cgg, mpol)
   !
   use precision_golem
   use parametre
@@ -40,7 +40,7 @@ subroutine ME2born_gbij(p, mh2, mt2, muren2, cHHH, mpol)
   character (len=3) :: bb0,bb1
   type(form_factor) :: D123,D132,D213,C12,C13,C23,C34,D0temp
   type(form_factor) :: t0,gauge1tri,gauge1box,gauge2box,g1trilim,g1boxlim,g2boxlim
-  real(ki) :: cHHH
+  real(ki) :: chhh,ct,ctt,cg,cgg
   complex*16, external :: D04
   real*8 :: mt
   logical*1 HTL
@@ -161,13 +161,14 @@ subroutine ME2born_gbij(p, mh2, mt2, muren2, cHHH, mpol)
   s13 = scalar(p13,p13)
   s23 = scalar(p23,p23)
 
-  gauge1tri=12._ki*mh2*m1sq/(s12-mh2)*(2._ki+(4._ki*m1sq-s12)*C12)*cHHH
+  gauge1tri=12._ki*mh2*m1sq/(s12-mh2)*(2._ki+(4._ki*m1sq-s12)*C12)*(ct*chhh &
+       &  + 2._ki/3*(s12-mh2)/mh2*ctt) + 6._ki*s12*mh2/(s12-mh2)*cg*chhh
 
-  gauge1box= 4._ki*m1sq* ( m1sq*(8._ki*m1sq-s12-2._ki*mh2)*(D123+D213+D132) + &
+  gauge1box= 4._ki*m1sq*ct**2*( m1sq*(8._ki*m1sq-s12-2._ki*mh2)*(D123+D213+D132) + &
        &  (s13*s23-mh2**2)/s12*(-mh2+4._ki*m1sq)*D132+2._ki+4._ki*m1sq*C12 &
-       &  +2._ki/s12*(mh2-4._ki*m1sq)*((s13-mh2)*C13+(s23-mh2)*C23) )
+       &  +2._ki/s12*(mh2-4._ki*m1sq)*((s13-mh2)*C13+(s23-mh2)*C23) ) + 4._ki*cgg*s12
 
-  gauge2box= 2._ki*m1sq* ( 2._ki*(8._ki*m1sq+s12-2._ki*mh2)*(m1sq*(D123+D213+D132)-C34) &
+  gauge2box= 2._ki*m1sq*ct**2*( 2._ki*(8._ki*m1sq+s12-2._ki*mh2)*(m1sq*(D123+D213+D132)-C34) &
        &  -2._ki*(s12*C12+(s13-mh2)*C13+(s23-mh2)*C23)  &
        &  + 1._ki/(s13*s23-mh2**2)*( &
        &  + s12*s23*(8._ki*s23*m1sq-s23**2-mh2**2)*D123 &
@@ -181,7 +182,7 @@ subroutine ME2born_gbij(p, mh2, mt2, muren2, cHHH, mpol)
 
 !  else ! (HTL)
 
-!  gauge1tri = 4._ki*mh2*s12/(s12-mh2)*cHHH
+!  gauge1tri = 4._ki*mh2*s12/(s12-mh2)*chhh
 !  gauge1box = -4._ki/3._ki*s12
 !  gauge2box = 0._ki
 
