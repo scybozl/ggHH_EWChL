@@ -32,17 +32,6 @@ using namespace integral_library_wrapper;
 using namespace s_matrix_wrapper;
 
 
-//quadninja//#define QUADNINJA_NINJA_CC 1
-#ifndef QUADNINJA_NINJA_CC
-namespace quadninja {
-  void printBanner(std::ostream & banner_out, bool force_print)
-  {
-    ninja::printBanner(banner_out, force_print);
-  }
-}
-#endif
-
-
 namespace ninja {
 
   namespace {
@@ -64,12 +53,11 @@ namespace ninja {
       "  |      T. Peraro,                                                |\n"
       "  |      \"Ninja: Automated Integrand Reduction via Laurent         |\n"
       "  |      Expansion for One-Loop Amplitudes,\"                       |\n"
-      "  |      Comput.Phys.Commun. 185 (2014) [arXiv:1403.1229 [hep-ph]] |\n"
+      "  |      arXiv:1403.1229 [hep-ph]                                  |\n"
       "  |                                                                |\n"
       "  +----------------------------------------------------------------+\n";
   }
 
-#ifndef QUADNINJA_NINJA_CC
   // Print the banner
   void printBanner(std::ostream & banner_out, bool force_print)
   {
@@ -80,13 +68,11 @@ namespace ninja {
     }
     Options::quiet = true;
   }
-#endif
 
   // Initialize Options
   std::ostream * Options::out = & std::cout;
   Real Options::chop_tol = 1.e-10;
   Real Options::test_tol = 1.e-05;
-  Real Options::fp_threshold = REAL_MIN;
   bool Options::quiet = false;
   unsigned Options::verb = Verbose::NONE;
   unsigned Options::test = Test::NONE;
@@ -99,9 +85,11 @@ namespace ninja {
 } // namespace ninja
 
 
-// namespace {
-//   typedef long double HigherPrecision;
-// }
+
+namespace {
+  const Real CUTSTOLL = 1.0e-10;
+  // typedef long double HigherPrecision;
+}
 
 
 namespace ninja {
@@ -157,7 +145,7 @@ namespace ninja {
     bool tests;
     bool local_test;
     bool global_test = Options::test & Test::GLOBAL;
-    return_val = Amplitude::SUCCESS;
+    int ret = Amplitude::SUCCESS;
 
 
     ///////////////////
@@ -174,7 +162,6 @@ namespace ninja {
     // store the results
     if (anyPentagon) {
       evaluatePentagons(num, pentagons);
-      if (unstable_kinematics()) return return_val;
       if (Options::verb & Verbose::C5)
         print(pentagons);
     }
@@ -195,14 +182,12 @@ namespace ninja {
     if (anyBox) {
       if (tests || (Options::verb & Verbose::C4)) {
         evaluateFullBoxes(num, pentagons, boxes);
-        if (unstable_kinematics()) return return_val;
         if (Options::verb & Verbose::C4)
           print(boxes);
         if (local_test)
-          local4NeqNtests(num, pentagons, boxes);
+          ret = local4NeqNtests(num, pentagons, boxes) | ret;
       }
       else evaluateBoxes(num, pentagons, boxes);
-      if (unstable_kinematics()) return return_val;
     }
 
 
@@ -220,11 +205,10 @@ namespace ninja {
     // store the results
     if (anyTriangle) {
       evaluateTriangles(num, triangles);
-      if (unstable_kinematics()) return return_val;
       if (Options::verb & Verbose::C3)
         print(triangles);
       if (Options::test & Test::LOCAL_3)
-        local3NeqNtests(num, pentagons, boxes, triangles);
+        ret = local3NeqNtests(num, pentagons, boxes, triangles) | ret;
     }
 
 
@@ -242,11 +226,11 @@ namespace ninja {
     // store the results
     if (anyBubble) {
       evaluateBubbles(num, triangles, bubbles);
-      if (unstable_kinematics()) return return_val;
       if (Options::verb & Verbose::C2)
         print(bubbles);
       if (local_test)
-        local2NeqNtests(num, pentagons, boxes, triangles, bubbles);
+        ret = local2NeqNtests(num, pentagons, boxes, triangles,
+                              bubbles) | ret;
       }
 
 
@@ -265,14 +249,13 @@ namespace ninja {
     if (anyTadpole) {
       if (tests || (Options::verb & Verbose::C1)) {
         evaluateFullTadpoles(num, triangles, bubbles, tadpoles);
-        if (unstable_kinematics()) return return_val;
         if (Options::verb & Verbose::C1)
           print(tadpoles);
         if (local_test)
-          local1NeqNtests(num, pentagons, boxes, triangles, bubbles, tadpoles);
+          ret = local1NeqNtests(num, pentagons, boxes, triangles, bubbles,
+                                tadpoles) | ret;
       }
       else evaluateTadpoles(num, triangles, bubbles, tadpoles);
-      if (unstable_kinematics()) return return_val;
     }
 
 
@@ -281,8 +264,8 @@ namespace ninja {
     /////////////////////////
 
     if (global_test && min_cut <= 1)
-      NeqNtest(num, pentagons, boxes, triangles, bubbles, tadpoles,
-               ComplexMomentum(10.3,10.3,10.3,10.3), 13.);
+      ret = NeqNtest(num, pentagons, boxes, triangles, bubbles, tadpoles,
+                     ComplexMomentum(10.3,10.3,10.3,10.3), 13.) | ret;
 
 
     ////////////////
@@ -373,8 +356,7 @@ namespace ninja {
           int i1 = (*i).p[0];
           int i2 = (*i).p[1];
           Real k = s_mat(i2,i1);
-          if ((m2[i1] == ZERO) && (m2[i2] == ZERO)
-              && taxicab_norm(k)<INFRARED_EPS)
+          if ((m2[i1] == ZERO) && (m2[i2] == ZERO) && taxicab_norm(k)<CUTSTOLL)
             continue;
           Complex b11[3], b1[3], b0[3];
           wrap_mis.getRank2BubbleIntegral(b11, b1, b0, k, m2[i1], m2[i2]);
@@ -444,7 +426,7 @@ namespace ninja {
         (*Options::out) << "rat.   =" << rational_part_temp << endl;
         (*Options::out) << endl;
       }
-      if (return_val == Amplitude::SUCCESS) {
+      if (ret == Amplitude::SUCCESS) {
         (*Options::out) << "ninja::Amplitude is returning SUCCESS" << endl;
       } else {
         (*Options::out) << "ninja::Amplitude is returning TEST_FAILED" << endl;
@@ -453,7 +435,7 @@ namespace ninja {
                       << "----------------------------" << endl;
     }
 
-    return return_val;
+    return ret;
   }
 
   using namespace cuts_utils;

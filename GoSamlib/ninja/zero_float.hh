@@ -11,8 +11,8 @@
 // ZeroFloat objects.
 
 
-#ifndef NINJA_ZERO_FLOAT_HH
-#define NINJA_ZERO_FLOAT_HH
+#ifndef ZERO_FLOAT_HH
+#define ZERO_FLOAT_HH
 
 #include <iostream>
 
@@ -112,4 +112,4 @@ namespace ninja {
 
 } // namespace ninja
 
-#endif // NINJA_ZERO_FLOAT_HH
+#endif // ZERO_FLOAT_HH

@@ -92,7 +92,7 @@ c     invariants, abbreviations:
 
       virtual = virtual +
      $     (ph_GF**2*ao2pi**2*NA*s**2
-     $     *(-16d0/27d0+16d0/9d0*MH2*ph_cHHH*denH)
+     $     *(-16d0/27d0+16d0/9d0*MH2*ph_mdlchhh*denH)
      $     /2.0d0               ! Symmetry factor
      $     /256.0d0)            ! spin/colour average
 

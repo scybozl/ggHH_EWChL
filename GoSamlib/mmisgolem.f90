@@ -366,11 +366,9 @@ module mmisgolem
     	m1=m(1)
     
     		do ep=-2,0
-    			if(present(J001)) then
-    				J001(ep) = gB0i("001",real(K11,ki_gol),&
-    				& real(m0,ki_gol),real(m1,ki_gol),&
-    				& real(scale2,ki_gol),ep)
-    			end if
+    			J001(ep) = gB0i("001",real(K11,ki_gol),&
+    			& real(m0,ki_gol),real(m1,ki_gol),&
+    			& real(scale2,ki_gol),ep)
     			J111(ep) = gB0i("111",real(K11,ki_gol),&
     			& real(m0,ki_gol),real(m1,ki_gol),&
     			& real(scale2,ki_gol),ep)

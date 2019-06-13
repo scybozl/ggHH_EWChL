@@ -1,0 +1,32 @@
+#####NinjaMu2
+
+    acd61(1)=dotproduct(e1,ninjaA0);
+    acd61(2)=dotproduct(e2,ninjaA0);
+    acd61(3)=dotproduct(e5,ninjaA0);
+    acd61(4)=dotproduct(ninjaA0,ninjaA0);
+    acd61(5)=Wrapper(abb61,69);
+    acd61(6)=Wrapper(abb61,47);
+    acd61(7)=Wrapper(abb61,40);
+    acd61(8)=dotproduct(ninjaA0,spvae5e2);
+    acd61(9)=Wrapper(abb61,122);
+    acd61(10)=dotproduct(ninjaA0,spvae2e5);
+    acd61(11)=Wrapper(abb61,154);
+    acd61(12)=dotproduct(ninjaA0,spvae5e1);
+    acd61(13)=Wrapper(abb61,186);
+    acd61(14)=dotproduct(ninjaA0,spvae1e5);
+    acd61(15)=Wrapper(abb61,194);
+   acd61(16)=acd61(14)*acd61(15);
+   acd61(17)=acd61(12)*acd61(13);
+   acd61(18)=acd61(10)*acd61(11);
+   acd61(19)=acd61(8)*acd61(9);
+   acd61(20)=acd61(2)*acd61(7);
+   acd61(21)=acd61(1)*acd61(6);
+   acd61(16)=acd61(21) + acd61(20) + acd61(19) + acd61(18) + acd61(16) + 
+   acd61(17);
+   acd61(16)=acd61(4)*acd61(16);
+   acd61(17)=acd61(1)*acd61(2)*acd61(3)*acd61(5);
+   acd61(16)=acd61(17) + acd61(16);
+   acd61(16)=acd61(4)*acd61(16);
+
+brack(ninjaidxt0) = acd61(16);
+

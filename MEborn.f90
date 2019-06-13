@@ -209,7 +209,7 @@ end subroutine ME2born_gbij
 
 
 subroutine compPolVectors(p, epsten)
-  use p0_gg_hhg_kinematics, only: epsi
+  use p2_part21part21_part25part25part21_kinematics, only: epsi
   implicit none
   real(ki), intent(in) :: p(4,4)
   complex(ki), intent(out) :: epsten(2, 0:3, -1:1)

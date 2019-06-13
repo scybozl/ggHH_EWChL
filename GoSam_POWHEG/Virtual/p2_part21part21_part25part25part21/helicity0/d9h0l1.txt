@@ -1,0 +1,86 @@
+*Abbreviations for diagram d9h0l1. Generated on Thu Jun 13 14:45:13 2019
+
+#####Abbreviations
+
+    abb9(1)=1/( - mdlMh^2 + es34);
+    abb9(2)=1/(es34 - es51 - es12);
+    abb9(3)=csqrt(mdlMT^2);
+   abb9(4)=i_*abb9(1)*mdlGC43*mdlGC45;
+   abb9(4)=abb9(4) + mdlGC46;
+   abb9(5)=c1 - c2;
+   abb9(5)=abb9(5)*spae2e5*spbe5e2*mdlGC6*abb9(2);
+   abb9(6)=mdlGC7^2;
+   abb9(7)=abb9(4)*abb9(6)*abb9(3)*abb9(5);
+   abb9(8)=spae1k5*spbk5e1;
+   abb9(9)=abb9(7)*abb9(8);
+   abb9(10)= - 1/2*abb9(9);
+   abb9(11)=spbk5k1*spae1k1;
+   abb9(12)=1/2*spak2k5;
+   abb9(13)=abb9(12)*spbk2e1;
+   abb9(14)= - abb9(13)*abb9(11);
+   abb9(15)=spak1k5*spbk1e1;
+   abb9(16)=1/2*spbk5k2;
+   abb9(17)=abb9(16)*spae1k2;
+   abb9(18)= - abb9(17)*abb9(15);
+   abb9(19)=spbk2k1*spae1k1;
+   abb9(12)=abb9(12)*spbk5e1;
+   abb9(20)= - abb9(12)*abb9(19);
+   abb9(21)=spak1k2*spbk1e1;
+   abb9(16)=abb9(16)*spae1k5;
+   abb9(22)= - abb9(16)*abb9(21);
+   abb9(14)=abb9(22) + abb9(20) + abb9(18) + abb9(14);
+   abb9(14)=abb9(7)*abb9(14);
+   abb9(4)= - abb9(8)*abb9(5)*abb9(4)*abb9(6)*abb9(3)^3;
+   abb9(4)=abb9(4) + abb9(14);
+   abb9(5)=8*abb9(7);
+   abb9(6)=1/2*abb9(7);
+   abb9(8)=abb9(13) - abb9(15);
+   abb9(8)=abb9(8)*abb9(6);
+   abb9(11)=abb9(17) - abb9(11);
+   abb9(11)=abb9(11)*abb9(6);
+   abb9(12)=abb9(12) - abb9(21);
+   abb9(12)=abb9(12)*abb9(6);
+   abb9(13)=abb9(16) - abb9(19);
+   abb9(6)=abb9(13)*abb9(6);
+   abb9(13)=1/2*spae1k1;
+   abb9(13)=abb9(7)*abb9(13);
+   abb9(14)=spbk5e1*abb9(13);
+   abb9(13)=spbk2e1*abb9(13);
+   abb9(15)=1/2*spbk1e1;
+   abb9(7)=abb9(7)*abb9(15);
+   abb9(15)=spae1k5*abb9(7);
+   abb9(7)=spae1k2*abb9(7);
+
+#####R2
+
+R2d9 = abb9(10);
+
+#####Diagram
+
+    acc9(1)=abb9(4);
+    acc9(2)=abb9(5);
+    acc9(3)=abb9(6);
+    acc9(4)=abb9(7);
+    acc9(5)=abb9(8);
+    acc9(6)=abb9(9);
+    acc9(7)=abb9(11);
+    acc9(8)=abb9(12);
+    acc9(9)=abb9(13);
+    acc9(10)=abb9(14);
+    acc9(11)=abb9(15);
+   acc9(12)=acc9(11)*Qspvak1k5;
+   acc9(13)=acc9(10)*Qspvak5k1;
+   acc9(14)=acc9(9)*Qspvak2k1;
+   acc9(15)=acc9(8)*Qspvae1k2;
+   acc9(16)=acc9(7)*Qspvak5e1;
+   acc9(17)=acc9(5)*Qspvae1k5;
+   acc9(18)=acc9(4)*Qspvak1k2;
+   acc9(19)=acc9(3)*Qspvak2e1;
+   acc9(20)=QspQ - Qspk2;
+   acc9(20)=acc9(6)*acc9(20);
+   acc9(21)= - Qspk5 - Qspk2;
+   acc9(21)=acc9(2)*Qspe1*acc9(21);
+
+brack = acc9(1) + acc9(12) + acc9(13) + acc9(14) + acc9(15) + acc9(16) + 
+      acc9(17) + acc9(18) + acc9(19) + acc9(20) + acc9(21);
+

@@ -1,0 +1,16 @@
+#####NinjaMu2
+
+    acd43(1)=dotproduct(k2,ninjaA0);
+    acd43(2)=dotproduct(e1,ninjaA0);
+    acd43(3)=dotproduct(ninjaA0,ninjaA0);
+    acd43(4)=Wrapper(abb43,10);
+    acd43(5)=dotproduct(k5,ninjaA0);
+    acd43(6)=Wrapper(abb43,12);
+   acd43(7)=acd43(5) + acd43(1);
+   acd43(7)=acd43(2)*acd43(4)*acd43(7);
+   acd43(8)=acd43(3)*acd43(6);
+   acd43(7)=acd43(7) + acd43(8);
+   acd43(7)=acd43(3)*acd43(7);
+
+brack(ninjaidxt0) = acd43(7);
+

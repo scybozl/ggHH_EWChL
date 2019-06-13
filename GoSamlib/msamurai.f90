@@ -165,7 +165,7 @@ subroutine banner
         
         print *
         print *, ' ********************************************************************'
-        print *, ' ********************** SAMURAI - version 2.9.1'
+        print *, ' ********************** SAMURAI - version 2.9.0'
         print *, ' ********************************************************************'
         print *, ' *                                                                  *'
         print *, ' *                                                                  *'
@@ -269,11 +269,11 @@ end  subroutine InitDenominators
 
 
 
-subroutine samurai(numeval,tot,totr,Vi,msq,nleg,rank,istop,scale2,ok,cache_flag, scalar_cache,rank_numeval)
+subroutine samurai(numeval,tot,totr,Vi,msq,nleg,rank,istop,scale2,ok,cache_flag, scalar_cache)
 	use options, only: use_maccu
 	use maccu
 	implicit none
-
+	
 	integer,                            intent(in ) :: nleg, rank, istop
 	real(ki),                           intent(in ) :: scale2
 	complex(ki),                        intent(out) :: totr
@@ -283,7 +283,6 @@ subroutine samurai(numeval,tot,totr,Vi,msq,nleg,rank,istop,scale2,ok,cache_flag,
 	logical,                            intent(out) :: ok
 	logical,     intent(inout), optional                    :: cache_flag
 	complex(ki), intent(inout), optional, dimension(-2:0,*) :: scalar_cache
-	optional :: rank_numeval
 	
 	type(accumulator_type), dimension(-2:0) :: acc_re, acc_im
 	type(accumulator_type) :: accr_re, accr_im
@@ -311,25 +310,11 @@ subroutine samurai(numeval,tot,totr,Vi,msq,nleg,rank,istop,scale2,ok,cache_flag,
 	   end function numeval
 	end interface
 	
-	interface
-	   function     rank_numeval(ncut)
-	     use precision
-	     implicit none
-	     integer,                   intent(in) :: ncut
-	     integer :: rank_numeval
-	   end function rank_numeval
-	end interface
-
 	if (nleg.gt.maxleg) then
 		write(6,*) 'reduction called for nleg.gt.maxleg'
 		write(6,*) 'maxleg, nleg ',maxleg,nleg
 		write(6,*) 'please change the values max1,..,max5,maxleg in constants.f90'
 		write(6,*) 'and compile again the library'
-		stop
-	endif
-
-	if(rank.lt.0 .and. .not. present(rank_numeval)) then
-		write (6, *) 'dynamical rank (rank<0) needs rank_numeval parameter'
 		stop
 	endif
 	
@@ -381,22 +366,22 @@ subroutine samurai(numeval,tot,totr,Vi,msq,nleg,rank,istop,scale2,ok,cache_flag,
 	!=========4ple cut
 	if(nleg.ge.4 .and. istop.le.4) then
 		if(verbosity.gt.0) write(iout,*) 'Box coefficients: '
-		call samurai4plecut(numeval,nleg,rank,Vi,msq,scale2,tot4sum,totr4sum,ok,cache_flag,scalar_cache,cache_offset,rank_numeval)
+		call samurai4plecut(numeval,nleg,rank,Vi,msq,scale2,tot4sum,totr4sum,ok,cache_flag,scalar_cache,cache_offset)
 	endif
 	!-========3ple cut
 	if(nleg.ge.3 .and. istop.le.3) then
 		if(verbosity.gt.0) write(iout,*) 'Triangle coefficients: '
-		call samurai3plecut(numeval,nleg,rank,Vi,msq,scale2,tot3sum,totr3sum,ok,cache_flag,scalar_cache,cache_offset,rank_numeval)
+		call samurai3plecut(numeval,nleg,rank,Vi,msq,scale2,tot3sum,totr3sum,ok,cache_flag,scalar_cache,cache_offset)
 	endif
 	!=========2ple cut
 	if(nleg.ge.2 .and. istop.le.2) then
 		if(verbosity.gt.0) write(iout,*) 'Bubble coefficients: '
-		call samurai2plecut(numeval,nleg,rank,Vi,msq,scale2,tot2sum,totr2sum,ok,cache_flag,scalar_cache,cache_offset,rank_numeval)
+		call samurai2plecut(numeval,nleg,rank,Vi,msq,scale2,tot2sum,totr2sum,ok,cache_flag,scalar_cache,cache_offset)
 	endif
 	!========1ple cut
 	if(nleg.ge.1 .and. istop.le.1) then
 		if(verbosity.gt.0) write(iout,*) 'Tadpole coefficients: '
-		call samurai1plecut(numeval,nleg,rank,Vi,msq,scale2,tot1sum,ok,cache_flag,scalar_cache,cache_offset,rank_numeval)
+		call samurai1plecut(numeval,nleg,rank,Vi,msq,scale2,tot1sum,ok,cache_flag,scalar_cache,cache_offset)
 	endif
 	!===============
 	
@@ -538,13 +523,13 @@ end subroutine
 
 
 
-subroutine samurai4plecut(numeval,nleg,rnk,Vi,msq,scale2,tot4sum,totr4sum,ok,cache_flag,scalar_cache,cache_offset,rank_numeval)
+subroutine samurai4plecut(numeval,nleg,rank,Vi,msq,scale2,tot4sum,totr4sum,ok,cache_flag,scalar_cache,cache_offset)
 	use options, only: use_maccu
 	use maccu
 	use mgetc4
 	implicit none
 	
-	integer,                            intent(in ) :: nleg, rnk
+	integer,                            intent(in ) :: nleg, rank 
 	real(ki),    dimension(0:nleg-1,4), intent(in ) :: Vi
 	complex(ki), dimension(0:nleg-1),   intent(in ) :: msq
 	real(ki),                           intent(in ) :: scale2
@@ -554,7 +539,6 @@ subroutine samurai4plecut(numeval,nleg,rnk,Vi,msq,scale2,tot4sum,totr4sum,ok,cac
 	logical,     intent(inout), optional                    :: cache_flag
 	complex(ki), intent(inout), optional, dimension(-2:0,*) :: scalar_cache
 	integer,     intent(inout), optional                    :: cache_offset
-	optional :: rank_numeval
 	
 	type(accumulator_type), dimension(-2:0) :: acc_re,  acc_im
 	type(accumulator_type)                  :: accr_re, accr_im
@@ -562,7 +546,6 @@ subroutine samurai4plecut(numeval,nleg,rnk,Vi,msq,scale2,tot4sum,totr4sum,ok,cac
 	integer :: i,j1,j2,j3,j4,icut4
 	integer :: cut4,n1,ep
 	integer :: diff 
-	integer :: rank
 	
 	complex(ki) :: mu2, mu2test
 	real(ki)    :: r1, r2
@@ -591,18 +574,8 @@ subroutine samurai4plecut(numeval,nleg,rnk,Vi,msq,scale2,tot4sum,totr4sum,ok,cac
 	   end function numeval
 	end interface
 
-	interface
-	   function     rank_numeval(ncut)
-	     use precision
-	     implicit none
-	     integer,                   intent(in) :: ncut
-	     integer :: rank_numeval
-	   end function rank_numeval
-	end interface
-
 	9041 format(A3,I4,A1,I1,A5,D24.15,A1,D24.15,A3)
 	9042 format(A3,I4,A1,I2,A5,D24.15,A1,D24.15,A3)
-
 
 	diff=nleg-rank
 	call checksmatalloc(smatallocated)
@@ -630,14 +603,7 @@ subroutine samurai4plecut(numeval,nleg,rnk,Vi,msq,scale2,tot4sum,totr4sum,ok,cac
 		
 		call getbase(k1,k2,r1,r2,e1,e2,e3,e4)
 		call getq4(nleg,cut4,e1,e2,e3,e4,p0,k1,k2,k3,L3,r1,r2,q4,qt,msq)
-
-                if (rnk.lt.0) then
-                  rank=rank_numeval(cut4)
-                  if (rank.lt.0) cycle
-                else
-                  rank=rnk
-                endif
-
+		
 		if (iresc.eq.1) then
 			call getc4(numetens,nleg,rank,c4,cut4,q4,qt,p0,Vi,msq)
 		else
@@ -690,12 +656,13 @@ subroutine samurai4plecut(numeval,nleg,rnk,Vi,msq,scale2,tot4sum,totr4sum,ok,cac
 	nc4=icut4-1
 end subroutine samurai4plecut
 
-subroutine samurai3plecut(numeval,nleg,rnk,Vi,msq,scale2,tot3sum,totr3sum,ok,cache_flag,scalar_cache, cache_offset,rank_numeval)
+subroutine samurai3plecut(numeval,nleg,rank,Vi,msq,scale2,tot3sum,totr3sum,ok,cache_flag,scalar_cache, cache_offset)
 	use options, only: use_maccu
 	use maccu
 	use mgetc3
 	implicit none
-	integer,                            intent(in ) :: nleg, rnk
+	
+	integer,                            intent(in ) :: nleg, rank
 	real(ki),    dimension(0:nleg-1,4), intent(in ) :: Vi
 	complex(ki), dimension(0:nleg-1),   intent(in ) :: msq
 	real(ki),                           intent(in ) :: scale2
@@ -705,12 +672,10 @@ subroutine samurai3plecut(numeval,nleg,rnk,Vi,msq,scale2,tot3sum,totr3sum,ok,cac
 	logical,     intent(inout), optional                    :: cache_flag
 	complex(ki), intent(inout), optional, dimension(-2:0,*) :: scalar_cache
 	integer,     intent(inout), optional                    :: cache_offset
-	optional :: rank_numeval
 	
 	type(accumulator_type), dimension(-2:0) :: acc_re, acc_im
 	type(accumulator_type) :: accr_re, accr_im
 	
-	integer :: rank
 	integer :: i,j,ep,j1,j2,j3,icut3
 	integer :: cut3,n1
 	integer :: diff 
@@ -741,33 +706,16 @@ subroutine samurai3plecut(numeval,nleg,rnk,Vi,msq,scale2,tot3sum,totr3sum,ok,cac
 	   end function numeval
 	end interface
 
-	interface
-	   function     rank_numeval(ncut)
-	     use precision
-	     implicit none
-	     integer,                   intent(in) :: ncut
-	     integer :: rank_numeval
-	   end function rank_numeval
-	end interface
-
 	9031 format(A3,I3,A1,I2,A5,D24.15,A1,D24.15,A3)
 	9032 format(A3,I3,A1,I2,A6,D24.15,A1,D24.15,A3)
 
 	call checksmatalloc(smatallocated)
-
-        if (rnk.lt.0) goto 5
-
-	diff=nleg-rnk
+	diff=nleg-rank
 	if (diff.ge.4 .and. itest.ne.1) then
 		do j=0,14
 		c3(j)=czip
 		enddo
-                goto 10
-        endif
-
- 5      continue
-
-
+	else
 		tot3sum  = czip
 		totr3sum = czip
 		icut3=1
@@ -785,14 +733,7 @@ subroutine samurai3plecut(numeval,nleg,rnk,Vi,msq,scale2,tot3sum,totr3sum,ok,cac
 				k2(n1)=Vi(j1,n1)-Vi(j3,n1)
 				p0(n1)=Vi(j1,n1)
 			enddo
-
-                if (rnk.lt.0) then
-                  rank=rank_numeval(cut3)
-                  if (rank.lt.0) cycle
-                else
-                  rank=rnk
-                endif
-
+			
 			call getbase(k1,k2,r1,r2,e1,e2,e3,e4)
 			call getq3(nleg,rank,cut3,e1,e2,e3,e4,p0,k1,k2,msq,r1,r2,q3,qt)
 			
@@ -844,17 +785,16 @@ subroutine samurai3plecut(numeval,nleg,rnk,Vi,msq,scale2,tot3sum,totr3sum,ok,cac
 		enddo
 		enddo
 		nc3=icut3-1
-
- 10	continue
+	endif
 end subroutine
 
-subroutine samurai2plecut(numeval,nleg,rnk,Vi,msq,scale2,tot2sum,totr2sum,ok,cache_flag,scalar_cache, cache_offset,rank_numeval)
+subroutine samurai2plecut(numeval,nleg,rank,Vi,msq,scale2,tot2sum,totr2sum,ok,cache_flag,scalar_cache, cache_offset)
 	use options, only: use_maccu
 	use maccu
 	use mgetc2
 	implicit none
 	
-	integer,                            intent(in ) :: nleg, rnk
+	integer,                            intent(in ) :: nleg, rank
 	real(ki),    dimension(0:nleg-1,4), intent(in ) :: Vi
 	complex(ki), dimension(0:nleg-1),   intent(in ) :: msq
 	real(ki),                           intent(in ) :: scale2
@@ -864,12 +804,10 @@ subroutine samurai2plecut(numeval,nleg,rnk,Vi,msq,scale2,tot2sum,totr2sum,ok,cac
 	logical,     intent(inout), optional                    :: cache_flag
 	complex(ki), intent(inout), optional, dimension(-2:0,*) :: scalar_cache
 	integer,     intent(inout), optional                    :: cache_offset
-	optional :: rank_numeval
 	
 	type(accumulator_type), dimension(-2:0) :: acc_re, acc_im
 	type(accumulator_type) :: accr_re, accr_im
-
-        integer :: rank	
+	
 	integer :: i,j,k,j1,j2,icut2
 	integer :: cut2,n1,ep
 	integer :: diff 
@@ -900,39 +838,19 @@ subroutine samurai2plecut(numeval,nleg,rnk,Vi,msq,scale2,tot2sum,totr2sum,ok,cac
 	     complex(ki) :: numeval
 	   end function numeval
 	end interface
-
-	interface
-	   function     rank_numeval(ncut)
-	     use precision
-	     implicit none
-	     integer,                   intent(in) :: ncut
-	     integer :: rank_numeval
-	   end function rank_numeval
-	end interface
 	
-
 	1903 format(A4,I2,A1,I2,A3,1(D24.15),1(D24.15))
 	9002 format(A3,I2,A1,I2,A7,D24.15,A1,D24.15,A3)
 	call checksmatalloc(smatallocated)
-
+	
+	diff=nleg-rank
 	tot2sum=czip
 	totr2sum=czip
-
-        if (rnk.lt.0) goto 5
-
-
-	diff=nleg-rnk
 	if (diff.ge.3) then 
 		do j=0,19
 		c2(j)=czip
 		enddo
-                goto 10
-        endif
-	
-
-
- 5      continue
-
+	else
 		icut2=1
 		do j2=1,nleg-1
 		do j1=0,j2-1
@@ -959,13 +877,6 @@ subroutine samurai2plecut(numeval,nleg,rnk,Vi,msq,scale2,tot2sum,totr2sum,ok,cac
 			
 			call getbase(k1,k2,r1,r2,e1,e2,e3,e4)
 			
-                        if (rnk.lt.0) then
-                           rank=rank_numeval(cut2)
-                           if (rank.lt.0.or.(nleg-rank.ge.3)) cycle
-                        else
-                           rank=rnk
-                        endif
-
 			call getq2(nleg,rank,cut2,e1,e2,e3,e4,p0,k1,msq,q2,qt)
 			
 			if (iresc.eq.1) then
@@ -1036,16 +947,16 @@ subroutine samurai2plecut(numeval,nleg,rnk,Vi,msq,scale2,tot2sum,totr2sum,ok,cac
 		enddo
 		enddo
 		nc2=icut2-1
- 10 continue
+	endif
 end subroutine
 
-subroutine samurai1plecut(numeval,nleg,rnk,Vi,msq,scale2,tot1sum,ok,cache_flag,scalar_cache, cache_offset,rank_numeval)
+subroutine samurai1plecut(numeval,nleg,rank,Vi,msq,scale2,tot1sum,ok,cache_flag,scalar_cache, cache_offset)
 	use options, only: use_maccu
 	use maccu
 	use mgetc1
 	implicit none
 	
-	integer,                            intent(in ) :: nleg, rnk
+	integer,                            intent(in ) :: nleg, rank 
 	real(ki),    dimension(0:nleg-1,4), intent(in ) :: Vi
 	complex(ki), dimension(0:nleg-1),   intent(in ) :: msq
 	real(ki),                           intent(in ) :: scale2
@@ -1054,12 +965,10 @@ subroutine samurai1plecut(numeval,nleg,rnk,Vi,msq,scale2,tot1sum,ok,cache_flag,s
 	logical,     intent(inout), optional                    :: cache_flag
 	complex(ki), intent(inout), optional, dimension(-2:0,*) :: scalar_cache
 	integer,     intent(inout), optional                    :: cache_offset
-	optional :: rank_numeval
 	
 	type(accumulator_type), dimension(-2:0) :: acc_re, acc_im
 	type(accumulator_type) :: accr_re, accr_im
-
-        integer :: rank	
+	
 	integer :: i,j,k,ep,j1,icut1
 	integer :: cut1,n1
 	integer :: diff 
@@ -1087,39 +996,18 @@ subroutine samurai1plecut(numeval,nleg,rnk,Vi,msq,scale2,tot1sum,ok,cache_flag,s
 	   end function numeval
 	end interface
 	
-	interface
-	   function     rank_numeval(ncut)
-	     use precision
-	     implicit none
-	     integer,                   intent(in) :: ncut
-	     integer :: rank_numeval
-	   end function rank_numeval
-	end interface
-
 	complex(ki), dimension(-2:0) :: MI1
 
 	9011 format(A3,I1,A1,I2,A5,D24.15,A1,D24.15,A3)
 	9012 format(A3,I2,A1,I2,A7,D24.15,A1,D24.15,A3)
 
+	diff=nleg-rank
 	tot1sum  = czip
-
-        if (rnk.lt.0) goto 5
-
-
-	diff=nleg-rnk
 	if (diff.ge.2) then
 		do j=0,15
 		c1(j)=czip
 		enddo
-                goto 10
-        endif
-	
-
-
- 5      continue
-
-
-
+	else
 		icut1=1
 		do j1=0,nleg-1
 			
@@ -1144,13 +1032,6 @@ subroutine samurai1plecut(numeval,nleg,rnk,Vi,msq,scale2,tot1sum,ok,cache_flag,s
 			
 			call getbase(k1,k2,r1,r2,e1,e2,e3,e4)    
 			
-                        if (rnk.lt.0) then
-                           rank=rank_numeval(cut1)
-                           if (rank.lt.0.or.(nleg-rank.ge.2)) cycle
-                        else
-                           rank=rnk
-                        endif
-
 			call getq1(nleg,rank,cut1,e1,e2,e3,e4,p0,msq,q1,qt)
 			
 			if (iresc.eq.1) then
@@ -1194,7 +1075,7 @@ subroutine samurai1plecut(numeval,nleg,rnk,Vi,msq,scale2,tot1sum,ok,cache_flag,s
 			icut1=icut1+1
 		enddo
 		nc1=icut1-1
- 10      continue
+	endif
 end subroutine samurai1plecut
 
 

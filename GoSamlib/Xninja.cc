@@ -31,6 +31,11 @@ using namespace integral_library_wrapper;
 using namespace s_matrix_wrapper;
 
 
+namespace {
+  const Real CUTSTOLL = 1.0e-10;
+}
+
+
 namespace ninja {
 
 
@@ -59,8 +64,7 @@ namespace ninja {
     bool tests;
     bool local_test;
     bool global_test = Options::test & Test::GLOBAL;
-    
-    return_val = Amplitude::SUCCESS;
+    int ret = Amplitude::SUCCESS;
 
 
     ///////////////////
@@ -77,7 +81,6 @@ namespace ninja {
     // store the results
     if (anyPentagon) {
       evaluatePentagons(num, pentagons);
-      if (unstable_kinematics()) return return_val;
       if (Options::verb & Verbose::C5)
         print(pentagons);
     }
@@ -98,14 +101,12 @@ namespace ninja {
     if (anyBox) {
       if (tests || (Options::verb & Verbose::C4)) {
         evaluateFullBoxes(num, pentagons, boxes);
-        if (unstable_kinematics()) return return_val;
         if (Options::verb & Verbose::C4)
           print(boxes);
         if (local_test)
-          local4NeqNtests(num, pentagons, boxes);
+          ret = local4NeqNtests(num, pentagons, boxes) | ret;
       }
       else evaluateBoxes(num, pentagons, boxes);
-      if (unstable_kinematics()) return return_val;
     }
 
 
@@ -123,11 +124,10 @@ namespace ninja {
     // store the results
     if (anyTriangle) {
       evaluateTriangles(num, triangles);
-      if (unstable_kinematics()) return return_val;
       if (Options::verb & Verbose::C3)
         print(triangles);
       if (Options::test & Test::LOCAL_3)
-        local3NeqNtests(num, pentagons, boxes, triangles);
+        ret = local3NeqNtests(num, pentagons, boxes, triangles) | ret;
     }
 
 
@@ -145,11 +145,11 @@ namespace ninja {
     // store the results
     if (anyBubble) {
       evaluateBubbles(num, triangles, bubbles);
-      if (unstable_kinematics()) return return_val;
       if (Options::verb & Verbose::C2)
         print(bubbles);
       if (local_test)
-        local2NeqNtests(num, pentagons, boxes, triangles, bubbles);
+        ret = local2NeqNtests(num, pentagons, boxes, triangles,
+                              bubbles) | ret;
     }
 
 
@@ -168,14 +168,13 @@ namespace ninja {
     if (anyTadpole) {
       if (tests || (Options::verb & Verbose::C1)) {
         evaluateFullTadpoles(num, triangles, bubbles, tadpoles);
-        if (unstable_kinematics()) return return_val;
         if (Options::verb & Verbose::C1)
           print(tadpoles);
         if (local_test)
-          local1NeqNtests(num, pentagons, boxes, triangles, bubbles, tadpoles);
+          ret = local1NeqNtests(num, pentagons, boxes, triangles, bubbles,
+                                tadpoles) | ret;
       }
       else evaluateTadpoles(num, triangles, bubbles, tadpoles);
-      if (unstable_kinematics()) return return_val;
     }
 
 
@@ -270,14 +269,12 @@ namespace ninja {
           int i1 = (*i).p[0];
           int i2 = (*i).p[1];
           Real k = s_mat(i2,i1);
-          if ((m2[i1] == ZERO) && (m2[i2] == ZERO)
-              && taxicab_norm(k)<INFRARED_EPS)
+          if ((m2[i1] == ZERO) && (m2[i2] == ZERO) && taxicab_norm(k)<CUTSTOLL)
             continue;
           Complex b111[3];
           Complex b11[3], b1[3], b0[3];
-          Complex ke2 = mp(V[i2]-V[i1] ,(*i).e2);
 
-          if (taxicab_norm(abs((*i).c[13]*ke2*ke2*ke2))!=Real(0)) {
+          if (abs((*i).c[13])>Real(1.0e-9)) {
             //           Rank3BubbleIntegral(b111,k,m2[i1],m2[i2],b0);
             wrap_mis.getRank3BubbleIntegral(b111, b11, b1, b0,
                                             k, m2[i1], m2[i2]);
@@ -287,7 +284,7 @@ namespace ninja {
           }
 
           if (Options::verb & Verbose::INTEGRALS) {
-            if (taxicab_norm(abs((*i).c[13]*ke2*ke2*ke2))!=Real(0)) {
+            if (abs((*i).c[13])>Real(1.0e-9)) {
               (*Options::out) << "B111(" << i1 << "," << i2 << ") = "
                               << b111[0] << b111[1] << b111[2] << endl;
             }
@@ -299,6 +296,7 @@ namespace ninja {
                             << b0[0] << b0[1] << b0[2] << endl;
           }
 
+          Complex ke2 = mp(V[i2]-V[i1] ,(*i).e2);
           Complex B06 = -( k-THREE*(m2[i1]+m2[i2]) )/SIX;
           result_temp[0] += (*i).c[0]*b0[0] + (*i).c[1]*ke2*b1[0]
             + (*i).c[2]*ke2*ke2*b11[0] + (*i).c[13]*ke2*ke2*ke2*b111[0];
@@ -361,7 +359,7 @@ namespace ninja {
         (*Options::out) << "rat.   =" << rational_part_temp << endl;
         (*Options::out) << endl;
       }
-      if (return_val == Amplitude::SUCCESS) {
+      if (ret == Amplitude::SUCCESS) {
         (*Options::out) << "ninja::Amplitude is returning SUCCESS" << endl;
       } else {
         (*Options::out) << "ninja::Amplitude is returning TEST_FAILED" << endl;
@@ -370,7 +368,7 @@ namespace ninja {
                       << "----------------------------" << endl;
     }
 
-    return return_val;
+    return ret;
   }
 
   using namespace cuts_utils;

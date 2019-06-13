@@ -11,6 +11,8 @@
 
 namespace ninja {
 
+  const Real SPINOR_TOLLERANCE = 1.e-9;
+
   class Spinor;
 
   // Angle product <i,j>

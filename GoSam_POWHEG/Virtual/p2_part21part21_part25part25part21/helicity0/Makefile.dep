@@ -1,0 +1,462 @@
+# vim: ts=3:sw=3
+
+OBJEXT ?=o
+OBJEXTG=$(OBJEXT)
+# Module Dependencies:
+abbrevd5h0.$(OBJEXTG): globals.$(OBJEXTG)
+d5h0l1.$(OBJEXTG): abbrevd5h0.$(OBJEXTG)
+d5h0l1d.$(OBJEXTG): abbrevd5h0.$(OBJEXTG)
+abbrevd7h0.$(OBJEXTG): globals.$(OBJEXTG)
+d7h0l1.$(OBJEXTG): abbrevd7h0.$(OBJEXTG)
+d7h0l1d.$(OBJEXTG): abbrevd7h0.$(OBJEXTG)
+abbrevd9h0.$(OBJEXTG): globals.$(OBJEXTG)
+d9h0l1.$(OBJEXTG): abbrevd9h0.$(OBJEXTG)
+d9h0l1d.$(OBJEXTG): abbrevd9h0.$(OBJEXTG)
+abbrevd14h0.$(OBJEXTG): globals.$(OBJEXTG)
+d14h0l1.$(OBJEXTG): abbrevd14h0.$(OBJEXTG)
+d14h0l1d.$(OBJEXTG): abbrevd14h0.$(OBJEXTG)
+abbrevd16h0.$(OBJEXTG): globals.$(OBJEXTG)
+d16h0l1.$(OBJEXTG): abbrevd16h0.$(OBJEXTG)
+d16h0l1d.$(OBJEXTG): abbrevd16h0.$(OBJEXTG)
+abbrevd18h0.$(OBJEXTG): globals.$(OBJEXTG)
+d18h0l1.$(OBJEXTG): abbrevd18h0.$(OBJEXTG)
+d18h0l1d.$(OBJEXTG): abbrevd18h0.$(OBJEXTG)
+abbrevd29h0.$(OBJEXTG): globals.$(OBJEXTG)
+d29h0l1.$(OBJEXTG): abbrevd29h0.$(OBJEXTG)
+d29h0l1d.$(OBJEXTG): abbrevd29h0.$(OBJEXTG)
+abbrevd31h0.$(OBJEXTG): globals.$(OBJEXTG)
+d31h0l1.$(OBJEXTG): abbrevd31h0.$(OBJEXTG)
+d31h0l1d.$(OBJEXTG): abbrevd31h0.$(OBJEXTG)
+abbrevd33h0.$(OBJEXTG): globals.$(OBJEXTG)
+d33h0l1.$(OBJEXTG): abbrevd33h0.$(OBJEXTG)
+d33h0l1d.$(OBJEXTG): abbrevd33h0.$(OBJEXTG)
+abbrevd35h0.$(OBJEXTG): globals.$(OBJEXTG)
+d35h0l1.$(OBJEXTG): abbrevd35h0.$(OBJEXTG)
+d35h0l1d.$(OBJEXTG): abbrevd35h0.$(OBJEXTG)
+abbrevd37h0.$(OBJEXTG): globals.$(OBJEXTG)
+d37h0l1.$(OBJEXTG): abbrevd37h0.$(OBJEXTG)
+d37h0l1d.$(OBJEXTG): abbrevd37h0.$(OBJEXTG)
+abbrevd39h0.$(OBJEXTG): globals.$(OBJEXTG)
+d39h0l1.$(OBJEXTG): abbrevd39h0.$(OBJEXTG)
+d39h0l1d.$(OBJEXTG): abbrevd39h0.$(OBJEXTG)
+abbrevd41h0.$(OBJEXTG): globals.$(OBJEXTG)
+d41h0l1.$(OBJEXTG): abbrevd41h0.$(OBJEXTG)
+d41h0l1d.$(OBJEXTG): abbrevd41h0.$(OBJEXTG)
+abbrevd43h0.$(OBJEXTG): globals.$(OBJEXTG)
+d43h0l1.$(OBJEXTG): abbrevd43h0.$(OBJEXTG)
+d43h0l1d.$(OBJEXTG): abbrevd43h0.$(OBJEXTG)
+abbrevd45h0.$(OBJEXTG): globals.$(OBJEXTG)
+d45h0l1.$(OBJEXTG): abbrevd45h0.$(OBJEXTG)
+d45h0l1d.$(OBJEXTG): abbrevd45h0.$(OBJEXTG)
+abbrevd47h0.$(OBJEXTG): globals.$(OBJEXTG)
+d47h0l1.$(OBJEXTG): abbrevd47h0.$(OBJEXTG)
+d47h0l1d.$(OBJEXTG): abbrevd47h0.$(OBJEXTG)
+abbrevd49h0.$(OBJEXTG): globals.$(OBJEXTG)
+d49h0l1.$(OBJEXTG): abbrevd49h0.$(OBJEXTG)
+d49h0l1d.$(OBJEXTG): abbrevd49h0.$(OBJEXTG)
+abbrevd51h0.$(OBJEXTG): globals.$(OBJEXTG)
+d51h0l1.$(OBJEXTG): abbrevd51h0.$(OBJEXTG)
+d51h0l1d.$(OBJEXTG): abbrevd51h0.$(OBJEXTG)
+abbrevd59h0.$(OBJEXTG): globals.$(OBJEXTG)
+d59h0l1.$(OBJEXTG): abbrevd59h0.$(OBJEXTG)
+d59h0l1d.$(OBJEXTG): abbrevd59h0.$(OBJEXTG)
+abbrevd61h0.$(OBJEXTG): globals.$(OBJEXTG)
+d61h0l1.$(OBJEXTG): abbrevd61h0.$(OBJEXTG)
+d61h0l1d.$(OBJEXTG): abbrevd61h0.$(OBJEXTG)
+abbrevd63h0.$(OBJEXTG): globals.$(OBJEXTG)
+d63h0l1.$(OBJEXTG): abbrevd63h0.$(OBJEXTG)
+d63h0l1d.$(OBJEXTG): abbrevd63h0.$(OBJEXTG)
+abbrevd65h0.$(OBJEXTG): globals.$(OBJEXTG)
+d65h0l1.$(OBJEXTG): abbrevd65h0.$(OBJEXTG)
+d65h0l1d.$(OBJEXTG): abbrevd65h0.$(OBJEXTG)
+abbrevd67h0.$(OBJEXTG): globals.$(OBJEXTG)
+d67h0l1.$(OBJEXTG): abbrevd67h0.$(OBJEXTG)
+d67h0l1d.$(OBJEXTG): abbrevd67h0.$(OBJEXTG)
+abbrevd69h0.$(OBJEXTG): globals.$(OBJEXTG)
+d69h0l1.$(OBJEXTG): abbrevd69h0.$(OBJEXTG)
+d69h0l1d.$(OBJEXTG): abbrevd69h0.$(OBJEXTG)
+abbrevd71h0.$(OBJEXTG): globals.$(OBJEXTG)
+d71h0l1.$(OBJEXTG): abbrevd71h0.$(OBJEXTG)
+d71h0l1d.$(OBJEXTG): abbrevd71h0.$(OBJEXTG)
+abbrevd73h0.$(OBJEXTG): globals.$(OBJEXTG)
+d73h0l1.$(OBJEXTG): abbrevd73h0.$(OBJEXTG)
+d73h0l1d.$(OBJEXTG): abbrevd73h0.$(OBJEXTG)
+abbrevd75h0.$(OBJEXTG): globals.$(OBJEXTG)
+d75h0l1.$(OBJEXTG): abbrevd75h0.$(OBJEXTG)
+d75h0l1d.$(OBJEXTG): abbrevd75h0.$(OBJEXTG)
+abbrevd77h0.$(OBJEXTG): globals.$(OBJEXTG)
+d77h0l1.$(OBJEXTG): abbrevd77h0.$(OBJEXTG)
+d77h0l1d.$(OBJEXTG): abbrevd77h0.$(OBJEXTG)
+abbrevd79h0.$(OBJEXTG): globals.$(OBJEXTG)
+d79h0l1.$(OBJEXTG): abbrevd79h0.$(OBJEXTG)
+d79h0l1d.$(OBJEXTG): abbrevd79h0.$(OBJEXTG)
+abbrevd81h0.$(OBJEXTG): globals.$(OBJEXTG)
+d81h0l1.$(OBJEXTG): abbrevd81h0.$(OBJEXTG)
+d81h0l1d.$(OBJEXTG): abbrevd81h0.$(OBJEXTG)
+golem95h0.$(OBJEXTG):  \
+	d5h0l1.$(OBJEXTG) d5h0l1d.$(OBJEXTG) \
+	d7h0l1.$(OBJEXTG) d7h0l1d.$(OBJEXTG) \
+	d9h0l1.$(OBJEXTG) d9h0l1d.$(OBJEXTG) \
+	d14h0l1.$(OBJEXTG) d14h0l1d.$(OBJEXTG) \
+	d16h0l1.$(OBJEXTG) d16h0l1d.$(OBJEXTG) \
+	d18h0l1.$(OBJEXTG) d18h0l1d.$(OBJEXTG) \
+	d29h0l1.$(OBJEXTG) d29h0l1d.$(OBJEXTG) \
+	d31h0l1.$(OBJEXTG) d31h0l1d.$(OBJEXTG) \
+	d33h0l1.$(OBJEXTG) d33h0l1d.$(OBJEXTG) \
+	d35h0l1.$(OBJEXTG) d35h0l1d.$(OBJEXTG) \
+	d37h0l1.$(OBJEXTG) d37h0l1d.$(OBJEXTG) \
+	d39h0l1.$(OBJEXTG) d39h0l1d.$(OBJEXTG) \
+	d41h0l1.$(OBJEXTG) d41h0l1d.$(OBJEXTG) \
+	d43h0l1.$(OBJEXTG) d43h0l1d.$(OBJEXTG) \
+	d45h0l1.$(OBJEXTG) d45h0l1d.$(OBJEXTG) \
+	d47h0l1.$(OBJEXTG) d47h0l1d.$(OBJEXTG) \
+	d49h0l1.$(OBJEXTG) d49h0l1d.$(OBJEXTG) \
+	d51h0l1.$(OBJEXTG) d51h0l1d.$(OBJEXTG) \
+	d59h0l1.$(OBJEXTG) d59h0l1d.$(OBJEXTG) \
+	d61h0l1.$(OBJEXTG) d61h0l1d.$(OBJEXTG) \
+	d63h0l1.$(OBJEXTG) d63h0l1d.$(OBJEXTG) \
+	d65h0l1.$(OBJEXTG) d65h0l1d.$(OBJEXTG) \
+	d67h0l1.$(OBJEXTG) d67h0l1d.$(OBJEXTG) \
+	d69h0l1.$(OBJEXTG) d69h0l1d.$(OBJEXTG) \
+	d71h0l1.$(OBJEXTG) d71h0l1d.$(OBJEXTG) \
+	d73h0l1.$(OBJEXTG) d73h0l1d.$(OBJEXTG) \
+	d75h0l1.$(OBJEXTG) d75h0l1d.$(OBJEXTG) \
+	d77h0l1.$(OBJEXTG) d77h0l1d.$(OBJEXTG) \
+	d79h0l1.$(OBJEXTG) d79h0l1d.$(OBJEXTG) \
+	d81h0l1.$(OBJEXTG) d81h0l1d.$(OBJEXTG)
+ninjah0.$(OBJEXTG):  \
+	d5h0l1.$(OBJEXTG) d5h0l131.$(OBJEXTG) d5h0l132.$(OBJEXTG) d5h0l121.$(OBJEXTG) \
+	d7h0l1.$(OBJEXTG) d7h0l131.$(OBJEXTG) d7h0l132.$(OBJEXTG) d7h0l121.$(OBJEXTG) \
+	d9h0l1.$(OBJEXTG) d9h0l131.$(OBJEXTG) d9h0l132.$(OBJEXTG) d9h0l121.$(OBJEXTG) \
+	d14h0l1.$(OBJEXTG) d14h0l131.$(OBJEXTG) d14h0l132.$(OBJEXTG) d14h0l121.$(OBJEXTG) \
+	d16h0l1.$(OBJEXTG) d16h0l131.$(OBJEXTG) d16h0l132.$(OBJEXTG) d16h0l121.$(OBJEXTG) \
+	d18h0l1.$(OBJEXTG) d18h0l131.$(OBJEXTG) d18h0l132.$(OBJEXTG) d18h0l121.$(OBJEXTG) \
+	d29h0l1.$(OBJEXTG) d29h0l131.$(OBJEXTG) d29h0l132.$(OBJEXTG) d29h0l121.$(OBJEXTG) \
+	d31h0l1.$(OBJEXTG) d31h0l131.$(OBJEXTG) d31h0l132.$(OBJEXTG) d31h0l121.$(OBJEXTG) \
+	d33h0l1.$(OBJEXTG) d33h0l131.$(OBJEXTG) d33h0l132.$(OBJEXTG) d33h0l121.$(OBJEXTG) \
+	d35h0l1.$(OBJEXTG) d35h0l131.$(OBJEXTG) d35h0l132.$(OBJEXTG) d35h0l121.$(OBJEXTG) \
+	d37h0l1.$(OBJEXTG) d37h0l131.$(OBJEXTG) d37h0l132.$(OBJEXTG) d37h0l121.$(OBJEXTG) \
+	d39h0l1.$(OBJEXTG) d39h0l131.$(OBJEXTG) d39h0l132.$(OBJEXTG) d39h0l121.$(OBJEXTG) \
+	d41h0l1.$(OBJEXTG) d41h0l131.$(OBJEXTG) d41h0l132.$(OBJEXTG) d41h0l121.$(OBJEXTG) \
+	d43h0l1.$(OBJEXTG) d43h0l131.$(OBJEXTG) d43h0l132.$(OBJEXTG) d43h0l121.$(OBJEXTG) \
+	d45h0l1.$(OBJEXTG) d45h0l131.$(OBJEXTG) d45h0l132.$(OBJEXTG) d45h0l121.$(OBJEXTG) \
+	d47h0l1.$(OBJEXTG) d47h0l131.$(OBJEXTG) d47h0l132.$(OBJEXTG) d47h0l121.$(OBJEXTG) \
+	d49h0l1.$(OBJEXTG) d49h0l131.$(OBJEXTG) d49h0l132.$(OBJEXTG) d49h0l121.$(OBJEXTG) \
+	d51h0l1.$(OBJEXTG) d51h0l131.$(OBJEXTG) d51h0l132.$(OBJEXTG) d51h0l121.$(OBJEXTG) \
+	d59h0l1.$(OBJEXTG) d59h0l131.$(OBJEXTG) d59h0l132.$(OBJEXTG) d59h0l121.$(OBJEXTG) \
+	d61h0l1.$(OBJEXTG) d61h0l131.$(OBJEXTG) d61h0l132.$(OBJEXTG) d61h0l121.$(OBJEXTG) \
+	d63h0l1.$(OBJEXTG) d63h0l131.$(OBJEXTG) d63h0l132.$(OBJEXTG) d63h0l121.$(OBJEXTG) \
+	d65h0l1.$(OBJEXTG) d65h0l131.$(OBJEXTG) d65h0l132.$(OBJEXTG) d65h0l121.$(OBJEXTG) \
+	d67h0l1.$(OBJEXTG) d67h0l131.$(OBJEXTG) d67h0l132.$(OBJEXTG) d67h0l121.$(OBJEXTG) \
+	d69h0l1.$(OBJEXTG) d69h0l131.$(OBJEXTG) d69h0l132.$(OBJEXTG) d69h0l121.$(OBJEXTG) \
+	d71h0l1.$(OBJEXTG) d71h0l131.$(OBJEXTG) d71h0l132.$(OBJEXTG) d71h0l121.$(OBJEXTG) \
+	d73h0l1.$(OBJEXTG) d73h0l131.$(OBJEXTG) d73h0l132.$(OBJEXTG) d73h0l121.$(OBJEXTG) \
+	d75h0l1.$(OBJEXTG) d75h0l131.$(OBJEXTG) d75h0l132.$(OBJEXTG) d75h0l121.$(OBJEXTG) \
+	d77h0l1.$(OBJEXTG) d77h0l131.$(OBJEXTG) d77h0l132.$(OBJEXTG) d77h0l121.$(OBJEXTG) \
+	d79h0l1.$(OBJEXTG) d79h0l131.$(OBJEXTG) d79h0l132.$(OBJEXTG) d79h0l121.$(OBJEXTG) \
+	d81h0l1.$(OBJEXTG) d81h0l131.$(OBJEXTG) d81h0l132.$(OBJEXTG) d81h0l121.$(OBJEXTG)
+d5h0l131.$(OBJEXTG): abbrevd5h0.$(OBJEXTG)
+d5h0l132.$(OBJEXTG): abbrevd5h0.$(OBJEXTG)
+d5h0l121.$(OBJEXTG): abbrevd5h0.$(OBJEXTG)
+d7h0l131.$(OBJEXTG): abbrevd7h0.$(OBJEXTG)
+d7h0l132.$(OBJEXTG): abbrevd7h0.$(OBJEXTG)
+d7h0l121.$(OBJEXTG): abbrevd7h0.$(OBJEXTG)
+d9h0l131.$(OBJEXTG): abbrevd9h0.$(OBJEXTG)
+d9h0l132.$(OBJEXTG): abbrevd9h0.$(OBJEXTG)
+d9h0l121.$(OBJEXTG): abbrevd9h0.$(OBJEXTG)
+d14h0l131.$(OBJEXTG): abbrevd14h0.$(OBJEXTG)
+d14h0l132.$(OBJEXTG): abbrevd14h0.$(OBJEXTG)
+d14h0l121.$(OBJEXTG): abbrevd14h0.$(OBJEXTG)
+d16h0l131.$(OBJEXTG): abbrevd16h0.$(OBJEXTG)
+d16h0l132.$(OBJEXTG): abbrevd16h0.$(OBJEXTG)
+d16h0l121.$(OBJEXTG): abbrevd16h0.$(OBJEXTG)
+d18h0l131.$(OBJEXTG): abbrevd18h0.$(OBJEXTG)
+d18h0l132.$(OBJEXTG): abbrevd18h0.$(OBJEXTG)
+d18h0l121.$(OBJEXTG): abbrevd18h0.$(OBJEXTG)
+d29h0l131.$(OBJEXTG): abbrevd29h0.$(OBJEXTG)
+d29h0l132.$(OBJEXTG): abbrevd29h0.$(OBJEXTG)
+d29h0l121.$(OBJEXTG): abbrevd29h0.$(OBJEXTG)
+d31h0l131.$(OBJEXTG): abbrevd31h0.$(OBJEXTG)
+d31h0l132.$(OBJEXTG): abbrevd31h0.$(OBJEXTG)
+d31h0l121.$(OBJEXTG): abbrevd31h0.$(OBJEXTG)
+d33h0l131.$(OBJEXTG): abbrevd33h0.$(OBJEXTG)
+d33h0l132.$(OBJEXTG): abbrevd33h0.$(OBJEXTG)
+d33h0l121.$(OBJEXTG): abbrevd33h0.$(OBJEXTG)
+d35h0l131.$(OBJEXTG): abbrevd35h0.$(OBJEXTG)
+d35h0l132.$(OBJEXTG): abbrevd35h0.$(OBJEXTG)
+d35h0l121.$(OBJEXTG): abbrevd35h0.$(OBJEXTG)
+d37h0l131.$(OBJEXTG): abbrevd37h0.$(OBJEXTG)
+d37h0l132.$(OBJEXTG): abbrevd37h0.$(OBJEXTG)
+d37h0l121.$(OBJEXTG): abbrevd37h0.$(OBJEXTG)
+d39h0l131.$(OBJEXTG): abbrevd39h0.$(OBJEXTG)
+d39h0l132.$(OBJEXTG): abbrevd39h0.$(OBJEXTG)
+d39h0l121.$(OBJEXTG): abbrevd39h0.$(OBJEXTG)
+d41h0l131.$(OBJEXTG): abbrevd41h0.$(OBJEXTG)
+d41h0l132.$(OBJEXTG): abbrevd41h0.$(OBJEXTG)
+d41h0l121.$(OBJEXTG): abbrevd41h0.$(OBJEXTG)
+d43h0l131.$(OBJEXTG): abbrevd43h0.$(OBJEXTG)
+d43h0l132.$(OBJEXTG): abbrevd43h0.$(OBJEXTG)
+d43h0l121.$(OBJEXTG): abbrevd43h0.$(OBJEXTG)
+d45h0l131.$(OBJEXTG): abbrevd45h0.$(OBJEXTG)
+d45h0l132.$(OBJEXTG): abbrevd45h0.$(OBJEXTG)
+d45h0l121.$(OBJEXTG): abbrevd45h0.$(OBJEXTG)
+d47h0l131.$(OBJEXTG): abbrevd47h0.$(OBJEXTG)
+d47h0l132.$(OBJEXTG): abbrevd47h0.$(OBJEXTG)
+d47h0l121.$(OBJEXTG): abbrevd47h0.$(OBJEXTG)
+d49h0l131.$(OBJEXTG): abbrevd49h0.$(OBJEXTG)
+d49h0l132.$(OBJEXTG): abbrevd49h0.$(OBJEXTG)
+d49h0l121.$(OBJEXTG): abbrevd49h0.$(OBJEXTG)
+d51h0l131.$(OBJEXTG): abbrevd51h0.$(OBJEXTG)
+d51h0l132.$(OBJEXTG): abbrevd51h0.$(OBJEXTG)
+d51h0l121.$(OBJEXTG): abbrevd51h0.$(OBJEXTG)
+d59h0l131.$(OBJEXTG): abbrevd59h0.$(OBJEXTG)
+d59h0l132.$(OBJEXTG): abbrevd59h0.$(OBJEXTG)
+d59h0l121.$(OBJEXTG): abbrevd59h0.$(OBJEXTG)
+d61h0l131.$(OBJEXTG): abbrevd61h0.$(OBJEXTG)
+d61h0l132.$(OBJEXTG): abbrevd61h0.$(OBJEXTG)
+d61h0l121.$(OBJEXTG): abbrevd61h0.$(OBJEXTG)
+d63h0l131.$(OBJEXTG): abbrevd63h0.$(OBJEXTG)
+d63h0l132.$(OBJEXTG): abbrevd63h0.$(OBJEXTG)
+d63h0l121.$(OBJEXTG): abbrevd63h0.$(OBJEXTG)
+d65h0l131.$(OBJEXTG): abbrevd65h0.$(OBJEXTG)
+d65h0l132.$(OBJEXTG): abbrevd65h0.$(OBJEXTG)
+d65h0l121.$(OBJEXTG): abbrevd65h0.$(OBJEXTG)
+d67h0l131.$(OBJEXTG): abbrevd67h0.$(OBJEXTG)
+d67h0l132.$(OBJEXTG): abbrevd67h0.$(OBJEXTG)
+d67h0l121.$(OBJEXTG): abbrevd67h0.$(OBJEXTG)
+d69h0l131.$(OBJEXTG): abbrevd69h0.$(OBJEXTG)
+d69h0l132.$(OBJEXTG): abbrevd69h0.$(OBJEXTG)
+d69h0l121.$(OBJEXTG): abbrevd69h0.$(OBJEXTG)
+d71h0l131.$(OBJEXTG): abbrevd71h0.$(OBJEXTG)
+d71h0l132.$(OBJEXTG): abbrevd71h0.$(OBJEXTG)
+d71h0l121.$(OBJEXTG): abbrevd71h0.$(OBJEXTG)
+d73h0l131.$(OBJEXTG): abbrevd73h0.$(OBJEXTG)
+d73h0l132.$(OBJEXTG): abbrevd73h0.$(OBJEXTG)
+d73h0l121.$(OBJEXTG): abbrevd73h0.$(OBJEXTG)
+d75h0l131.$(OBJEXTG): abbrevd75h0.$(OBJEXTG)
+d75h0l132.$(OBJEXTG): abbrevd75h0.$(OBJEXTG)
+d75h0l121.$(OBJEXTG): abbrevd75h0.$(OBJEXTG)
+d77h0l131.$(OBJEXTG): abbrevd77h0.$(OBJEXTG)
+d77h0l132.$(OBJEXTG): abbrevd77h0.$(OBJEXTG)
+d77h0l121.$(OBJEXTG): abbrevd77h0.$(OBJEXTG)
+d79h0l131.$(OBJEXTG): abbrevd79h0.$(OBJEXTG)
+d79h0l132.$(OBJEXTG): abbrevd79h0.$(OBJEXTG)
+d79h0l121.$(OBJEXTG): abbrevd79h0.$(OBJEXTG)
+d81h0l131.$(OBJEXTG): abbrevd81h0.$(OBJEXTG)
+d81h0l132.$(OBJEXTG): abbrevd81h0.$(OBJEXTG)
+d81h0l121.$(OBJEXTG): abbrevd81h0.$(OBJEXTG)
+amplitudeh0.$(OBJEXTG): globals.$(OBJEXTG) golem95h0.$(OBJEXTG) ninjah0.$(OBJEXTG) \
+			abbrevd5h0.$(OBJEXTG) \
+			abbrevd7h0.$(OBJEXTG) \
+			abbrevd9h0.$(OBJEXTG) \
+			abbrevd14h0.$(OBJEXTG) \
+			abbrevd16h0.$(OBJEXTG) \
+			abbrevd18h0.$(OBJEXTG) \
+			abbrevd29h0.$(OBJEXTG) \
+			abbrevd31h0.$(OBJEXTG) \
+			abbrevd33h0.$(OBJEXTG) \
+			abbrevd35h0.$(OBJEXTG) \
+			abbrevd37h0.$(OBJEXTG) \
+			abbrevd39h0.$(OBJEXTG) \
+			abbrevd41h0.$(OBJEXTG) \
+			abbrevd43h0.$(OBJEXTG) \
+			abbrevd45h0.$(OBJEXTG) \
+			abbrevd47h0.$(OBJEXTG) \
+			abbrevd49h0.$(OBJEXTG) \
+			abbrevd51h0.$(OBJEXTG) \
+			abbrevd59h0.$(OBJEXTG) \
+			abbrevd61h0.$(OBJEXTG) \
+			abbrevd63h0.$(OBJEXTG) \
+			abbrevd65h0.$(OBJEXTG) \
+			abbrevd67h0.$(OBJEXTG) \
+			abbrevd69h0.$(OBJEXTG) \
+			abbrevd71h0.$(OBJEXTG) \
+			abbrevd73h0.$(OBJEXTG) \
+			abbrevd75h0.$(OBJEXTG) \
+			abbrevd77h0.$(OBJEXTG) \
+			abbrevd79h0.$(OBJEXTG) \
+			abbrevd81h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_golem95h0.mod: golem95h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_ninjah0.mod: ninjah0.$(OBJEXTG) 
+p2_part21part21_part25part25part21_d5h0l131.mod: d5h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d5h0l132.mod: d5h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d5h0l121.mod: d5h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d7h0l131.mod: d7h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d7h0l132.mod: d7h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d7h0l121.mod: d7h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d9h0l131.mod: d9h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d9h0l132.mod: d9h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d9h0l121.mod: d9h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d14h0l131.mod: d14h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d14h0l132.mod: d14h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d14h0l121.mod: d14h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d16h0l131.mod: d16h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d16h0l132.mod: d16h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d16h0l121.mod: d16h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d18h0l131.mod: d18h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d18h0l132.mod: d18h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d18h0l121.mod: d18h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d29h0l131.mod: d29h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d29h0l132.mod: d29h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d29h0l121.mod: d29h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d31h0l131.mod: d31h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d31h0l132.mod: d31h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d31h0l121.mod: d31h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d33h0l131.mod: d33h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d33h0l132.mod: d33h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d33h0l121.mod: d33h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d35h0l131.mod: d35h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d35h0l132.mod: d35h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d35h0l121.mod: d35h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d37h0l131.mod: d37h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d37h0l132.mod: d37h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d37h0l121.mod: d37h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d39h0l131.mod: d39h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d39h0l132.mod: d39h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d39h0l121.mod: d39h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d41h0l131.mod: d41h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d41h0l132.mod: d41h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d41h0l121.mod: d41h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d43h0l131.mod: d43h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d43h0l132.mod: d43h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d43h0l121.mod: d43h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d45h0l131.mod: d45h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d45h0l132.mod: d45h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d45h0l121.mod: d45h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d47h0l131.mod: d47h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d47h0l132.mod: d47h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d47h0l121.mod: d47h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d49h0l131.mod: d49h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d49h0l132.mod: d49h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d49h0l121.mod: d49h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d51h0l131.mod: d51h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d51h0l132.mod: d51h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d51h0l121.mod: d51h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d59h0l131.mod: d59h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d59h0l132.mod: d59h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d59h0l121.mod: d59h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d61h0l131.mod: d61h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d61h0l132.mod: d61h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d61h0l121.mod: d61h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d63h0l131.mod: d63h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d63h0l132.mod: d63h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d63h0l121.mod: d63h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d65h0l131.mod: d65h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d65h0l132.mod: d65h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d65h0l121.mod: d65h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d67h0l131.mod: d67h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d67h0l132.mod: d67h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d67h0l121.mod: d67h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d69h0l131.mod: d69h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d69h0l132.mod: d69h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d69h0l121.mod: d69h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d71h0l131.mod: d71h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d71h0l132.mod: d71h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d71h0l121.mod: d71h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d73h0l131.mod: d73h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d73h0l132.mod: d73h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d73h0l121.mod: d73h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d75h0l131.mod: d75h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d75h0l132.mod: d75h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d75h0l121.mod: d75h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d77h0l131.mod: d77h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d77h0l132.mod: d77h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d77h0l121.mod: d77h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d79h0l131.mod: d79h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d79h0l132.mod: d79h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d79h0l121.mod: d79h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_d81h0l131.mod: d81h0l131.$(OBJEXTG)
+p2_part21part21_part25part25part21_d81h0l132.mod: d81h0l132.$(OBJEXTG)
+p2_part21part21_part25part25part21_d81h0l121.mod: d81h0l121.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd5h0.mod: abbrevd5h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d5h0l1.mod: d5h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d5h0l1d.mod: d5h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd7h0.mod: abbrevd7h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d7h0l1.mod: d7h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d7h0l1d.mod: d7h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd9h0.mod: abbrevd9h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d9h0l1.mod: d9h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d9h0l1d.mod: d9h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd14h0.mod: abbrevd14h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d14h0l1.mod: d14h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d14h0l1d.mod: d14h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd16h0.mod: abbrevd16h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d16h0l1.mod: d16h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d16h0l1d.mod: d16h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd18h0.mod: abbrevd18h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d18h0l1.mod: d18h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d18h0l1d.mod: d18h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd29h0.mod: abbrevd29h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d29h0l1.mod: d29h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d29h0l1d.mod: d29h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd31h0.mod: abbrevd31h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d31h0l1.mod: d31h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d31h0l1d.mod: d31h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd33h0.mod: abbrevd33h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d33h0l1.mod: d33h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d33h0l1d.mod: d33h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd35h0.mod: abbrevd35h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d35h0l1.mod: d35h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d35h0l1d.mod: d35h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd37h0.mod: abbrevd37h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d37h0l1.mod: d37h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d37h0l1d.mod: d37h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd39h0.mod: abbrevd39h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d39h0l1.mod: d39h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d39h0l1d.mod: d39h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd41h0.mod: abbrevd41h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d41h0l1.mod: d41h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d41h0l1d.mod: d41h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd43h0.mod: abbrevd43h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d43h0l1.mod: d43h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d43h0l1d.mod: d43h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd45h0.mod: abbrevd45h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d45h0l1.mod: d45h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d45h0l1d.mod: d45h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd47h0.mod: abbrevd47h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d47h0l1.mod: d47h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d47h0l1d.mod: d47h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd49h0.mod: abbrevd49h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d49h0l1.mod: d49h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d49h0l1d.mod: d49h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd51h0.mod: abbrevd51h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d51h0l1.mod: d51h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d51h0l1d.mod: d51h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd59h0.mod: abbrevd59h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d59h0l1.mod: d59h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d59h0l1d.mod: d59h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd61h0.mod: abbrevd61h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d61h0l1.mod: d61h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d61h0l1d.mod: d61h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd63h0.mod: abbrevd63h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d63h0l1.mod: d63h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d63h0l1d.mod: d63h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd65h0.mod: abbrevd65h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d65h0l1.mod: d65h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d65h0l1d.mod: d65h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd67h0.mod: abbrevd67h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d67h0l1.mod: d67h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d67h0l1d.mod: d67h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd69h0.mod: abbrevd69h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d69h0l1.mod: d69h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d69h0l1d.mod: d69h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd71h0.mod: abbrevd71h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d71h0l1.mod: d71h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d71h0l1d.mod: d71h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd73h0.mod: abbrevd73h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d73h0l1.mod: d73h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d73h0l1d.mod: d73h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd75h0.mod: abbrevd75h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d75h0l1.mod: d75h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d75h0l1d.mod: d75h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd77h0.mod: abbrevd77h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d77h0l1.mod: d77h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d77h0l1d.mod: d77h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd79h0.mod: abbrevd79h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d79h0l1.mod: d79h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d79h0l1d.mod: d79h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_abbrevd81h0.mod: abbrevd81h0.$(OBJEXTG)
+p2_part21part21_part25part25part21_d81h0l1.mod: d81h0l1.$(OBJEXTG)
+p2_part21part21_part25part25part21_d81h0l1d.mod: d81h0l1d.$(OBJEXTG)
+p2_part21part21_part25part25part21_amplitudeh0.mod: amplitudeh0.$(OBJEXTG)
+p2_part21part21_part25part25part21_globalsh0.mod: globals.$(OBJEXTG)

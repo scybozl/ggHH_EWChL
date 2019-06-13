@@ -1,0 +1,266 @@
+% vim: syntax=none
+
+% This file has been generated from the FeynRule model files
+% in /ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/EWChL_UFO
+[ model = 'EWChL_UFO' ]
+
+[ fmrules = 'EWChL_UFO' ]
+
+%---#[ Propagators:
+% a -- a Propagator (PDG: 22)
+[part22,part22,+, notadpole;TWOSPIN='2',COLOR='1',
+    MASS='0', WIDTH='0',
+    AUX='+0', CONJ=('+')]
+% Z -- Z Propagator (PDG: 23)
+[part23,part23,+;TWOSPIN='2',COLOR='1',
+    MASS='mdlMZ', WIDTH='mdlWZ',
+    AUX='+0', CONJ=('+')]
+% W+ -- W- Propagator (PDG: 24)
+[part24,anti24,+;TWOSPIN='2',COLOR='1',
+    MASS='mdlMW', WIDTH='mdlWW',
+    AUX='+0', CONJ=('+','+')]
+% g -- g Propagator (PDG: 21)
+[part21,part21,+, notadpole;TWOSPIN='2',COLOR='8',
+    MASS='0', WIDTH='0',
+    AUX='+0', CONJ=('+')]
+% ghA -- ghA~ Propagator (PDG: 9000001)
+[part9000001,anti9000001,-, notadpole;TWOSPIN='0',COLOR='1',
+    MASS='0', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% ghZ -- ghZ~ Propagator (PDG: 9000002)
+[part9000002,anti9000002,-;TWOSPIN='0',COLOR='1',
+    MASS='mdlMZ', WIDTH='mdlWZ',
+    AUX='+0', CONJ=('+','-')]
+% ghWp -- ghWp~ Propagator (PDG: 9000003)
+[part9000003,anti9000003,-;TWOSPIN='0',COLOR='1',
+    MASS='mdlMW', WIDTH='mdlWW',
+    AUX='+0', CONJ=('+','-')]
+% ghWm -- ghWm~ Propagator (PDG: 9000004)
+[part9000004,anti9000004,-;TWOSPIN='0',COLOR='1',
+    MASS='mdlMW', WIDTH='mdlWW',
+    AUX='+0', CONJ=('+','-')]
+% ghG -- ghG~ Propagator (PDG: 9000005)
+[part9000005,anti9000005,-, notadpole;TWOSPIN='0',COLOR='8',
+    MASS='0', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% ve -- ve~ Propagator (PDG: 12)
+[part12,anti12,-;TWOSPIN='1',COLOR='1',
+    MASS='0', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% vm -- vm~ Propagator (PDG: 14)
+[part14,anti14,-;TWOSPIN='1',COLOR='1',
+    MASS='0', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% vt -- vt~ Propagator (PDG: 16)
+[part16,anti16,-;TWOSPIN='1',COLOR='1',
+    MASS='0', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% e- -- e+ Propagator (PDG: 11)
+[part11,anti11,-;TWOSPIN='1',COLOR='1',
+    MASS='mdlMe', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% mu- -- mu+ Propagator (PDG: 13)
+[part13,anti13,-;TWOSPIN='1',COLOR='1',
+    MASS='mdlMMU', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% ta- -- ta+ Propagator (PDG: 15)
+[part15,anti15,-;TWOSPIN='1',COLOR='1',
+    MASS='mdlMTA', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% u -- u~ Propagator (PDG: 2)
+[part2,anti2,-;TWOSPIN='1',COLOR='3',
+    MASS='mdlMU', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% c -- c~ Propagator (PDG: 4)
+[part4,anti4,-;TWOSPIN='1',COLOR='3',
+    MASS='mdlMC', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% t -- t~ Propagator (PDG: 6)
+[part6,anti6,-;TWOSPIN='1',COLOR='3',
+    MASS='mdlMT', WIDTH='mdlWT',
+    AUX='+0', CONJ=('+','-')]
+% d -- d~ Propagator (PDG: 1)
+[part1,anti1,-;TWOSPIN='1',COLOR='3',
+    MASS='mdlMD', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% s -- s~ Propagator (PDG: 3)
+[part3,anti3,-;TWOSPIN='1',COLOR='3',
+    MASS='mdlMS', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% b -- b~ Propagator (PDG: 5)
+[part5,anti5,-;TWOSPIN='1',COLOR='3',
+    MASS='mdlMB', WIDTH='0',
+    AUX='+0', CONJ=('+','-')]
+% G0 -- G0 Propagator (PDG: 250)
+[part250,part250,+;TWOSPIN='0',COLOR='1',
+    MASS='mdlMZ', WIDTH='mdlWZ',
+    AUX='+0', CONJ=('+')]
+% G+ -- G- Propagator (PDG: 251)
+[part251,anti251,+;TWOSPIN='0',COLOR='1',
+    MASS='mdlMW', WIDTH='mdlWW',
+    AUX='+0', CONJ=('+','-')]
+% h -- h Propagator (PDG: 25)
+[part25,part25,+;TWOSPIN='0',COLOR='1',
+    MASS='mdlMh', WIDTH='mdlWh',
+    AUX='+0', CONJ=('+')]
+%---#] Propagators:
+%---#[ Vertices:
+% V_1: h -- h -- h -- h Vertex
+[part25,part25,part25,part25;QED='1',QCD='0',QL='0',RK='0']
+% V_2: h -- h -- h Vertex
+[part25,part25,part25;QED='1',QCD='0',QL='0',RK='0']
+% V_3: b~ -- b -- h Vertex
+[part5,anti5,part25;QED='1',QCD='0',QL='0',RK='0']
+% V_4: a -- a -- h Vertex
+[part22,part22,part25;QED='2',QCD='0',QL='1',RK='2']
+% V_5: g -- g -- h -- h Vertex
+[part21,part21,part25,part25;QED='2',QCD='2',QL='1',RK='2']
+% V_6: g -- g -- h Vertex
+[part21,part21,part25;QED='1',QCD='2',QL='1',RK='2']
+% V_7: a -- Z -- h Vertex
+[part22,part23,part25;QED='2',QCD='0',QL='1',RK='2']
+% V_8: ghG -- ghG~ -- g Vertex
+[anti9000005,part9000005,part21;QED='0',QCD='1',QL='0',RK='1']
+% V_9: g -- g -- g Vertex
+[part21,part21,part21;QED='0',QCD='1',QL='0',RK='1']
+% V_10: g -- g -- g -- g Vertex
+[part21,part21,part21,part21;QED='0',QCD='2',QL='0',RK='0']
+% V_11: g -- g -- g -- h Vertex
+[part21,part21,part21,part25;QED='1',QCD='3',QL='1',RK='1']
+% V_12: g -- g -- g -- g -- h Vertex
+[part21,part21,part21,part21,part25;QED='1',QCD='4',QL='1',RK='0']
+% V_13: g -- g -- g -- h -- h Vertex
+[part21,part21,part21,part25,part25;QED='2',QCD='3',QL='1',RK='1']
+% V_14: g -- g -- g -- g -- h -- h Vertex
+[part21,part21,part21,part21,part25,part25;QED='2',QCD='4',QL='1',
+RK='0']
+% V_15: ta+ -- ta- -- h Vertex
+[part15,anti15,part25;QED='1',QCD='0',QL='0',RK='0']
+% V_16: t~ -- t -- h Vertex
+[part6,anti6,part25;QED='1',QCD='0',QL='0',RK='0']
+% V_17: t~ -- t -- h -- h Vertex
+[part6,anti6,part25,part25;QED='2',QCD='0',QL='0',RK='0']
+% V_18: a -- W- -- W+ Vertex
+[part22,part24,anti24;QED='1',QCD='0',QL='0',RK='1']
+% V_19: W- -- W+ -- h -- h Vertex
+[part24,anti24,part25,part25;QED='1',QCD='0',QL='0',RK='0']
+% V_20: W- -- W+ -- h Vertex
+[part24,anti24,part25;QED='1',QCD='0',QL='0',RK='0']
+% V_21: a -- a -- W- -- W+ Vertex
+[part22,part22,part24,anti24;QED='2',QCD='0',QL='0',RK='0']
+% V_22: W- -- W+ -- Z Vertex
+[part24,anti24,part23;QED='1',QCD='0',QL='0',RK='1']
+% V_23: W- -- W- -- W+ -- W+ Vertex
+[part24,part24,anti24,anti24;QED='2',QCD='0',QL='0',RK='0']
+% V_24: a -- W- -- W+ -- Z Vertex
+[part22,part24,anti24,part23;QED='2',QCD='0',QL='0',RK='0']
+% V_25: Z -- Z -- h -- h Vertex
+[part23,part23,part25,part25;QED='1',QCD='0',QL='0',RK='0']
+% V_26: Z -- Z -- h Vertex
+[part23,part23,part25;QED='1',QCD='0',QL='0',RK='0']
+% V_27: W- -- W+ -- Z -- Z Vertex
+[part24,anti24,part23,part23;QED='2',QCD='0',QL='0',RK='0']
+% V_28: e+ -- e- -- a Vertex
+[part11,anti11,part22;QED='1',QCD='0',QL='0',RK='0']
+% V_29: mu+ -- mu- -- a Vertex
+[part13,anti13,part22;QED='1',QCD='0',QL='0',RK='0']
+% V_30: ta+ -- ta- -- a Vertex
+[part15,anti15,part22;QED='1',QCD='0',QL='0',RK='0']
+% V_31: u~ -- u -- a Vertex
+[part2,anti2,part22;QED='1',QCD='0',QL='0',RK='0']
+% V_32: c~ -- c -- a Vertex
+[part4,anti4,part22;QED='1',QCD='0',QL='0',RK='0']
+% V_33: t~ -- t -- a Vertex
+[part6,anti6,part22;QED='1',QCD='0',QL='0',RK='0']
+% V_34: d~ -- d -- a Vertex
+[part1,anti1,part22;QED='1',QCD='0',QL='0',RK='0']
+% V_35: s~ -- s -- a Vertex
+[part3,anti3,part22;QED='1',QCD='0',QL='0',RK='0']
+% V_36: b~ -- b -- a Vertex
+[part5,anti5,part22;QED='1',QCD='0',QL='0',RK='0']
+% V_37: u~ -- u -- g Vertex
+[part2,anti2,part21;QED='0',QCD='1',QL='0',RK='0']
+% V_38: c~ -- c -- g Vertex
+[part4,anti4,part21;QED='0',QCD='1',QL='0',RK='0']
+% V_39: t~ -- t -- g Vertex
+[part6,anti6,part21;QED='0',QCD='1',QL='0',RK='0']
+% V_40: d~ -- d -- g Vertex
+[part1,anti1,part21;QED='0',QCD='1',QL='0',RK='0']
+% V_41: s~ -- s -- g Vertex
+[part3,anti3,part21;QED='0',QCD='1',QL='0',RK='0']
+% V_42: b~ -- b -- g Vertex
+[part5,anti5,part21;QED='0',QCD='1',QL='0',RK='0']
+% V_43: d~ -- u -- W- Vertex
+[part1,anti2,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_44: s~ -- u -- W- Vertex
+[part3,anti2,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_45: b~ -- u -- W- Vertex
+[part5,anti2,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_46: d~ -- c -- W- Vertex
+[part1,anti4,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_47: s~ -- c -- W- Vertex
+[part3,anti4,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_48: b~ -- c -- W- Vertex
+[part5,anti4,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_49: d~ -- t -- W- Vertex
+[part1,anti6,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_50: s~ -- t -- W- Vertex
+[part3,anti6,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_51: b~ -- t -- W- Vertex
+[part5,anti6,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_52: u~ -- d -- W+ Vertex
+[part2,anti1,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_53: c~ -- d -- W+ Vertex
+[part4,anti1,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_54: t~ -- d -- W+ Vertex
+[part6,anti1,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_55: u~ -- s -- W+ Vertex
+[part2,anti3,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_56: c~ -- s -- W+ Vertex
+[part4,anti3,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_57: t~ -- s -- W+ Vertex
+[part6,anti3,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_58: u~ -- b -- W+ Vertex
+[part2,anti5,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_59: c~ -- b -- W+ Vertex
+[part4,anti5,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_60: t~ -- b -- W+ Vertex
+[part6,anti5,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_61: e+ -- ve -- W- Vertex
+[part11,anti12,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_62: mu+ -- vm -- W- Vertex
+[part13,anti14,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_63: ta+ -- vt -- W- Vertex
+[part15,anti16,part24;QED='1',QCD='0',QL='0',RK='0']
+% V_64: ve~ -- e- -- W+ Vertex
+[part12,anti11,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_65: vm~ -- mu- -- W+ Vertex
+[part14,anti13,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_66: vt~ -- ta- -- W+ Vertex
+[part16,anti15,anti24;QED='1',QCD='0',QL='0',RK='0']
+% V_67: u~ -- u -- Z Vertex
+[part2,anti2,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_68: c~ -- c -- Z Vertex
+[part4,anti4,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_69: t~ -- t -- Z Vertex
+[part6,anti6,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_70: d~ -- d -- Z Vertex
+[part1,anti1,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_71: s~ -- s -- Z Vertex
+[part3,anti3,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_72: b~ -- b -- Z Vertex
+[part5,anti5,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_73: ve~ -- ve -- Z Vertex
+[part12,anti12,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_74: vm~ -- vm -- Z Vertex
+[part14,anti14,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_75: vt~ -- vt -- Z Vertex
+[part16,anti16,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_76: e+ -- e- -- Z Vertex
+[part11,anti11,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_77: mu+ -- mu- -- Z Vertex
+[part13,anti13,part23;QED='1',QCD='0',QL='0',RK='0']
+% V_78: ta+ -- ta- -- Z Vertex
+[part15,anti15,part23;QED='1',QCD='0',QL='0',RK='0']
+%---#] Vertices:
+

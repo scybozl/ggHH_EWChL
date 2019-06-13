@@ -9,6 +9,11 @@
 // higher-rank implementations.
 
 
+namespace {
+    const Real CUTSTOLL = 1.0e-9;
+}
+
+
 /////////////////
 // Denominator //
 /////////////////
@@ -23,21 +28,21 @@ namespace {
   {
     return mp2(q+V)-m2;
   }
-
+  
   template<typename MassType>
   inline Complex Den(const ComplexMomentum & q, const RealMomentum & V,
                      const MassType & m2, const Real & muq)
   {
     return mp2(q+V)-m2-muq;
   }
-
+  
   template<typename MassType>
   inline Complex Den(const ComplexMomentum & q, const RealMomentum & V,
                      const MassType & m2, const Complex & muq)
   {
     return mp2(q+V)-m2-muq;
   }
-
+  
   // Writes the coefficients c[i] of the expansion of an uncut
   // denominator D = d.d0/t + d.d1 + d.d2*t, with q = a + e3*t + e4eff/t.
   // Here 'pden' and 'mden' are the momentum and masses which identify
@@ -161,7 +166,6 @@ void Amplitude<MassType>::evaluatePentagon (Numerator & num,
                        V[cut1]-V[cut5]};
 
   // Get basis and other relevant momenta
-  if (!stability_check(gram_det(p[4],p[0]))) return;
   Basis e(p[4],p[0]);
 
   // computing the solution l for the loop momentum
@@ -182,7 +186,6 @@ void Amplitude<MassType>::evaluatePentagon (Numerator & num,
     D *= Den(q, V[pen.cp[i]], m2[pen.cp[i]], muq);
 
   // and store the results
-  if (!stability_check(D)) return;
   pen.c[0] = N/D/muq;
 
 }
@@ -194,7 +197,7 @@ void Amplitude<MassType>::evaluatePentagon (Numerator & num,
 ///////////
 
 template<typename MassType>
-void Amplitude<MassType>::evaluateBoxes(Numerator & num,
+void Amplitude<MassType>::evaluateBoxes(Numerator & num, 
                                         const CutsVector<Pentagon> & pent,
                                         CutsVector<Box> & d)
 {
@@ -218,12 +221,12 @@ void Amplitude<MassType>::evaluateBoxes(Numerator & num,
 
           // move to next cut
           ++this_cut;
-
+          
         }
 }
 
 template<typename MassType>
-void Amplitude<MassType>::evaluateBox(Numerator & num,
+void Amplitude<MassType>::evaluateBox(Numerator & num, 
                                       const CutsVector<Pentagon> & pent,
                                       Box & d)
 {
@@ -243,22 +246,20 @@ void Amplitude<MassType>::evaluateBox(Numerator & num,
                        ninja::real(m2[cut2]),
                        ninja::real(m2[cut3]),
                        ninja::real(m2[cut4]),
-                       abs(s_mat(cut2,cut1)),
-                       abs(s_mat(cut3,cut2)),
-                       abs(s_mat(cut4,cut3)),
-                       abs(s_mat(cut1,cut4)),
-                       abs(s_mat(cut3,cut1)),
-                       abs(s_mat(cut4,cut2))};
+                       std::abs(s_mat(cut2,cut1)),
+                       std::abs(s_mat(cut3,cut2)),
+                       std::abs(s_mat(cut4,cut3)),
+                       std::abs(s_mat(cut1,cut4)),
+                       std::abs(s_mat(cut3,cut1)),
+                       std::abs(s_mat(cut4,cut2))};
 
   Real scale_choice = *max_element(invariants,invariants + 10);
-  if (abs(scale_choice) < INFRARED_EPS)
+  if (std::abs(scale_choice) < CUTSTOLL)
     scale_choice = ONE;
 
   // Get basis and other relevant momenta
-  if (!stability_check(gram_det(p[3],p[0]))) return;
   Basis e(p[3],p[0]);
   d.Vort = mp(p[1],e.e4)*e.e3 - mp(p[1],e.e3)*e.e4;
-  if (!stability_check(mp2(d.Vort))) return;
   d.V0 = V[cut1];
 
   // get the two solutions for the loop momentum
@@ -273,7 +274,6 @@ void Amplitude<MassType>::evaluateBox(Numerator & num,
   Complex D = ONE;
   for (int i =0; i<n-4; ++i)
     D *= Den(q, V[d.cp[i]], m2[d.cp[i]]);
-  if (!stability_check(D)) return;
   N1 = N1/D;
 
   // evaluate integrand in the second solution for q
@@ -282,7 +282,6 @@ void Amplitude<MassType>::evaluateBox(Numerator & num,
   D = ONE;
   for (int i =0; i<n-4; ++i)
     D *= Den(q, V[d.cp[i]], m2[d.cp[i]]);
-  if (!stability_check(D)) return;
   N2 = N2/D;
 
   // store the results
@@ -310,7 +309,6 @@ void Amplitude<MassType>::evaluateBox(Numerator & num,
     }
 
     // store the result
-    if (!stability_check(den)) return;
     d.c[4] = nmu/den/(Vort2*Vort2);
 
 #else // !NINJA_IMPLEMENTING_X1RANK
@@ -329,7 +327,6 @@ void Amplitude<MassType>::evaluateBox(Numerator & num,
       int uncut = d.cp[i];
       RealMomentum kk = V[uncut]-d.V0;
       den[0] = TWO*mp(d.Vort,kk);
-      if (!stability_check(den[0])) return;
       den[1] = mp2(V[uncut]) - mp2(V[cut1]) - m2[uncut] + m2[cut1]
         + TWO*mp(qmuexp[1],kk);
       nmu[0] /= den[0];
@@ -369,7 +366,6 @@ void Amplitude<MassType>::evaluateBox(Numerator & num,
             sub *= Den(q, V[(*i).cp[j]], m2[(*i).cp[j]], muq);
           N1-=sub;
         }
-      if (!stability_check(D)) return;
       N1 = N1/D;
 
       // evaluate integrand in the second solution for q
@@ -386,7 +382,6 @@ void Amplitude<MassType>::evaluateBox(Numerator & num,
             sub *= Den(q, V[(*i).cp[j]], m2[(*i).cp[j]], muq);
           N2-=sub;
         }
-      if (!stability_check(D)) return;
       N2 = N2/D;
 
       // store the results
@@ -416,7 +411,6 @@ void Amplitude<MassType>::evaluateBox(Numerator & num,
             sub *= Den(q, V[(*i).cp[j]], m2[(*i).cp[j]], muq);
           N1-=sub;
         }
-      if (!stability_check(D)) return;
       N1 = N1/D;
 
       // evaluate integrand in the second solution for q
@@ -433,7 +427,6 @@ void Amplitude<MassType>::evaluateBox(Numerator & num,
             sub *= Den(q, V[(*i).cp[j]], m2[(*i).cp[j]], muq);
           N2-=sub;
         }
-      if (!stability_check(D)) return;
       N2 = N2/D;
 
       // store the results
@@ -471,7 +464,7 @@ void Amplitude<MassType>::evaluateFullBoxes(Numerator & num,
 
           // move to next cut
           ++this_cut;
-
+          
         }
 }
 
@@ -497,22 +490,20 @@ void Amplitude<MassType>::evaluateFullBox(Numerator & num,
                        ninja::real(m2[cut2]),
                        ninja::real(m2[cut3]),
                        ninja::real(m2[cut4]),
-                       abs(s_mat(cut2,cut1)),
-                       abs(s_mat(cut3,cut2)),
-                       abs(s_mat(cut4,cut3)),
-                       abs(s_mat(cut1,cut4)),
-                       abs(s_mat(cut3,cut1)),
-                       abs(s_mat(cut4,cut2))};
+                       std::abs(s_mat(cut2,cut1)),
+                       std::abs(s_mat(cut3,cut2)),
+                       std::abs(s_mat(cut4,cut3)),
+                       std::abs(s_mat(cut1,cut4)),
+                       std::abs(s_mat(cut3,cut1)),
+                       std::abs(s_mat(cut4,cut2))};
 
   Real scale_choice = *max_element(invariants,invariants + 10);
-  if (abs(scale_choice) < INFRARED_EPS)
+  if (std::abs(scale_choice) < CUTSTOLL)
     scale_choice = ONE;
 
   // Get basis and other relevant momenta
-  if (!stability_check(gram_det(p[3],p[0]))) return;
   Basis e(p[3],p[0]);
   d.Vort = mp(p[1],e.e4)*e.e3 - mp(p[1],e.e3)*e.e4;
-  if (!stability_check(mp2(d.Vort))) return;
   d.V0 = V[cut1];
 
   // get the two solutions for the loop momentum
@@ -527,7 +518,6 @@ void Amplitude<MassType>::evaluateFullBox(Numerator & num,
   Complex D = ONE;
   for (int i =0; i<n-4; ++i)
     D *= Den(q, V[d.cp[i]], m2[d.cp[i]]);
-  if (!stability_check(D)) return;
   N1 = N1/D;
 
   // evaluate integrand in the second solution for q
@@ -536,7 +526,6 @@ void Amplitude<MassType>::evaluateFullBox(Numerator & num,
   D = ONE;
   for (int i =0;i<n-4;++i)
     D *= Den(q, V[d.cp[i]], m2[d.cp[i]]);
-  if (!stability_check(D)) return;
   N2 = N2/D;
 
   // store the results
@@ -564,10 +553,9 @@ void Amplitude<MassType>::evaluateFullBox(Numerator & num,
     }
 
     // store the result
-    if (!stability_check(den)) return;
     d.c[4] = nmu/den/(Vort2*Vort2);
 
-#else
+#else 
 
     // higher rank muExpansion
 
@@ -585,7 +573,6 @@ void Amplitude<MassType>::evaluateFullBox(Numerator & num,
       int uncut = d.cp[i];
       RealMomentum kk = V[uncut]-d.V0;
       den[0] = TWO*mp(d.Vort,kk);
-      if (!stability_check(den[0])) return;
       den[1] = mp2(V[uncut]) - mp2(V[cut1]) - m2[uncut] + m2[cut1]
         + TWO*mp(qmuexp[1],kk);
       nmu[0] /= den[0];
@@ -780,7 +767,6 @@ void Amplitude<MassType>::evaluateTriangle(Numerator & num,
                        V[cut1]-V[cut3]};
 
   // Get basis and other relevant momenta
-  if (!stability_check(gram_det(p[2],p[0]))) return;
   Basis e(p[2],p[0]);
   c.e3 = e.e3;  c.e4 = e.e4;
   c.V0 = V[cut1];
@@ -806,7 +792,7 @@ void Amplitude<MassType>::evaluateTriangle(Numerator & num,
   const int jext1mu2 = 3; // when != 0
   const int jext0 = rank-n+3 + (cub ? 1 : 0);
   const int jext0mu2 = 3 + (cub ? 2 : 0);
-#else
+#else 
   // case: rank == n+1
   const int jext4 = 0;
   const int jext3 = 1;
@@ -827,7 +813,7 @@ void Amplitude<MassType>::evaluateTriangle(Numerator & num,
                   numexp);
 
   // Uncut denoms
-  DenExp<3> denc;
+  DenExp<3> denc; 
 
   // divide by Laurent expansion of uncut denominators
   for (int i =0; i<n-3; ++i) {
@@ -835,7 +821,6 @@ void Amplitude<MassType>::evaluateTriangle(Numerator & num,
     exDenL(amu, e.e3, e4eff, param,
            V[nden], m2[nden], c.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby<3>(numexp, rank-n+3+1, denc);
   }
 
@@ -872,7 +857,6 @@ void Amplitude<MassType>::evaluateTriangle(Numerator & num,
     exDenL(amu, e.e4, e4eff, param,
            V[nden], m2[nden], c.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby(numexp, rank-n+1+3, denc);
   }
 
@@ -881,7 +865,7 @@ void Amplitude<MassType>::evaluateTriangle(Numerator & num,
   if (lin)
     c.c[1] = numexp[jext1]/e.mp34();
   if (quad) {
-    c.c[2] = numexp[jext2]/e.mp34()/e.mp34();
+    c.c[2] = numexp[jext2]/e.mp34()/e.mp34();    
     c.c[7] = HALF*(c.c[7] + numexp[jext0mu2]);
   }
   if (cub) {
@@ -925,14 +909,14 @@ void Amplitude<MassType>::evaluateBubbles(Numerator & num,
           && m2[cut1] == ZERO
           && m2[cut2] == ZERO
           && taxicab_norm(real(s_mat(cut2,cut1)))
-          < INFRARED_EPS) {
+          < CUTSTOLL) {
         ++this_cut;
         continue;
       }
 
       // evaluate
       evaluateBubble(num, c, *this_cut);
-
+      
       // move to next cut
       ++this_cut;
 
@@ -953,9 +937,6 @@ void Amplitude<MassType>::evaluateBubble(Numerator & num,
   const int rminusn = rank-n;
   const bool lin = rminusn >= -1;
   const bool quad = rminusn >= 0;
-  const bool spurious_terms_needed = (m2[cut1]!=ZERO) || (m2[cut2]!=ZERO)
-    || (Options::test & (Test::GLOBAL | Test::LOCAL_2 | Test::LOCAL_1))
-    || (Options::verb & (Verbose::C2 | Verbose::C1));
 
   // computing external momenta
   RealMomentum p[2] = {V[cut2]-V[cut1],
@@ -992,7 +973,7 @@ void Amplitude<MassType>::evaluateBubble(Numerator & num,
   const int jext0mu2 = 4; // when != 0
   const int jext0x1 = 2 + (quad ? 3 : 0);
   const int jext0x2 = 6; // when != 0
-#else
+#else 
   // case: rank == n+1
   const int jext3 = 0;
   const int jext2 = 1;
@@ -1023,7 +1004,6 @@ void Amplitude<MassType>::evaluateBubble(Numerator & num,
     exDenL(e1eff,e2eff,b.e3,e4eff,param,
            V[nden], m2[nden], b.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby(numexp, rminusn+2+1, denc);
   }
 
@@ -1060,11 +1040,10 @@ void Amplitude<MassType>::evaluateBubble(Numerator & num,
   b.c[19] = numexp[jext2x1]/e.mp34()/e.mp34()/e.mp12();
 #endif
 
-  if (lin && spurious_terms_needed) {
+  if (lin) {
 
-    // further expansions are needed only if linear terms are present
-    // AND the spurious terms are needed (either as subtraction terms,
-    // for tests, or for printing)
+    // further expansions are needed only if linear terms are
+    // present
 
     // swap e3 and e4 and repeat
 
@@ -1080,7 +1059,6 @@ void Amplitude<MassType>::evaluateBubble(Numerator & num,
       exDenL(e1eff,e2eff,b.e4,e4eff,param,
              V[nden], m2[nden], b.V0, m2[cut1],
              denc);
-      if (!stability_check(denc.d0)) return;
       divpolyby(numexp, rminusn+2, denc);
     }
 
@@ -1143,7 +1121,7 @@ void Amplitude<MassType>::evaluateTadpoles(Numerator & num,
 
     // evaluate
     evaluateTadpole(num, c, b, *this_cut);
-
+      
     // move to next cut
     ++this_cut;
 
@@ -1161,9 +1139,19 @@ void Amplitude<MassType>::evaluateTadpole(Numerator & num,
   const PartitionInt cut1 = a.p[0];
 
   int rminusn =  rank-n;
-  const Basis e = tadpole_basis(V,cut1,n);
+
+  // Get basis from two reference vectors
+  // The same basis is used for all the cuts
+  // const RealMomentum refe1(ONE, INVSQRT3, INVSQRT3, INVSQRT3),
+  // refe2(ONE,-INVSQRT3, -INVSQRT2, -INVSQRT6);
+  const RealMomentum refe1(TWO, INVSQRT3, -INVSQRT3, INVSQRT3);
+  const RealMomentum refe2(SQRT3, INVSQRT3, -INVSQRT2, INVSQRT2);
+  const Basis e(refe1,refe2);
 
   // Store the relevant vectors
+  // NOTE: Since all the tadpoles have the same basis, we could
+  // use it as a static data member in their class.  For the sake
+  // of generality this has not been done yet.
   a.e1 = e.e1;
   a.e2 = e.e2;
   a.e3 = e.e3;
@@ -1197,7 +1185,6 @@ void Amplitude<MassType>::evaluateTadpole(Numerator & num,
     exDenL(amu, e.e3, e4eff, param,
            V[nden], m2[nden], a.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby<3>(numexp, rank-n+1+1, denc);
   }
 
@@ -1240,7 +1227,7 @@ void Amplitude<MassType>::evaluateFullTadpoles(Numerator & num,
                                                const CutsVector<Triangle> & c,
                                                const CutsVector<Bubble> & b,
                                                CutsVector<Tadpole> & a)
-{
+{ 
   // loop over Partitions
   CutsVector<Tadpole>::iterator this_cut = a.begin();
   for (PartitionInt cut1=0; cut1<n-1+1;++cut1) {
@@ -1248,7 +1235,7 @@ void Amplitude<MassType>::evaluateFullTadpoles(Numerator & num,
     // Partition p and complementary partition cp
     (*this_cut).p[0] = cut1;
     complementaryPartition((*this_cut).p, 1, n, (*this_cut).cp);
-
+    
     // Skip this tadpole if the loop propagator is massless
     if (!(Options::test & Test::GLOBAL) && m2[cut1]==ZERO) {
       ++this_cut;
@@ -1257,7 +1244,7 @@ void Amplitude<MassType>::evaluateFullTadpoles(Numerator & num,
 
     // evaluate
     evaluateFullTadpole(num, c, b, *this_cut);
-
+      
     // move to next cut
     ++this_cut;
 
@@ -1277,7 +1264,12 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
 
   // check if linear terms are present
   bool lin = rminusn >= 0;
-  const Basis e = tadpole_basis(V,cut1,n);
+
+  // Get basis from two reference vectors
+  // The same basis is used for all the cuts
+  const RealMomentum refe1(TWO, INVSQRT3, -INVSQRT3, INVSQRT3);
+  const RealMomentum refe2(SQRT3, INVSQRT3, -INVSQRT2, INVSQRT2);
+  const Basis e(refe1,refe2);
 
   // Store the relevant vectors
   a.e1 = e.e1;
@@ -1313,7 +1305,6 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
     exDenL(amu, e.e3, e4eff, param,
            V[nden], m2[nden], a.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby<3>(numexp, rank-n+1+1, denc);
   }
 
@@ -1331,7 +1322,7 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
       correcttadcoeffsfull(numexp, (*cut3).e3, (*cut3).e4, (*cut3).c,
                            a.e3, kk0,f0,kk1,f1,rminusn);
     }
-
+  
   // Corrections from bubbles
   PartitionInt unc; // uncut denominator of the bubble
   for (BubblesCIter cut2 = b.begin(); cut2!=b.end(); ++cut2)
@@ -1348,7 +1339,7 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
   if (lin) a.c[4] = numexp[jext1]/e.mp34();
 
   if (lin) {
-
+        
     // further expansions are needed only if linear terms are present
 
     // swap e3 and e4 and repeat
@@ -1359,14 +1350,13 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
     num.t3Expansion(amu,a.e4,e4eff,param,
                     jext1,1,a.p,
                     numexp);
-
+    
     // divide by Laurent expansion of uncut denominators
     for (int i =0; i<n-1; ++i) {
       const int nden = a.cp[i];
       exDenL(amu, e.e4, e4eff, param,
              V[nden], m2[nden], a.V0, m2[cut1],
              denc);
-      if (!stability_check(denc.d0)) return;
       divpolyby<3>(numexp, rank-n+1, denc);
     }
 
@@ -1384,7 +1374,7 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
         correcttadcoeffsfull(numexp, (*cut3).e3, (*cut3).e4, (*cut3).c,
                              a.e4, kk0,f0,kk1,f1,rminusn);
       }
-
+  
     // Corrections from bubbles
     PartitionInt unc; // uncut denominator of the bubble
     for (BubblesCIter cut2 = b.begin(); cut2!=b.end(); ++cut2)
@@ -1399,7 +1389,7 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
     // store the coefficients
     a.c[3] = numexp[jext1]/e.mp34();
 
-
+    
     // swap (e3,e4) <-> (e1,e2) and repeat
 
     e4eff = HALF*a.e2/e.mp12();
@@ -1408,14 +1398,13 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
     num.t3Expansion(amu,a.e1,e4eff,param,
                     jext1,1,a.p,
                     numexp);
-
+    
     // divide by Laurent expansion of uncut denominators
     for (int i =0; i<n-1; ++i) {
       const int nden = a.cp[i];
       exDenL(amu, e.e1, e4eff, param,
              V[nden], m2[nden], a.V0, m2[cut1],
              denc);
-      if (!stability_check(denc.d0)) return;
       divpolyby<3>(numexp, rank-n+1, denc);
     }
 
@@ -1432,7 +1421,7 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
         correcttadcoeffsfull(numexp, (*cut3).e3, (*cut3).e4, (*cut3).c,
                              a.e1, kk0,f0,kk1,f1,rminusn);
       }
-
+  
     // Corrections from bubbles
     for (BubblesCIter cut2 = b.begin(); cut2!=b.end(); ++cut2)
       if (isSubPartition1of2(a.p, (*cut2).p, &unc)) {
@@ -1448,21 +1437,20 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
 
 
     // swap e1 and e2 and repeat
-
+    
     e4eff = HALF*a.e1/e.mp12();
 
     // compute Laurent expansion of the numerator
     num.t3Expansion(amu,a.e2,e4eff,param,
                     jext1,1,a.p,
                     numexp);
-
+    
     // divide by Laurent expansion of uncut denominators
     for (int i =0; i<n-1; ++i) {
       const int nden = a.cp[i];
       exDenL(amu, e.e2, e4eff, param,
              V[nden], m2[nden], a.V0, m2[cut1],
              denc);
-      if (!stability_check(denc.d0)) return;
       divpolyby<3>(numexp, rank-n+1, denc);
     }
 
@@ -1479,7 +1467,7 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
         correcttadcoeffsfull(numexp, (*cut3).e3, (*cut3).e4, (*cut3).c,
                              a.e2, kk0,f0,kk1,f1,rminusn);
       }
-
+  
     // Corrections from bubbles
     for (BubblesCIter cut2 = b.begin(); cut2!=b.end(); ++cut2)
       if (isSubPartition1of2(a.p, (*cut2).p, &unc)) {
@@ -1522,7 +1510,7 @@ void Amplitude<MassType>::evaluateTadpoles(Numerator & num,
 
     // evaluate
     evaluateTadpole(num, c, b, *this_cut);
-
+      
     // move to next cut
     ++this_cut;
 
@@ -1537,9 +1525,19 @@ void Amplitude<MassType>::evaluateTadpole(Numerator & num,
                                           Tadpole & a)
 {
   const PartitionInt cut1 = a.p[0];
-  const Basis e = tadpole_basis(V,cut1,n);
+
+  // Get basis from two reference vectors
+  // The same basis is used for all the cuts
+  // const RealMomentum refe1(ONE, INVSQRT3, INVSQRT3, INVSQRT3),
+  // refe2(ONE,-INVSQRT3, -INVSQRT2, -INVSQRT6);
+  const RealMomentum refe1(TWO, INVSQRT3, -INVSQRT3, INVSQRT3);
+  const RealMomentum refe2(SQRT3, INVSQRT3, -INVSQRT2, INVSQRT2);
+  const Basis e(refe1,refe2);
 
   // Store the relevant vectors
+  // NOTE: Since all the tadpoles have the same basis, we could
+  // use it as a static data member in their class.  For the sake
+  // of generality this has not been done yet.
   a.e1 = e.e1;
   a.e2 = e.e2;
   a.e3 = e.e3;
@@ -1576,7 +1574,6 @@ void Amplitude<MassType>::evaluateTadpole(Numerator & num,
     exDenL(amu, e.e1, e4eff, param,
            V[nden], m2[nden], a.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby<3>(numexp, rank-n+1+1, denc);
   }
 
@@ -1629,7 +1626,6 @@ void Amplitude<MassType>::evaluateTadpole(Numerator & num,
     exDenL(amu, e.e3, e4eff, param,
            V[nden], m2[nden], a.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby<3>(numexp, rank-n+1+1, denc);
   }
 
@@ -1689,7 +1685,7 @@ void Amplitude<MassType>::evaluateFullTadpoles(Numerator & num,
 
     // evaluate
     evaluateFullTadpole(num, c, b, *this_cut);
-
+      
     // move to next cut
     ++this_cut;
 
@@ -1704,9 +1700,19 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
                                               Tadpole & a)
 {
   const PartitionInt cut1 = a.p[0];
-  const Basis e = tadpole_basis(V,cut1,n);
+
+  // Get basis from two reference vectors
+  // The same basis is used for all the cuts
+  // const RealMomentum refe1(ONE, INVSQRT3, INVSQRT3, INVSQRT3),
+  // refe2(ONE,-INVSQRT3, -INVSQRT2, -INVSQRT6);
+  const RealMomentum refe1(TWO, INVSQRT3, -INVSQRT3, INVSQRT3);
+  const RealMomentum refe2(SQRT3, INVSQRT3, -INVSQRT2, INVSQRT2);
+  const Basis e(refe1,refe2);
 
   // Store the relevant vectors
+  // NOTE: Since all the tadpoles have the same basis, we could
+  // use it as a static data member in their class.  For the sake
+  // of generality this has not been done yet.
   a.e1 = e.e1;
   a.e2 = e.e2;
   a.e3 = e.e3;
@@ -1743,7 +1749,6 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
     exDenL(amu, e.e1, e4eff, param,
            V[nden], m2[nden], a.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby<3>(numexp, rank-n+1+1, denc);
   }
 
@@ -1798,7 +1803,6 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
     exDenL(amu, e.e3, e4eff, param,
            V[nden], m2[nden], a.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby<3>(numexp, rank-n+1+1, denc);
   }
 
@@ -1849,7 +1853,6 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
     exDenL(amu, e.e4, e4eff, param,
            V[nden], m2[nden], a.V0, m2[cut1],
            denc);
-    if (!stability_check(denc.d0)) return;
     divpolyby<3>(numexp, rank-n+1, denc);
   }
 
@@ -1900,7 +1903,7 @@ void Amplitude<MassType>::evaluateFullTadpole(Numerator & num,
 ///////////////////////
 
 template<typename MassType>
-void Amplitude<MassType>::NeqNtest(Numerator & num,
+int Amplitude<MassType>::NeqNtest(Numerator & num,
                                   const CutsVector<Pentagon> & pen,
                                   const CutsVector<Box> & d,
                                   const CutsVector<Triangle> & c,
@@ -1960,8 +1963,9 @@ void Amplitude<MassType>::NeqNtest(Numerator & num,
     (*Options::out) << "The relative error is          :  " << (N-subtr)/N << endl;
     (*Options::out) << endl;
   }
-  if (abs((N-subtr)/N) > Options::test_tol && abs(N)>1.0e-8)
-    return_val = Amplitude::TEST_FAILED | return_val;
+  if (std::abs((N-subtr)/N) > Options::test_tol && std::abs(N)>1.0e-8)
+    return Amplitude::TEST_FAILED;
+  return Amplitude::SUCCESS;
 }
 
 //////////////////////
@@ -1969,7 +1973,7 @@ void Amplitude<MassType>::NeqNtest(Numerator & num,
 //////////////////////
 
 template<typename MassType>
-void Amplitude<MassType>::local4NeqNtests(Numerator & num,
+int Amplitude<MassType>::local4NeqNtests(Numerator & num,
                                          const CutsVector<Pentagon> & pen,
                                          const CutsVector<Box> & d)
 {
@@ -2032,20 +2036,20 @@ void Amplitude<MassType>::local4NeqNtests(Numerator & num,
       (*Options::out) << "The value of the numerator is  :  " << N << endl;
       (*Options::out) << "The reconstructed numerator is :  " << subtr << endl;
       (*Options::out) << "The relative error is          :  " << (N-subtr)/N << endl;
-      if (!(abs(N)>1.0e-8))
+      if (!(std::abs(N)>1.0e-8))
         (*Options::out) << "Note: small numerator -> test won't fail" << endl;
       (*Options::out) << endl;
     }
-    if (abs((N-subtr)/N) > Options::test_tol && abs(N)>1.0e-8)
+    if (std::abs((N-subtr)/N) > Options::test_tol && std::abs(N)>1.0e-8)
       ret = Amplitude::TEST_FAILED;
   }
   if (verbose)
     (*Options::out) << endl;
-  return_val = ret | return_val;
+  return ret;
 }
 
 template<typename MassType>
-void Amplitude<MassType>::local3NeqNtests(Numerator & num,
+int Amplitude<MassType>::local3NeqNtests(Numerator & num,
                                          const CutsVector<Pentagon> & pen,
                                          const CutsVector<Box> & d,
                                          const CutsVector<Triangle> & c)
@@ -2064,7 +2068,7 @@ void Amplitude<MassType>::local3NeqNtests(Numerator & num,
       (*Options::out) << "N = N test local on Triple Cut : "
                       << CUT1 << "," << CUT2 << "," << CUT3 << endl;
     }
-
+    
     // Choose a value of q on the cut
 
     // Chosing t and mu^2
@@ -2091,7 +2095,7 @@ void Amplitude<MassType>::local3NeqNtests(Numerator & num,
     Complex N = num.evaluate(q, muq, 0, NULL);
 
     // Compute subtraction terms
-
+    
     Complex subtr = ZERO;
     // loop over the quintuple cuts to determine the subtraction terms
     for (unsigned int cut5 = 0; cut5<pen.size(); ++cut5) {
@@ -2123,20 +2127,20 @@ void Amplitude<MassType>::local3NeqNtests(Numerator & num,
       (*Options::out) << "The value of the numerator is  :  " << N << endl;
       (*Options::out) << "The reconstructed numerator is :  " << subtr << endl;
       (*Options::out) << "The relative error is          :  " << (N-subtr)/N << endl;
-      if (!(abs(N)>1.0e-8))
+      if (!(std::abs(N)>1.0e-8))
         (*Options::out) << "Note: small numerator -> test won't fail" << endl;
       (*Options::out) << endl;
     }
-    if (abs((N-subtr)/N) > Options::test_tol && abs(N)>1.0e-8)
+    if (std::abs((N-subtr)/N) > Options::test_tol && std::abs(N)>1.0e-8)
       ret = Amplitude::TEST_FAILED;
   }
   if (verbose)
     (*Options::out) << endl;
-  return_val = ret | return_val;
+  return ret;
 }
 
 template<typename MassType>
-void Amplitude<MassType>::local2NeqNtests(Numerator & num,
+int Amplitude<MassType>::local2NeqNtests(Numerator & num,
                                          const CutsVector<Pentagon> & pen,
                                          const CutsVector<Box> & d,
                                          const CutsVector<Triangle> & c,
@@ -2156,15 +2160,15 @@ void Amplitude<MassType>::local2NeqNtests(Numerator & num,
         && m2[CUT1] == ZERO
         && m2[CUT2] == ZERO
         && taxicab_norm(real(s_mat(CUT2,CUT1)))
-        < INFRARED_EPS) {
+        < CUTSTOLL) {
       continue;
     }
-
+    
     if (verbose) {
       (*Options::out) << "N = N test local on Double Cut : "
                       << CUT1 << "," << CUT2 << endl;
     }
-
+    
     // Choose a value of q on the cut
 
     // Chosing x0, t and mu^2
@@ -2189,7 +2193,7 @@ void Amplitude<MassType>::local2NeqNtests(Numerator & num,
     Complex N = num.evaluate(q, muq, 0, NULL);
 
     // Compute subtraction terms
-
+    
     Complex subtr = ZERO;
     // loop over the quintuple cuts to determine the subtraction terms
     for (unsigned int cut5 = 0; cut5<pen.size(); ++cut5) {
@@ -2230,21 +2234,21 @@ void Amplitude<MassType>::local2NeqNtests(Numerator & num,
       (*Options::out) << "The reconstructed numerator is :  " << subtr << endl;
       (*Options::out) << "The relative error is          :  "
                       << (N-subtr)/N << endl;
-      if (!(abs(N)>1.0e-8))
+      if (!(std::abs(N)>1.0e-8))
         (*Options::out) << "Note: small numerator -> test won't fail" << endl;
       (*Options::out) << endl;
     }
-    if (abs((N-subtr)/N) > Options::test_tol && abs(N)>1.0e-8)
+    if (std::abs((N-subtr)/N) > Options::test_tol && std::abs(N)>1.0e-8)
       ret = Amplitude::TEST_FAILED;
   }
   if (verbose)
     (*Options::out) << endl;
-  return_val = ret | return_val;
+  return ret;
 }
 
 
 template<typename MassType>
-void Amplitude<MassType>::local1NeqNtests(Numerator & num,
+int Amplitude<MassType>::local1NeqNtests(Numerator & num,
                                          const CutsVector<Pentagon> & pen,
                                          const CutsVector<Box> & d,
                                          const CutsVector<Triangle> & c,
@@ -2265,7 +2269,7 @@ void Amplitude<MassType>::local1NeqNtests(Numerator & num,
 
     if (verbose)
       (*Options::out) << "N = N test local on Single Cut : " << cut1 << endl;
-
+    
     // Choose a value of q on the cut
 
     // Chosing x1, x2, t and mu^2
@@ -2276,7 +2280,11 @@ void Amplitude<MassType>::local1NeqNtests(Numerator & num,
     Real x1 = 0.0, x2 = 0.0, t = 2.;
     Real muq = 1.1;
 #endif
-    const Basis e = tadpole_basis(V,cut1,n);
+    // Get basis from two reference vectors
+    // The same basis is used for all the cuts
+    const RealMomentum refe1(TWO, INVSQRT3, -INVSQRT3, INVSQRT3);
+    const RealMomentum refe2(SQRT3, INVSQRT3, -INVSQRT2, INVSQRT2);
+    const Basis e(refe1,refe2);
     // get the parametric solutions for the loop momentum
     ComplexMomentum amu;
 #ifndef NINJA_IMPLEMENTING_X1RANK
@@ -2286,7 +2294,7 @@ void Amplitude<MassType>::local1NeqNtests(Numerator & num,
                              ).getLoopMomentum(x1, x2, X);
     amu =  -a[cut1].V0 + x1*e.e1 + x2*e.e2;
     ComplexMomentum q = amu + t*e.e4 + X*e.e3/t;
-#else
+#else 
     amu =  -a[cut1].V0;
     ComplexMomentum e4eff = HALF*e.e4/e.mp34();
     (void)(x1);  (void)(x2);
@@ -2297,7 +2305,7 @@ void Amplitude<MassType>::local1NeqNtests(Numerator & num,
     Complex N = num.evaluate(q, muq, 0, NULL);
 
     // Compute subtraction terms
-
+    
     Complex subtr = ZERO;
     // loop over the quintuple cuts to determine the subtraction terms
     for (unsigned int cut5 = 0; cut5<pen.size(); ++cut5) {
@@ -2346,16 +2354,16 @@ void Amplitude<MassType>::local1NeqNtests(Numerator & num,
       (*Options::out) << "The reconstructed numerator is :  " << subtr << endl;
       (*Options::out) << "The relative error is          :  " << (N-subtr)/N
                       << endl;
-      if (!(abs(N)>1.0e-8))
+      if (!(std::abs(N)>1.0e-8))
         (*Options::out) << "Note: small numerator -> test won't fail" << endl;
       (*Options::out) << endl;
     }
-    if (abs((N-subtr)/N) > Options::test_tol && abs(N)>1.0e-8)
+    if (std::abs((N-subtr)/N) > Options::test_tol && std::abs(N)>1.0e-8)
       ret = Amplitude::TEST_FAILED;
   }
   if (verbose)
     (*Options::out) << endl;
-  return_val = ret | return_val;
+  return ret;
 }
 
 

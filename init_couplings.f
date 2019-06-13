@@ -28,8 +28,8 @@ cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       if (ph_Wmass.le.0d0) ph_Wmass  = 80.398d0
       ph_Wwidth = powheginput("#Wwidth")
       if (ph_Wwidth.le.0d0) ph_Wwidth =  2.141d0
-      ph_cHHH = powheginput("#cHHH")
-      if (ph_cHHH.le.-99d0) ph_cHHH = 1.0d0
+      ph_mdlchhh = powheginput("#cHHH")
+      if (ph_mdlchhh.le.-99d0) ph_mdlchhh = 1.0d0
 
       ph_sthw2 = abs(1d0-(ph_Wmass/ph_Zmass)**2)
       ph_alphaem = ph_Wmass**2*ph_sthw2*8d0*ph_GF/sqrt(2d0)/4d0/pi
@@ -56,7 +56,7 @@ cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       write(*,*) 'sthw2 = ',ph_sthw2
       write(*,*) 'GF = ',ph_GF
       write(*,*) 'top mass = ',ph_topmass
-      write(*,*) 'cHHH = ',ph_cHHH
+      write(*,*) 'cHHH = ',ph_mdlchhh
       write(*,*) '*************************************'
       write(*,*)
       endif
@@ -107,7 +107,7 @@ c$$$      call check_gosam_err(param,ierr)
 c$$$      call OLP_Option_qp(line,ierr)
 c$$$      call check_gosam_err(param,ierr)
 
-      param = 'alpha='
+      param = 'mdlaEW='
       write(value,'(F20.10)') ph_alphaem
       line = trim(param)//trim(adjustl(value))
       call OLP_Option(line,ierr)
@@ -115,7 +115,7 @@ c$$$      call check_gosam_err(param,ierr)
 c      call OLP_Option_qp(line,ierr)
 c      call check_gosam_err(param,ierr)
 
-      param = 'mZ='
+      param = 'mdlMZ='
       write(value,'(F20.10)') ph_Zmass
       line = trim(param)//trim(adjustl(value))
       call OLP_Option(line,ierr)
@@ -123,7 +123,7 @@ c      call check_gosam_err(param,ierr)
 c      call OLP_Option_qp(line,ierr)
 c      call check_gosam_err(param,ierr)
 
-      param = 'mW='
+      param = 'mdlMW='
       write(value,'(F20.10)') ph_Wmass
       line = trim(param)//trim(adjustl(value))
       call OLP_Option(line,ierr)
@@ -131,7 +131,7 @@ c      call check_gosam_err(param,ierr)
 c      call OLP_Option_qp(line,ierr)
 c      call check_gosam_err(param,ierr)
 
-      param = 'mH='
+      param = 'mdlMh='
       write(value,'(F20.10)') ph_Hmass
       line = trim(param)//trim(adjustl(value))
       call OLP_Option(line,ierr)
@@ -139,7 +139,7 @@ c      call check_gosam_err(param,ierr)
 c      call OLP_Option_qp(line,ierr)
 c      call check_gosam_err(param,ierr)
 
-      param = 'mT='
+      param = 'mdlMT='
       write(value,'(F20.10)') ph_topmass
       line = trim(param)//trim(adjustl(value))
       call OLP_Option(line,ierr)
@@ -147,10 +147,10 @@ c      call check_gosam_err(param,ierr)
 c      call OLP_Option_qp(line,ierr)
 c      call check_gosam_err(param,ierr)
 
-      param = 'cHHH='
-      write(value,'(F20.10)') ph_cHHH
+      param = 'mdlchhh='
+      write(value,'(F20.10)') ph_mdlchhh
       line = trim(param)//trim(adjustl(value))
-      write(*,*) "cHHH set in GoSam to ", ph_cHHH
+      write(*,*) "cHHH set in GoSam to ", ph_mdlchhh
       call OLP_Option(line,ierr)
       call check_gosam_err(param,ierr)
 c      call OLP_Option_qp(line,ierr)

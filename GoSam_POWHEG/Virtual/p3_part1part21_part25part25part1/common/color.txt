@@ -1,0 +1,25 @@
+#####Color
+NA=NC*NC-1;
+incolors=1 * NC * NA;
+
+    cabb(1)=NC^-1;
+   cabb(2)=NC^2;
+   cabb(3)=cabb(2) - 1;
+   cabb(4)=cabb(3)*TR;
+   cabb(2)=cabb(2) - 2;
+   cabb(2)=cabb(2)*NC;
+   cabb(2)=cabb(2) + cabb(1);
+   cabb(5)=TR^2;
+   cabb(2)=cabb(2)*cabb(5);
+   cabb(3)=cabb(3)*cabb(5)*NC;
+   cabb(6)=NC*cabb(4);
+   cabb(7)= - cabb(1) + NC;
+   cabb(5)=cabb(7)*cabb(5);
+
+T1T1(1,1) = cabb(2);
+T1T2(1,1) = -cabb(3);
+T1T5(1,1) = cabb(5);
+T2T2(1,1) = cabb(6);
+T2T5(1,1) = -cabb(3);
+T5T5(1,1) = cabb(2);
+CC(1,1) = cabb(4);

@@ -58,6 +58,11 @@ namespace ninja {
     __complex128 m_;
   };
 
+} // namespace ninja
+
+
+namespace std {
+
   // Real functions
 
   inline ninja::Quadruple acos (const ninja::Quadruple & x)
@@ -379,8 +384,7 @@ namespace ninja {
 
 
   // stream operators
-  inline std::ostream & operator << (std::ostream & os,
-                                     const ninja::Quadruple & a)
+  inline ostream & operator << (std::ostream & os, const ninja::Quadruple & a)
   {
     int width = 30;
     char buf[128];
@@ -389,12 +393,12 @@ namespace ninja {
   }
 
   // stream operators
-  inline std::ostream & operator << (std::ostream & os,
-                                     const __complex128 & a)
+  inline ostream & operator << (std::ostream & os,
+                                const __complex128 & a)
   {
-    return os << "(" << real(a) << "," << imag(a) << ")";
+    return os << "(" << std::real(a) << "," << std::imag(a) << ")";
   }
 
-} // namespace ninja
+} // namespace std
 
 #endif // NINJA_QUADRUPLE_HH

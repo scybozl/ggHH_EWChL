@@ -1,0 +1,72 @@
+# vim: ts=3:sw=3
+
+OBJEXT ?=o
+OBJEXTG=$(OBJEXT)
+# Module Dependencies:
+abbrevd1h2.$(OBJEXTG): globals.$(OBJEXTG)
+d1h2l1.$(OBJEXTG): abbrevd1h2.$(OBJEXTG)
+d1h2l1d.$(OBJEXTG): abbrevd1h2.$(OBJEXTG)
+abbrevd7h2.$(OBJEXTG): globals.$(OBJEXTG)
+d7h2l1.$(OBJEXTG): abbrevd7h2.$(OBJEXTG)
+d7h2l1d.$(OBJEXTG): abbrevd7h2.$(OBJEXTG)
+abbrevd9h2.$(OBJEXTG): globals.$(OBJEXTG)
+d9h2l1.$(OBJEXTG): abbrevd9h2.$(OBJEXTG)
+d9h2l1d.$(OBJEXTG): abbrevd9h2.$(OBJEXTG)
+abbrevd11h2.$(OBJEXTG): globals.$(OBJEXTG)
+d11h2l1.$(OBJEXTG): abbrevd11h2.$(OBJEXTG)
+d11h2l1d.$(OBJEXTG): abbrevd11h2.$(OBJEXTG)
+golem95h2.$(OBJEXTG):  \
+	d1h2l1.$(OBJEXTG) d1h2l1d.$(OBJEXTG) \
+	d7h2l1.$(OBJEXTG) d7h2l1d.$(OBJEXTG) \
+	d9h2l1.$(OBJEXTG) d9h2l1d.$(OBJEXTG) \
+	d11h2l1.$(OBJEXTG) d11h2l1d.$(OBJEXTG)
+ninjah2.$(OBJEXTG):  \
+	d1h2l1.$(OBJEXTG) d1h2l131.$(OBJEXTG) d1h2l132.$(OBJEXTG) d1h2l121.$(OBJEXTG) \
+	d7h2l1.$(OBJEXTG) d7h2l131.$(OBJEXTG) d7h2l132.$(OBJEXTG) d7h2l121.$(OBJEXTG) \
+	d9h2l1.$(OBJEXTG) d9h2l131.$(OBJEXTG) d9h2l132.$(OBJEXTG) d9h2l121.$(OBJEXTG) \
+	d11h2l1.$(OBJEXTG) d11h2l131.$(OBJEXTG) d11h2l132.$(OBJEXTG) d11h2l121.$(OBJEXTG)
+d1h2l131.$(OBJEXTG): abbrevd1h2.$(OBJEXTG)
+d1h2l132.$(OBJEXTG): abbrevd1h2.$(OBJEXTG)
+d1h2l121.$(OBJEXTG): abbrevd1h2.$(OBJEXTG)
+d7h2l131.$(OBJEXTG): abbrevd7h2.$(OBJEXTG)
+d7h2l132.$(OBJEXTG): abbrevd7h2.$(OBJEXTG)
+d7h2l121.$(OBJEXTG): abbrevd7h2.$(OBJEXTG)
+d9h2l131.$(OBJEXTG): abbrevd9h2.$(OBJEXTG)
+d9h2l132.$(OBJEXTG): abbrevd9h2.$(OBJEXTG)
+d9h2l121.$(OBJEXTG): abbrevd9h2.$(OBJEXTG)
+d11h2l131.$(OBJEXTG): abbrevd11h2.$(OBJEXTG)
+d11h2l132.$(OBJEXTG): abbrevd11h2.$(OBJEXTG)
+d11h2l121.$(OBJEXTG): abbrevd11h2.$(OBJEXTG)
+amplitudeh2.$(OBJEXTG): globals.$(OBJEXTG) golem95h2.$(OBJEXTG) ninjah2.$(OBJEXTG) \
+			abbrevd1h2.$(OBJEXTG) \
+			abbrevd7h2.$(OBJEXTG) \
+			abbrevd9h2.$(OBJEXTG) \
+			abbrevd11h2.$(OBJEXTG)
+p3_part1part21_part25part25part1_golem95h2.mod: golem95h2.$(OBJEXTG)
+p3_part1part21_part25part25part1_ninjah2.mod: ninjah2.$(OBJEXTG) 
+p3_part1part21_part25part25part1_d1h2l131.mod: d1h2l131.$(OBJEXTG)
+p3_part1part21_part25part25part1_d1h2l132.mod: d1h2l132.$(OBJEXTG)
+p3_part1part21_part25part25part1_d1h2l121.mod: d1h2l121.$(OBJEXTG)
+p3_part1part21_part25part25part1_d7h2l131.mod: d7h2l131.$(OBJEXTG)
+p3_part1part21_part25part25part1_d7h2l132.mod: d7h2l132.$(OBJEXTG)
+p3_part1part21_part25part25part1_d7h2l121.mod: d7h2l121.$(OBJEXTG)
+p3_part1part21_part25part25part1_d9h2l131.mod: d9h2l131.$(OBJEXTG)
+p3_part1part21_part25part25part1_d9h2l132.mod: d9h2l132.$(OBJEXTG)
+p3_part1part21_part25part25part1_d9h2l121.mod: d9h2l121.$(OBJEXTG)
+p3_part1part21_part25part25part1_d11h2l131.mod: d11h2l131.$(OBJEXTG)
+p3_part1part21_part25part25part1_d11h2l132.mod: d11h2l132.$(OBJEXTG)
+p3_part1part21_part25part25part1_d11h2l121.mod: d11h2l121.$(OBJEXTG)
+p3_part1part21_part25part25part1_abbrevd1h2.mod: abbrevd1h2.$(OBJEXTG)
+p3_part1part21_part25part25part1_d1h2l1.mod: d1h2l1.$(OBJEXTG)
+p3_part1part21_part25part25part1_d1h2l1d.mod: d1h2l1d.$(OBJEXTG)
+p3_part1part21_part25part25part1_abbrevd7h2.mod: abbrevd7h2.$(OBJEXTG)
+p3_part1part21_part25part25part1_d7h2l1.mod: d7h2l1.$(OBJEXTG)
+p3_part1part21_part25part25part1_d7h2l1d.mod: d7h2l1d.$(OBJEXTG)
+p3_part1part21_part25part25part1_abbrevd9h2.mod: abbrevd9h2.$(OBJEXTG)
+p3_part1part21_part25part25part1_d9h2l1.mod: d9h2l1.$(OBJEXTG)
+p3_part1part21_part25part25part1_d9h2l1d.mod: d9h2l1d.$(OBJEXTG)
+p3_part1part21_part25part25part1_abbrevd11h2.mod: abbrevd11h2.$(OBJEXTG)
+p3_part1part21_part25part25part1_d11h2l1.mod: d11h2l1.$(OBJEXTG)
+p3_part1part21_part25part25part1_d11h2l1d.mod: d11h2l1d.$(OBJEXTG)
+p3_part1part21_part25part25part1_amplitudeh2.mod: amplitudeh2.$(OBJEXTG)
+p3_part1part21_part25part25part1_globalsh2.mod: globals.$(OBJEXTG)

@@ -1,0 +1,21 @@
+#####NinjaMu2
+
+    acd31(1)=dotproduct(k1,ninjaA0);
+    acd31(2)=dotproduct(e5,ninjaA0);
+    acd31(3)=dotproduct(ninjaA0,ninjaA0);
+    acd31(4)=Wrapper(abb31,13);
+    acd31(5)=dotproduct(k2,ninjaA0);
+    acd31(6)=dotproduct(e1,ninjaA0);
+    acd31(7)=Wrapper(abb31,78);
+    acd31(8)=Wrapper(abb31,18);
+   acd31(9)=acd31(6)*acd31(7);
+   acd31(10)= - acd31(5) + acd31(1);
+   acd31(10)=acd31(4)*acd31(10);
+   acd31(9)=acd31(9) + acd31(10);
+   acd31(9)=acd31(2)*acd31(9);
+   acd31(10)=acd31(3)*acd31(8);
+   acd31(9)=acd31(9) + acd31(10);
+   acd31(9)=acd31(3)*acd31(9);
+
+brack(ninjaidxt0) = acd31(9);
+
