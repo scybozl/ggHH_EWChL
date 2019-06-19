@@ -450,28 +450,31 @@ c     additional variables
       
       call gosam_momenta(p,pgosam)
       muren=sqrt(st_muren2)
-      params(1)=1d0/(2d0*pi)
+      params(1)=1d0
       call OLP_EvalSubProcess(processid,pgosam,muren,params,res)
       amp2=res(3)
-
-      write(*,*) pgosam
-      write(*,*) "AMPLITUDE = ", amp2
-
+ 
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C     GOSAM returns this result with NO gs factor ==>
 C     virt_gosam ->  virt_gosam * (gs^2)^AlphasPower =
 C     virt_gosam * (4*pi*st_alpha)^AlphasPower
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 c         amp2=amp2 * (4d0*pi*ph_alphaem)**2
-         amp2=amp2 * st_alpha**2
+         amp2=amp2 * (4d0*pi*st_alpha)**2
 
-         write(*,*) "alpha = ", ph_alphaem, ", alphas = ", st_alpha
-         write(*,*) "AMPLITUDE (alpha alphas) = ", amp2
 c     The libraries for the  scalar integrals need an extra factor of 1/(16*pi^2)
 c     Since this contribution is the square of a one-loop calculation, this factor has to be squared
      $             * 1d0/(16d0*pi**2)**2
 c     There is an extra factor of 8*pi from the instrisic GoSam normalization (4*2*pi)
      $             * 8d0*pi
+
+c      processid=1
+      
+c      call gosam_momenta(p,pgosam)
+c      muren=sqrt(st_muren2)
+c      params(1)=1d0/(2d0*pi)
+c      call OLP_EvalSubProcess(processid,pgosam,muren,params,res)
+c      write(*,*) res
 
 
       end subroutine ME2born_top
