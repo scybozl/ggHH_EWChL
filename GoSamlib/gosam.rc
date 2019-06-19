@@ -16,9 +16,11 @@ model=FeynRules,/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/EWChL_UFO
 #    one/zero throughout the whole calculation. Within Powhegbox     #
 #    gs,e should always be treated as identical to one               #
 ##------------------------------------------------------------------##
-one=mdlee
-zero=mdlMe,mdlMU,mdlMD,mdlMC,mdlMS,mdlMB,mdlWT,mdlWh
-model.options=mdlaS=0.07957747,mdlMT=173
+one=mdlaS
+zero=mdlMe,mdlMU,mdlMD,mdlMC,mdlMS,mdlMB,mdlWT,mdlWh,mdlWW,mdlWZ
+#model.options=mdlaS=0.07957747,mdlMT=173,mdlymt=173,mdlWW=0,mdlWZ=0
+model.options=mdlMT=173,mdlymt=173
+nlo_prefactors=0
 
 ##-- symmetries (comma separated list) -----------------------------##
 #    Specifies the symmetries of the amplitude.                      #
@@ -97,10 +99,10 @@ extensions=olp_badpts
 #    For more detail see the GoSam manual:                           #
 #    http://www.hepforge.org/archive/gosam/gosam-2.0.pdf             #
 ##------------------------------------------------------------------##
-PSP_chk_th1=8
-PSP_chk_th2=3
-PSP_chk_th3=5
-PSP_chk_kfactor=-1
+#PSP_chk_th1=8
+#PSP_chk_th2=3
+#PSP_chk_th3=5
+#PSP_chk_kfactor=-1
 
 ######################################################################
 # program options: do not change unless you know what you are doing  #

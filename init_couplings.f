@@ -17,27 +17,27 @@ cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       ph_Hmass = powheginput('hmass')
 
       ph_GF= powheginput('#gfermi')
-      if (ph_GF.le.0d0) ph_GF  = 0.116639D-04
+      if (ph_GF.le.0d0) ph_GF  = 0.116637D-04
       ph_topmass = powheginput('#topmass')
-      if (ph_topmass.le.0d0) ph_topmass  = 171.3d0
+      if (ph_topmass.le.0d0) ph_topmass  = 173.0d0
       ph_Zmass = powheginput("#Zmass")
       if (ph_Zmass.le.0d0) ph_Zmass  = 91.1876d0
       ph_Zwidth = powheginput("#Zwidth")
-      if (ph_Zwidth.le.0d0) ph_Zwidth =  2.4952d0
+      if (ph_Zwidth.le.0d0) ph_Zwidth =  0.0d0
       ph_Wmass = powheginput("#Wmass")
       if (ph_Wmass.le.0d0) ph_Wmass  = 80.398d0
       ph_Wwidth = powheginput("#Wwidth")
-      if (ph_Wwidth.le.0d0) ph_Wwidth =  2.141d0
+      if (ph_Wwidth.le.0d0) ph_Wwidth =  0.0d0
       ph_mdlchhh = powheginput("#chhh")
       if (ph_mdlchhh.le.-99d0) ph_mdlchhh = 1.0d0
       ph_mdlct = powheginput("#ct")
       if (ph_mdlct.le.-99d0) ph_mdlct = 1.0d0
       ph_mdlcthh = powheginput("#cthh")
-      if (ph_mdlcthh.le.-99d0) ph_mdlcthh = 1.0d0
+      if (ph_mdlcthh.le.-99d0) ph_mdlcthh = 0.0d0
       ph_mdlcgg = powheginput("#cgg")
-      if (ph_mdlcgg.le.-99d0) ph_mdlcgg = 1.0d0
+      if (ph_mdlcgg.le.-99d0) ph_mdlcgg = 0.0d0
       ph_mdlcgghh = powheginput("#cgghh")
-      if (ph_mdlcgghh.le.-99d0) ph_mdlcgghh = 1.0d0
+      if (ph_mdlcgghh.le.-99d0) ph_mdlcgghh = 0.0d0
 
       ph_sthw2 = abs(1d0-(ph_Wmass/ph_Zmass)**2)
       ph_alphaem = ph_Wmass**2*ph_sthw2*8d0*ph_GF/sqrt(2d0)/4d0/pi
@@ -119,8 +119,8 @@ c$$$      call check_gosam_err(param,ierr)
 c$$$      call OLP_Option_qp(line,ierr)
 c$$$      call check_gosam_err(param,ierr)
 
-      param = 'mdlaEW='
-      write(value,'(F20.10)') ph_alphaem
+      param = 'mdlaEWM1='
+      write(value,'(F20.10)') 1d0/ph_alphaem
       line = trim(param)//trim(adjustl(value))
       call OLP_Option(line,ierr)
       call check_gosam_err(param,ierr)

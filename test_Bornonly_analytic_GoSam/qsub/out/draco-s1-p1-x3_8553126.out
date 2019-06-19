@@ -1,0 +1,279 @@
+>>>> Beginning of output file
+>>>> PYTHONPATH:
+.:/mpcdf/soft/SLE_12_SP3/packages/x86_64/anaconda/2.5.1.0/lib/python2.7/site-packages/:/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/test_Bornonly:/ptmp/lscyboz/mpmath-1.0.0/:/mpcdf/soft/SLE_12_SP3/packages/haswell/mpi4py/intel_18_0_3-anaconda_2_5_1-impi_2018_3/3.0.0/lib/python2.7/site-packages:/ptmp/lscyboz/mpmath-1.0.0/:
+>>>> Host name:
+dra0006.mpcdf.mpg.de
+>>>> Ulimit command
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 512204
+max locked memory       (kbytes, -l) unlimited
+max memory size         (kbytes, -m) 3788800
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 512204
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+>>>> Environmental variables
+SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
+SLURM_NODELIST=dra0006
+MKLROOT=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/mkl
+MODULE_VERSION_STACK=3.2.10
+LESSKEY=/etc/lesskey.bin
+LC_PAPER=de_DE.UTF-8
+SLURM_JOB_NAME=draco-s1-p1-x3
+GCC_HOME=/mpcdf/soft/SLE_12_SP3/packages/haswell/gcc/7.4.0
+DAPL_UCM_RTU_TIME=8000
+NNTPSERVER=news
+MANPATH=/mpcdf/soft/SLE_12_SP3/packages/haswell/gcc/7.4.0/share/man:/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/compilers_and_libraries_2018.3.222/linux/mpi/man:/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/18.0/linux/man/common:/usr/local/man:/usr/share/man
+XDG_SESSION_ID=c8687
+LC_ADDRESS=de_DE.UTF-8
+SLURMD_NODENAME=dra0006
+SLURM_TOPOLOGY_ADDR=s01.dra0006
+SLURM_NTASKS_PER_NODE=32
+SYS=amd64_sles12
+HOSTNAME=dra0006
+LC_MONETARY=de_DE.UTF-8
+SLURM_PRIO_PROCESS=0
+DAPL_UCM_CQ_SIZE=2000
+XKEYSYMDB=/usr/X11R6/lib/X11/XKeysymDB
+SLURM_NODE_ALIASES=(null)
+RZG_CPL=intel-18.0.3
+INTEL_LICENSE_FILE=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_license/0.1
+DAPL_UCM_RETRY=15
+HOST=draco03
+TERM=xterm-256color
+SHELL=/bin/bash
+SLURM_JOB_QOS=normal
+SLURM_MPI_TYPE=pmi2
+SLURM_HINT=nomultithread
+I_MPI_EXTRA_FILESYSTEM=1
+PROFILEREAD=true
+HISTSIZE=1000
+TMPDIR=/tmp
+SLURM_TOPOLOGY_ADDR_PATTERN=switch.node
+SSH_CLIENT=134.107.45.210 58970 22
+INTEL_C_DOC=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/documentation_2018/en/compiler_c
+OMP_STACKSIZE=256M
+SLURM_JOB_DEPENDENCY=
+I_MPI_PMI_LIBRARY=/usr/lib64/libpmi2.so
+MORE=-sl
+LC_NUMERIC=de_DE.UTF-8
+RZG_MPI=impi-2018.3
+SSH_TTY=/dev/pts/28
+I_MPI_DOC=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/documentation_2018/en/mpi
+SLURM_CELL=DRACO
+SLURM_NNODES=1
+USER=lscyboz
+LD_LIBRARY_PATH=/ptmp/lscyboz/GOSAM-CONTRIB-2.0/lib/:/ptmp/lscyboz/HEPMC-2.06.09/lib:/ptmp/lscyboz/GOSAM-CONTRIB-2.0/lib/:/ptmp/lscyboz/HEPMC-2.06.09/lib:/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/compilers_and_libraries_2018.3.222/linux/mpi/intel64/lib
+INTEL_HOME=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3
+LS_COLORS=no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=41;33;01:ex=00;32:*.cmd=00;32:*.exe=01;32:*.com=01;32:*.bat=01;32:*.btm=01;32:*.dll=01;32:*.tar=00;31:*.tbz=00;31:*.tgz=00;31:*.rpm=00;31:*.deb=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.lzma=00;31:*.zip=00;31:*.zoo=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.tb2=00;31:*.tz2=00;31:*.tbz2=00;31:*.xz=00;31:*.avi=01;35:*.bmp=01;35:*.fli=01;35:*.gif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mng=01;35:*.mov=01;35:*.mpg=01;35:*.pcx=01;35:*.pbm=01;35:*.pgm=01;35:*.png=01;35:*.ppm=01;35:*.tga=01;35:*.tif=01;35:*.xbm=01;35:*.xpm=01;35:*.dl=01;35:*.gl=01;35:*.wmv=01;35:*.aiff=00;32:*.au=00;32:*.mid=00;32:*.mp3=00;32:*.ogg=00;32:*.voc=00;32:*.wav=00;32:
+LC_TELEPHONE=de_DE.UTF-8
+ANACONDA_HOME=/mpcdf/soft/SLE_12_SP3/packages/x86_64/anaconda/2.5.1.0
+DAPL_IB_MTU=4096
+XNLSPATH=/usr/share/X11/nls
+SLURM_JOBID=8553126
+INTEL_D_DOC=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/documentation_2018/en/debugger
+HOSTTYPE=x86_64
+FORT_BUFFERED=yes
+SLURM_NTASKS=32
+FROM_HEADER=
+PAGER=less
+I_MPI_FALLBACK_DEVICE=1
+CSHEDIT=emacs
+XDG_CONFIG_DIRS=/etc/xdg
+I_MPI_SLURM_EXT=1
+DAPL_ACK_RETRY=7
+AFS=none
+LIBGL_DEBUG=quiet
+MINICOM=-c on
+SLURM_TASKS_PER_NODE=32
+MODULE_VERSION=3.2.10
+MAIL=/var/mail/lscyboz
+PATH=/ptmp/lscyboz/POWHEG-BOX-V2/GoSamStuff/StandAlone/MAKEDEPF90-2.8.8/bin/:/ptmp/lscyboz/QGRAF-3.4/:/ptmp/lscyboz/FORM-4.1/bin:/ptmp/lscyboz/GOSAM-2.0-latest-new/bin/:/ptmp/lscyboz/pdfcrop_v0.4b/:/ptmp/lscyboz/PYTHIA-8.235/bin:/ptmp/lscyboz/FASTJET-3.2.2/bin:/ptmp/lscyboz/LHAPDF-6.1.5/bin:/ptmp/lscyboz/SCONS-3.0.0/bin:/mpcdf/soft/SLE_12_SP3/packages/haswell/impi/gcc_7/2018.3.222/bin:/mpcdf/soft/SLE_12_SP3/packages/x86_64/anaconda/2.5.1.0/bin:/mpcdf/soft/SLE_12_SP3/packages/haswell/gcc/7.4.0/bin:/ptmp/lscyboz/POWHEG-BOX-V2/GoSamStuff/StandAlone/MAKEDEPF90-2.8.8/bin/:/ptmp/lscyboz/QGRAF-3.4/:/ptmp/lscyboz/FORM-4.1/bin:/ptmp/lscyboz/GOSAM-2.0-latest-new/bin/:/ptmp/lscyboz/pdfcrop_v0.4b/:/ptmp/lscyboz/PYTHIA-8.235/bin:/ptmp/lscyboz/FASTJET-3.2.2/bin:/ptmp/lscyboz/LHAPDF-6.1.5/bin:/ptmp/lscyboz/SCONS-3.0.0/bin:/mpcdf/soft/SLE_12_SP3/packages/haswell/impi/intel_18_0_3/2018.3.222/bin:/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/compilers_and_libraries_2018.3.222/linux/mpi/bin64:/mpcdf/soft/SLE_12_SP3/packages/haswell/intel/18.0.3/bin:/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/18.0/linux/bin/intel64:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games:/opt/ibutils/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin:/afs/ipp/amd64_sles12/bin:/afs/ipp/amd64_sles12/bin
+SLURM_WORKING_CLUSTER=slurm_draco:dracos1:6817:8192
+I_MPI_FABRICS_LIST=dapl,ofi,ofa,tcp
+I_MPI_EXTRA_FILESYSTEM_LIST=gpfs
+CPU=x86_64
+SLURM_JOB_ID=8553126
+SSH_SENDS_LOCALE=yes
+LC_IDENTIFICATION=de_DE.UTF-8
+SLURM_JOB_USER=lscyboz
+INPUTRC=/etc/inputrc
+PWD=/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/test_Bornonly
+_LMFILES_=/mpcdf/soft/SLE_12_SP3/modules/compilers/intel/18.0.3:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/modules/mpi/impi/2018.3:/mpcdf/soft/SLE_12_SP3/modules/libs/mkl/2018.3:/mpcdf/soft/SLE_12_SP3/modules/compilers/gcc/7:/mpcdf/soft/SLE_12_SP3/modules/python/anaconda/2/5.1:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/sub/anaconda_2_5_1-impi_2018_3/modules/libs/mpi4py/3.0.0:/mpcdf/soft/SLE_12_SP3/sub/gcc_7/modules/mpi/impi/2018.3
+I_MPI_DAT_LIBRARY=libdat2.so
+DOMAIN=mpcdf.mpg.de
+CELL=ipp-garching.mpg.de
+LANG=en_US.UTF-8
+PYTHONSTARTUP=/etc/pythonstart
+MODULEPATH=/mpcdf/soft/SLE_12_SP3/sub/gcc_7/sub/impi_2018_3/modules/applications:/mpcdf/soft/SLE_12_SP3/sub/gcc_7/sub/impi_2018_3/modules/libs:/mpcdf/soft/SLE_12_SP3/sub/gcc_7/sub/impi_2018_3/modules/tools:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/sub/anaconda_2_5_1-impi_2018_3/modules/libs:/mpcdf/soft/SLE_12_SP3/sub/gcc_7/sub/anaconda_2_5_1-impi_2018_3/modules/libs:/mpcdf/soft/SLE_12_SP3/modules/python.modules/anaconda-2-5.1/%module_categories:/mpcdf/soft/SLE_12_SP3/sub/gcc_7/modules/ml:/mpcdf/soft/SLE_12_SP3/sub/gcc_7/modules/mpi:/mpcdf/soft/SLE_12_SP3/sub/gcc_7/modules/libs:/mpcdf/soft/SLE_12_SP3/sub/gcc_7/modules/tools:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/sub/impi_2018_3/modules/applications:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/sub/impi_2018_3/modules/libs:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/sub/impi_2018_3/modules/tools:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/modules/ml:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/modules/mpi:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/modules/libs:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/modules/tools:/mpcdf/soft/SLE_12_SP3/modules/third-party-compilers:/mpcdf/soft/SLE_12_SP3/modules/java:/mpcdf/soft/SLE_12_SP3/modules/visualization:/mpcdf/soft/SLE_12_SP3/modules/visualisation:/mpcdf/soft/SLE_12_SP3/modules/gpu:/mpcdf/soft/SLE_12_SP3/modules/ml:/mpcdf/soft/SLE_12_SP3/modules/applications:/mpcdf/soft/SLE_12_SP3/modules/compilers:/mpcdf/soft/SLE_12_SP3/modules/python:/mpcdf/soft/SLE_12_SP3/modules/libs:/mpcdf/soft/SLE_12_SP3/modules/tools
+SLURM_JOB_UID=54552
+LOADEDMODULES=intel/18.0.3:impi/2018.3:mkl/2018.3:gcc/7:anaconda/2/5.1:mpi4py/3.0.0
+LC_MEASUREMENT=de_DE.UTF-8
+SLURM_NODEID=0
+MKL_DOC=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/documentation_2018/en/mkl
+I_MPI_PMI2=1
+SLURM_SUBMIT_DIR=/draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/test_Bornonly
+SLURM_TASK_PID=43649
+SLURM_NPROCS=32
+SLURM_CPUS_ON_NODE=32
+SLURM_DISTRIBUTION=*:block
+MKL_HOME=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/mkl
+SLURM_PROCID=0
+ENVIRONMENT=BATCH
+KRB5CCNAME=DIR:/run/user/54552/krb5cc_EvUX1n
+SLURM_JOB_NODELIST=dra0006
+INTEL_F_DOC=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/documentation_2018/en/compiler_f
+GPG_TTY=not a tty
+QT_SYSTEM_DIR=/usr/share/desktop-data
+SHLVL=3
+HOME=/u/lscyboz
+SLURM_LOCALID=0
+LESS_ADVANCED_PREPROCESSOR=no
+OSTYPE=linux
+DAPL_UCM_REP_TIME=8000
+SLURM_JOB_GID=10800
+SLURM_JOB_CPUS_PER_NODE=32
+SLURM_CLUSTER_NAME=slurm_draco
+LS_OPTIONS=-N --color=tty -T 0
+XCURSOR_THEME=
+SLURM_GTIDS=0
+SLURM_SUBMIT_HOST=draco03
+SLURM_JOB_PARTITION=express
+I_MPI_JOB_STARTUP_TIMEOUT=300
+PYTHONPATH=.:/mpcdf/soft/SLE_12_SP3/packages/x86_64/anaconda/2.5.1.0/lib/python2.7/site-packages/:/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/test_Bornonly:/ptmp/lscyboz/mpmath-1.0.0/:/mpcdf/soft/SLE_12_SP3/packages/haswell/mpi4py/intel_18_0_3-anaconda_2_5_1-impi_2018_3/3.0.0/lib/python2.7/site-packages:/ptmp/lscyboz/mpmath-1.0.0/:
+G_FILENAME_ENCODING=@locale,UTF-8,ISO-8859-15,CP1252
+LESS=-M -I -R
+MACHTYPE=x86_64-suse-linux
+LOGNAME=lscyboz
+INTERACTIVE=TRUE
+SLURM_JOB_ACCOUNT=general
+DAPL_ACK_TIMER=20
+XDG_DATA_DIRS=/usr/share
+SSH_CONNECTION=134.107.45.210 58970 130.183.23.250 22
+SLURM_JOB_NUM_NODES=1
+I_MPI_HYDRA_BOOTSTRAP=slurm
+MODULESHOME=/mpcdf/soft/SLE_12_SP3/packages/x86_64/Modules/3.2.10
+CLUSTER=DRACO
+LESSOPEN=lessopen.sh %s
+INFOPATH=/mpcdf/soft/SLE_12_SP3/packages/haswell/gcc/7.4.0/share/info
+DAPL_UCM_QP_SIZE=2000
+XDG_RUNTIME_DIR=/run/user/54552
+I_MPI_PLATFORM_CHECK=0
+LESSCLOSE=lessclose.sh %s %s
+LC_TIME=de_DE.UTF-8
+SLURM_MEM_PER_NODE=3700
+MPCDF_SUBMODULE_COMBINATIONS=/mpcdf/soft/SLE_12_SP3/sub/gcc_7/combinations:/mpcdf/soft/SLE_12_SP3/sub/intel_18_0_3/combinations
+G_BROKEN_FILENAMES=1
+I_MPI_ROOT=/mpcdf/soft/SLE_12_SP3/packages/x86_64/intel_parallel_studio/2018.3/compilers_and_libraries_2018.3.222/linux/mpi
+COLORTERM=1
+LC_NAME=de_DE.UTF-8
+BASH_FUNC_module%%=() {  eval `/mpcdf/soft/SLE_12_SP3/packages/x86_64/Modules/$MODULE_VERSION/bin/modulecmd bash $*`
+}
+BASH_FUNC_mc%%=() {  . /usr/share/mc/mc-wrapper.sh
+}
+_=/usr/bin/env
+>>>> where I am now (job beginning)
+/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/test_Bornonly
+>>>> time now (job beginning)
+Do 13. Jun 17:39:23 CEST 2019
+>>>> run Powheg:
+[8 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[4 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[14 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[5 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[15 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[11 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[13 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[8 (dra0006)] Running: echo 9 | ../pwhg_main > run-draco-s1-p1-x3-9.log 2>&1
+[4 (dra0006)] Running: echo 5 | ../pwhg_main > run-draco-s1-p1-x3-5.log 2>&1
+[5 (dra0006)] Running: echo 6 | ../pwhg_main > run-draco-s1-p1-x3-6.log 2>&1
+[14 (dra0006)] Running: echo 15 | ../pwhg_main > run-draco-s1-p1-x3-15.log 2>&1
+[11 (dra0006)] Running: echo 12 | ../pwhg_main > run-draco-s1-p1-x3-12.log 2>&1
+[15 (dra0006)] Running: echo 16 | ../pwhg_main > run-draco-s1-p1-x3-16.log 2>&1
+[6 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[10 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[13 (dra0006)] Running: echo 14 | ../pwhg_main > run-draco-s1-p1-x3-14.log 2>&1
+[16 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[18 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[6 (dra0006)] Running: echo 7 | ../pwhg_main > run-draco-s1-p1-x3-7.log 2>&1
+[0 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[1 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[10 (dra0006)] Running: echo 11 | ../pwhg_main > run-draco-s1-p1-x3-11.log 2>&1
+[7 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[16 (dra0006)] Running: echo 17 | ../pwhg_main > run-draco-s1-p1-x3-17.log 2>&1
+[9 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[3 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[17 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[18 (dra0006)] Running: echo 19 | ../pwhg_main > run-draco-s1-p1-x3-19.log 2>&1
+[21 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[1 (dra0006)] Running: echo 2 | ../pwhg_main > run-draco-s1-p1-x3-2.log 2>&1
+[23 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[25 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[26 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[28 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[19 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[22 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[20 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[0 (dra0006)] Running: echo 1 | ../pwhg_main > run-draco-s1-p1-x3-1.log 2>&1
+[31 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[30 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[2 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[3 (dra0006)] Running: echo 4 | ../pwhg_main > run-draco-s1-p1-x3-4.log 2>&1
+[29 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[7 (dra0006)] Running: echo 8 | ../pwhg_main > run-draco-s1-p1-x3-8.log 2>&1
+[27 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[24 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[23 (dra0006)] Running: echo 24 | ../pwhg_main > run-draco-s1-p1-x3-24.log 2>&1
+[17 (dra0006)] Running: echo 18 | ../pwhg_main > run-draco-s1-p1-x3-18.log 2>&1
+[12 (dra0006)] Received: STARTSEED=1, PRG=../pwhg_main, LOGFILE=run-draco-s1-p1-x3
+[25 (dra0006)] Running: echo 26 | ../pwhg_main > run-draco-s1-p1-x3-26.log 2>&1
+[26 (dra0006)] Running: echo 27 | ../pwhg_main > run-draco-s1-p1-x3-27.log 2>&1
+[28 (dra0006)] Running: echo 29 | ../pwhg_main > run-draco-s1-p1-x3-29.log 2>&1
+[9 (dra0006)] Running: echo 10 | ../pwhg_main > run-draco-s1-p1-x3-10.log 2>&1
+[20 (dra0006)] Running: echo 21 | ../pwhg_main > run-draco-s1-p1-x3-21.log 2>&1
+[19 (dra0006)] Running: echo 20 | ../pwhg_main > run-draco-s1-p1-x3-20.log 2>&1
+[22 (dra0006)] Running: echo 23 | ../pwhg_main > run-draco-s1-p1-x3-23.log 2>&1
+[30 (dra0006)] Running: echo 31 | ../pwhg_main > run-draco-s1-p1-x3-31.log 2>&1
+[29 (dra0006)] Running: echo 30 | ../pwhg_main > run-draco-s1-p1-x3-30.log 2>&1
+[31 (dra0006)] Running: echo 32 | ../pwhg_main > run-draco-s1-p1-x3-32.log 2>&1
+[2 (dra0006)] Running: echo 3 | ../pwhg_main > run-draco-s1-p1-x3-3.log 2>&1
+[27 (dra0006)] Running: echo 28 | ../pwhg_main > run-draco-s1-p1-x3-28.log 2>&1
+[21 (dra0006)] Running: echo 22 | ../pwhg_main > run-draco-s1-p1-x3-22.log 2>&1
+[12 (dra0006)] Running: echo 13 | ../pwhg_main > run-draco-s1-p1-x3-13.log 2>&1
+[24 (dra0006)] Running: echo 25 | ../pwhg_main > run-draco-s1-p1-x3-25.log 2>&1
+>>>> time now (job end)
+Do 13. Jun 17:39:33 CEST 2019
+                                  
+================================= 
+Global information about the job: 
+================================= 
+  
+Job owner: lscyboz(54552)
+Job name:  draco-s1-p1-x3
+Node list: dra0006
+Job start: Thu Jun 13 17:39:20 CEST 2019
+Job end:   Thu Jun 13 17:39:33 CEST 2019
+Work dir:  /ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/test_Bornonly/./
+Command:   /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/test_Bornonly/draco_mpi-draco-s1-p1-x3.shx
+  
+  
+  
+================================================================================ 
+Information on jobsteps (Note: MaxRSS is per task, cf. "man sacct"): 
+================================================================================ 
+  
+       JobID    JobName NNodes NTasks  NCPUS     MaxRSS    Elapsed ExitCode 
+------------ ---------- ------ ------ ------ ---------- ---------- -------- 
+8553126.0    pwhg_run.+      1     32     32     10647K   00:00:10      0:0 
+  
+Maximum memory per node: 0.340704 GB
+CPU utilization: 23.1 %
+     

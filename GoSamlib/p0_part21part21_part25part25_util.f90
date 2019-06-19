@@ -16,11 +16,19 @@ module     p0_part21part21_part25part25_util
    end interface
 
 
+   interface     cond_t
+      module procedure cond_mu_r1
+      module procedure cond_mu_r2
+      module procedure cond_abc_p2
+      module procedure cond_abc_p3
+   end interface
+
 
    public :: square
    public :: inspect_lo_diagram
    public :: metric_tensor
    public :: cond
+   public :: cond_t
 contains
    pure function metric_tensor(mu,nu) result(d)
       implicit none
@@ -84,6 +92,97 @@ contains
    end  function cond_mu2
 
 
+   pure subroutine cond_mu_r1(cnd, brack, a, coeffs)
+      implicit none
+      logical, intent(in) :: cnd
+      complex(ki), dimension(4), intent(in) :: a
+      complex(ki), dimension(0:*), intent(inout) :: coeffs
+
+      interface
+         pure subroutine brack(inner_a, inner_co)
+            use p0_part21part21_part25part25_config, only: ki
+            implicit none
+            complex(ki), dimension(4), intent(in) :: inner_a
+            complex(ki), dimension(0:*), intent(inout) :: inner_co
+         end  subroutine brack
+      end interface
+
+      if (cnd) then
+         call brack(a, coeffs)
+      end if
+   end  subroutine cond_mu_r1
+
+   pure subroutine cond_mu_r2(cnd, brack, a, b, coeffs)
+      implicit none
+      logical, intent(in) :: cnd
+      complex(ki), dimension(4), intent(in) :: a, b
+      complex(ki), dimension(0:*), intent(inout) :: coeffs
+
+      interface
+         pure subroutine brack(inner_a, inner_b, inner_co)
+            use p0_part21part21_part25part25_config, only: ki
+            implicit none
+            complex(ki), dimension(4), intent(in) :: inner_a
+            complex(ki), dimension(4), intent(in) :: inner_b
+            complex(ki), dimension(0:*), intent(inout) :: inner_co
+         end  subroutine brack
+      end interface
+
+      if (cnd) then
+         call brack(a, b, coeffs)
+      end if
+   end  subroutine cond_mu_r2
+
+   pure subroutine cond_abc_p3(cnd, brack, a, b, c, param, coeffs)
+      implicit none
+      logical, intent(in) :: cnd
+      complex(ki), dimension(4), intent(in) :: a, b, c
+      complex(ki), intent(in) :: param
+      complex(ki), dimension(0:*), intent(inout) :: coeffs
+
+      interface
+         pure subroutine brack(inner_a, inner_b, inner_c, inner_param, inner_co)
+            use p0_part21part21_part25part25_config, only: ki
+            implicit none
+            complex(ki), dimension(4), intent(in) :: inner_a
+            complex(ki), dimension(4), intent(in) :: inner_b
+            complex(ki), dimension(4), intent(in) :: inner_c
+            complex(ki), intent(in) :: inner_param
+            complex(ki), dimension(0:*), intent(inout) :: inner_co
+         end  subroutine brack
+      end interface
+
+      if (cnd) then
+         call brack(a, b, c, param, coeffs)
+      end if
+   end  subroutine cond_abc_p3
+
+   pure subroutine    cond_abc_p2(cnd, brack, a0, a1, b, c, param, coeffs)
+      implicit none
+      logical, intent(in) :: cnd
+      complex(ki), dimension(4), intent(in) :: a0, a1, b, c
+      complex(ki), dimension(0:2), intent(in) :: param
+      complex(ki), dimension(0:*), intent(inout) :: coeffs
+
+      interface
+         pure subroutine brack(inner_a0, inner_a1, inner_b, inner_c, inner_param,&
+           & inner_co)
+            use p0_part21part21_part25part25_config, only: ki
+            implicit none
+            complex(ki), dimension(4), intent(in) :: inner_a0
+            complex(ki), dimension(4), intent(in) :: inner_a1
+            complex(ki), dimension(4), intent(in) :: inner_b
+            complex(ki), dimension(4), intent(in) :: inner_c
+            complex(ki), dimension(0:2), intent(in) :: inner_param
+            complex(ki), dimension(0:*), intent(inout) :: inner_co
+         end  subroutine brack
+      end interface
+
+      if (cnd) then
+         call brack(a0, a1, b, c, param, coeffs)
+      end if
+   end  subroutine cond_abc_p2
+
 
    subroutine     inspect_lo_diagram(values, d, h, unit)
       implicit none
@@ -109,11 +208,11 @@ contains
       write(ch,'(A13)') "</lo-diagram>"
    end subroutine inspect_lo_diagram
 
-!   subroutine     inspect_nlo_diagram(values, d, h, unit)
+!   subroutine     inspect_nlo_diagram(values, d, h, c, unit)
 !      implicit none
 !
 !      complex(ki), dimension(0:2), intent(in) :: values
-!      integer, intent(in) :: d, h
+!      integer, intent(in) :: d, h, c
 !      integer, intent(in), optional :: unit
 !
 !      integer :: ch
@@ -124,14 +223,14 @@ contains
 !              ch = 5
 !      end if
 !
-!      write(ch,'(A12,I6,A1,I3,A11,G23.16,A1,G23.16,A2)') &
-!         & "evt.set_nlo(", d, ",", h, &
+!      write(ch,'(A12,I6,A1,I3,A1,I3,A11,G23.16,A1,G23.16,A2)') &
+!         & "evt.set_nlo(", d, ",", h, ",", c, &
 !         & ",2,complex(", real(values(2)), ",", aimag(values(2)), "))"
-!      write(ch,'(A12,I6,A1,I3,A11,G23.16,A1,G23.16,A2)') &
-!         & "evt.set_nlo(", d, ",", h, &
+!      write(ch,'(A12,I6,A1,I3,A1,I3,A11,G23.16,A1,G23.16,A2)') &
+!         & "evt.set_nlo(", d, ",", h, ",", c, &
 !         & ",1,complex(", real(values(1)), ",", aimag(values(1)), "))"
-!      write(ch,'(A12,I6,A1,I3,A11,G23.16,A1,G23.16,A2)') &
-!         & "evt.set_nlo(", d, ",", h, &
+!      write(ch,'(A12,I6,A1,I3,A1,I3,A11,G23.16,A1,G23.16,A2)') &
+!         & "evt.set_nlo(", d, ",", h, ",", c, &
 !         & ",0,complex(", real(values(0)), ",", aimag(values(0)), "))"
 !   end subroutine inspect_nlo_diagram
 

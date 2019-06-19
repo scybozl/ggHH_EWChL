@@ -1,0 +1,96 @@
+# vim: ts=3:sw=3
+
+include ../../Makefile.conf
+
+
+# @helicity: 0 [ -1 -1 0 0]
+# @date: 06/17/19 12:55:12
+
+HELi1=-1
+HELi2=-1
+HELo1=0
+HELo2=0
+
+# NOTE: reference vectors are no longer defined here but in the
+#       setup file through the property reference-vectors.
+
+FORM_OPT=-D HELi1=$(HELi1) \
+	-D HELi2=$(HELi2) \
+	-D HELo1=$(HELo1) \
+	-D HELo2=$(HELo2) \
+	 -D PROCESSPATH=.. \
+	-D PWD=. \
+	-p ..:../codegen \
+	-M -q
+
+DIAGRAMS_TREE=
+
+DIAGRAMS_TREE_FR5=
+
+TXT_TREE= \
+		d1h0l0.txt \
+		d2h0l0.txt
+
+TXT_TREE_FR5=
+
+TXT_TREE_STAMP= \
+		d1h0l0-stamp \
+		d2h0l0-stamp
+
+
+SOURCE_TREE= \
+	diagramsl0.f90 $(DIAGRAMS_TREE)
+
+
+DIAGRAMS_VIRT=
+TXT_VIRT=
+SOURCE_VIRT=
+
+
+
+.PHONY: source
+.SUFFIXES:
+
+
+all_source: $(SOURCE_TREE) $(SOURCE_VIRT)
+d1h0l0.txt: ../diagrams-0.hh
+	@echo Form is processing tree diagram 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D GROUP=1 \
+		-D LOOPS=0 \
+		-D DIAG=1 \
+		-D BORNFLG=1 \
+		-D OUTFILE=d1h0l0 \
+		../codegen/golem.frm
+	@touch d1h0l0-stamp
+d1h0l0-stamp: d1h0l0.txt
+
+d2h0l0.txt:
+	@echo "* dummy file" > $@
+	@touch d2h0l0-stamp
+d2h0l0-stamp: d2h0l0.txt
+born.txt: ../diagrams-0.hh $(TXT_TREE_STAMP)
+	@cat $(TXT_TREE) > borndiag.prc
+	@echo Form is processing tree diagram 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D GROUP=1 \
+		-D LOOPS=0 \
+		-D DIAG=2 \
+		-D BORNFLG=-1 \
+		-D OUTFILE=d2h0l0 \
+		../codegen/golem.frm
+	@touch born-stamp
+born-stamp: born.txt
+diagramsl0.f90: born.txt born-stamp
+	@echo Python is processing tree diagrams @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortranborn.py \
+		-i $< \
+		--HELICITY=0
+
+
+
+
+
+

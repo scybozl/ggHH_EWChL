@@ -14,7 +14,8 @@ module     p0_part21part21_part25part25_matrix
    use p0_part21part21_part25part25_model, only: Nf, NC, sqrt2, init_functions
    use p0_part21part21_part25part25_color, only: TR, CA, CF, numcs, &
      & incolors, init_color
-   use p0_part21part21_part25part25_diagramsh0l0, only: amplitude0l0 => amplitude
+   use p0_part21part21_part25part25_amplitudeh0, only: samplitudeh0l1 => samplitude, &
+        &   finite_renormalisation0 => finite_renormalisation
    use p0_part21part21_part25part25_dipoles, only: insertion_operator, insertion_operator_qed
 
    implicit none
@@ -159,6 +160,7 @@ contains
    !---#] subroutine initgolem :
    !---#[ subroutine exitgolem :
    subroutine     exitgolem(is_last)
+      use p0_part21part21_part25part25_groups, only: tear_down_golem95
       implicit none
       logical, optional, intent(in) :: is_last
 
@@ -170,6 +172,7 @@ contains
          exit_third_party = .true.
       end if
       if (exit_third_party) then
+         call tear_down_golem95()
          if(PSP_check.and.PSP_rescue.and.PSP_verbosity) then
             write(42,'(A6)')  "</run>"
             close(unit=42)
@@ -208,23 +211,20 @@ contains
       amp = ampdef
       ! RESCUE SYSTEM
       if(PSP_check) then
-         call ir_subtraction(vecs, scale2, irp, h)
-         if((ampdef(3)-irp(2)) .ne. 0.0_ki) then
-            spprec1 = -int(log10(abs((ampdef(3)-irp(2))/irp(2))))
+         ! poles should be zero for loop-induced processes
+         if(ampdef(2) .ne. 0.0_ki .and. ampdef(3) .ne. 0.0_ki) then
+            spprec1 = -int(log10(abs((ampdef(3)/ampdef(2)))))
          else
-            spprec1 = 16
+            spprec1 = 18
          endif
-         if(ampdef(1) .ne. 0.0_ki) then
-            kfac = abs(ampdef(2)/ampdef(1))
-         else
-            kfac = 0.0_ki
-         endif
-         if(spprec1.lt.PSP_chk_th1.and.spprec1.ge.PSP_chk_th2 &
-              .or.(kfac.gt.PSP_chk_kfactor.and.PSP_chk_kfactor.gt.0)) icheck=2 ! ROTATION
-         if(spprec1.lt.PSP_chk_th2) then                                       ! RESCUE
+         kfac = 0.0_ki
+         if(spprec1.lt.PSP_chk_li1.and.spprec1.ge.PSP_chk_li2) then
+            icheck=2 ! ROTATION
+         end if
+         if(spprec1.lt.PSP_chk_li2) then                                       ! RESCUE
             icheck=3
             fpprec1=-10        ! Set -10 as finite part precision
-         endif
+         end if
          if(icheck.eq.2) then
             do irot = 1,4
                vecsrot(irot,1) = vecs(irot,1)
@@ -238,8 +238,8 @@ contains
             else
                fpprec1 = 16
             endif
-            if(fpprec1.ge.PSP_chk_th3) icheck=1                            ! ACCEPTED
-            if(fpprec1.lt.PSP_chk_th3) icheck=3                            ! RESCUE
+            if(fpprec1.ge.PSP_chk_li3) icheck=1                            ! ACCEPTED
+            if(fpprec1.lt.PSP_chk_li3) icheck=3                            ! RESCUE
          endif
          prec = min(spprec1,fpprec1)
 
@@ -248,21 +248,14 @@ contains
             reduction_interoperation = reduction_interoperation_rescue
             call samplitudel01(vecs, scale2, ampres, rat2, ok, h)
             amp=ampres
-            if((ampres(3)-irp(2)) .ne. 0.0_ki) then
-               spprec2 = -int(log10(abs((ampres(3)-irp(2))/irp(2))))
+            ! poles should be zero for loop-induced processes
+            if(ampres(2) .ne. 0.0_ki .and. ampres(3) .ne. 0.0_ki) then
+               spprec2 = -int(log10(abs(ampres(3)/ampres(2))))
             else
                spprec2 = 16
             endif
-            if(ampres(1) .ne. 0.0_ki) then
-               kfac = abs(ampres(2)/ampres(1))
-            else
-               kfac = 0.0_ki
-            endif
-            ! if(spprec2.lt.PSP_chk_th1.and.spprec2.ge.PSP_chk_th2 &
-            !      .or.(kfac.gt.PSP_chk_kfactor.and.PSP_chk_kfactor.gt.0)) icheck=2 ! ROTATION
-            ! if(spprec2.lt.PSP_chk_th2) then                                       ! DISCARD
-            if(spprec2.lt.PSP_chk_th3 &
-                 .or.(kfac.gt.PSP_chk_kfactor.and.PSP_chk_kfactor.gt.0)) then ! DISCARD
+            kfac = 0.0_ki
+            if(spprec2.lt.PSP_chk_li4) then ! DISCARD
                icheck=3
                fpprec2=-10        ! Set -10 as finite part precision
             endif
@@ -280,8 +273,8 @@ contains
                else
                   fpprec2 = 16
                endif
-               if(fpprec2.ge.PSP_chk_th3) icheck=1                         ! ACCEPTED
-               if(fpprec2.lt.PSP_chk_th3) icheck=3                         ! DISCARD
+               if(fpprec2.ge.PSP_chk_li3) icheck=1                         ! ACCEPTED
+               if(fpprec2.lt.PSP_chk_li3) icheck=3                         ! DISCARD
             endif
             reduction_interoperation = tmp_red_int
             prec = min(spprec2,fpprec2)
@@ -291,10 +284,11 @@ contains
             write(42,'(2x,A7)')"<event>"
             write(42,'(4x,A15,A28,A3)') &
                  &  "<process name='","p0_part21part21_part25part25","'/>"
-            write(42,'(4x,A21,I2.1,A7,I2.1,A7,I2.1,A3)') &
-                 &  "<PSP_thresholds th1='", PSP_chk_th1, &
-                 &                "' th2='", PSP_chk_th2, &
-                 &                "' th3='", PSP_chk_th3,"'/>"
+            write(42,'(4x,A21,I2.1,A7,I2.1,A7,I2.1,A7,I2.1,A3)') &
+                 &  "<PSP_thresholds li1='", PSP_chk_li1, &
+                 &                "' li2='", PSP_chk_li2, &
+                 &                "' li3='", PSP_chk_li3, &
+                 &                "' li4='", PSP_chk_li4,"'/>"
             write(42,'(4x,A16,D23.16,A3)') &
                  &  "<PSP_kfaktor k='", PSP_chk_kfactor,"'/>"
             write(42,'(4x,A15,I3.1,A6,I3.1,A3)') &
@@ -361,7 +355,7 @@ contains
       if(corrections_are_qcd) then
          nlo_coupling = mdlG*mdlG
       else
-         nlo_coupling = 1.0_ki
+         nlo_coupling = mdlee*mdlee
       end if
 
       if(debug_lo_diagrams .or. debug_nlo_diagrams) then
@@ -371,12 +365,47 @@ contains
       end if
 
       
+      amp(1)   = 0.0_ki
+      select case (renormalisation)
+      case (0)
+         ! no renormalisation
+         deltaOS = 0.0_ki
+      case (1)
+         ! fully renormalized
+         if(renorm_mqse) then
+            deltaOS = 1.0_ki
+         else
+            deltaOS = 0.0_ki
+         end if
+      case (2)
+         ! massive quark counterterms only
+         deltaOS = 1.0_ki
+      case default
+         ! not implemented
+         print*, "In p0_part21part21_part25part25_matrix:"
+         print*, "  invalid value for renormalisation=", renormalisation
+         stop
+      end select
+
       if (present(h)) then
-         amp(1) = samplitudel0(vecs, h)
+         amp((/4,3,2/)) = samplitudel1(vecs, scale2, my_ok, rat2, h)/nlo_coupling/nlo_coupling
       else
-         amp(1)   = samplitudel0(vecs)
+         amp((/4,3,2/)) = samplitudel1(vecs, scale2, my_ok, rat2)/nlo_coupling/nlo_coupling
       end if
-      amp(2:4) = 0.0_ki
+      select case (renormalisation)
+      case (0)
+         ! no renormalisation
+      case (1)
+         ! fully renormalized
+         ! No tree level present
+      case (2)
+         ! massive quark counterterms only
+      case default
+         ! not implemented
+         print*, "In p0_part21part21_part25part25_matrix:"
+         print*, "  invalid value for renormalisation=", renormalisation
+         stop
+      end select
       if (convert_to_cdr) then
          ! Scheme conversion for infrared structure
          ! Reference:
@@ -407,6 +436,16 @@ contains
          end if
          write(logfile,'(A8)') "</event>"
       end if
+      select case(nlo_prefactors)
+      case(0)
+         ! The result is already in its desired form
+      case(1)
+         ! loop-induced
+         amp(2:4) = amp(2:4) * nlo_coupling * nlo_coupling
+      case(2)
+         ! loop-induced
+         amp(2:4) = amp(2:4) * (nlo_coupling / 8.0_ki / pi / pi)**2
+      end select
    end subroutine samplitudel01
    !---#] subroutine samplitudel01 :
    !---#[ function samplitudel0 :
@@ -429,95 +468,6 @@ contains
       end if
 
       amp = 0.0_ki
-      if (eval_heli(0)) then
-         if (debug_lo_diagrams) then
-            write(logfile,*) "<helicity index='0' >"
-         end if
-         !---#[ reinitialize kinematics:
-         pvecs(1,:) = vecs(1,:)
-         pvecs(2,:) = vecs(2,:)
-         pvecs(3,:) = vecs(3,:)
-         pvecs(4,:) = vecs(4,:)
-         call init_event(pvecs, -1, -1)
-         !---#] reinitialize kinematics:
-         color_vector = amplitude0l0()
-         heli_amp = square(color_vector)
-         if (debug_lo_diagrams) then
-            write(logfile,'(A25,E24.16,A3)') &
-                & "<result kind='lo' value='", heli_amp, "'/>"
-            write(logfile,*) "</helicity>"
-         end if
-         amp = amp + heli_amp
-      end if
-      if (eval_heli(1)) then
-         if (debug_lo_diagrams) then
-            write(logfile,*) "<helicity index='1' >"
-         end if
-         !---#[ reinitialize kinematics:
-         pvecs(1,:) = vecs(1,:)
-         pvecs(2,:) = vecs(2,:)
-         pvecs(3,:) = vecs(4,:)
-         pvecs(4,:) = vecs(3,:)
-         call init_event(pvecs, +1, -1)
-         !---#] reinitialize kinematics:
-         color_vector = amplitude0l0()
-         heli_amp = square(color_vector)
-         if (debug_lo_diagrams) then
-            write(logfile,'(A25,E24.16,A3)') &
-                & "<result kind='lo' value='", heli_amp, "'/>"
-            write(logfile,*) "</helicity>"
-         end if
-         amp = amp + heli_amp
-      end if
-      if (eval_heli(2)) then
-         if (debug_lo_diagrams) then
-            write(logfile,*) "<helicity index='2' >"
-         end if
-         !---#[ reinitialize kinematics:
-         pvecs(1,:) = vecs(1,:)
-         pvecs(2,:) = vecs(2,:)
-         pvecs(3,:) = vecs(4,:)
-         pvecs(4,:) = vecs(3,:)
-         call init_event(pvecs, -1, +1)
-         !---#] reinitialize kinematics:
-         color_vector = amplitude0l0()
-         heli_amp = square(color_vector)
-         if (debug_lo_diagrams) then
-            write(logfile,'(A25,E24.16,A3)') &
-                & "<result kind='lo' value='", heli_amp, "'/>"
-            write(logfile,*) "</helicity>"
-         end if
-         amp = amp + heli_amp
-      end if
-      if (eval_heli(3)) then
-         if (debug_lo_diagrams) then
-            write(logfile,*) "<helicity index='3' >"
-         end if
-         !---#[ reinitialize kinematics:
-         pvecs(1,:) = vecs(1,:)
-         pvecs(2,:) = vecs(2,:)
-         pvecs(3,:) = vecs(4,:)
-         pvecs(4,:) = vecs(3,:)
-         call init_event(pvecs, +1, +1)
-         !---#] reinitialize kinematics:
-         color_vector = amplitude0l0()
-         heli_amp = square(color_vector)
-         if (debug_lo_diagrams) then
-            write(logfile,'(A25,E24.16,A3)') &
-                & "<result kind='lo' value='", heli_amp, "'/>"
-            write(logfile,*) "</helicity>"
-         end if
-         amp = amp + heli_amp
-      end if
-      if (include_helicity_avg_factor) then
-         amp = amp / real(in_helicities, ki)
-      end if
-      if (include_color_avg_factor) then
-         amp = amp / incolors
-      end if
-      if (include_symmetry_factor) then
-         amp = amp / real(symmetry_factor, ki)
-      end if
    end function samplitudel0
    !---#] function samplitudel0 :
    !---#[ function samplitudel1 :
@@ -533,6 +483,8 @@ contains
       integer, optional, intent(in) :: h
       real(ki), dimension(4, 4) :: pvecs
       real(ki), dimension(-2:0) :: amp, heli_amp
+      complex(ki), dimension(numcs,-2:0) :: colorvec
+      integer :: c
       logical :: my_ok
       logical, dimension(0:3) :: eval_heli
       real(ki) :: fr, rational2
@@ -540,6 +492,223 @@ contains
       amp(:) = 0.0_ki
       rat2 = 0.0_ki
       ok = .true.
+
+      if (present(h)) then
+         eval_heli(:) = .false.
+         eval_heli(h) = .true.
+      else
+         eval_heli(:) = .true.
+      end if
+
+
+      if (eval_heli(0)) then
+         if(debug_nlo_diagrams) then
+            write(logfile,*) "<helicity index='0'>"
+         end if
+         !---#[ reinitialize kinematics:
+         pvecs(1,:) = vecs(1,:)
+         pvecs(2,:) = vecs(2,:)
+         pvecs(3,:) = vecs(3,:)
+         pvecs(4,:) = vecs(4,:)
+         call init_event(pvecs, -1, -1)
+            !---#] reinitialize kinematics:
+         do c=1,numcs
+            colorvec(c,:) = samplitudeh0l1(real(scale2,ki),my_ok,rational2,c)
+         end do
+         heli_amp( 0) = square(colorvec(:, 0))
+         heli_amp(-1) = square(colorvec(:,-1))
+         heli_amp(-2) = square(colorvec(:,-2))
+      
+         if (corrections_are_qcd .and. renorm_gamma5) then
+            !---#[ reinitialize kinematics:
+            pvecs(1,:) = vecs(1,:)
+            pvecs(2,:) = vecs(2,:)
+            pvecs(3,:) = vecs(3,:)
+            pvecs(4,:) = vecs(4,:)
+            call init_event(pvecs, -1, -1)
+            !---#] reinitialize kinematics:
+            fr = finite_renormalisation0(real(scale2,ki))
+            heli_amp(0) = heli_amp(0) + fr
+         end if
+         ok = ok .and. my_ok
+         amp = amp + heli_amp
+         rat2 = rat2 + rational2
+
+         if(debug_nlo_diagrams) then
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-finite' value='", heli_amp(0), "'/>"
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-single' value='", heli_amp(-1), "'/>"
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-double' value='", heli_amp(-2), "'/>"
+            if (corrections_are_qcd .and. renorm_gamma5) then
+               write(logfile,'(A30,E24.16,A3)') &
+                   & "<result kind='fin-ren' value='", fr, "'/>"
+            end if
+            if(my_ok) then
+               write(logfile,'(A30)') "<flag name='ok' status='yes'/>"
+            else
+               write(logfile,'(A29)') "<flag name='ok' status='no'/>"
+            end if
+            write(logfile,*) "</helicity>"
+         end if
+      end if
+      if (eval_heli(1)) then
+         if(debug_nlo_diagrams) then
+            write(logfile,*) "<helicity index='1'>"
+         end if
+         !---#[ reinitialize kinematics:
+         pvecs(1,:) = vecs(1,:)
+         pvecs(2,:) = vecs(2,:)
+         pvecs(3,:) = vecs(4,:)
+         pvecs(4,:) = vecs(3,:)
+         call init_event(pvecs, +1, -1)
+            !---#] reinitialize kinematics:
+         do c=1,numcs
+            colorvec(c,:) = samplitudeh0l1(real(scale2,ki),my_ok,rational2,c)
+         end do
+         heli_amp( 0) = square(colorvec(:, 0))
+         heli_amp(-1) = square(colorvec(:,-1))
+         heli_amp(-2) = square(colorvec(:,-2))
+      
+         if (corrections_are_qcd .and. renorm_gamma5) then
+            !---#[ reinitialize kinematics:
+            pvecs(1,:) = vecs(1,:)
+            pvecs(2,:) = vecs(2,:)
+            pvecs(3,:) = vecs(4,:)
+            pvecs(4,:) = vecs(3,:)
+            call init_event(pvecs, +1, -1)
+            !---#] reinitialize kinematics:
+            fr = finite_renormalisation0(real(scale2,ki))
+            heli_amp(0) = heli_amp(0) + fr
+         end if
+         ok = ok .and. my_ok
+         amp = amp + heli_amp
+         rat2 = rat2 + rational2
+
+         if(debug_nlo_diagrams) then
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-finite' value='", heli_amp(0), "'/>"
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-single' value='", heli_amp(-1), "'/>"
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-double' value='", heli_amp(-2), "'/>"
+            if (corrections_are_qcd .and. renorm_gamma5) then
+               write(logfile,'(A30,E24.16,A3)') &
+                   & "<result kind='fin-ren' value='", fr, "'/>"
+            end if
+            if(my_ok) then
+               write(logfile,'(A30)') "<flag name='ok' status='yes'/>"
+            else
+               write(logfile,'(A29)') "<flag name='ok' status='no'/>"
+            end if
+            write(logfile,*) "</helicity>"
+         end if
+      end if
+      if (eval_heli(2)) then
+         if(debug_nlo_diagrams) then
+            write(logfile,*) "<helicity index='2'>"
+         end if
+         !---#[ reinitialize kinematics:
+         pvecs(1,:) = vecs(1,:)
+         pvecs(2,:) = vecs(2,:)
+         pvecs(3,:) = vecs(4,:)
+         pvecs(4,:) = vecs(3,:)
+         call init_event(pvecs, -1, +1)
+            !---#] reinitialize kinematics:
+         do c=1,numcs
+            colorvec(c,:) = samplitudeh0l1(real(scale2,ki),my_ok,rational2,c)
+         end do
+         heli_amp( 0) = square(colorvec(:, 0))
+         heli_amp(-1) = square(colorvec(:,-1))
+         heli_amp(-2) = square(colorvec(:,-2))
+      
+         if (corrections_are_qcd .and. renorm_gamma5) then
+            !---#[ reinitialize kinematics:
+            pvecs(1,:) = vecs(1,:)
+            pvecs(2,:) = vecs(2,:)
+            pvecs(3,:) = vecs(4,:)
+            pvecs(4,:) = vecs(3,:)
+            call init_event(pvecs, -1, +1)
+            !---#] reinitialize kinematics:
+            fr = finite_renormalisation0(real(scale2,ki))
+            heli_amp(0) = heli_amp(0) + fr
+         end if
+         ok = ok .and. my_ok
+         amp = amp + heli_amp
+         rat2 = rat2 + rational2
+
+         if(debug_nlo_diagrams) then
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-finite' value='", heli_amp(0), "'/>"
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-single' value='", heli_amp(-1), "'/>"
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-double' value='", heli_amp(-2), "'/>"
+            if (corrections_are_qcd .and. renorm_gamma5) then
+               write(logfile,'(A30,E24.16,A3)') &
+                   & "<result kind='fin-ren' value='", fr, "'/>"
+            end if
+            if(my_ok) then
+               write(logfile,'(A30)') "<flag name='ok' status='yes'/>"
+            else
+               write(logfile,'(A29)') "<flag name='ok' status='no'/>"
+            end if
+            write(logfile,*) "</helicity>"
+         end if
+      end if
+      if (eval_heli(3)) then
+         if(debug_nlo_diagrams) then
+            write(logfile,*) "<helicity index='3'>"
+         end if
+         !---#[ reinitialize kinematics:
+         pvecs(1,:) = vecs(1,:)
+         pvecs(2,:) = vecs(2,:)
+         pvecs(3,:) = vecs(4,:)
+         pvecs(4,:) = vecs(3,:)
+         call init_event(pvecs, +1, +1)
+            !---#] reinitialize kinematics:
+         do c=1,numcs
+            colorvec(c,:) = samplitudeh0l1(real(scale2,ki),my_ok,rational2,c)
+         end do
+         heli_amp( 0) = square(colorvec(:, 0))
+         heli_amp(-1) = square(colorvec(:,-1))
+         heli_amp(-2) = square(colorvec(:,-2))
+      
+         if (corrections_are_qcd .and. renorm_gamma5) then
+            !---#[ reinitialize kinematics:
+            pvecs(1,:) = vecs(1,:)
+            pvecs(2,:) = vecs(2,:)
+            pvecs(3,:) = vecs(4,:)
+            pvecs(4,:) = vecs(3,:)
+            call init_event(pvecs, +1, +1)
+            !---#] reinitialize kinematics:
+            fr = finite_renormalisation0(real(scale2,ki))
+            heli_amp(0) = heli_amp(0) + fr
+         end if
+         ok = ok .and. my_ok
+         amp = amp + heli_amp
+         rat2 = rat2 + rational2
+
+         if(debug_nlo_diagrams) then
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-finite' value='", heli_amp(0), "'/>"
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-single' value='", heli_amp(-1), "'/>"
+            write(logfile,'(A33,E24.16,A3)') &
+                & "<result kind='nlo-double' value='", heli_amp(-2), "'/>"
+            if (corrections_are_qcd .and. renorm_gamma5) then
+               write(logfile,'(A30,E24.16,A3)') &
+                   & "<result kind='fin-ren' value='", fr, "'/>"
+            end if
+            if(my_ok) then
+               write(logfile,'(A30)') "<flag name='ok' status='yes'/>"
+            else
+               write(logfile,'(A29)') "<flag name='ok' status='no'/>"
+            end if
+            write(logfile,*) "</helicity>"
+         end if
+      end if
       if (include_helicity_avg_factor) then
          amp = amp / real(in_helicities, ki)
       end if
@@ -581,7 +750,7 @@ contains
       if(corrections_are_qcd) then
          nlo_coupling = mdlG*mdlG
       else
-         nlo_coupling = 1.0_ki
+         nlo_coupling = mdlee*mdlee
       end if
 
       if (corrections_are_qcd) then
@@ -590,91 +759,6 @@ contains
         oper = insertion_operator_qed(real(scale2,ki), vecs)
       endif
       amp(:) = 0.0_ki
-      if (eval_heli(0)) then
-         !---#[ reinitialize kinematics:
-         pvecs(1,:) = vecs(1,:)
-         pvecs(2,:) = vecs(2,:)
-         pvecs(3,:) = vecs(3,:)
-         pvecs(4,:) = vecs(4,:)
-         call init_event(pvecs, -1, -1)
-         !---#] reinitialize kinematics:
-         pcolor = amplitude0l0()
-         color_vectorl0(1) = pcolor(1)
-         if (corrections_are_qcd) then
-           heli_amp(1) = square(color_vectorl0, oper(:,:,1))
-           heli_amp(2) = square(color_vectorl0, oper(:,:,2))
-         else
-           heli_amp(1) = square(color_vectorl0)*oper(1,1,1)
-           heli_amp(2) = square(color_vectorl0)*oper(1,1,2)
-         endif
-         amp = amp + heli_amp
-      endif
-      if (eval_heli(1)) then
-         !---#[ reinitialize kinematics:
-         pvecs(1,:) = vecs(1,:)
-         pvecs(2,:) = vecs(2,:)
-         pvecs(3,:) = vecs(4,:)
-         pvecs(4,:) = vecs(3,:)
-         call init_event(pvecs, +1, -1)
-         !---#] reinitialize kinematics:
-         pcolor = amplitude0l0()
-         color_vectorl0(1) = pcolor(1)
-         if (corrections_are_qcd) then
-           heli_amp(1) = square(color_vectorl0, oper(:,:,1))
-           heli_amp(2) = square(color_vectorl0, oper(:,:,2))
-         else
-           heli_amp(1) = square(color_vectorl0)*oper(1,1,1)
-           heli_amp(2) = square(color_vectorl0)*oper(1,1,2)
-         endif
-         amp = amp + heli_amp
-      endif
-      if (eval_heli(2)) then
-         !---#[ reinitialize kinematics:
-         pvecs(1,:) = vecs(1,:)
-         pvecs(2,:) = vecs(2,:)
-         pvecs(3,:) = vecs(4,:)
-         pvecs(4,:) = vecs(3,:)
-         call init_event(pvecs, -1, +1)
-         !---#] reinitialize kinematics:
-         pcolor = amplitude0l0()
-         color_vectorl0(1) = pcolor(1)
-         if (corrections_are_qcd) then
-           heli_amp(1) = square(color_vectorl0, oper(:,:,1))
-           heli_amp(2) = square(color_vectorl0, oper(:,:,2))
-         else
-           heli_amp(1) = square(color_vectorl0)*oper(1,1,1)
-           heli_amp(2) = square(color_vectorl0)*oper(1,1,2)
-         endif
-         amp = amp + heli_amp
-      endif
-      if (eval_heli(3)) then
-         !---#[ reinitialize kinematics:
-         pvecs(1,:) = vecs(1,:)
-         pvecs(2,:) = vecs(2,:)
-         pvecs(3,:) = vecs(4,:)
-         pvecs(4,:) = vecs(3,:)
-         call init_event(pvecs, +1, +1)
-         !---#] reinitialize kinematics:
-         pcolor = amplitude0l0()
-         color_vectorl0(1) = pcolor(1)
-         if (corrections_are_qcd) then
-           heli_amp(1) = square(color_vectorl0, oper(:,:,1))
-           heli_amp(2) = square(color_vectorl0, oper(:,:,2))
-         else
-           heli_amp(1) = square(color_vectorl0)*oper(1,1,1)
-           heli_amp(2) = square(color_vectorl0)*oper(1,1,2)
-         endif
-         amp = amp + heli_amp
-      endif
-      if (include_helicity_avg_factor) then
-         amp = amp / real(in_helicities, ki)
-      end if
-      if (include_color_avg_factor) then
-         amp = amp / incolors
-      end if
-      if (include_symmetry_factor) then
-         amp = amp / real(symmetry_factor, ki)
-      end if
       select case(nlo_prefactors)
       case(0)
          ! The result is already in its desired form
@@ -712,57 +796,6 @@ contains
       complex(ki), dimension(numcs) :: color_vector
 
       borncc(:,:) = 0.0_ki
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(3,:)
-      pvecs(4,:) = vecs(4,:)
-      call init_event(pvecs, -1, -1)
-      !---#] reinitialize kinematics:
-      color_vector = amplitude0l0()
-      call color_correlated_lo(color_vector,borncc_heli)
-      ! The minus is part in the definition according to PowHEG Box.
-      ! Since they use it we include it:
-      borncc(:,:) = borncc(:,:) - borncc_heli(:,:)
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, +1, -1)
-      !---#] reinitialize kinematics:
-      color_vector = amplitude0l0()
-      call color_correlated_lo(color_vector,borncc_heli)
-      borncc(:,:) = borncc(:,:) - borncc_heli(:,:)
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, -1, +1)
-      !---#] reinitialize kinematics:
-      color_vector = amplitude0l0()
-      call color_correlated_lo(color_vector,borncc_heli)
-      borncc(:,:) = borncc(:,:) - borncc_heli(:,:)
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, +1, +1)
-      !---#] reinitialize kinematics:
-      color_vector = amplitude0l0()
-      call color_correlated_lo(color_vector,borncc_heli)
-      borncc(:,:) = borncc(:,:) - borncc_heli(:,:)
-      if (include_helicity_avg_factor) then
-         borncc = borncc / real(in_helicities, ki)
-      end if
-      if (include_color_avg_factor) then
-         borncc = borncc / incolors
-      end if
-      if (include_symmetry_factor) then
-         borncc = borncc / real(symmetry_factor, ki)
-      end if
    end subroutine color_correlated_lo2
 
 
@@ -788,57 +821,6 @@ contains
       real(ki), dimension(num_legs, 4) :: pvecs
       complex(ki), dimension(numcs) :: color_vector
       ampcc(:) = 0.0_ki
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(3,:)
-      pvecs(4,:) = vecs(4,:)
-      call init_event(pvecs, -1, -1)
-      !---#] reinitialize kinematics:
-      color_vector = amplitude0l0()
-      call OLP_color_correlated_lo(color_vector,ampcc_heli)
-      ampcc(:) = ampcc(:) + ampcc_heli(:)
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, +1, -1)
-      !---#] reinitialize kinematics:
-      color_vector = amplitude0l0()
-      call OLP_color_correlated_lo(color_vector,ampcc_heli)
-      ampcc(:) = ampcc(:) + ampcc_heli(:)
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, -1, +1)
-      !---#] reinitialize kinematics:
-      color_vector = amplitude0l0()
-      call OLP_color_correlated_lo(color_vector,ampcc_heli)
-      ampcc(:) = ampcc(:) + ampcc_heli(:)
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, +1, +1)
-      !---#] reinitialize kinematics:
-      color_vector = amplitude0l0()
-      call OLP_color_correlated_lo(color_vector,ampcc_heli)
-      ampcc(:) = ampcc(:) + ampcc_heli(:)
-
-      
-      if (include_helicity_avg_factor) then
-         ampcc = ampcc / real(in_helicities, ki)
-      end if
-      if (include_color_avg_factor) then
-         ampcc = ampcc / incolors
-      end if
-      if (include_symmetry_factor) then
-         ampcc = ampcc / real(symmetry_factor, ki)
-      end if
 
 
    end subroutine OLP_color_correlated
@@ -854,114 +836,9 @@ contains
       real(ki), dimension(num_legs, 4) :: pvecs
       complex(ki), dimension(4,4) :: tens
       complex(ki) :: pp, pm, mp, mm
-      complex(ki), dimension(numcs) :: heli_amp0
-      complex(ki), dimension(numcs) :: heli_amp1
-      complex(ki), dimension(numcs) :: heli_amp2
-      complex(ki), dimension(numcs) :: heli_amp3
-      complex(ki), dimension(4) :: eps1
-      complex(ki), dimension(4) :: eps2
 
       bornsc(:,:,:) = 0.0_ki
       !---#[ Initialize helicity amplitudes :
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(3,:)
-      pvecs(4,:) = vecs(4,:)
-      call init_event(pvecs, -1, -1)
-      !---#] reinitialize kinematics:
-      heli_amp0 = amplitude0l0()
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, +1, -1)
-      !---#] reinitialize kinematics:
-      heli_amp1 = amplitude0l0()
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, -1, +1)
-      !---#] reinitialize kinematics:
-      heli_amp2 = amplitude0l0()
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, +1, +1)
-      !---#] reinitialize kinematics:
-      heli_amp3 = amplitude0l0()
-      !---#] Initialize helicity amplitudes :
-      !---#[ Initialize polarization vectors :
-      eps1 = spvak2k1/Spaa(k2,k1)/sqrt2
-      eps2 = spvak1k2/Spaa(k1,k2)/sqrt2
-      !---#] Initialize polarization vectors :
-      ! Note: By omitting the imaginary parts we lose a term:
-      !   Imag(B_j(mu,nu)) = i_ * e_(k_j, mu, q_j, nu) * |Born|^2
-      ! where q_j is the reference momentum chosen for the paticle
-      ! of momentum k_j. This term should, however not be phenomenologically
-      ! relevant.
-      !---#[ particle 1 :
-      pp  = 0.0_ki &
-      &          + square_0l_0l_sc(heli_amp1,heli_amp1) &
-      &          + square_0l_0l_sc(heli_amp3,heli_amp3)
-      pm  = 0.0_ki &
-      &          + square_0l_0l_sc(heli_amp1,heli_amp0) &
-      &          + square_0l_0l_sc(heli_amp3,heli_amp2)
-      mp  = 0.0_ki &
-      &          + square_0l_0l_sc(heli_amp0,heli_amp1) &
-      &          + square_0l_0l_sc(heli_amp2,heli_amp3)
-      mm  = 0.0_ki &
-      &          + square_0l_0l_sc(heli_amp0,heli_amp0) &
-      &          + square_0l_0l_sc(heli_amp2,heli_amp2)
-
-      call construct_polarization_tensor(conjg(eps1),eps1,tens)
-      bornsc(1,:,:) = bornsc(1,:,:) + real(tens(:,:) * pp, ki)
-      call construct_polarization_tensor(conjg(eps1),conjg(eps1),tens)
-      bornsc(1,:,:) = bornsc(1,:,:) + real(tens(:,:) * pm, ki)
-      call construct_polarization_tensor(eps1,eps1,tens)
-      bornsc(1,:,:) = bornsc(1,:,:) + real(tens(:,:) * mp, ki)
-      call construct_polarization_tensor(eps1,conjg(eps1),tens)
-      bornsc(1,:,:) = bornsc(1,:,:) + real(tens(:,:) * mm, ki)
-      !---#] particle 1 :
-      !---#[ particle 2 :
-      pp  = 0.0_ki &
-      &          + square_0l_0l_sc(heli_amp2,heli_amp2) &
-      &          + square_0l_0l_sc(heli_amp3,heli_amp3)
-      pm  = 0.0_ki &
-      &          + square_0l_0l_sc(heli_amp2,heli_amp0) &
-      &          + square_0l_0l_sc(heli_amp3,heli_amp1)
-      mp  = 0.0_ki &
-      &          + square_0l_0l_sc(heli_amp0,heli_amp2) &
-      &          + square_0l_0l_sc(heli_amp1,heli_amp3)
-      mm  = 0.0_ki &
-      &          + square_0l_0l_sc(heli_amp0,heli_amp0) &
-      &          + square_0l_0l_sc(heli_amp1,heli_amp1)
-
-      call construct_polarization_tensor(conjg(eps2),eps2,tens)
-      bornsc(2,:,:) = bornsc(2,:,:) + real(tens(:,:) * pp, ki)
-      call construct_polarization_tensor(conjg(eps2),conjg(eps2),tens)
-      bornsc(2,:,:) = bornsc(2,:,:) + real(tens(:,:) * pm, ki)
-      call construct_polarization_tensor(eps2,eps2,tens)
-      bornsc(2,:,:) = bornsc(2,:,:) + real(tens(:,:) * mp, ki)
-      call construct_polarization_tensor(eps2,conjg(eps2),tens)
-      bornsc(2,:,:) = bornsc(2,:,:) + real(tens(:,:) * mm, ki)
-      !---#] particle 2 :
-
-      
-      if (include_helicity_avg_factor) then
-         bornsc = bornsc / real(in_helicities, ki)
-      end if
-      if (include_color_avg_factor) then
-         bornsc = bornsc / incolors
-      end if
-      if (include_symmetry_factor) then
-         bornsc = bornsc / real(symmetry_factor, ki)
-      end if
    end subroutine spin_correlated_lo2
 
 
@@ -975,86 +852,9 @@ contains
       real(ki), dimension(num_legs, 4) :: pvecs
       integer :: i
       complex(ki) :: pm, mp
-      complex(ki), dimension(numcs) :: heli_amp0
-      complex(ki), dimension(numcs) :: heli_amp1
-      complex(ki), dimension(numcs) :: heli_amp2
-      complex(ki), dimension(numcs) :: heli_amp3
-      complex(ki), dimension(4) :: eps1
-      complex(ki), dimension(4) :: eps2
 
       ampsc(:) = 0.0_ki
       !---#[ Initialize helicity amplitudes :
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(3,:)
-      pvecs(4,:) = vecs(4,:)
-      call init_event(pvecs, -1, -1)
-      !---#] reinitialize kinematics:
-      heli_amp0 = amplitude0l0()
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, +1, -1)
-      !---#] reinitialize kinematics:
-      heli_amp1 = amplitude0l0()
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, -1, +1)
-      !---#] reinitialize kinematics:
-      heli_amp2 = amplitude0l0()
-      !---#[ reinitialize kinematics:
-      pvecs(1,:) = vecs(1,:)
-      pvecs(2,:) = vecs(2,:)
-      pvecs(3,:) = vecs(4,:)
-      pvecs(4,:) = vecs(3,:)
-      call init_event(pvecs, +1, +1)
-      !---#] reinitialize kinematics:
-      heli_amp3 = amplitude0l0()
-      !---#] Initialize helicity amplitudes :
-
-       
-      !---#[ pair 12 :
-
-      mp  = 0.0_ki &
-      &          + square_1_2_sc(heli_amp0,heli_amp1) &
-      &          + square_1_2_sc(heli_amp2,heli_amp3)
-
-
-      ampsc(2*(1-1)+2*(2-1)*num_legs+1)   = ampsc(2*(1-1)+2*(2-1)*num_legs +1) + real(mp, ki)
-      ampsc(2*(1-1)+2*(2-1)*num_legs+2) = ampsc(2*(1-1)+2*(2-1)*num_legs + 2)  + real(aimag(mp),ki)
-
-      !---#] pair 12 :
-      
-      !---#[ pair 21 :
-
-      mp  = 0.0_ki &
-      &          + square_2_1_sc(heli_amp0,heli_amp2) &
-      &          + square_2_1_sc(heli_amp1,heli_amp3)
-
-
-      ampsc(2*(2-1)+2*(1-1)*num_legs+1)   = ampsc(2*(2-1)+2*(1-1)*num_legs +1) + real(mp, ki)
-      ampsc(2*(2-1)+2*(1-1)*num_legs+2) = ampsc(2*(2-1)+2*(1-1)*num_legs + 2)  + real(aimag(mp),ki)
-
-      !---#] pair 21 :
-       
-
-      
-
-      if (include_helicity_avg_factor) then
-         ampsc = ampsc / real(in_helicities, ki)
-      end if
-      if (include_color_avg_factor) then
-         ampsc = ampsc / incolors
-      end if
-      if (include_symmetry_factor) then
-         ampsc = ampsc / real(symmetry_factor, ki)
-      end if
    end subroutine OLP_spin_correlated_lo2
    !---#] spin correlated ME :
 

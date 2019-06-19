@@ -11,27 +11,6 @@ contains
    subroutine     OLP_Start(contract_file_name,ierr,stage,rndseed) &
    & bind(C,name="olp_start_")
       use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_matrix, only: p3_part1part21_part25part25part1_initgolem => initgolem
-      use p3_part1part21_part25part25part1_config, only: p3_part1part21_part25part25part1_PSP_rescue => PSP_rescue, &
-           & p3_part1part21_part25part25part1_PSP_verbosity => PSP_verbosity, &
-           & p3_part1part21_part25part25part1_PSP_chk_th1 => PSP_chk_th1, &
-           & p3_part1part21_part25part25part1_PSP_chk_th2 => PSP_chk_th2, &
-           & p3_part1part21_part25part25part1_PSP_chk_th3 => PSP_chk_th3, &
-           & p3_part1part21_part25part25part1_PSP_chk_kfactor => PSP_chk_kfactor
-      use p1_part21part21_part25part25_matrix, only: p1_part21part21_part25part25_initgolem => initgolem
-      use p1_part21part21_part25part25_config, only: p1_part21part21_part25part25_PSP_rescue => PSP_rescue, &
-           & p1_part21part21_part25part25_PSP_verbosity => PSP_verbosity, &
-           & p1_part21part21_part25part25_PSP_chk_th1 => PSP_chk_th1, &
-           & p1_part21part21_part25part25_PSP_chk_th2 => PSP_chk_th2, &
-           & p1_part21part21_part25part25_PSP_chk_th3 => PSP_chk_th3, &
-           & p1_part21part21_part25part25_PSP_chk_kfactor => PSP_chk_kfactor
-      use p2_part21part21_part25part25part21_matrix, only: p2_part21part21_part25part25part21_initgolem => initgolem
-      use p2_part21part21_part25part25part21_config, only: p2_part21part21_part25part25part21_PSP_rescue => PSP_rescue, &
-           & p2_part21part21_part25part25part21_PSP_verbosity => PSP_verbosity, &
-           & p2_part21part21_part25part25part21_PSP_chk_th1 => PSP_chk_th1, &
-           & p2_part21part21_part25part25part21_PSP_chk_th2 => PSP_chk_th2, &
-           & p2_part21part21_part25part25part21_PSP_chk_th3 => PSP_chk_th3, &
-           & p2_part21part21_part25part25part21_PSP_chk_kfactor => PSP_chk_kfactor
       use p0_part21part21_part25part25_matrix, only: p0_part21part21_part25part25_initgolem => initgolem
       use p0_part21part21_part25part25_config, only: p0_part21part21_part25part25_PSP_rescue => PSP_rescue, &
            & p0_part21part21_part25part25_PSP_verbosity => PSP_verbosity, &
@@ -39,6 +18,14 @@ contains
            & p0_part21part21_part25part25_PSP_chk_th2 => PSP_chk_th2, &
            & p0_part21part21_part25part25_PSP_chk_th3 => PSP_chk_th3, &
            & p0_part21part21_part25part25_PSP_chk_kfactor => PSP_chk_kfactor
+      use pb_part21part21_part25part25_matrix, only: pb_part21part21_part25part25_initgolem => initgolem
+      use pb_part21part21_part25part25_config, only: pb_part21part21_part25part25_PSP_rescue => PSP_rescue, &
+           & pb_part21part21_part25part25_PSP_verbosity => PSP_verbosity, &
+           & pb_part21part21_part25part25_PSP_chk_th1 => PSP_chk_th1, &
+           & pb_part21part21_part25part25_PSP_chk_th2 => PSP_chk_th2, &
+           & pb_part21part21_part25part25_PSP_chk_th3 => PSP_chk_th3, &
+           & pb_part21part21_part25part25_PSP_chk_kfactor => PSP_chk_kfactor
+
       implicit none
       character(kind=c_char,len=1), intent(in) :: contract_file_name
       integer(kind=c_int), intent(out) :: ierr
@@ -100,25 +87,7 @@ contains
       ! PSP_chk_th1 = 8
       ! PSP_chk_th2 = 3
       ! PSP_chk_th3 = 5
-      ! PSP_chk_kfactor = -1
-      ! p3_part1part21_part25part25part1_PSP_rescue = PSP_rescue
-      ! p3_part1part21_part25part25part1_PSP_verbosity =  PSP_verbosity
-      ! p3_part1part21_part25part25part1_PSP_chk_th1 = PSP_chk_th1
-      ! p3_part1part21_part25part25part1_PSP_chk_th2 = PSP_chk_th2
-      ! p3_part1part21_part25part25part1_PSP_chk_th3 = PSP_chk_th3
-      ! p3_part1part21_part25part25part1_PSP_chk_kfactor = PSP_chk_kfactor
-      ! p1_part21part21_part25part25_PSP_rescue = PSP_rescue
-      ! p1_part21part21_part25part25_PSP_verbosity =  PSP_verbosity
-      ! p1_part21part21_part25part25_PSP_chk_th1 = PSP_chk_th1
-      ! p1_part21part21_part25part25_PSP_chk_th2 = PSP_chk_th2
-      ! p1_part21part21_part25part25_PSP_chk_th3 = PSP_chk_th3
-      ! p1_part21part21_part25part25_PSP_chk_kfactor = PSP_chk_kfactor
-      ! p2_part21part21_part25part25part21_PSP_rescue = PSP_rescue
-      ! p2_part21part21_part25part25part21_PSP_verbosity =  PSP_verbosity
-      ! p2_part21part21_part25part25part21_PSP_chk_th1 = PSP_chk_th1
-      ! p2_part21part21_part25part25part21_PSP_chk_th2 = PSP_chk_th2
-      ! p2_part21part21_part25part25part21_PSP_chk_th3 = PSP_chk_th3
-      ! p2_part21part21_part25part25part21_PSP_chk_kfactor = PSP_chk_kfactor
+      ! PSP_chk_kfactor = 1000
       ! p0_part21part21_part25part25_PSP_rescue = PSP_rescue
       ! p0_part21part21_part25part25_PSP_verbosity =  PSP_verbosity
       ! p0_part21part21_part25part25_PSP_chk_th1 = PSP_chk_th1
@@ -126,15 +95,9 @@ contains
       ! p0_part21part21_part25part25_PSP_chk_th3 = PSP_chk_th3
       ! p0_part21part21_part25part25_PSP_chk_kfactor = PSP_chk_kfactor
       if(stage.lt.0) then
-         call p3_part1part21_part25part25part1_initgolem(.true.)
-         call p1_part21part21_part25part25_initgolem(.false.)
-         call p2_part21part21_part25part25part21_initgolem(.false.)
-         call p0_part21part21_part25part25_initgolem(.false.)
+         call p0_part21part21_part25part25_initgolem(.true.)
       else
-         call p3_part1part21_part25part25part1_initgolem(.true.,stage,rndseed)
-         call p1_part21part21_part25part25_initgolem(.false.,stage,rndseed)
-         call p2_part21part21_part25part25part21_initgolem(.false.,stage,rndseed)
-         call p0_part21part21_part25part25_initgolem(.false.,stage,rndseed)
+         call p0_part21part21_part25part25_initgolem(.true.,stage,rndseed)
       end if
 
    end subroutine OLP_Start
@@ -142,7 +105,7 @@ contains
    subroutine OLP_Info(olp_name, olp_version, message)&
    & bind(C,name="olp_info_")
    use, intrinsic :: iso_c_binding, only: C_CHAR, C_NULL_CHAR
-   use p3_part1part21_part25part25part1_version, only: gosamversion, gosamrevision
+   use p0_part21part21_part25part25_version, only: gosamversion, gosamrevision
 
    implicit none
    character(kind=c_char), intent(inout), dimension(20)  :: olp_name
@@ -184,10 +147,8 @@ contains
    subroutine OLP_SetParameter(variable_name, real_part, imag_part, success)&
    & bind(C,name="olp_setparameter_")
       use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_model, only: p3_part1part21_part25part25part1_set_parameter => set_parameter
-      use p1_part21part21_part25part25_model, only: p1_part21part21_part25part25_set_parameter => set_parameter
-      use p2_part21part21_part25part25part21_model, only: p2_part21part21_part25part25part21_set_parameter => set_parameter
       use p0_part21part21_part25part25_model, only: p0_part21part21_part25part25_set_parameter => set_parameter
+      use pb_part21part21_part25part25_model, only: pb_part21part21_part25part25_set_parameter => set_parameter
       implicit none
       character(kind=c_char,len=1), intent(in) :: variable_name
       real(kind=c_double), intent(in) :: real_part, imag_part
@@ -205,19 +166,11 @@ contains
       integer :: l;
 
       l = strlen(variable_name)
-      call p3_part1part21_part25part25part1_set_parameter(variable_name(1:l),real_part,imag_part,success)
-      if(success==0) then ! return immediately on error
-          return
-      end if
-      call p1_part21part21_part25part25_set_parameter(variable_name(1:l),real_part,imag_part,success)
-      if(success==0) then ! return immediately on error
-          return
-      end if
-      call p2_part21part21_part25part25part21_set_parameter(variable_name(1:l),real_part,imag_part,success)
-      if(success==0) then ! return immediately on error
-          return
-      end if
       call p0_part21part21_part25part25_set_parameter(variable_name(1:l),real_part,imag_part,success)
+      if(success==0) then ! return immediately on error
+          return
+      end if
+      call pb_part21part21_part25part25_set_parameter(variable_name(1:l),real_part,imag_part,success)
       if(success==0) then ! return immediately on error
           return
       end if
@@ -242,28 +195,10 @@ contains
 
       select case(label)
       case(0)
-              call eval3(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval0(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       case(1)
-              call eval4(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
-              res(1:3) = alpha_s * one_over_2pi * res(1:3)
-      case(2)
-              call eval5(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
-              res(1:3) = alpha_s * one_over_2pi * res(1:3)
-      case(3)
-              call eval6(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
-              res(1:3) = alpha_s * one_over_2pi * res(1:3)
-      case(4)
-              call eval7(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
-              res(1:3) = alpha_s * one_over_2pi * res(1:3)
-      case(5)
               call eval1(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
-              res(1:3) = alpha_s * one_over_2pi * res(1:3)
-      case(6)
-              call eval2(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
-              res(1:3) = alpha_s * one_over_2pi * res(1:3)
-      case(7)
-              call eval0(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       case default
          res(:) = 0.0d0
@@ -288,21 +223,9 @@ contains
 
       select case(label)
       case(0)
-              call eval3(momenta(1:25), mu, parameters, res, acc)
-      case(1)
-              call eval4(momenta(1:25), mu, parameters, res, acc)
-      case(2)
-              call eval5(momenta(1:25), mu, parameters, res, acc)
-      case(3)
-              call eval6(momenta(1:25), mu, parameters, res, acc)
-      case(4)
-              call eval7(momenta(1:25), mu, parameters, res, acc)
-      case(5)
-              call eval1(momenta(1:20), mu, parameters, res, acc)
-      case(6)
-              call eval2(momenta(1:25), mu, parameters, res, acc)
-      case(7)
               call eval0(momenta(1:20), mu, parameters, res, acc)
+      case(1)
+              call eval1(momenta(1:20), mu, parameters, res, acc)
       case default
          res(:) = 0.0d0
       end select
@@ -311,24 +234,18 @@ contains
    subroutine     OLP_Finalize() &
    & bind(C,name="olp_finalize_")
       use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_matrix, only: p3_part1part21_part25part25part1_exitgolem => exitgolem
-      use p1_part21part21_part25part25_matrix, only: p1_part21part21_part25part25_exitgolem => exitgolem
-      use p2_part21part21_part25part25part21_matrix, only: p2_part21part21_part25part25part21_exitgolem => exitgolem
       use p0_part21part21_part25part25_matrix, only: p0_part21part21_part25part25_exitgolem => exitgolem
+      use pb_part21part21_part25part25_matrix, only: pb_part21part21_part25part25_exitgolem => exitgolem
       implicit none
-      call p3_part1part21_part25part25part1_exitgolem(.false.)
-      call p1_part21part21_part25part25_exitgolem(.false.)
-      call p2_part21part21_part25part25part21_exitgolem(.false.)
-      call p0_part21part21_part25part25_exitgolem(.true.)
+      call p0_part21part21_part25part25_exitgolem(.false.)
+      call pb_part21part21_part25part25_exitgolem(.true.)
    end subroutine OLP_Finalize
 
    subroutine     OLP_Option(line,stat) &
    & bind(C,name="olp_option_")
       use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_model, only: p3_part1part21_part25part25part1_parseline => parseline
-      use p1_part21part21_part25part25_model, only: p1_part21part21_part25part25_parseline => parseline
-      use p2_part21part21_part25part25part21_model, only: p2_part21part21_part25part25part21_parseline => parseline
       use p0_part21part21_part25part25_model, only: p0_part21part21_part25part25_parseline => parseline
+      use pb_part21part21_part25part25_model, only: pb_part21part21_part25part25_parseline => parseline
       implicit none
       character(kind=c_char,len=1), intent(in) :: line
       integer(kind=c_int), intent(out) :: stat
@@ -344,22 +261,12 @@ contains
       end interface
 
       l = strlen(line)
-      call p3_part1part21_part25part25part1_parseline(line(1:l),ios)
-      if (ios .ne. 0) then
-         stat = 0
-         return
-      end if
-      call p1_part21part21_part25part25_parseline(line(1:l),ios)
-      if (ios .ne. 0) then
-         stat = 0
-         return
-      end if
-      call p2_part21part21_part25part25part21_parseline(line(1:l),ios)
-      if (ios .ne. 0) then
-         stat = 0
-         return
-      end if
       call p0_part21part21_part25part25_parseline(line(1:l),ios)
+      if (ios .ne. 0) then
+         stat = 0
+         return
+      end if
+      call pb_part21part21_part25part25_parseline(line(1:l),ios)
       if (ios .ne. 0) then
          stat = 0
          return
@@ -381,395 +288,15 @@ contains
    end subroutine init_event_parameters
    !---#] init_event_parameters :
 
-   !---#[ subroutine eval3 :
-   subroutine     eval3(momenta, mu, parameters, res, acc, blha1_mode)
+   !---#[ subroutine eval0 :
+   subroutine     eval0(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
-      use p3_part1part21_part25part25part1_model, only: parseline
-      use p3_part1part21_part25part25part1_kinematics, only: boost_to_cms
-      use p3_part1part21_part25part25part1_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p3_part1part21_part25part25part1_groups, only: tear_down_golem95
-      use p3_part1part21_part25part25part1_groups, only: ninja_exit
-
-      implicit none
-      real(kind=c_double), dimension(25), intent(in) :: momenta
-      real(kind=c_double), intent(in) :: mu
-      real(kind=c_double), dimension(10), intent(in) :: parameters
-      real(kind=c_double), dimension(60), intent(out) :: res
-
-      real(kind=ki), dimension(5,4) :: vecs
-      real(kind=ki), dimension(4) :: amp
-      real(kind=c_double), optional :: acc
-      logical, optional :: blha1_mode
-      real(kind=ki) :: zero
-      integer :: i, prec, orig_nlo_prefactors
-      logical :: ok
-
-      call init_event_parameters(3, parameters)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! save nlo_prefactors and restore later
-            orig_nlo_prefactors=nlo_prefactors
-            nlo_prefactors=0
-         end if
-     end if
-
-      vecs(:,1) = real(momenta(1::5),ki)
-      vecs(:,2) = real(momenta(2::5),ki)
-      vecs(:,3) = real(momenta(3::5),ki)
-      vecs(:,4) = real(momenta(4::5),ki)
-
-      call boost_to_cms(vecs)
-
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
-      call tear_down_golem95()
-      call ninja_exit()
-      if (ok) then
-         !
-      else
-         !
-      end if
-      if(present(acc)) then
-         acc=10.0_ki**(-prec) ! point accuracy
-      else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
-            ! Give back a Nan so that point is discarded
-            zero = log(1.0_ki)
-            amp(2)= 1.0_ki/zero
-        end if
-        ! Cannot be assigned if present(acc)=F --> commented out!
-        ! acc=1E5_ki ! dummy accuracy which is not used
-      end if
-
-      
-      res(1) = real(amp(4), c_double)
-      res(2) = real(amp(3), c_double)
-      res(3) = real(amp(2), c_double)
-      res(4) = real(amp(1), c_double)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! restore nlo_prefactors
-            nlo_prefactors = orig_nlo_prefactors
-         end if
-     end if
-
-   end subroutine eval3
-   !---#] subroutine eval3 :
-   !---#[ subroutine eval4 :
-   subroutine     eval4(momenta, mu, parameters, res, acc, blha1_mode)
-      use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
-      use p3_part1part21_part25part25part1_model, only: parseline
-      use p3_part1part21_part25part25part1_kinematics, only: boost_to_cms
-      use p4_part21part1_part25part25part1_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p3_part1part21_part25part25part1_groups, only: tear_down_golem95
-      use p3_part1part21_part25part25part1_groups, only: ninja_exit
-
-      implicit none
-      real(kind=c_double), dimension(25), intent(in) :: momenta
-      real(kind=c_double), intent(in) :: mu
-      real(kind=c_double), dimension(10), intent(in) :: parameters
-      real(kind=c_double), dimension(60), intent(out) :: res
-
-      real(kind=ki), dimension(5,4) :: vecs
-      real(kind=ki), dimension(4) :: amp
-      real(kind=c_double), optional :: acc
-      logical, optional :: blha1_mode
-      real(kind=ki) :: zero
-      integer :: i, prec, orig_nlo_prefactors
-      logical :: ok
-
-      call init_event_parameters(4, parameters)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! save nlo_prefactors and restore later
-            orig_nlo_prefactors=nlo_prefactors
-            nlo_prefactors=0
-         end if
-     end if
-
-      vecs(:,1) = real(momenta(1::5),ki)
-      vecs(:,2) = real(momenta(2::5),ki)
-      vecs(:,3) = real(momenta(3::5),ki)
-      vecs(:,4) = real(momenta(4::5),ki)
-
-      call boost_to_cms(vecs)
-
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
-      call tear_down_golem95()
-      call ninja_exit()
-      if (ok) then
-         !
-      else
-         !
-      end if
-      if(present(acc)) then
-         acc=10.0_ki**(-prec) ! point accuracy
-      else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
-            ! Give back a Nan so that point is discarded
-            zero = log(1.0_ki)
-            amp(2)= 1.0_ki/zero
-        end if
-        ! Cannot be assigned if present(acc)=F --> commented out!
-        ! acc=1E5_ki ! dummy accuracy which is not used
-      end if
-
-      
-      res(1) = real(amp(4), c_double)
-      res(2) = real(amp(3), c_double)
-      res(3) = real(amp(2), c_double)
-      res(4) = real(amp(1), c_double)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! restore nlo_prefactors
-            nlo_prefactors = orig_nlo_prefactors
-         end if
-     end if
-
-   end subroutine eval4
-   !---#] subroutine eval4 :
-   !---#[ subroutine eval5 :
-   subroutine     eval5(momenta, mu, parameters, res, acc, blha1_mode)
-      use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
-      use p3_part1part21_part25part25part1_model, only: parseline
-      use p3_part1part21_part25part25part1_kinematics, only: boost_to_cms
-      use p5_anti1part21_part25part25anti1_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p3_part1part21_part25part25part1_groups, only: tear_down_golem95
-      use p3_part1part21_part25part25part1_groups, only: ninja_exit
-
-      implicit none
-      real(kind=c_double), dimension(25), intent(in) :: momenta
-      real(kind=c_double), intent(in) :: mu
-      real(kind=c_double), dimension(10), intent(in) :: parameters
-      real(kind=c_double), dimension(60), intent(out) :: res
-
-      real(kind=ki), dimension(5,4) :: vecs
-      real(kind=ki), dimension(4) :: amp
-      real(kind=c_double), optional :: acc
-      logical, optional :: blha1_mode
-      real(kind=ki) :: zero
-      integer :: i, prec, orig_nlo_prefactors
-      logical :: ok
-
-      call init_event_parameters(5, parameters)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! save nlo_prefactors and restore later
-            orig_nlo_prefactors=nlo_prefactors
-            nlo_prefactors=0
-         end if
-     end if
-
-      vecs(:,1) = real(momenta(1::5),ki)
-      vecs(:,2) = real(momenta(2::5),ki)
-      vecs(:,3) = real(momenta(3::5),ki)
-      vecs(:,4) = real(momenta(4::5),ki)
-
-      call boost_to_cms(vecs)
-
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
-      call tear_down_golem95()
-      call ninja_exit()
-      if (ok) then
-         !
-      else
-         !
-      end if
-      if(present(acc)) then
-         acc=10.0_ki**(-prec) ! point accuracy
-      else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
-            ! Give back a Nan so that point is discarded
-            zero = log(1.0_ki)
-            amp(2)= 1.0_ki/zero
-        end if
-        ! Cannot be assigned if present(acc)=F --> commented out!
-        ! acc=1E5_ki ! dummy accuracy which is not used
-      end if
-
-      
-      res(1) = real(amp(4), c_double)
-      res(2) = real(amp(3), c_double)
-      res(3) = real(amp(2), c_double)
-      res(4) = real(amp(1), c_double)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! restore nlo_prefactors
-            nlo_prefactors = orig_nlo_prefactors
-         end if
-     end if
-
-   end subroutine eval5
-   !---#] subroutine eval5 :
-   !---#[ subroutine eval6 :
-   subroutine     eval6(momenta, mu, parameters, res, acc, blha1_mode)
-      use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
-      use p3_part1part21_part25part25part1_model, only: parseline
-      use p3_part1part21_part25part25part1_kinematics, only: boost_to_cms
-      use p6_part21anti1_part25part25anti1_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p3_part1part21_part25part25part1_groups, only: tear_down_golem95
-      use p3_part1part21_part25part25part1_groups, only: ninja_exit
-
-      implicit none
-      real(kind=c_double), dimension(25), intent(in) :: momenta
-      real(kind=c_double), intent(in) :: mu
-      real(kind=c_double), dimension(10), intent(in) :: parameters
-      real(kind=c_double), dimension(60), intent(out) :: res
-
-      real(kind=ki), dimension(5,4) :: vecs
-      real(kind=ki), dimension(4) :: amp
-      real(kind=c_double), optional :: acc
-      logical, optional :: blha1_mode
-      real(kind=ki) :: zero
-      integer :: i, prec, orig_nlo_prefactors
-      logical :: ok
-
-      call init_event_parameters(6, parameters)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! save nlo_prefactors and restore later
-            orig_nlo_prefactors=nlo_prefactors
-            nlo_prefactors=0
-         end if
-     end if
-
-      vecs(:,1) = real(momenta(1::5),ki)
-      vecs(:,2) = real(momenta(2::5),ki)
-      vecs(:,3) = real(momenta(3::5),ki)
-      vecs(:,4) = real(momenta(4::5),ki)
-
-      call boost_to_cms(vecs)
-
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
-      call tear_down_golem95()
-      call ninja_exit()
-      if (ok) then
-         !
-      else
-         !
-      end if
-      if(present(acc)) then
-         acc=10.0_ki**(-prec) ! point accuracy
-      else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
-            ! Give back a Nan so that point is discarded
-            zero = log(1.0_ki)
-            amp(2)= 1.0_ki/zero
-        end if
-        ! Cannot be assigned if present(acc)=F --> commented out!
-        ! acc=1E5_ki ! dummy accuracy which is not used
-      end if
-
-      
-      res(1) = real(amp(4), c_double)
-      res(2) = real(amp(3), c_double)
-      res(3) = real(amp(2), c_double)
-      res(4) = real(amp(1), c_double)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! restore nlo_prefactors
-            nlo_prefactors = orig_nlo_prefactors
-         end if
-     end if
-
-   end subroutine eval6
-   !---#] subroutine eval6 :
-   !---#[ subroutine eval7 :
-   subroutine     eval7(momenta, mu, parameters, res, acc, blha1_mode)
-      use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
-      use p3_part1part21_part25part25part1_model, only: parseline
-      use p3_part1part21_part25part25part1_kinematics, only: boost_to_cms
-      use p7_part1anti1_part25part25part21_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p3_part1part21_part25part25part1_groups, only: tear_down_golem95
-      use p3_part1part21_part25part25part1_groups, only: ninja_exit
-
-      implicit none
-      real(kind=c_double), dimension(25), intent(in) :: momenta
-      real(kind=c_double), intent(in) :: mu
-      real(kind=c_double), dimension(10), intent(in) :: parameters
-      real(kind=c_double), dimension(60), intent(out) :: res
-
-      real(kind=ki), dimension(5,4) :: vecs
-      real(kind=ki), dimension(4) :: amp
-      real(kind=c_double), optional :: acc
-      logical, optional :: blha1_mode
-      real(kind=ki) :: zero
-      integer :: i, prec, orig_nlo_prefactors
-      logical :: ok
-
-      call init_event_parameters(7, parameters)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! save nlo_prefactors and restore later
-            orig_nlo_prefactors=nlo_prefactors
-            nlo_prefactors=0
-         end if
-     end if
-
-      vecs(:,1) = real(momenta(1::5),ki)
-      vecs(:,2) = real(momenta(2::5),ki)
-      vecs(:,3) = real(momenta(3::5),ki)
-      vecs(:,4) = real(momenta(4::5),ki)
-
-      call boost_to_cms(vecs)
-
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
-      call tear_down_golem95()
-      call ninja_exit()
-      if (ok) then
-         !
-      else
-         !
-      end if
-      if(present(acc)) then
-         acc=10.0_ki**(-prec) ! point accuracy
-      else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
-            ! Give back a Nan so that point is discarded
-            zero = log(1.0_ki)
-            amp(2)= 1.0_ki/zero
-        end if
-        ! Cannot be assigned if present(acc)=F --> commented out!
-        ! acc=1E5_ki ! dummy accuracy which is not used
-      end if
-
-      
-      res(1) = real(amp(4), c_double)
-      res(2) = real(amp(3), c_double)
-      res(3) = real(amp(2), c_double)
-      res(4) = real(amp(1), c_double)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! restore nlo_prefactors
-            nlo_prefactors = orig_nlo_prefactors
-         end if
-     end if
-
-   end subroutine eval7
-   !---#] subroutine eval7 :
-   !---#[ subroutine eval1 :
-   subroutine     eval1(momenta, mu, parameters, res, acc, blha1_mode)
-      use, intrinsic :: iso_c_binding
-      use p1_part21part21_part25part25_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
-      use p1_part21part21_part25part25_model, only: parseline
-      use p1_part21part21_part25part25_kinematics, only: boost_to_cms
-      use p1_part21part21_part25part25_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p1_part21part21_part25part25_groups, only: tear_down_golem95
-      use p1_part21part21_part25part25_groups, only: ninja_exit
+      use p0_part21part21_part25part25_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
+      use p0_part21part21_part25part25_model, only: parseline
+      use p0_part21part21_part25part25_kinematics, only: boost_to_cms
+      use p0_part21part21_part25part25_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
+      use p0_part21part21_part25part25_groups, only: tear_down_golem95
+      use p0_part21part21_part25part25_groups, only: ninja_exit
 
       implicit none
       real(kind=c_double), dimension(20), intent(in) :: momenta
@@ -785,7 +312,84 @@ contains
       integer :: i, prec, orig_nlo_prefactors
       logical :: ok
 
-      call init_event_parameters(1, parameters)
+      call init_event_parameters(0, parameters)
+
+      if(present(blha1_mode)) then
+         if(blha1_mode) then
+            ! save nlo_prefactors and restore later
+            orig_nlo_prefactors=nlo_prefactors
+            nlo_prefactors=0
+         end if
+     end if
+
+      vecs(:,1) = real(momenta(1::5),ki)
+      vecs(:,2) = real(momenta(2::5),ki)
+      vecs(:,3) = real(momenta(3::5),ki)
+      vecs(:,4) = real(momenta(4::5),ki)
+
+      call boost_to_cms(vecs)
+
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call tear_down_golem95()
+      call ninja_exit()
+      if (ok) then
+         !
+      else
+         !
+      end if
+      if(present(acc)) then
+         acc=10.0_ki**(-prec) ! point accuracy
+      else
+         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
+            ! Give back a Nan so that point is discarded
+            zero = log(1.0_ki)
+            amp(2)= 1.0_ki/zero
+        end if
+        ! Cannot be assigned if present(acc)=F --> commented out!
+        ! acc=1E5_ki ! dummy accuracy which is not used
+      end if
+
+      
+      res(1) = real(amp(4), c_double)
+      res(2) = real(amp(3), c_double)
+      res(3) = real(amp(2), c_double)
+      res(4) = real(amp(1), c_double)
+
+      if(present(blha1_mode)) then
+         if(blha1_mode) then
+            ! restore nlo_prefactors
+            nlo_prefactors = orig_nlo_prefactors
+         end if
+     end if
+
+   end subroutine eval0
+   !---#] subroutine eval0 :
+
+   !---#[ subroutine eval1 :
+   subroutine     eval1(momenta, mu, parameters, res, acc, blha1_mode)
+      use, intrinsic :: iso_c_binding
+      use pb_part21part21_part25part25_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
+      use pb_part21part21_part25part25_model, only: parseline
+      use pb_part21part21_part25part25_kinematics, only: boost_to_cms
+      use pb_part21part21_part25part25_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
+      use pb_part21part21_part25part25_groups, only: tear_down_golem95
+      use pb_part21part21_part25part25_groups, only: ninja_exit
+
+      implicit none
+      real(kind=c_double), dimension(20), intent(in) :: momenta
+      real(kind=c_double), intent(in) :: mu
+      real(kind=c_double), dimension(10), intent(in) :: parameters
+      real(kind=c_double), dimension(60), intent(out) :: res
+
+      real(kind=ki), dimension(4,4) :: vecs
+      real(kind=ki), dimension(4) :: amp
+      real(kind=c_double), optional :: acc
+      logical, optional :: blha1_mode
+      real(kind=ki) :: zero
+      integer :: i, prec, orig_nlo_prefactors
+      logical :: ok
+
+      call init_event_parameters(0, parameters)
 
       if(present(blha1_mode)) then
          if(blha1_mode) then
@@ -837,162 +441,14 @@ contains
 
    end subroutine eval1
    !---#] subroutine eval1 :
-   !---#[ subroutine eval2 :
-   subroutine     eval2(momenta, mu, parameters, res, acc, blha1_mode)
-      use, intrinsic :: iso_c_binding
-      use p2_part21part21_part25part25part21_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
-      use p2_part21part21_part25part25part21_model, only: parseline
-      use p2_part21part21_part25part25part21_kinematics, only: boost_to_cms
-      use p2_part21part21_part25part25part21_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p2_part21part21_part25part25part21_groups, only: tear_down_golem95
-      use p2_part21part21_part25part25part21_groups, only: ninja_exit
-
-      implicit none
-      real(kind=c_double), dimension(25), intent(in) :: momenta
-      real(kind=c_double), intent(in) :: mu
-      real(kind=c_double), dimension(10), intent(in) :: parameters
-      real(kind=c_double), dimension(60), intent(out) :: res
-
-      real(kind=ki), dimension(5,4) :: vecs
-      real(kind=ki), dimension(4) :: amp
-      real(kind=c_double), optional :: acc
-      logical, optional :: blha1_mode
-      real(kind=ki) :: zero
-      integer :: i, prec, orig_nlo_prefactors
-      logical :: ok
-
-      call init_event_parameters(2, parameters)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! save nlo_prefactors and restore later
-            orig_nlo_prefactors=nlo_prefactors
-            nlo_prefactors=0
-         end if
-     end if
-
-      vecs(:,1) = real(momenta(1::5),ki)
-      vecs(:,2) = real(momenta(2::5),ki)
-      vecs(:,3) = real(momenta(3::5),ki)
-      vecs(:,4) = real(momenta(4::5),ki)
-
-      call boost_to_cms(vecs)
-
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
-      call tear_down_golem95()
-      call ninja_exit()
-      if (ok) then
-         !
-      else
-         !
-      end if
-      if(present(acc)) then
-         acc=10.0_ki**(-prec) ! point accuracy
-      else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
-            ! Give back a Nan so that point is discarded
-            zero = log(1.0_ki)
-            amp(2)= 1.0_ki/zero
-        end if
-        ! Cannot be assigned if present(acc)=F --> commented out!
-        ! acc=1E5_ki ! dummy accuracy which is not used
-      end if
-
-      
-      res(1) = real(amp(4), c_double)
-      res(2) = real(amp(3), c_double)
-      res(3) = real(amp(2), c_double)
-      res(4) = real(amp(1), c_double)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! restore nlo_prefactors
-            nlo_prefactors = orig_nlo_prefactors
-         end if
-     end if
-
-   end subroutine eval2
-   !---#] subroutine eval2 :
-   !---#[ subroutine eval0 :
-   subroutine     eval0(momenta, mu, parameters, res, acc, blha1_mode)
-      use, intrinsic :: iso_c_binding
-      use p0_part21part21_part25part25_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
-      use p0_part21part21_part25part25_model, only: parseline
-      use p0_part21part21_part25part25_kinematics, only: boost_to_cms
-      use p0_part21part21_part25part25_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-
-      implicit none
-      real(kind=c_double), dimension(20), intent(in) :: momenta
-      real(kind=c_double), intent(in) :: mu
-      real(kind=c_double), dimension(10), intent(in) :: parameters
-      real(kind=c_double), dimension(60), intent(out) :: res
-
-      real(kind=ki), dimension(4,4) :: vecs
-      real(kind=ki), dimension(4) :: amp
-      real(kind=c_double), optional :: acc
-      logical, optional :: blha1_mode
-      real(kind=ki) :: zero
-      integer :: i, prec, orig_nlo_prefactors
-      logical :: ok
-
-      call init_event_parameters(0, parameters)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! save nlo_prefactors and restore later
-            orig_nlo_prefactors=nlo_prefactors
-            nlo_prefactors=0
-         end if
-     end if
-
-      vecs(:,1) = real(momenta(1::5),ki)
-      vecs(:,2) = real(momenta(2::5),ki)
-      vecs(:,3) = real(momenta(3::5),ki)
-      vecs(:,4) = real(momenta(4::5),ki)
-
-      call boost_to_cms(vecs)
-
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
-      if (ok) then
-         !
-      else
-         !
-      end if
-      if(present(acc)) then
-         acc=10.0_ki**(-prec) ! point accuracy
-      else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
-            ! Give back a Nan so that point is discarded
-            zero = log(1.0_ki)
-            amp(2)= 1.0_ki/zero
-        end if
-        ! Cannot be assigned if present(acc)=F --> commented out!
-        ! acc=1E5_ki ! dummy accuracy which is not used
-      end if
-
-      
-      res(1) = real(amp(4), c_double)
-      res(2) = real(amp(3), c_double)
-      res(3) = real(amp(2), c_double)
-      res(4) = real(amp(1), c_double)
-
-      if(present(blha1_mode)) then
-         if(blha1_mode) then
-            ! restore nlo_prefactors
-            nlo_prefactors = orig_nlo_prefactors
-         end if
-     end if
-
-   end subroutine eval0
-   !---#] subroutine eval0 :
 
    !---#[ OLP Polarization vector:
    subroutine OLP_Polvec(p,q,eps) &
        & bind(C,name="olp_polvec_")
       use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_config , only:ki
-      use p3_part1part21_part25part25part1_model
-      use p3_part1part21_part25part25part1_kinematics, only: Spab3, Spaa     
+      use p0_part21part21_part25part25_config , only:ki
+      use p0_part21part21_part25part25_model
+      use p0_part21part21_part25part25_kinematics, only: Spab3, Spaa  
       implicit none
       real(kind=c_double), dimension(0:3), intent(in) :: p,q
       real(kind=c_double), dimension(0:7), intent(out) :: eps
@@ -1019,10 +475,8 @@ contains
        & bind(C,name="olp_printparameter_")
 
       use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_model, only: p3_part1part21_part25part25part1_print_parameter => print_parameter
-      use p1_part21part21_part25part25_model, only: p1_part21part21_part25part25_print_parameter => print_parameter
-      use p2_part21part21_part25part25part21_model, only: p2_part21part21_part25part25part21_print_parameter => print_parameter
       use p0_part21part21_part25part25_model, only: p0_part21part21_part25part25_print_parameter => print_parameter
+      use pb_part21part21_part25part25_model, only: pb_part21part21_part25part25_print_parameter => print_parameter
       implicit none
       character(kind=c_char,len=1), intent(in) :: filename
       integer :: ierr, l
@@ -1049,17 +503,11 @@ contains
          write(7,*) "OLP_PrintParameter: Could not open/create:", filename(1:l), "!"
          ierr = -1
       end if
-      write (27, "(A)") "####### Setup of SubProcess p3_part1part21_part25part25part1 #######"
-      call p3_part1part21_part25part25part1_print_parameter(.true.,27)
-      write (27, *)
-      write (27, "(A)") "####### Setup of SubProcess p1_part21part21_part25part25 #######"
-      call p1_part21part21_part25part25_print_parameter(.true.,27)
-      write (27, *)
-      write (27, "(A)") "####### Setup of SubProcess p2_part21part21_part25part25part21 #######"
-      call p2_part21part21_part25part25part21_print_parameter(.true.,27)
-      write (27, *)
       write (27, "(A)") "####### Setup of SubProcess p0_part21part21_part25part25 #######"
-      call p0_part21part21_part25part25_print_parameter(.true.,27)
+      call p0_part21part21_part25part25_print_parameter(.false.,27)
+      write (27, *)
+      write (27, "(A)") "####### Setup of SubProcess pb_part21part21_part25part25 #######"
+      call pb_part21part21_part25part25_print_parameter(.true.,27)
       write (27, *)
 
       close(27)
@@ -1068,10 +516,8 @@ contains
    !---#] OLP_PrintParameter
 
    subroutine     read_slha_file(line)
-      use p3_part1part21_part25part25part1_model, only: p3_part1part21_part25part25part1_read_slha => read_slha
-      use p1_part21part21_part25part25_model, only: p1_part21part21_part25part25_read_slha => read_slha
-      use p2_part21part21_part25part25part21_model, only: p2_part21part21_part25part25part21_read_slha => read_slha
       use p0_part21part21_part25part25_model, only: p0_part21part21_part25part25_read_slha => read_slha
+      use pb_part21part21_part25part25_model, only: pb_part21part21_part25part25_read_slha => read_slha
       implicit none
       character(len=*), intent(in) :: line
       character(len=512) :: file_name
@@ -1082,13 +528,9 @@ contains
       if(ierr.ne.0) then
          print*, "Could not find SLHA model file"
       else
-         call p3_part1part21_part25part25part1_read_slha(27)
-         rewind(unit=27)
-         call p1_part21part21_part25part25_read_slha(27)
-         rewind(unit=27)
-         call p2_part21part21_part25part25part21_read_slha(27)
-         rewind(unit=27)
          call p0_part21part21_part25part25_read_slha(27)
+         rewind(unit=27)
+         call pb_part21part21_part25part25_read_slha(27)
          close(27)
       end if
    end subroutine read_slha_file

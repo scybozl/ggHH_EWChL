@@ -16,10 +16,10 @@ module     p0_part21part21_part25part25_config
    integer, parameter :: NINJA   = 2
    integer, parameter :: PJFRY   = 3 ! experimental
    ! Reduction methods
-   integer :: reduction_interoperation = -1
+   integer :: reduction_interoperation = NINJA
    ! Rescue reduction method. The rescue system is disabled
    ! if it is equal to reduction_interoperation
-   integer :: reduction_interoperation_rescue = -1
+   integer :: reduction_interoperation_rescue = GOLEM95
 
    ! Debugging settings
    logical :: debug_lo_diagrams  = .false.
@@ -43,6 +43,8 @@ module     p0_part21part21_part25part25_config
    
 
    
+   integer :: ninja_test = 0
+   integer :: ninja_istop = 0
 
    ! Parameter: Use stable accumulation of diagrams or builtin sum
    !            Stable accumulation is implemented in accu.f90
@@ -109,7 +111,7 @@ module     p0_part21part21_part25part25_config
    !
    ! Note, however, that the factor of 1/Gamma(1-eps) is not included
    ! in any of the cases.
-   integer :: nlo_prefactors = 2
+   integer :: nlo_prefactors = 0
 
    ! Determines the maximum allowed difference among the abs of the
    ! single pole evaluations obtained with the amplitude vs the one
@@ -120,12 +122,13 @@ module     p0_part21part21_part25part25_config
    logical :: PSP_check = .true.
    logical :: PSP_verbosity = .false.
    logical :: PSP_rescue = .true.
+   ! not used (tree-level not available):
    integer :: PSP_chk_th1 = 8
    integer :: PSP_chk_th2 = 3
    integer :: PSP_chk_th3 = 5
-   real(ki) :: PSP_chk_kfactor = -1.0_ki
+   real(ki) :: PSP_chk_kfactor = 1000.0_ki
    
-   ! not used in this process (process is not loop-induced):
+   ! used instead:
    integer :: PSP_chk_li1 = 16
    integer :: PSP_chk_li2 = 7
    integer :: PSP_chk_li3 = 6

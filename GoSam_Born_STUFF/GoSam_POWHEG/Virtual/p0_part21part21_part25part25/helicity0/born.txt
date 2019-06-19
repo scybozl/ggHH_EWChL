@@ -1,0 +1,11 @@
+#####Abbreviations
+
+    abb(1)=TR^-1;
+    abb(2)=1/( - mdlMh^2 + es12);
+   abb(3)= - abb(2)*mdlGC43*mdlGC38*i_;
+   abb(3)= - mdlGC31 + abb(3);
+   abb(3)=1/4*abb(1)*spbe2e1*spae1e2*es12*abb(3);
+
+#####Diagrams
+amplitude = c1*abb(3);
+

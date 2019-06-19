@@ -16,8 +16,8 @@ module     p0_part21part21_part25part25_kinematics
    integer, parameter, public :: num_heavy_quarks = 0
    integer, parameter, public :: num_quarks = 0
    integer, parameter, public :: num_gluons = 2
-   integer, parameter, public :: lo_qcd_couplings = 2
-   logical, parameter, public :: corrections_are_qcd = .false.
+   integer, parameter, public :: lo_qcd_couplings = 0
+   logical, parameter, public :: corrections_are_qcd = .true.
    integer, parameter, public :: in_helicities = 4
    integer, parameter, public :: symmetry_factor = 2
    real(ki), parameter, public :: es1 = 0.0_ki

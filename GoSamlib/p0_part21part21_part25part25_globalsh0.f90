@@ -13,9 +13,9 @@ module     p0_part21part21_part25part25_globalsh0
 contains
 
 subroutine     init_lo()
-   use p0_part21part21_part25part25_globalsl1, only: epspow, ccontract, amp0
+   use p0_part21part21_part25part25_globalsl1, only: epspow, col0
    implicit none
-   c1 = ccontract(c1v, amp0)
+   c1 = c1v(col0)
 end subroutine init_lo
 
 end module p0_part21part21_part25part25_globalsh0

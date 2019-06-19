@@ -1,0 +1,69 @@
+*Abbreviations for diagram d2h0l1. Generated on Mon Jun 17 12:55:13 2019
+
+#####Abbreviations
+
+    abb2(1)=csqrt(mdlMT^2);
+   abb2(2)=mdlGC7^2*c1*mdlGC46;
+   abb2(3)=spae1e2*abb2(1);
+   abb2(4)=abb2(2)*abb2(3);
+   abb2(5)=abb2(4)*spbe2e1;
+   abb2(6)=2*spbe2e1;
+   abb2(6)= - spae1e2*abb2(1)^3*abb2(6);
+   abb2(7)=spbe2e1*abb2(1);
+   abb2(8)=abb2(7)*spae1k1;
+   abb2(9)=spbk2k1*spae2k2*abb2(8);
+   abb2(3)=spak1k2*spbk1e1*spbk2e2*abb2(3);
+   abb2(3)=abb2(3) + abb2(6) + abb2(9);
+   abb2(3)=abb2(2)*abb2(3);
+   abb2(6)=abb2(2)*abb2(1);
+   abb2(9)= - 16*abb2(6);
+   abb2(10)=2*abb2(5);
+   abb2(11)= - spae1k2*spbk2e2;
+   abb2(12)= - spbe2k1*spae1k1;
+   abb2(11)=abb2(11) + abb2(12);
+   abb2(11)=abb2(6)*abb2(11);
+   abb2(12)= - spbk2e1*spae2k2;
+   abb2(13)= - spak1e2*spbk1e1;
+   abb2(12)=abb2(12) + abb2(13);
+   abb2(6)=abb2(6)*abb2(12);
+   abb2(12)=1/2*abb2(2);
+   abb2(7)=abb2(12)*abb2(7);
+   abb2(12)= - spae1k2*abb2(7);
+   abb2(13)=1/2*abb2(4);
+   abb2(14)= - spbk2e1*abb2(13);
+   abb2(7)=spae2k2*abb2(7);
+   abb2(13)=spbk2e2*abb2(13);
+   abb2(2)=abb2(2)*abb2(8);
+   abb2(4)=spbk1e1*abb2(4);
+
+#####R2
+
+R2d2 =  - abb2(5);
+
+#####Diagram
+
+    acc2(1)=abb2(2);
+    acc2(2)=abb2(3);
+    acc2(3)=abb2(4);
+    acc2(4)=abb2(6);
+    acc2(5)=abb2(7);
+    acc2(6)=abb2(9);
+    acc2(7)=abb2(10);
+    acc2(8)=abb2(11);
+    acc2(9)=abb2(12);
+    acc2(10)=abb2(13);
+    acc2(11)=abb2(14);
+   acc2(12)=Qspvae2e1*acc2(8);
+   acc2(13)=Qspvae1e2*acc2(4);
+   acc2(14)=Qspvae2k2*acc2(9);
+   acc2(15)=Qspvak2e2*acc2(11);
+   acc2(16)=Qspvae1k2*acc2(5);
+   acc2(17)=Qspvak2e1*acc2(10);
+   acc2(18)=Qspvae2k1*acc2(1);
+   acc2(19)=Qspvak1e2*acc2(3);
+   acc2(20)=Qspe1*Qspe2*acc2(6);
+   acc2(21)=QspQ*acc2(7);
+
+brack = acc2(2) + acc2(12) + acc2(13) + acc2(14) + acc2(15) + acc2(16) + 
+      acc2(17) + acc2(18) + acc2(19) + acc2(20) + acc2(21);
+
