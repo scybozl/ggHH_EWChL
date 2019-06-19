@@ -468,13 +468,19 @@ c     Since this contribution is the square of a one-loop calculation, this fact
 c     There is an extra factor of 8*pi from the instrisic GoSam normalization (4*2*pi)
      $             * 8d0*pi
 
-c      processid=1
+      processid=1
       
-c      call gosam_momenta(p,pgosam)
-c      muren=sqrt(st_muren2)
-c      params(1)=1d0/(2d0*pi)
-c      call OLP_EvalSubProcess(processid,pgosam,muren,params,res)
-c      write(*,*) res
+      call gosam_momenta(p,pgosam)
+      muren=sqrt(st_muren2)
+      params(1)=1d0
+      call OLP_EvalSubProcess(processid,pgosam,muren,params,res)
+      write(*,*) res
+
+      amp2 = amp2 + res(4) * (4d0*pi*st_alpha)**2 
+     $                     * 1d0/(16d0*pi**2)
+     $            + res(2) * (4d0*pi*st_alpha)**2
+     $                     * 1d0/(16d0*pi**2)**2
+     $                     * 8d0 * pi
 
 
       end subroutine ME2born_top

@@ -61,7 +61,7 @@ module     pb_part21part21_part25part25_config
    integer :: renormalisation = 1
 
    ! if renormalisation.eq.1, include alpha_s renormalisation:
-   logical :: renorm_beta = .true.
+   logical :: renorm_beta = .false.
    ! if renormalisation.eq.1, include massive quark wave function renorm.:
    logical :: renorm_mqwf = .true.
    ! include massive quark contribution for wave function renormalisation
@@ -111,7 +111,7 @@ module     pb_part21part21_part25part25_config
    !
    ! Note, however, that the factor of 1/Gamma(1-eps) is not included
    ! in any of the cases.
-   integer :: nlo_prefactors = 0
+   integer :: nlo_prefactors = 2
 
    ! Determines the maximum allowed difference among the abs of the
    ! single pole evaluations obtained with the amplitude vs the one

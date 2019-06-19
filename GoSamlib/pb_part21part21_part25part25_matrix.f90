@@ -11,7 +11,7 @@ module     pb_part21part21_part25part25_matrix
    use pb_part21part21_part25part25_kinematics, only: &
        in_helicities, symmetry_factor, num_legs, &
        lo_qcd_couplings, corrections_are_qcd, num_light_quarks, num_gluons
-   use pb_part21part21_part25part25_model, only: Nf, NC, sqrt2, init_functions
+   use pb_part21part21_part25part25_model, only: Nf, NC, sqrt2, init_functions, print_parameter
    use pb_part21part21_part25part25_color, only: TR, CA, CF, numcs, &
      & incolors, init_color
    use pb_part21part21_part25part25_diagramsh0l0, only: amplitude0l0 => amplitude
@@ -156,6 +156,7 @@ contains
 
       call init_functions()
       call init_color()
+      call print_parameter(.true.)
 
    end subroutine initgolem
    !---#] subroutine initgolem :

@@ -58,7 +58,7 @@ module     pb_part21part21_part25part25_config
 
    !---#[ Renormalisation:
    ! Parameter to switch UV-Counterterms on or off
-   integer :: renormalisation = 1
+   integer :: renormalisation = 0
 
    ! if renormalisation.eq.1, include alpha_s renormalisation:
    logical :: renorm_beta = .true.
@@ -111,7 +111,7 @@ module     pb_part21part21_part25part25_config
    !
    ! Note, however, that the factor of 1/Gamma(1-eps) is not included
    ! in any of the cases.
-   integer :: nlo_prefactors = 0
+   integer :: nlo_prefactors = 2
 
    ! Determines the maximum allowed difference among the abs of the
    ! single pole evaluations obtained with the amplitude vs the one

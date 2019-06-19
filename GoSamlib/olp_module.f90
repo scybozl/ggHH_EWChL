@@ -95,9 +95,11 @@ contains
       ! p0_part21part21_part25part25_PSP_chk_th3 = PSP_chk_th3
       ! p0_part21part21_part25part25_PSP_chk_kfactor = PSP_chk_kfactor
       if(stage.lt.0) then
-         call p0_part21part21_part25part25_initgolem(.true.)
+         call p0_part21part21_part25part25_initgolem(.false.)
+         call pb_part21part21_part25part25_initgolem(.true.)
       else
-         call p0_part21part21_part25part25_initgolem(.true.,stage,rndseed)
+         call p0_part21part21_part25part25_initgolem(.false.,stage,rndseed)
+         call pb_part21part21_part25part25_initgolem(.true.,stage,rndseed)
       end if
 
    end subroutine OLP_Start
