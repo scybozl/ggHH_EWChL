@@ -78,6 +78,7 @@ loopsize=options.loopsize
 txtfile = open(diag_name+'.txt','r')
 tmp_handle , tmpname = tempfile.mkstemp(suffix=".f90",prefix="gosam_tmp")
 f90file = os.fdopen(tmp_handle,"w")
+
 datfilename = diag_name[:-1] + '.dat'
 # import txt file
 txt_lines=[]
@@ -196,8 +197,11 @@ f90file.write('!---#] subroutine numerator_t2: \n')
 
 f90file.write('end module     pb_part21part21_part25part25_'+diag_name[:-1]+'32\n')
 f90file.close()
+
+
 ### additional formatting for output files
 
 postformat(tmpname)
 
 shutil.move(tmpname,diag_name[:-1]+'32.f90')
+

@@ -16,7 +16,7 @@ module     pb_part21part21_part25part25_matrix
      & incolors, init_color
    use pb_part21part21_part25part25_diagramsh0l0, only: amplitude0l0 => amplitude
    use pb_part21part21_part25part25_amplitudeh0, only: samplitudeh0l1 => samplitude, &
-        &   finite_renormalisation0 => finite_renormalisation
+     &   finite_renormalisation0 => finite_renormalisation
    use pb_part21part21_part25part25_dipoles, only: insertion_operator, insertion_operator_qed
 
    implicit none
@@ -31,8 +31,8 @@ module     pb_part21part21_part25part25_matrix
    public :: ir_subtraction, color_correlated_lo2, spin_correlated_lo2
    public :: OLP_color_correlated, OLP_spin_correlated_lo2
 
-   
-   
+
+
 
 contains
    !---#[ subroutine banner:
@@ -47,7 +47,7 @@ contains
       write(banner_ch,'(A74)') "|   __   __   ___   __   __  __                   GoSam                  |"
       write(banner_ch,'(A74)') "|  / _) /  \ / __) (  ) (  \/  )          An Automated One-Loop          |"
       write(banner_ch,'(A74)') "| ( (/\( () )\__ \ /__\  )    (          Matrix Element Generator        |"
-      write(banner_ch,'(A74)') "|  \__/ \__/ (___/(_)(_)(_/\/\_)       Version 2.0.4 Rev: 6d9f1cba       |"
+      write(banner_ch,'(A74)') "|  \__/ \__/ (___/(_)(_)(_/\/\_)        Version 2.0.4 Rev: 1fe5178       |"
       write(banner_ch,'(A74)') "|                                                                        |"
       write(banner_ch,'(A74)') "|                                 (c) The GoSam Collaboration 2011-2016  |"
       write(banner_ch,'(A74)') "|                                                                        |"
@@ -212,23 +212,20 @@ contains
       amp = ampdef
       ! RESCUE SYSTEM
       if(PSP_check) then
-         call ir_subtraction(vecs, scale2, irp, h)
-         if((ampdef(3)-irp(2)) .ne. 0.0_ki) then
-            spprec1 = -int(log10(abs((ampdef(3)-irp(2))/irp(2))))
+         ! poles should be zero for loop-induced processes
+         if(ampdef(2) .ne. 0.0_ki .and. ampdef(3) .ne. 0.0_ki) then
+            spprec1 = -int(log10(abs((ampdef(3)/ampdef(2)))))
          else
-            spprec1 = 16
+            spprec1 = 18
          endif
-         if(ampdef(1) .ne. 0.0_ki) then
-            kfac = abs(ampdef(2)/ampdef(1))
-         else
-            kfac = 0.0_ki
-         endif
-         if(spprec1.lt.PSP_chk_th1.and.spprec1.ge.PSP_chk_th2 &
-              .or.(kfac.gt.PSP_chk_kfactor.and.PSP_chk_kfactor.gt.0)) icheck=2 ! ROTATION
-         if(spprec1.lt.PSP_chk_th2) then                                       ! RESCUE
+         kfac = 0.0_ki
+         if(spprec1.lt.PSP_chk_li1.and.spprec1.ge.PSP_chk_li2) then
+            icheck=2 ! ROTATION
+         end if
+         if(spprec1.lt.PSP_chk_li2) then                                       ! RESCUE
             icheck=3
             fpprec1=-10        ! Set -10 as finite part precision
-         endif
+         end if
          if(icheck.eq.2) then
             do irot = 1,4
                vecsrot(irot,1) = vecs(irot,1)
@@ -242,8 +239,8 @@ contains
             else
                fpprec1 = 16
             endif
-            if(fpprec1.ge.PSP_chk_th3) icheck=1                            ! ACCEPTED
-            if(fpprec1.lt.PSP_chk_th3) icheck=3                            ! RESCUE
+            if(fpprec1.ge.PSP_chk_li3) icheck=1                            ! ACCEPTED
+            if(fpprec1.lt.PSP_chk_li3) icheck=3                            ! RESCUE
          endif
          prec = min(spprec1,fpprec1)
 
@@ -252,41 +249,34 @@ contains
             reduction_interoperation = reduction_interoperation_rescue
             call samplitudel01(vecs, scale2, ampres, rat2, ok, h)
             amp=ampres
-            if((ampres(3)-irp(2)) .ne. 0.0_ki) then
-               spprec2 = -int(log10(abs((ampres(3)-irp(2))/irp(2))))
+            ! poles should be zero for loop-induced processes
+            if(ampres(2) .ne. 0.0_ki .and. ampres(3) .ne. 0.0_ki) then
+               spprec2 = -int(log10(abs(ampres(3)/ampres(2))))
             else
                spprec2 = 16
             endif
-            if(ampres(1) .ne. 0.0_ki) then
-               kfac = abs(ampres(2)/ampres(1))
-            else
-               kfac = 0.0_ki
-            endif
-            ! if(spprec2.lt.PSP_chk_th1.and.spprec2.ge.PSP_chk_th2 &
-            !      .or.(kfac.gt.PSP_chk_kfactor.and.PSP_chk_kfactor.gt.0)) icheck=2 ! ROTATION
-            ! if(spprec2.lt.PSP_chk_th2) then                                       ! DISCARD
-            if(spprec2.lt.PSP_chk_th3 &
-                 .or.(kfac.gt.PSP_chk_kfactor.and.PSP_chk_kfactor.gt.0)) then ! DISCARD
+            kfac = 0.0_ki
+            if(spprec2.lt.PSP_chk_li4) then ! DISCARD
                icheck=3
                fpprec2=-10        ! Set -10 as finite part precision
             endif
-            if(icheck.eq.2) then
-               do irot = 1,4
-                  vecsrot(irot,1) = vecs(irot,1)
-                  vecsrot(irot,2) = vecs(irot,2)*Cos(angle)-vecs(irot,3)*Sin(angle)
-                  vecsrot(irot,3) = vecs(irot,2)*Sin(angle)+vecs(irot,3)*Cos(angle)
-                  vecsrot(irot,4) = vecs(irot,4)
-               enddo
-               ! call adjust_kinematics(vecsrot)
-               call samplitudel01(vecsrot, scale2, ampresrot, rat2, ok, h)
-               if((ampresrot(2)-ampres(2)) .ne. 0.0_ki) then
-                  fpprec2 = -int(log10(abs((ampresrot(2)-ampres(2))/((ampresrot(2)+ampres(2))/2.0_ki))))
-               else
-                  fpprec2 = 16
-               endif
-               if(fpprec2.ge.PSP_chk_th3) icheck=1                         ! ACCEPTED
-               if(fpprec2.lt.PSP_chk_th3) icheck=3                         ! DISCARD
-            endif
+            ! if(icheck.eq.2) then
+            !    do irot = 1,4
+            !       vecsrot(irot,1) = vecs(irot,1)
+            !       vecsrot(irot,2) = vecs(irot,2)*Cos(angle)-vecs(irot,3)*Sin(angle)
+            !       vecsrot(irot,3) = vecs(irot,2)*Sin(angle)+vecs(irot,3)*Cos(angle)
+            !       vecsrot(irot,4) = vecs(irot,4)
+            !    enddo
+            !    ! call adjust_kinematics(vecsrot)
+            !    call samplitudel01(vecsrot, scale2, ampresrot, rat2, ok, h)
+            !    if((ampresrot(2)-ampres(2)) .ne. 0.0_ki) then
+            !       fpprec2 = -int(log10(abs((ampresrot(2)-ampres(2))/((ampresrot(2)+ampres(2))/2.0_ki))))
+            !    else
+            !       fpprec2 = 16
+            !    endif
+            !    if(fpprec2.ge.PSP_chk_li3) icheck=1                         ! ACCEPTED
+            !    if(fpprec2.lt.PSP_chk_li3) icheck=3                         ! DISCARD
+            ! endif
             reduction_interoperation = tmp_red_int
             prec = min(spprec2,fpprec2)
          endif
@@ -295,10 +285,11 @@ contains
             write(42,'(2x,A7)')"<event>"
             write(42,'(4x,A15,A28,A3)') &
                  &  "<process name='","pb_part21part21_part25part25","'/>"
-            write(42,'(4x,A21,I2.1,A7,I2.1,A7,I2.1,A3)') &
-                 &  "<PSP_thresholds th1='", PSP_chk_th1, &
-                 &                "' th2='", PSP_chk_th2, &
-                 &                "' th3='", PSP_chk_th3,"'/>"
+            write(42,'(4x,A21,I2.1,A7,I2.1,A7,I2.1,A7,I2.1,A3)') &
+                 &  "<PSP_thresholds li1='", PSP_chk_li1, &
+                 &                "' li2='", PSP_chk_li2, &
+                 &                "' li3='", PSP_chk_li3, &
+                 &                "' li4='", PSP_chk_li4,"'/>"
             write(42,'(4x,A16,D23.16,A3)') &
                  &  "<PSP_kfaktor k='", PSP_chk_kfactor,"'/>"
             write(42,'(4x,A15,I3.1,A6,I3.1,A3)') &
@@ -374,7 +365,7 @@ contains
          call inspect_kinematics(logfile)
       end if
 
-      
+
       if (present(h)) then
          amp(1) = samplitudel0(vecs, h)
       else

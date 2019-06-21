@@ -144,6 +144,7 @@ abbfile.write('   end subroutine\n')
 abbfile.write('end module pb_part21part21_part25part25_abbrevd'+diag+'h'+heli+'\n')
 
 
+
 f90file.write('module     pb_part21part21_part25part25_'+diag_name+'\n')
 f90file.write('   ! file: '+str(os.getcwd())+diag_name+'.f90 \n')
 f90file.write('   ! generator: buildfortran.py \n')
@@ -243,9 +244,13 @@ f90file.write('   end subroutine numerator_ninja\n')
 f90file.write('   !------#] subroutine numerator_ninja:\n')
 f90file.write('!---#] numerator interfaces:\n')
 f90file.write('end module pb_part21part21_part25part25_'+diag_name+'\n')
+
+
 txtfile.close()
 abbfile.close()
+
 f90file.close()
+
 ### additional formatting for output files
 
 postformat(abb_tmpname)
@@ -256,3 +261,4 @@ if int(heli) == -1:
 else:
     shutil.move(abb_tmpname,'abbrevd'+diag+'h'+heli+'.f90')
 shutil.move(f90_tmpname,diag_name + '.f90')
+

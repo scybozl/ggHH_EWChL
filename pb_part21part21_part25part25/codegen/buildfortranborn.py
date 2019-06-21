@@ -40,6 +40,7 @@ print '----------------------------------'
 txtfile = open(file_name+'.txt','r')
 tmp_handle , tmpname = tempfile.mkstemp(suffix=".f90",prefix="gosam_tmp")
 f90file = os.fdopen(tmp_handle,"w")
+
 datfilename = file_name + '.dat'
 
 # import txt file
@@ -99,10 +100,13 @@ f90file.write('!      end if\n')
 f90file.write('   end function     amplitude\n')
 f90file.write('!---#] function amplitude:\n')
 f90file.write('end module pb_part21part21_part25part25_diagramsh'+str(heli)+'l0\n')
-txtfile.close()
 f90file.close()
+
+txtfile.close()
+
 ### additional formatting for output files
 
 postformat(tmpname)
 
 shutil.move(tmpname,'diagramsl0.f90')
+

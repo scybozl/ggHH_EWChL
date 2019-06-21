@@ -54,13 +54,13 @@ program test
              &    amp(2)/amp(0)
          write(*,'(A1,1x,A17,1x,G23.16)') "#", "NLO, double pole:", &
              &    amp(3)/amp(0)
-      
-      
+
+
          write(*,'(A1,1x,A17,1x,G23.16)') "#", "IR,  single pole:", &
             & irp(2)/amp(0)
          write(*,'(A1,1x,A17,1x,G23.16)') "#", "IR,  double pole:", &
             & irp(3)/amp(0)
-      
+
       end if
    end do
    call cpu_time(t2)

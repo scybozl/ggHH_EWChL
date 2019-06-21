@@ -10,7 +10,7 @@
 #Write <`OUTPUT'> "= (/2, 0/)"
 #Write <`OUTPUT'> "   ! The SVN revision of GoSam used for code generation"
 #Write <`OUTPUT'> "   integer, parameter :: gosamrevision %"
-#Write <`OUTPUT'> "= z\'6d9f1cba\'"
+#Write <`OUTPUT'> "= z\'1fe5178\'"
 #Write <`OUTPUT'> "end module pb_part21part21_part25part25_version"
 #Close <`OUTPUT'>
 off statistics;

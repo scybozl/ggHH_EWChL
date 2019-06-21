@@ -1,5 +1,5 @@
 module     pb_part21part21_part25part25_color
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/pb_part21part21_part25part25/commoncolor.f90 
+   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/pb_part21part21_part25part25/common/color.f90 
    ! generator: buildcolor.py
    use pb_part21part21_part25part25_config, only: ki
    use pb_part21part21_part25part25_model, only: NC, Nf

@@ -110,6 +110,7 @@ extensions=olp_badpts
 #PSP_chk_th2=3
 #PSP_chk_th3=5
 #PSP_chk_kfactor=-1
+PSP_chk_method=LoopInduced
 
 ######################################################################
 # program options: do not change unless you know what you are doing  #

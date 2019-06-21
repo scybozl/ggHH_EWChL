@@ -4,7 +4,7 @@ include ../Makefile.conf
 
 
 # @helicity: 0 [ -1 -1 0 0]
-# @date: 06/17/19 17:37:15
+# @date: 06/21/19 17:10:38
 
 HELi1=-1
 HELi2=-1
@@ -45,29 +45,29 @@ SOURCE_TREE= \
 DIAGRAMS_VIRT= \
 	d2h0l1.f90 \
 	d2h0l1d.f90 \
-    d2h0l131.f90 \
-    d2h0l132.f90 \
-    d2h0l121.f90 \
+        d2h0l131.f90 \
+        d2h0l132.f90 \
+        d2h0l121.f90 \
 	d7h0l1.f90 \
 	d7h0l1d.f90 \
-    d7h0l131.f90 \
-    d7h0l132.f90 \
-    d7h0l121.f90 \
+        d7h0l131.f90 \
+        d7h0l132.f90 \
+        d7h0l121.f90 \
 	d9h0l1.f90 \
 	d9h0l1d.f90 \
-    d9h0l131.f90 \
-    d9h0l132.f90 \
-    d9h0l121.f90 \
+        d9h0l131.f90 \
+        d9h0l132.f90 \
+        d9h0l121.f90 \
 	d11h0l1.f90 \
 	d11h0l1d.f90 \
-    d11h0l131.f90 \
-    d11h0l132.f90 \
-    d11h0l121.f90 \
+        d11h0l131.f90 \
+        d11h0l132.f90 \
+        d11h0l121.f90 \
 	d13h0l1.f90 \
 	d13h0l1d.f90 \
-    d13h0l131.f90 \
-    d13h0l132.f90 \
-    d13h0l121.f90
+        d13h0l131.f90 \
+        d13h0l132.f90 \
+        d13h0l121.f90
 
 TXT_VIRT=$(subst .f90,.txt,$(DIAGRAMS_VIRT))
 
@@ -151,7 +151,7 @@ d13h0l1.txt: ../diagrams-1.hh
 		../codegen/finaloptimization.frm
 	@touch d13h0l1-stamp
 d13h0l1-stamp: d13h0l1.txt
-d13h0l1d.txt : d13h0l1.txt d13h0l1-stamp
+d13h0l1d.txt: d13h0l1.txt d13h0l1-stamp
 	@echo Form is generating loop diagram derivatives 13 @ Helicity 0
 	@$(FORM) $(FORM_OPT) \
 		-w$(FORM_THREADS) \
@@ -208,7 +208,7 @@ d13h0l1.f90: d13h0l1.txt d13h0l1-stamp
 abbrevd13h0.f90: d13h0l1.f90
 d13h0l1d-stamp: d13h0l1d.txt
 	@touch d13h0l1d-stamp
-d13h0l1d.f90 : d13h0l1d.txt d13h0l1d-stamp
+d13h0l1d.f90: d13h0l1d.txt d13h0l1d-stamp
 	@echo Python is processing derivative 13 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_d.py \
 		-i $< \
@@ -291,7 +291,7 @@ d13h0l14.txt : d13h0l1.txt d13h0l1d-stamp
 
 d13h0l13.txt d13h0l12.txt : d13h0l14-stamp
 d13h0l13-stamp d13h0l12-stamp  d13h0l14-stamp: d13h0l14.txt
-d13h0l131.f90 : d13h0l13.txt d13h0l13-stamp
+d13h0l131.f90: d13h0l13.txt d13h0l13-stamp
 	@echo Python is processing ninja triangles expansion 13 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn3.py \
 		-i $< \
@@ -302,7 +302,7 @@ d13h0l131.f90 : d13h0l13.txt d13h0l13-stamp
 		--QSHIFT=-k3 \
 		--RANK=4 \
 		--LOOPSIZE=4
-d13h0l132.f90 : d13h0l12.txt d13h0l12-stamp
+d13h0l132.f90: d13h0l12.txt d13h0l12-stamp
 	@echo Python is processing ninja bubbles expansion 13 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn2.py \
 		-i $< \
@@ -313,7 +313,7 @@ d13h0l132.f90 : d13h0l12.txt d13h0l12-stamp
 		--QSHIFT=-k3 \
 		--RANK=4 \
 		--LOOPSIZE=4
-d13h0l121.f90 : d13h0l14.txt d13h0l14-stamp
+d13h0l121.f90: d13h0l14.txt d13h0l14-stamp
 	@echo Python is processing ninja mu expansion 13 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tmu.py \
 		-i $< \
@@ -352,7 +352,7 @@ d2h0l1.txt: ../diagrams-1.hh
 		../codegen/finaloptimization.frm
 	@touch d2h0l1-stamp
 d2h0l1-stamp: d2h0l1.txt
-d2h0l1d.txt : d2h0l1.txt d2h0l1-stamp
+d2h0l1d.txt: d2h0l1.txt d2h0l1-stamp
 	@echo Form is generating loop diagram derivatives 2 @ Helicity 0
 	@$(FORM) $(FORM_OPT) \
 		-w$(FORM_THREADS) \
@@ -402,7 +402,7 @@ d2h0l1.f90: d2h0l1.txt d2h0l1-stamp
 abbrevd2h0.f90: d2h0l1.f90
 d2h0l1d-stamp: d2h0l1d.txt
 	@touch d2h0l1d-stamp
-d2h0l1d.f90 : d2h0l1d.txt d2h0l1d-stamp
+d2h0l1d.f90: d2h0l1d.txt d2h0l1d-stamp
 	@echo Python is processing derivative 2 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_d.py \
 		-i $< \
@@ -485,7 +485,7 @@ d2h0l14.txt : d2h0l1.txt d2h0l1d-stamp
 
 d2h0l13.txt d2h0l12.txt : d2h0l14-stamp
 d2h0l13-stamp d2h0l12-stamp  d2h0l14-stamp: d2h0l14.txt
-d2h0l131.f90 : d2h0l13.txt d2h0l13-stamp
+d2h0l131.f90: d2h0l13.txt d2h0l13-stamp
 	@echo Python is processing ninja triangles expansion 2 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn3.py \
 		-i $< \
@@ -496,7 +496,7 @@ d2h0l131.f90 : d2h0l13.txt d2h0l13-stamp
 		--QSHIFT=k2 \
 		--RANK=3 \
 		--LOOPSIZE=3
-d2h0l132.f90 : d2h0l12.txt d2h0l12-stamp
+d2h0l132.f90: d2h0l12.txt d2h0l12-stamp
 	@echo Python is processing ninja bubbles expansion 2 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn2.py \
 		-i $< \
@@ -507,7 +507,7 @@ d2h0l132.f90 : d2h0l12.txt d2h0l12-stamp
 		--QSHIFT=k2 \
 		--RANK=3 \
 		--LOOPSIZE=3
-d2h0l121.f90 : d2h0l14.txt d2h0l14-stamp
+d2h0l121.f90: d2h0l14.txt d2h0l14-stamp
 	@echo Python is processing ninja mu expansion 2 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tmu.py \
 		-i $< \
@@ -546,7 +546,7 @@ d7h0l1.txt: ../diagrams-1.hh
 		../codegen/finaloptimization.frm
 	@touch d7h0l1-stamp
 d7h0l1-stamp: d7h0l1.txt
-d7h0l1d.txt : d7h0l1.txt d7h0l1-stamp
+d7h0l1d.txt: d7h0l1.txt d7h0l1-stamp
 	@echo Form is generating loop diagram derivatives 7 @ Helicity 0
 	@$(FORM) $(FORM_OPT) \
 		-w$(FORM_THREADS) \
@@ -596,7 +596,7 @@ d7h0l1.f90: d7h0l1.txt d7h0l1-stamp
 abbrevd7h0.f90: d7h0l1.f90
 d7h0l1d-stamp: d7h0l1d.txt
 	@touch d7h0l1d-stamp
-d7h0l1d.f90 : d7h0l1d.txt d7h0l1d-stamp
+d7h0l1d.f90: d7h0l1d.txt d7h0l1d-stamp
 	@echo Python is processing derivative 7 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_d.py \
 		-i $< \
@@ -679,7 +679,7 @@ d7h0l14.txt : d7h0l1.txt d7h0l1d-stamp
 
 d7h0l13.txt d7h0l12.txt : d7h0l14-stamp
 d7h0l13-stamp d7h0l12-stamp  d7h0l14-stamp: d7h0l14.txt
-d7h0l131.f90 : d7h0l13.txt d7h0l13-stamp
+d7h0l131.f90: d7h0l13.txt d7h0l13-stamp
 	@echo Python is processing ninja triangles expansion 7 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn3.py \
 		-i $< \
@@ -690,7 +690,7 @@ d7h0l131.f90 : d7h0l13.txt d7h0l13-stamp
 		--QSHIFT=k2 \
 		--RANK=3 \
 		--LOOPSIZE=3
-d7h0l132.f90 : d7h0l12.txt d7h0l12-stamp
+d7h0l132.f90: d7h0l12.txt d7h0l12-stamp
 	@echo Python is processing ninja bubbles expansion 7 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn2.py \
 		-i $< \
@@ -701,7 +701,7 @@ d7h0l132.f90 : d7h0l12.txt d7h0l12-stamp
 		--QSHIFT=k2 \
 		--RANK=3 \
 		--LOOPSIZE=3
-d7h0l121.f90 : d7h0l14.txt d7h0l14-stamp
+d7h0l121.f90: d7h0l14.txt d7h0l14-stamp
 	@echo Python is processing ninja mu expansion 7 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tmu.py \
 		-i $< \
@@ -740,7 +740,7 @@ d11h0l1.txt: ../diagrams-1.hh
 		../codegen/finaloptimization.frm
 	@touch d11h0l1-stamp
 d11h0l1-stamp: d11h0l1.txt
-d11h0l1d.txt : d11h0l1.txt d11h0l1-stamp
+d11h0l1d.txt: d11h0l1.txt d11h0l1-stamp
 	@echo Form is generating loop diagram derivatives 11 @ Helicity 0
 	@$(FORM) $(FORM_OPT) \
 		-w$(FORM_THREADS) \
@@ -797,7 +797,7 @@ d11h0l1.f90: d11h0l1.txt d11h0l1-stamp
 abbrevd11h0.f90: d11h0l1.f90
 d11h0l1d-stamp: d11h0l1d.txt
 	@touch d11h0l1d-stamp
-d11h0l1d.f90 : d11h0l1d.txt d11h0l1d-stamp
+d11h0l1d.f90: d11h0l1d.txt d11h0l1d-stamp
 	@echo Python is processing derivative 11 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_d.py \
 		-i $< \
@@ -880,7 +880,7 @@ d11h0l14.txt : d11h0l1.txt d11h0l1d-stamp
 
 d11h0l13.txt d11h0l12.txt : d11h0l14-stamp
 d11h0l13-stamp d11h0l12-stamp  d11h0l14-stamp: d11h0l14.txt
-d11h0l131.f90 : d11h0l13.txt d11h0l13-stamp
+d11h0l131.f90: d11h0l13.txt d11h0l13-stamp
 	@echo Python is processing ninja triangles expansion 11 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn3.py \
 		-i $< \
@@ -891,7 +891,7 @@ d11h0l131.f90 : d11h0l13.txt d11h0l13-stamp
 		--QSHIFT=k2 \
 		--RANK=4 \
 		--LOOPSIZE=4
-d11h0l132.f90 : d11h0l12.txt d11h0l12-stamp
+d11h0l132.f90: d11h0l12.txt d11h0l12-stamp
 	@echo Python is processing ninja bubbles expansion 11 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn2.py \
 		-i $< \
@@ -902,7 +902,7 @@ d11h0l132.f90 : d11h0l12.txt d11h0l12-stamp
 		--QSHIFT=k2 \
 		--RANK=4 \
 		--LOOPSIZE=4
-d11h0l121.f90 : d11h0l14.txt d11h0l14-stamp
+d11h0l121.f90: d11h0l14.txt d11h0l14-stamp
 	@echo Python is processing ninja mu expansion 11 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tmu.py \
 		-i $< \
@@ -941,7 +941,7 @@ d9h0l1.txt: ../diagrams-1.hh
 		../codegen/finaloptimization.frm
 	@touch d9h0l1-stamp
 d9h0l1-stamp: d9h0l1.txt
-d9h0l1d.txt : d9h0l1.txt d9h0l1-stamp
+d9h0l1d.txt: d9h0l1.txt d9h0l1-stamp
 	@echo Form is generating loop diagram derivatives 9 @ Helicity 0
 	@$(FORM) $(FORM_OPT) \
 		-w$(FORM_THREADS) \
@@ -998,7 +998,7 @@ d9h0l1.f90: d9h0l1.txt d9h0l1-stamp
 abbrevd9h0.f90: d9h0l1.f90
 d9h0l1d-stamp: d9h0l1d.txt
 	@touch d9h0l1d-stamp
-d9h0l1d.f90 : d9h0l1d.txt d9h0l1d-stamp
+d9h0l1d.f90: d9h0l1d.txt d9h0l1d-stamp
 	@echo Python is processing derivative 9 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_d.py \
 		-i $< \
@@ -1081,7 +1081,7 @@ d9h0l14.txt : d9h0l1.txt d9h0l1d-stamp
 
 d9h0l13.txt d9h0l12.txt : d9h0l14-stamp
 d9h0l13-stamp d9h0l12-stamp  d9h0l14-stamp: d9h0l14.txt
-d9h0l131.f90 : d9h0l13.txt d9h0l13-stamp
+d9h0l131.f90: d9h0l13.txt d9h0l13-stamp
 	@echo Python is processing ninja triangles expansion 9 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn3.py \
 		-i $< \
@@ -1092,7 +1092,7 @@ d9h0l131.f90 : d9h0l13.txt d9h0l13-stamp
 		--QSHIFT=k2 \
 		--RANK=4 \
 		--LOOPSIZE=4
-d9h0l132.f90 : d9h0l12.txt d9h0l12-stamp
+d9h0l132.f90: d9h0l12.txt d9h0l12-stamp
 	@echo Python is processing ninja bubbles expansion 9 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tn2.py \
 		-i $< \
@@ -1103,7 +1103,7 @@ d9h0l132.f90 : d9h0l12.txt d9h0l12-stamp
 		--QSHIFT=k2 \
 		--RANK=4 \
 		--LOOPSIZE=4
-d9h0l121.f90 : d9h0l14.txt d9h0l14-stamp
+d9h0l121.f90: d9h0l14.txt d9h0l14-stamp
 	@echo Python is processing ninja mu expansion 9 @ Helicity 0
 	@$(PYTHON) ../codegen/buildfortran_tmu.py \
 		-i $< \

@@ -11,10 +11,11 @@ module     pb_part21part21_part25part25_config
 
    ! Options to control the interoperation between different
    ! Reduction libraries:
-   integer, parameter :: SAMURAI = 0
-   integer, parameter :: GOLEM95 = 1
-   integer, parameter :: NINJA   = 2
-   integer, parameter :: PJFRY   = 3 ! experimental
+   integer, parameter :: SAMURAI   = 0
+   integer, parameter :: GOLEM95   = 1
+   integer, parameter :: NINJA     = 2
+   integer, parameter :: PJFRY     = 3 ! experimental
+   integer, parameter :: QUADNINJA = 4 ! experimental
    ! Reduction methods
    integer :: reduction_interoperation = NINJA
    ! Rescue reduction method. The rescue system is disabled
@@ -111,7 +112,7 @@ module     pb_part21part21_part25part25_config
    !
    ! Note, however, that the factor of 1/Gamma(1-eps) is not included
    ! in any of the cases.
-   integer :: nlo_prefactors = 2
+   integer :: nlo_prefactors = 0
 
    ! Determines the maximum allowed difference among the abs of the
    ! single pole evaluations obtained with the amplitude vs the one
@@ -121,7 +122,7 @@ module     pb_part21part21_part25part25_config
    ! to Tree level processes.
    logical :: PSP_check = .true.
    logical :: PSP_verbosity = .false.
-   logical :: PSP_rescue = .true.
+   logical :: PSP_rescue = .false.
    integer :: PSP_chk_th1 = 8
    integer :: PSP_chk_th2 = 3
    integer :: PSP_chk_th3 = 5

@@ -27,9 +27,9 @@ contains
       amplitude(:) = 0.0_ki
       abb(1)=TR**(-1)
       abb(2)=1.0_ki/(-mdlMh**2+es12)
-      abb(3)=-i_*mdlGC38*mdlGC43*abb(2)
+      abb(3)=-abb(2)*mdlGC43*mdlGC38*i_
       abb(3)=-mdlGC31+abb(3)
-      abb(3)=1.0_ki/4.0_ki*abb(3)*es12*spae1e2*spbe2e1*abb(1)
+      abb(3)=1.0_ki/4.0_ki*abb(1)*spbe2e1*spae1e2*es12*abb(3)
       amplitude=c1*abb(3)
       if (debug_lo_diagrams) then
          write(*,*) "Using Born optimization, debug_lo_diagrams not implemented&

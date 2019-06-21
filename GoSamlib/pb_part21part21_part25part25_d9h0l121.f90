@@ -18,18 +18,14 @@ contains
       use pb_part21part21_part25part25_abbrevd9h0
       implicit none
       complex(ki), dimension(4), intent(in) :: ninjaA0
-      complex(ki), dimension(7) :: acd9
+      complex(ki), dimension(5) :: acd9
       complex(ki), dimension (0:*), intent(inout) :: brack
-      acd9(1)=dotproduct(e1,ninjaA0)
-      acd9(2)=dotproduct(e2,ninjaA0)
-      acd9(3)=dotproduct(ninjaA0,ninjaA0)
-      acd9(4)=abb9(43)
-      acd9(5)=abb9(23)
-      acd9(6)=acd9(1)*acd9(2)*acd9(4)
-      acd9(7)=acd9(3)*acd9(5)
-      acd9(6)=acd9(6)+acd9(7)
-      acd9(6)=acd9(3)*acd9(6)
-      brack(ninjaidxt0)=acd9(6)
+      acd9(1)=dotproduct(ninjaA0,ninjaA0)
+      acd9(2)=dotproduct(ninjaA0,spvae1e2)
+      acd9(3)=dotproduct(ninjaA0,spvae2e1)
+      acd9(4)=abb9(24)
+      acd9(5)=acd9(4)*acd9(3)*acd9(2)*acd9(1)
+      brack(ninjaidxt0)=acd9(5)
    end subroutine brack_0
 !---#] subroutine brack_0:
 !---#[ subroutine numerator_tmu:

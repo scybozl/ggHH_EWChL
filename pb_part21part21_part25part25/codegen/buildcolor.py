@@ -35,11 +35,11 @@ for item in outdict['lhs']:
 abb_max=getdata('color.dat')['number_abbs']
 
 
-# Write model.f90 file
+# Write color.f90 file
 colorfile = open('color.f90', 'w')
 
 colorfile.write('module     pb_part21part21_part25part25_color\n')
-colorfile.write('   ! file: '+str(os.getcwd())+'color.f90 \n')
+colorfile.write('   ! file: '+str(os.getcwd())+'/color.f90 \n')
 colorfile.write('   ! generator: buildcolor.py\n')
 colorfile.write('   use pb_part21part21_part25part25_config, only: ki\n')
 colorfile.write('   use pb_part21part21_part25part25_model, only: NC, Nf\n')
@@ -139,3 +139,6 @@ colorfile.write('   end subroutine inspect_color\n')
 colorfile.write('end module pb_part21part21_part25part25_color\n')
 
 colorfile.close()
+
+
+

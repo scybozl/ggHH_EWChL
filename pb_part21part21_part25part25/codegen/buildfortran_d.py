@@ -79,6 +79,7 @@ loopsize=options.loopsize
 txtfile = open(diag_name+'.txt','r')
 tmp_handle , tmpname = tempfile.mkstemp(suffix=".f90",prefix="gosam_tmp")
 f90file = os.fdopen(tmp_handle,"w")
+
 datfilename = diag_name.rstrip('d') + '.dat'
 # import txt file
 txt_lines=[]
@@ -1704,8 +1705,13 @@ f90file.write('!---#] subroutine reconstruct_d%s:\n' % str(diagram))
 
 f90file.write('end module     pb_part21part21_part25part25_'+diag_name+'\n')
 f90file.close()
+
+
+
 ### additional formatting for output files
 
 postformat(tmpname)
 
 shutil.move(tmpname,diag_name+'.f90')
+
+

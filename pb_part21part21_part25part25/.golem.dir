@@ -1,10 +1,10 @@
 # Do not remove this file!
-# 2019-06-17 17:37:15.787996
+# 2019-06-21 17:10:38.627898
 
 ### Further settings:
-golem-revision=6d9f1cba
+golem-revision=1fe5178
 golem-version=2.0.4
 process-name=pb_part21part21_part25part25
 setup-file=/draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/gosam_lo.rc
-setup-file-sha1=fcf4061b1108236fac5142ca7e2e69ce291140e4
-time-stamp=Mon, 17 Jun 2019 15:37:15 +0000
+setup-file-sha1=3a93e2f88fd7bf7db051c456c0b2102355634a7d
+time-stamp=Fri, 21 Jun 2019 15:10:38 +0000

@@ -21,8 +21,8 @@ contains
       complex(ki), dimension(3) :: acd13
       complex(ki), dimension (0:*), intent(inout) :: brack
       acd13(1)=dotproduct(ninjaA0,ninjaA0)
-      acd13(2)=abb13(48)
-      acd13(3)=-acd13(2)*acd13(1)**2
+      acd13(2)=abb13(8)
+      acd13(3)=acd13(2)*acd13(1)**2
       brack(ninjaidxt0)=acd13(3)
    end subroutine brack_0
 !---#] subroutine brack_0:

@@ -7,11 +7,11 @@
 # generation, please consult the file common/version.f90.
 #
 #
-# 2019-06-17 17:37:14.740982
+# 2019-06-21 17:10:37.396290
 # golem.full-name=GoSam 2.0.4
 # golem.name=GoSam
 # golem.version=2.0.4
-# golem.revision=6d9f1cba
+# golem.revision=1fe5178
 # setup-file=/draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/gosam_lo.rc
 
 ### process_name (text)
@@ -173,7 +173,7 @@ one=mdlaS
 
 ### helsum (true/false)
 #    Flag whether or not 1-loop diagrams should be analytically
-#    summed over all helicities 
+#    summed over all helicities
 #    
 ### This property is marked as EXPERIMENTAL !!!
 ### Default:
@@ -354,6 +354,9 @@ qgraf.verbatim=true=chord[part5,part25,0,0];
 #                     a limited gauge check (introduces gauge*z variables)
 #    customspin2prop --- replace the propagator of spin-2 particles
 #                        with a custom function (read the manual for this).
+#    quadruple    --- make a quadruple precision copy of the code (this
+#                     works only with ninja).
+# 
 #    
 extensions=olp_badpts
 
@@ -629,7 +632,7 @@ nlo_prefactors=0
 #    !!Works only for QCD and with built-in model files!!
 #    
 ### Default:
-# PSP_rescue=True
+# PSP_rescue=False
 
 ### PSP_verbosity (true/false)
 #    Sets the same variable in config.f90
@@ -774,8 +777,7 @@ nlo_prefactors=0
 #                   Needed e.g. for interferience between BSM Born and
 #                   SM loop-induced virtual.
 #    
-### Default:
-# PSP_chk_method=Automatic
+PSP_chk_method=LoopInduced
 
 ### reference-vectors (comma separated list)
 #    A list of reference vectors for massive and higher spin particles.
@@ -886,12 +888,12 @@ form.tempdir=/tmp
 #       2) haggies.bin=/usr/bin/java -Xmx50m -jar ./haggies.jar
 #    
 ### Default:
-# haggies.bin=java -jar /ptmp/lscyboz/GOSAM-2.0-latest-new/share/golem/haggies/haggies.jar
+# haggies.bin=java -jar /ptmp/lscyboz/GOSAM-2.0.4-QUAD/share/golem/haggies/haggies.jar
 
 ### fc.bin (text)
 #    Denotes the executable file of the Fortran90 compiler.
 #    
-fc.bin=/mpcdf/soft/SLE_12_SP3/packages/haswell/gcc/6.3.0/bin/gfortran
+fc.bin=/mpcdf/soft/SLE_12_SP3/packages/haswell/gcc/7.4.0/bin/gfortran
 
 ### python.bin (text)
 #    Denotes the executable file of Python
@@ -909,7 +911,7 @@ fc.bin=/mpcdf/soft/SLE_12_SP3/packages/haswell/gcc/6.3.0/bin/gfortran
 #    ninja.fcflags=-I/usr/local/include/ninja
 # 
 #    
-ninja.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0/include/gosam-contrib
+ninja.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/include/gosam-contrib
 
 ### ninja.ldflags (text)
 #    LDFLAGS required to link ninja.
@@ -921,7 +923,7 @@ ninja.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0/include/gosam-contrib
 #    ninja.ldflags=-L/usr/local/lib/ -lninja
 # 
 #    
-ninja.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0/lib/ -lninja
+ninja.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib/ -lninja
 
 ### samurai.fcflags (text)
 #    FCFLAGS required to compile with samurai.
@@ -933,7 +935,7 @@ ninja.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0/lib/ -lninja
 #    samurai.fcflags=-I/usr/local/include/samurai
 # 
 #    
-samurai.fcflags=-I/ptmp/lscyboz/GOSAM-2.0-latest-new/include/gosam-contrib
+samurai.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/include/gosam-contrib
 
 ### samurai.ldflags (text)
 #    LDFLAGS required to link samurai.
@@ -945,7 +947,7 @@ samurai.fcflags=-I/ptmp/lscyboz/GOSAM-2.0-latest-new/include/gosam-contrib
 #    samurai.ldflags=-L/usr/local/lib/ -lsamurai-gfortran-double
 # 
 #    
-samurai.ldflags=-L/ptmp/lscyboz/GOSAM-2.0-latest-new/lib -lsamurai
+samurai.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib/ -lsamurai
 
 ### golem95.fcflags (text)
 #    FCFLAGS required to compile with golem95.
@@ -957,7 +959,7 @@ samurai.ldflags=-L/ptmp/lscyboz/GOSAM-2.0-latest-new/lib -lsamurai
 #    golem95.fcflags=-I/usr/local/include/golem95
 # 
 #    
-golem95.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0/include/gosam-contrib
+golem95.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/include/gosam-contrib
 
 ### golem95.ldflags (text)
 #    LDFLAGS required to link golem95.
@@ -969,7 +971,7 @@ golem95.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0/include/gosam-contrib
 #    golem95.ldflags=-L/usr/local/lib/ -lgolem-gfortran-double
 # 
 #    
-golem95.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0/lib/ -lgolem
+golem95.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib/ -lgolem
 
 ### r2 (text)
 #    The algorithm how to treat the R2 term:
@@ -1059,31 +1061,31 @@ symmetries=generation,family
 # form_factor_nlo=
 
 ### Further settings:
-+avh_olo.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0/lib/ -lavh_olo
++avh_olo.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib/ -lavh_olo
 +gosam-contrib_fc.fcflags=-g -O2 -ffree-line-length-none
-+gosam-contrib_libff.fcflags=-I/ptmp/lscyboz/GOSAM-2.0-latest-new/include/gosam-contrib
-+gosam-contrib_libff.ldflags=-L/ptmp/lscyboz/GOSAM-2.0-latest-new/lib -lff
-+gosam-contrib_libolo.fcflags=-I/ptmp/lscyboz/GOSAM-2.0-latest-new/include/gosam-contrib
-+gosam-contrib_libolo.ldflags=-L/ptmp/lscyboz/GOSAM-2.0-latest-new/lib -lavh_olo
-+gosam-contrib_libql.fcflags=-I/ptmp/lscyboz/GOSAM-2.0-latest-new/include/gosam-contrib
-+gosam-contrib_libql.ldflags=-L/ptmp/lscyboz/GOSAM-2.0-latest-new/lib -lqcdloop
-+installed.extensions=golem95, ninja
-+qcdloop.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0/lib/ -lqcdloop
++gosam-contrib_libff.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/include/gosam-contrib
++gosam-contrib_libff.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib -lff
++gosam-contrib_libolo.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/include/gosam-contrib
++gosam-contrib_libolo.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib -lavh_olo
++gosam-contrib_libql.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/include/gosam-contrib
++gosam-contrib_libql.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib -lqcdloop
++installed.extensions=golem95, samurai, ninja
++qcdloop.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib/ -lqcdloop
 +z0005.extensions=gosam-contrib_fc
 +z0094.extensions=gosam-contrib_libolo
 +z0095.extensions=gosam-contrib_libql
 +z0099.extensions=gosam-contrib_libff
 +zzz.extensions=avh_olo, qcdloop
-avh_olo.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0/lib/ -lavh_olo
+avh_olo.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib/ -lavh_olo
 gosam-contrib_fc.fcflags=-g -O2 -ffree-line-length-none
-gosam-contrib_libff.fcflags=-I/ptmp/lscyboz/GOSAM-2.0-latest-new/include/gosam-contrib
-gosam-contrib_libff.ldflags=-L/ptmp/lscyboz/GOSAM-2.0-latest-new/lib -lff
-gosam-contrib_libolo.fcflags=-I/ptmp/lscyboz/GOSAM-2.0-latest-new/include/gosam-contrib
-gosam-contrib_libolo.ldflags=-L/ptmp/lscyboz/GOSAM-2.0-latest-new/lib -lavh_olo
-gosam-contrib_libql.fcflags=-I/ptmp/lscyboz/GOSAM-2.0-latest-new/include/gosam-contrib
-gosam-contrib_libql.ldflags=-L/ptmp/lscyboz/GOSAM-2.0-latest-new/lib -lqcdloop
-installed.extensions=golem95, ninja
-qcdloop.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0/lib/ -lqcdloop
+gosam-contrib_libff.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/include/gosam-contrib
+gosam-contrib_libff.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib -lff
+gosam-contrib_libolo.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/include/gosam-contrib
+gosam-contrib_libolo.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib -lavh_olo
+gosam-contrib_libql.fcflags=-I/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/include/gosam-contrib
+gosam-contrib_libql.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib -lqcdloop
+installed.extensions=golem95, samurai, ninja
+qcdloop.ldflags=-L/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp/lib/ -lqcdloop
 samurai.version=2.9.0
 z0005.extensions=gosam-contrib_fc
 z0094.extensions=gosam-contrib_libolo

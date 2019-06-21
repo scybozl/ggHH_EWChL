@@ -20,52 +20,41 @@ contains
       complex(ki), dimension(4), intent(in) :: Q
       complex(ki), intent(in) :: mu2
       complex(ki) :: brack
-      complex(ki) :: acc7(21)
+      complex(ki) :: acc7(16)
       complex(ki) :: Qspvae2e1
       complex(ki) :: Qspvae1e2
-      complex(ki) :: Qspvae2k2
-      complex(ki) :: Qspvak2e2
       complex(ki) :: Qspvae1k2
       complex(ki) :: Qspvak2e1
       complex(ki) :: Qspvae2k1
       complex(ki) :: Qspvak1e2
-      complex(ki) :: Qspe1
-      complex(ki) :: Qspe2
       complex(ki) :: QspQ
       Qspvae2e1 = dotproduct(Q,spvae2e1)
       Qspvae1e2 = dotproduct(Q,spvae1e2)
-      Qspvae2k2 = dotproduct(Q,spvae2k2)
-      Qspvak2e2 = dotproduct(Q,spvak2e2)
       Qspvae1k2 = dotproduct(Q,spvae1k2)
       Qspvak2e1 = dotproduct(Q,spvak2e1)
       Qspvae2k1 = dotproduct(Q,spvae2k1)
       Qspvak1e2 = dotproduct(Q,spvak1e2)
-      Qspe1 = dotproduct(Q,e1)
-      Qspe2 = dotproduct(Q,e2)
       QspQ = dotproduct(Q,Q)
       acc7(1)=abb7(3)
       acc7(2)=abb7(4)
       acc7(3)=abb7(5)
-      acc7(4)=abb7(7)
+      acc7(4)=abb7(6)
       acc7(5)=abb7(8)
       acc7(6)=abb7(9)
       acc7(7)=abb7(10)
       acc7(8)=abb7(11)
       acc7(9)=abb7(12)
-      acc7(10)=abb7(13)
-      acc7(11)=abb7(14)
-      acc7(12)=Qspvae2e1*acc7(9)
-      acc7(13)=Qspvae1e2*acc7(2)
-      acc7(14)=Qspvae2k2*acc7(10)
-      acc7(15)=Qspvak2e2*acc7(11)
-      acc7(16)=Qspvae1k2*acc7(4)
-      acc7(17)=Qspvak2e1*acc7(3)
-      acc7(18)=Qspvae2k1*acc7(5)
-      acc7(19)=Qspvak1e2*acc7(7)
-      acc7(20)=Qspe1*Qspe2*acc7(6)
-      acc7(21)=QspQ*acc7(8)
-      brack=acc7(1)+acc7(12)+acc7(13)+acc7(14)+acc7(15)+acc7(16)+acc7(17)+acc7(&
-      &18)+acc7(19)+acc7(20)+acc7(21)
+      acc7(10)=acc7(9)*Qspvae2e1
+      acc7(10)=acc7(10)+acc7(8)
+      acc7(10)=Qspvae1e2*acc7(10)
+      acc7(11)=acc7(6)*Qspvae2e1
+      acc7(12)=Qspvae1k2*acc7(7)
+      acc7(13)=Qspvak2e1*acc7(5)
+      acc7(14)=Qspvae2k1*acc7(4)
+      acc7(15)=Qspvak1e2*acc7(3)
+      acc7(16)=QspQ*acc7(2)
+      brack=acc7(1)+acc7(10)+acc7(11)+acc7(12)+acc7(13)+acc7(14)+acc7(15)+acc7(&
+      &16)
    end  function brack_1
 !---#] function brack_1:
 !---#[ numerator interfaces:

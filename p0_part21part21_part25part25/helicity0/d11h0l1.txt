@@ -1,0 +1,174 @@
+*Abbreviations for diagram d11h0l1. Generated on Fri Jun 21 17:08:45 2019
+
+#####Abbreviations
+
+    abb11(1)=csqrt(mdlMT^2);
+    abb11(2)=spak2l4^-1;
+    abb11(3)=spbl4k2^-1;
+   abb11(4)=mdlGC7*mdlGC45;
+   abb11(4)=i_*c1*abb11(4)^2;
+   abb11(5)=spae1e2*spbe2e1*abb11(4);
+   abb11(6)= - 4/3*abb11(5);
+   abb11(7)=spak2l4*spbl4e1*spbk2e2;
+   abb11(8)=spak1l4*spbk1e1;
+   abb11(9)=spbl4e2*abb11(8);
+   abb11(7)=abb11(9) + abb11(7);
+   abb11(9)=abb11(1)^2*abb11(4);
+   abb11(10)=abb11(9)*spae1e2;
+   abb11(7)=abb11(10)*abb11(7);
+   abb11(11)=spbl4k2*spae1l4*spae2k2;
+   abb11(12)=spbl4k1*spae1k1;
+   abb11(13)=spae2l4*abb11(12);
+   abb11(11)=abb11(13) + abb11(11);
+   abb11(13)=abb11(9)*spbe2e1;
+   abb11(11)=abb11(13)*abb11(11);
+   abb11(14)=abb11(3)*abb11(2)*mdlMh^2;
+   abb11(15)=abb11(14)*abb11(13);
+   abb11(16)=abb11(15) + 2*abb11(13);
+   abb11(16)=abb11(16)*spae2k2;
+   abb11(17)=spbk2k1*spae1k1;
+   abb11(18)=abb11(17)*abb11(16);
+   abb11(19)=abb11(14)*abb11(10);
+   abb11(20)=abb11(19) + 2*abb11(10);
+   abb11(20)=abb11(20)*spbk2e2;
+   abb11(21)=spak1k2*spbk1e1;
+   abb11(22)=abb11(21)*abb11(20);
+   abb11(5)=abb11(1)^4*abb11(5);
+   abb11(5)=abb11(22) - 2*abb11(5) + abb11(18) + abb11(11) + abb11(7);
+   abb11(7)= - 6*spbe2e1*abb11(10);
+   abb11(11)=abb11(14) + 1;
+   abb11(11)=abb11(9)*abb11(11);
+   abb11(18)= - spae1k2*spbk2e2*abb11(11);
+   abb11(22)=spbe2k1*spae1k1;
+   abb11(23)=2*abb11(9);
+   abb11(24)= - abb11(23)*abb11(22);
+   abb11(25)=abb11(4)*spbk2e2;
+   abb11(26)=abb11(25)*spak2l4;
+   abb11(27)=abb11(12)*abb11(26);
+   abb11(28)= - spae1l4*spbl4e2*abb11(9);
+   abb11(18)=abb11(27) + abb11(24) + abb11(18) + abb11(28);
+   abb11(22)= - abb11(4)*abb11(22);
+   abb11(24)= - spae1k2*abb11(25);
+   abb11(22)=abb11(24) + abb11(22);
+   abb11(11)= - spbk2e1*spae2k2*abb11(11);
+   abb11(24)=spak1e2*spbk1e1;
+   abb11(23)= - abb11(23)*abb11(24);
+   abb11(27)=abb11(4)*spae2k2;
+   abb11(28)=abb11(27)*spbl4k2;
+   abb11(29)=abb11(8)*abb11(28);
+   abb11(30)= - spbl4e1*spae2l4*abb11(9);
+   abb11(11)=abb11(29) + abb11(23) + abb11(11) + abb11(30);
+   abb11(23)= - abb11(4)*abb11(24);
+   abb11(24)= - spbk2e1*abb11(27);
+   abb11(23)=abb11(24) + abb11(23);
+   abb11(9)= - 6*abb11(9);
+   abb11(24)= - 2*abb11(4);
+   abb11(29)= - spae1l4*abb11(13);
+   abb11(8)= - abb11(4)*abb11(8);
+   abb11(30)= - spbl4e1*abb11(10);
+   abb11(12)= - abb11(4)*abb11(12);
+   abb11(31)=spae2l4*abb11(13);
+   abb11(32)=spbl4e2*abb11(10);
+   abb11(15)= - spae1k2*abb11(15);
+   abb11(14)=abb11(4)*abb11(14);
+   abb11(21)= - abb11(14)*abb11(21);
+   abb11(19)= - spbk2e1*abb11(19);
+   abb11(17)= - abb11(14)*abb11(17);
+   abb11(33)=3*spae1k1*abb11(13);
+   abb11(34)=3*spbk1e1*abb11(10);
+   abb11(13)=spak1e2*abb11(13);
+   abb11(35)=spak1k2*abb11(25);
+   abb11(10)=spbe2k1*abb11(10);
+   abb11(36)=spbk2k1*abb11(27);
+   abb11(25)=abb11(25)*spae1k1;
+   abb11(27)=abb11(27)*spbk1e1;
+
+#####R2
+
+R2d11 = abb11(6);
+
+#####Diagram
+
+    acc11(1)=abb11(4);
+    acc11(2)=abb11(5);
+    acc11(3)=abb11(7);
+    acc11(4)=abb11(8);
+    acc11(5)=abb11(9);
+    acc11(6)=abb11(10);
+    acc11(7)=abb11(11);
+    acc11(8)=abb11(12);
+    acc11(9)=abb11(13);
+    acc11(10)=abb11(14);
+    acc11(11)=abb11(15);
+    acc11(12)=abb11(16);
+    acc11(13)=abb11(17);
+    acc11(14)=abb11(18);
+    acc11(15)=abb11(19);
+    acc11(16)=abb11(20);
+    acc11(17)=abb11(21);
+    acc11(18)=abb11(22);
+    acc11(19)=abb11(23);
+    acc11(20)=abb11(24);
+    acc11(21)=abb11(25);
+    acc11(22)=abb11(26);
+    acc11(23)=abb11(27);
+    acc11(24)=abb11(28);
+    acc11(25)=abb11(29);
+    acc11(26)=abb11(30);
+    acc11(27)=abb11(31);
+    acc11(28)=abb11(32);
+    acc11(29)=abb11(33);
+    acc11(30)=abb11(34);
+    acc11(31)=abb11(35);
+    acc11(32)=abb11(36);
+   acc11(33)=Qspvae1k1*Qspvak1e2;
+   acc11(34)= - Qspval4e2*Qspvae1l4;
+   acc11(33)=acc11(33) + acc11(34);
+   acc11(33)=acc11(1)*acc11(33);
+   acc11(34)=acc11(21)*Qspvak2k1;
+   acc11(35)=Qspvae1k1*acc11(31);
+   acc11(36)= - acc11(10)*Qspvae1k2;
+   acc11(36)=acc11(13) + acc11(36);
+   acc11(36)=Qspvak2e2*acc11(36);
+   acc11(37)=Qspvae1l4*acc11(22);
+   acc11(38)=Qspval4e2*acc11(8);
+   acc11(39)=QspQ*acc11(18);
+   acc11(40)=QspQ*acc11(20);
+   acc11(40)=acc11(5) + acc11(40);
+   acc11(40)=Qspvae1e2*acc11(40);
+   acc11(33)=acc11(40) + acc11(33) + acc11(39) + acc11(38) + acc11(37) + 
+   acc11(36) + acc11(35) + acc11(34) + acc11(14);
+   acc11(33)=Qspvae2e1*acc11(33);
+   acc11(34)=Qspvak1e1*Qspvae2k1;
+   acc11(35)= - Qspvae2l4*Qspval4e1;
+   acc11(34)=acc11(34) + acc11(35);
+   acc11(34)=acc11(1)*acc11(34);
+   acc11(35)=acc11(23)*Qspvak1k2;
+   acc11(36)=Qspvak1e1*acc11(32);
+   acc11(37)= - acc11(10)*Qspvak2e1;
+   acc11(37)=acc11(17) + acc11(37);
+   acc11(37)=Qspvae2k2*acc11(37);
+   acc11(38)=Qspval4e1*acc11(24);
+   acc11(39)=Qspvae2l4*acc11(4);
+   acc11(40)=QspQ*acc11(19);
+   acc11(34)=acc11(34) + acc11(40) + acc11(39) + acc11(38) + acc11(37) + 
+   acc11(36) + acc11(35) + acc11(7);
+   acc11(34)=Qspvae1e2*acc11(34);
+   acc11(35)=Qspvak1e2*acc11(30);
+   acc11(36)=Qspvae2k1*acc11(29);
+   acc11(37)=Qspvak2e1*acc11(16);
+   acc11(38)=Qspvae1k2*acc11(12);
+   acc11(39)=Qspvak1e1*acc11(6);
+   acc11(40)=Qspvae1k1*acc11(9);
+   acc11(41)=Qspvak2e2*acc11(15);
+   acc11(42)=Qspvae2k2*acc11(11);
+   acc11(43)=Qspval4e1*acc11(28);
+   acc11(44)=Qspvae1l4*acc11(27);
+   acc11(45)=Qspval4e2*acc11(26);
+   acc11(46)=Qspvae2l4*acc11(25);
+   acc11(47)=QspQ*acc11(3);
+
+brack = acc11(2) + acc11(33) + acc11(34) + acc11(35) + acc11(36) + acc11(37)
+       + acc11(38) + acc11(39) + acc11(40) + acc11(41) + acc11(42) + acc11(43)
+       + acc11(44) + acc11(45) + acc11(46) + acc11(47);
+

@@ -1,7 +1,0 @@
-
-OBJEXT ?=o
-OBJEXTG=$(OBJEXT)
-# Module Dependencies:
-pb_part21part21_part25part25_test.mod: test.$(OBJEXTG)
-pb_part21part21_part25part25_matrix.mod: matrix.$(OBJEXTG)
-test.$(OBJEXT): matrix.$(OBJEXT)
