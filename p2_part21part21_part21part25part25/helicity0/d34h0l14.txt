@@ -1,0 +1,5 @@
+#####NinjaMu2
+
+
+brack(ninjaidxt0) =  0;
+

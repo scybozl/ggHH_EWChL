@@ -1,0 +1,6334 @@
+# vim: ts=3:sw=3
+
+include ../Makefile.conf
+
+
+# @helicity: 0 [ -1 -1 -1 0 0]
+# @date: 06/21/19 17:56:30
+
+HELi1=-1
+HELi2=-1
+HELo1=-1
+HELo2=0
+HELo3=0
+
+# NOTE: reference vectors are no longer defined here but in the
+#       setup file through the property reference-vectors.
+
+FORM_OPT=-D HELi1=$(HELi1) \
+	-D HELi2=$(HELi2) \
+	-D HELo1=$(HELo1) \
+	-D HELo2=$(HELo2) \
+	-D HELo3=$(HELo3) \
+	 -D PROCESSPATH=.. \
+	-D PWD=. \
+	-p ..:../codegen \
+	-M -q
+
+DIAGRAMS_TREE=
+
+DIAGRAMS_TREE_FR5=
+
+TXT_TREE=
+
+TXT_TREE_FR5=
+
+TXT_TREE_STAMP=
+
+
+SOURCE_TREE=
+
+
+DIAGRAMS_VIRT= \
+	d34h0l1.f90 \
+	d34h0l1d.f90 \
+        d34h0l131.f90 \
+        d34h0l132.f90 \
+        d34h0l121.f90 \
+	d38h0l1.f90 \
+	d38h0l1d.f90 \
+        d38h0l131.f90 \
+        d38h0l132.f90 \
+        d38h0l121.f90 \
+	d42h0l1.f90 \
+	d42h0l1d.f90 \
+        d42h0l131.f90 \
+        d42h0l132.f90 \
+        d42h0l121.f90 \
+	d52h0l1.f90 \
+	d52h0l1d.f90 \
+        d52h0l131.f90 \
+        d52h0l132.f90 \
+        d52h0l121.f90 \
+	d54h0l1.f90 \
+	d54h0l1d.f90 \
+        d54h0l131.f90 \
+        d54h0l132.f90 \
+        d54h0l121.f90 \
+	d56h0l1.f90 \
+	d56h0l1d.f90 \
+        d56h0l131.f90 \
+        d56h0l132.f90 \
+        d56h0l121.f90 \
+	d109h0l1.f90 \
+	d109h0l1d.f90 \
+        d109h0l131.f90 \
+        d109h0l132.f90 \
+        d109h0l121.f90 \
+	d113h0l1.f90 \
+	d113h0l1d.f90 \
+        d113h0l131.f90 \
+        d113h0l132.f90 \
+        d113h0l121.f90 \
+	d117h0l1.f90 \
+	d117h0l1d.f90 \
+        d117h0l131.f90 \
+        d117h0l132.f90 \
+        d117h0l121.f90 \
+	d121h0l1.f90 \
+	d121h0l1d.f90 \
+        d121h0l131.f90 \
+        d121h0l132.f90 \
+        d121h0l121.f90 \
+	d125h0l1.f90 \
+	d125h0l1d.f90 \
+        d125h0l131.f90 \
+        d125h0l132.f90 \
+        d125h0l121.f90 \
+	d129h0l1.f90 \
+	d129h0l1d.f90 \
+        d129h0l131.f90 \
+        d129h0l132.f90 \
+        d129h0l121.f90 \
+	d133h0l1.f90 \
+	d133h0l1d.f90 \
+        d133h0l131.f90 \
+        d133h0l132.f90 \
+        d133h0l121.f90 \
+	d137h0l1.f90 \
+	d137h0l1d.f90 \
+        d137h0l131.f90 \
+        d137h0l132.f90 \
+        d137h0l121.f90 \
+	d141h0l1.f90 \
+	d141h0l1d.f90 \
+        d141h0l131.f90 \
+        d141h0l132.f90 \
+        d141h0l121.f90 \
+	d145h0l1.f90 \
+	d145h0l1d.f90 \
+        d145h0l131.f90 \
+        d145h0l132.f90 \
+        d145h0l121.f90 \
+	d147h0l1.f90 \
+	d147h0l1d.f90 \
+        d147h0l131.f90 \
+        d147h0l132.f90 \
+        d147h0l121.f90 \
+	d149h0l1.f90 \
+	d149h0l1d.f90 \
+        d149h0l131.f90 \
+        d149h0l132.f90 \
+        d149h0l121.f90 \
+	d184h0l1.f90 \
+	d184h0l1d.f90 \
+        d184h0l131.f90 \
+        d184h0l132.f90 \
+        d184h0l121.f90 \
+	d186h0l1.f90 \
+	d186h0l1d.f90 \
+        d186h0l131.f90 \
+        d186h0l132.f90 \
+        d186h0l121.f90 \
+	d188h0l1.f90 \
+	d188h0l1d.f90 \
+        d188h0l131.f90 \
+        d188h0l132.f90 \
+        d188h0l121.f90 \
+	d190h0l1.f90 \
+	d190h0l1d.f90 \
+        d190h0l131.f90 \
+        d190h0l132.f90 \
+        d190h0l121.f90 \
+	d192h0l1.f90 \
+	d192h0l1d.f90 \
+        d192h0l131.f90 \
+        d192h0l132.f90 \
+        d192h0l121.f90 \
+	d194h0l1.f90 \
+	d194h0l1d.f90 \
+        d194h0l131.f90 \
+        d194h0l132.f90 \
+        d194h0l121.f90 \
+	d196h0l1.f90 \
+	d196h0l1d.f90 \
+        d196h0l131.f90 \
+        d196h0l132.f90 \
+        d196h0l121.f90 \
+	d198h0l1.f90 \
+	d198h0l1d.f90 \
+        d198h0l131.f90 \
+        d198h0l132.f90 \
+        d198h0l121.f90 \
+	d200h0l1.f90 \
+	d200h0l1d.f90 \
+        d200h0l131.f90 \
+        d200h0l132.f90 \
+        d200h0l121.f90 \
+	d202h0l1.f90 \
+	d202h0l1d.f90 \
+        d202h0l131.f90 \
+        d202h0l132.f90 \
+        d202h0l121.f90 \
+	d204h0l1.f90 \
+	d204h0l1d.f90 \
+        d204h0l131.f90 \
+        d204h0l132.f90 \
+        d204h0l121.f90 \
+	d206h0l1.f90 \
+	d206h0l1d.f90 \
+        d206h0l131.f90 \
+        d206h0l132.f90 \
+        d206h0l121.f90
+
+TXT_VIRT=$(subst .f90,.txt,$(DIAGRAMS_VIRT))
+
+ABB_VIRT= \
+	abbrevd34h0.f90 \
+	abbrevd38h0.f90 \
+	abbrevd42h0.f90 \
+	abbrevd52h0.f90 \
+	abbrevd54h0.f90 \
+	abbrevd56h0.f90 \
+	abbrevd109h0.f90 \
+	abbrevd113h0.f90 \
+	abbrevd117h0.f90 \
+	abbrevd121h0.f90 \
+	abbrevd125h0.f90 \
+	abbrevd129h0.f90 \
+	abbrevd133h0.f90 \
+	abbrevd137h0.f90 \
+	abbrevd141h0.f90 \
+	abbrevd145h0.f90 \
+	abbrevd147h0.f90 \
+	abbrevd149h0.f90 \
+	abbrevd184h0.f90 \
+	abbrevd186h0.f90 \
+	abbrevd188h0.f90 \
+	abbrevd190h0.f90 \
+	abbrevd192h0.f90 \
+	abbrevd194h0.f90 \
+	abbrevd196h0.f90 \
+	abbrevd198h0.f90 \
+	abbrevd200h0.f90 \
+	abbrevd202h0.f90 \
+	abbrevd204h0.f90 \
+	abbrevd206h0.f90
+SOURCE_VIRT=$(ABB_VIRT) $(DIAGRAMS_VIRT)
+
+
+
+.PHONY: source
+.SUFFIXES:
+
+
+all_source: $(SOURCE_TREE) $(SOURCE_VIRT)
+
+
+
+d206h0l1.prc : d206h0l1.txt
+d206h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 206 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=206 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d206h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 206 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d206h0l1-stamp
+d206h0l1-stamp: d206h0l1.txt
+d206h0l1d.txt: d206h0l1.txt d206h0l1-stamp
+	@echo Form is generating loop diagram derivatives 206 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 206 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 206 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 206 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 206 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 206 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 206 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d206h0l1.f90: d206h0l1.txt d206h0l1-stamp
+	@echo Python is processing loop diagram 206 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=206 \
+		--GROUP=0  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4
+abbrevd206h0.f90: d206h0l1.f90
+d206h0l1d-stamp: d206h0l1d.txt
+	@touch d206h0l1d-stamp
+d206h0l1d.f90: d206h0l1d.txt d206h0l1d-stamp
+	@echo Python is processing derivative 206 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=206 \
+		--GROUP=0  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d206h0l14.txt : d206h0l1.txt d206h0l1d-stamp
+	@echo Form is optimizing loop diagram 206 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d206h0l13.txt # makes sure the file is always created
+	@: > d206h0l12.txt # makes sure the file is always created
+	@: > d206h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 206 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 206 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 206 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 206 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 206 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d206h0l1 \
+		-D DIAG=206 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d206h0l13-stamp d206h0l12-stamp  d206h0l14-stamp
+
+d206h0l13.txt d206h0l12.txt : d206h0l14-stamp
+d206h0l13-stamp d206h0l12-stamp  d206h0l14-stamp: d206h0l14.txt
+d206h0l131.f90: d206h0l13.txt d206h0l13-stamp
+	@echo Python is processing ninja triangles expansion 206 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=206 \
+		--GROUP=0  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d206h0l132.f90: d206h0l12.txt d206h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 206 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=206 \
+		--GROUP=0  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d206h0l121.f90: d206h0l14.txt d206h0l14-stamp
+	@echo Python is processing ninja mu expansion 206 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=206 \
+		--GROUP=0  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d38h0l1.prc : d38h0l1.txt
+d38h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 38 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=38 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d38h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 38 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D RANK=3 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d38h0l1-stamp
+d38h0l1-stamp: d38h0l1.txt
+d38h0l1d.txt: d38h0l1.txt d38h0l1-stamp
+	@echo Form is generating loop diagram derivatives 38 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D RANK=3 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 38 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 38 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 38 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 38 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d38h0l1.f90: d38h0l1.txt d38h0l1-stamp
+	@echo Python is processing loop diagram 38 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=38 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0
+abbrevd38h0.f90: d38h0l1.f90
+d38h0l1d-stamp: d38h0l1d.txt
+	@touch d38h0l1d-stamp
+d38h0l1d.f90: d38h0l1d.txt d38h0l1d-stamp
+	@echo Python is processing derivative 38 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=38 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0 \
+		--RANK=3 \
+		--LOOPSIZE=3
+d38h0l14.txt : d38h0l1.txt d38h0l1d-stamp
+	@echo Form is optimizing loop diagram 38 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d38h0l13.txt # makes sure the file is always created
+	@: > d38h0l12.txt # makes sure the file is always created
+	@: > d38h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 38 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 38 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 38 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 38 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 38 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d38h0l1 \
+		-D DIAG=38 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d38h0l13-stamp d38h0l12-stamp  d38h0l14-stamp
+
+d38h0l13.txt d38h0l12.txt : d38h0l14-stamp
+d38h0l13-stamp d38h0l12-stamp  d38h0l14-stamp: d38h0l14.txt
+d38h0l131.f90: d38h0l13.txt d38h0l13-stamp
+	@echo Python is processing ninja triangles expansion 38 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=38 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0 \
+		--RANK=3 \
+		--LOOPSIZE=3
+d38h0l132.f90: d38h0l12.txt d38h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 38 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=38 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0 \
+		--RANK=3 \
+		--LOOPSIZE=3
+d38h0l121.f90: d38h0l14.txt d38h0l14-stamp
+	@echo Python is processing ninja mu expansion 38 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=38 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0 \
+		--RANK=3 \
+		--LOOPSIZE=3
+
+d42h0l1.prc : d42h0l1.txt
+d42h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 42 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=42 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d42h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 42 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D RANK=3 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d42h0l1-stamp
+d42h0l1-stamp: d42h0l1.txt
+d42h0l1d.txt: d42h0l1.txt d42h0l1-stamp
+	@echo Form is generating loop diagram derivatives 42 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D RANK=3 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 42 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 42 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 42 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 42 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d42h0l1.f90: d42h0l1.txt d42h0l1-stamp
+	@echo Python is processing loop diagram 42 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=42 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3
+abbrevd42h0.f90: d42h0l1.f90
+d42h0l1d-stamp: d42h0l1d.txt
+	@touch d42h0l1d-stamp
+d42h0l1d.f90: d42h0l1d.txt d42h0l1d-stamp
+	@echo Python is processing derivative 42 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=42 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=3 \
+		--LOOPSIZE=3
+d42h0l14.txt : d42h0l1.txt d42h0l1d-stamp
+	@echo Form is optimizing loop diagram 42 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d42h0l13.txt # makes sure the file is always created
+	@: > d42h0l12.txt # makes sure the file is always created
+	@: > d42h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 42 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 42 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 42 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 42 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 42 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d42h0l1 \
+		-D DIAG=42 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d42h0l13-stamp d42h0l12-stamp  d42h0l14-stamp
+
+d42h0l13.txt d42h0l12.txt : d42h0l14-stamp
+d42h0l13-stamp d42h0l12-stamp  d42h0l14-stamp: d42h0l14.txt
+d42h0l131.f90: d42h0l13.txt d42h0l13-stamp
+	@echo Python is processing ninja triangles expansion 42 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=42 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=3 \
+		--LOOPSIZE=3
+d42h0l132.f90: d42h0l12.txt d42h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 42 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=42 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=3 \
+		--LOOPSIZE=3
+d42h0l121.f90: d42h0l14.txt d42h0l14-stamp
+	@echo Python is processing ninja mu expansion 42 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=42 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=3 \
+		--LOOPSIZE=3
+
+d56h0l1.prc : d56h0l1.txt
+d56h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 56 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=56 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d56h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 56 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d56h0l1-stamp
+d56h0l1-stamp: d56h0l1.txt
+d56h0l1d.txt: d56h0l1.txt d56h0l1-stamp
+	@echo Form is generating loop diagram derivatives 56 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 56 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 56 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 56 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 56 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 56 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d56h0l1.f90: d56h0l1.txt d56h0l1-stamp
+	@echo Python is processing loop diagram 56 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=56 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3
+abbrevd56h0.f90: d56h0l1.f90
+d56h0l1d-stamp: d56h0l1d.txt
+	@touch d56h0l1d-stamp
+d56h0l1d.f90: d56h0l1d.txt d56h0l1d-stamp
+	@echo Python is processing derivative 56 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=56 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d56h0l14.txt : d56h0l1.txt d56h0l1d-stamp
+	@echo Form is optimizing loop diagram 56 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d56h0l13.txt # makes sure the file is always created
+	@: > d56h0l12.txt # makes sure the file is always created
+	@: > d56h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 56 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 56 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 56 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 56 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 56 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d56h0l1 \
+		-D DIAG=56 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d56h0l13-stamp d56h0l12-stamp  d56h0l14-stamp
+
+d56h0l13.txt d56h0l12.txt : d56h0l14-stamp
+d56h0l13-stamp d56h0l12-stamp  d56h0l14-stamp: d56h0l14.txt
+d56h0l131.f90: d56h0l13.txt d56h0l13-stamp
+	@echo Python is processing ninja triangles expansion 56 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=56 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d56h0l132.f90: d56h0l12.txt d56h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 56 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=56 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d56h0l121.f90: d56h0l14.txt d56h0l14-stamp
+	@echo Python is processing ninja mu expansion 56 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=56 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d129h0l1.prc : d129h0l1.txt
+d129h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 129 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=129 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d129h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 129 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d129h0l1-stamp
+d129h0l1-stamp: d129h0l1.txt
+d129h0l1d.txt: d129h0l1.txt d129h0l1-stamp
+	@echo Form is generating loop diagram derivatives 129 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 129 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 129 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 129 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 129 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 129 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d129h0l1.f90: d129h0l1.txt d129h0l1-stamp
+	@echo Python is processing loop diagram 129 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=129 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd129h0.f90: d129h0l1.f90
+d129h0l1d-stamp: d129h0l1d.txt
+	@touch d129h0l1d-stamp
+d129h0l1d.f90: d129h0l1d.txt d129h0l1d-stamp
+	@echo Python is processing derivative 129 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=129 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d129h0l14.txt : d129h0l1.txt d129h0l1d-stamp
+	@echo Form is optimizing loop diagram 129 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d129h0l13.txt # makes sure the file is always created
+	@: > d129h0l12.txt # makes sure the file is always created
+	@: > d129h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 129 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 129 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 129 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 129 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 129 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d129h0l1 \
+		-D DIAG=129 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d129h0l13-stamp d129h0l12-stamp  d129h0l14-stamp
+
+d129h0l13.txt d129h0l12.txt : d129h0l14-stamp
+d129h0l13-stamp d129h0l12-stamp  d129h0l14-stamp: d129h0l14.txt
+d129h0l131.f90: d129h0l13.txt d129h0l13-stamp
+	@echo Python is processing ninja triangles expansion 129 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=129 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d129h0l132.f90: d129h0l12.txt d129h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 129 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=129 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d129h0l121.f90: d129h0l14.txt d129h0l14-stamp
+	@echo Python is processing ninja mu expansion 129 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=129 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d137h0l1.prc : d137h0l1.txt
+d137h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 137 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=137 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d137h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 137 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d137h0l1-stamp
+d137h0l1-stamp: d137h0l1.txt
+d137h0l1d.txt: d137h0l1.txt d137h0l1-stamp
+	@echo Form is generating loop diagram derivatives 137 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 137 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 137 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 137 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 137 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 137 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d137h0l1.f90: d137h0l1.txt d137h0l1-stamp
+	@echo Python is processing loop diagram 137 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=137 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4
+abbrevd137h0.f90: d137h0l1.f90
+d137h0l1d-stamp: d137h0l1d.txt
+	@touch d137h0l1d-stamp
+d137h0l1d.f90: d137h0l1d.txt d137h0l1d-stamp
+	@echo Python is processing derivative 137 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=137 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d137h0l14.txt : d137h0l1.txt d137h0l1d-stamp
+	@echo Form is optimizing loop diagram 137 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d137h0l13.txt # makes sure the file is always created
+	@: > d137h0l12.txt # makes sure the file is always created
+	@: > d137h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 137 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 137 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 137 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 137 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 137 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d137h0l1 \
+		-D DIAG=137 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d137h0l13-stamp d137h0l12-stamp  d137h0l14-stamp
+
+d137h0l13.txt d137h0l12.txt : d137h0l14-stamp
+d137h0l13-stamp d137h0l12-stamp  d137h0l14-stamp: d137h0l14.txt
+d137h0l131.f90: d137h0l13.txt d137h0l13-stamp
+	@echo Python is processing ninja triangles expansion 137 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=137 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d137h0l132.f90: d137h0l12.txt d137h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 137 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=137 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d137h0l121.f90: d137h0l14.txt d137h0l14-stamp
+	@echo Python is processing ninja mu expansion 137 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=137 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d149h0l1.prc : d149h0l1.txt
+d149h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 149 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=149 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d149h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 149 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d149h0l1-stamp
+d149h0l1-stamp: d149h0l1.txt
+d149h0l1d.txt: d149h0l1.txt d149h0l1-stamp
+	@echo Form is generating loop diagram derivatives 149 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 149 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 149 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 149 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 149 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 149 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d149h0l1.f90: d149h0l1.txt d149h0l1-stamp
+	@echo Python is processing loop diagram 149 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=149 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3
+abbrevd149h0.f90: d149h0l1.f90
+d149h0l1d-stamp: d149h0l1d.txt
+	@touch d149h0l1d-stamp
+d149h0l1d.f90: d149h0l1d.txt d149h0l1d-stamp
+	@echo Python is processing derivative 149 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=149 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d149h0l14.txt : d149h0l1.txt d149h0l1d-stamp
+	@echo Form is optimizing loop diagram 149 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d149h0l13.txt # makes sure the file is always created
+	@: > d149h0l12.txt # makes sure the file is always created
+	@: > d149h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 149 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 149 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 149 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 149 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 149 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d149h0l1 \
+		-D DIAG=149 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d149h0l13-stamp d149h0l12-stamp  d149h0l14-stamp
+
+d149h0l13.txt d149h0l12.txt : d149h0l14-stamp
+d149h0l13-stamp d149h0l12-stamp  d149h0l14-stamp: d149h0l14.txt
+d149h0l131.f90: d149h0l13.txt d149h0l13-stamp
+	@echo Python is processing ninja triangles expansion 149 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=149 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d149h0l132.f90: d149h0l12.txt d149h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 149 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=149 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d149h0l121.f90: d149h0l14.txt d149h0l14-stamp
+	@echo Python is processing ninja mu expansion 149 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=149 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d196h0l1.prc : d196h0l1.txt
+d196h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 196 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=196 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d196h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 196 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d196h0l1-stamp
+d196h0l1-stamp: d196h0l1.txt
+d196h0l1d.txt: d196h0l1.txt d196h0l1-stamp
+	@echo Form is generating loop diagram derivatives 196 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 196 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 196 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 196 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 196 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 196 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 196 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d196h0l1.f90: d196h0l1.txt d196h0l1-stamp
+	@echo Python is processing loop diagram 196 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=196 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3
+abbrevd196h0.f90: d196h0l1.f90
+d196h0l1d-stamp: d196h0l1d.txt
+	@touch d196h0l1d-stamp
+d196h0l1d.f90: d196h0l1d.txt d196h0l1d-stamp
+	@echo Python is processing derivative 196 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=196 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d196h0l14.txt : d196h0l1.txt d196h0l1d-stamp
+	@echo Form is optimizing loop diagram 196 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d196h0l13.txt # makes sure the file is always created
+	@: > d196h0l12.txt # makes sure the file is always created
+	@: > d196h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 196 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 196 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 196 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 196 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 196 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d196h0l1 \
+		-D DIAG=196 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d196h0l13-stamp d196h0l12-stamp  d196h0l14-stamp
+
+d196h0l13.txt d196h0l12.txt : d196h0l14-stamp
+d196h0l13-stamp d196h0l12-stamp  d196h0l14-stamp: d196h0l14.txt
+d196h0l131.f90: d196h0l13.txt d196h0l13-stamp
+	@echo Python is processing ninja triangles expansion 196 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=196 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d196h0l132.f90: d196h0l12.txt d196h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 196 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=196 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d196h0l121.f90: d196h0l14.txt d196h0l14-stamp
+	@echo Python is processing ninja mu expansion 196 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=196 \
+		--GROUP=1  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d133h0l1.prc : d133h0l1.txt
+d133h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 133 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=133 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d133h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 133 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d133h0l1-stamp
+d133h0l1-stamp: d133h0l1.txt
+d133h0l1d.txt: d133h0l1.txt d133h0l1-stamp
+	@echo Form is generating loop diagram derivatives 133 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 133 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 133 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 133 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 133 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 133 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d133h0l1.f90: d133h0l1.txt d133h0l1-stamp
+	@echo Python is processing loop diagram 133 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=133 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4
+abbrevd133h0.f90: d133h0l1.f90
+d133h0l1d-stamp: d133h0l1d.txt
+	@touch d133h0l1d-stamp
+d133h0l1d.f90: d133h0l1d.txt d133h0l1d-stamp
+	@echo Python is processing derivative 133 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=133 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d133h0l14.txt : d133h0l1.txt d133h0l1d-stamp
+	@echo Form is optimizing loop diagram 133 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d133h0l13.txt # makes sure the file is always created
+	@: > d133h0l12.txt # makes sure the file is always created
+	@: > d133h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 133 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 133 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 133 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 133 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 133 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d133h0l1 \
+		-D DIAG=133 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d133h0l13-stamp d133h0l12-stamp  d133h0l14-stamp
+
+d133h0l13.txt d133h0l12.txt : d133h0l14-stamp
+d133h0l13-stamp d133h0l12-stamp  d133h0l14-stamp: d133h0l14.txt
+d133h0l131.f90: d133h0l13.txt d133h0l13-stamp
+	@echo Python is processing ninja triangles expansion 133 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=133 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d133h0l132.f90: d133h0l12.txt d133h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 133 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=133 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d133h0l121.f90: d133h0l14.txt d133h0l14-stamp
+	@echo Python is processing ninja mu expansion 133 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=133 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d204h0l1.prc : d204h0l1.txt
+d204h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 204 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=204 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d204h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 204 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d204h0l1-stamp
+d204h0l1-stamp: d204h0l1.txt
+d204h0l1d.txt: d204h0l1.txt d204h0l1-stamp
+	@echo Form is generating loop diagram derivatives 204 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 204 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 204 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 204 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 204 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 204 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 204 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d204h0l1.f90: d204h0l1.txt d204h0l1-stamp
+	@echo Python is processing loop diagram 204 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=204 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4
+abbrevd204h0.f90: d204h0l1.f90
+d204h0l1d-stamp: d204h0l1d.txt
+	@touch d204h0l1d-stamp
+d204h0l1d.f90: d204h0l1d.txt d204h0l1d-stamp
+	@echo Python is processing derivative 204 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=204 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d204h0l14.txt : d204h0l1.txt d204h0l1d-stamp
+	@echo Form is optimizing loop diagram 204 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d204h0l13.txt # makes sure the file is always created
+	@: > d204h0l12.txt # makes sure the file is always created
+	@: > d204h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 204 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 204 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 204 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 204 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 204 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d204h0l1 \
+		-D DIAG=204 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d204h0l13-stamp d204h0l12-stamp  d204h0l14-stamp
+
+d204h0l13.txt d204h0l12.txt : d204h0l14-stamp
+d204h0l13-stamp d204h0l12-stamp  d204h0l14-stamp: d204h0l14.txt
+d204h0l131.f90: d204h0l13.txt d204h0l13-stamp
+	@echo Python is processing ninja triangles expansion 204 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=204 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d204h0l132.f90: d204h0l12.txt d204h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 204 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=204 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d204h0l121.f90: d204h0l14.txt d204h0l14-stamp
+	@echo Python is processing ninja mu expansion 204 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=204 \
+		--GROUP=2  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d125h0l1.prc : d125h0l1.txt
+d125h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 125 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=125 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d125h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 125 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d125h0l1-stamp
+d125h0l1-stamp: d125h0l1.txt
+d125h0l1d.txt: d125h0l1.txt d125h0l1-stamp
+	@echo Form is generating loop diagram derivatives 125 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 125 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 125 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 125 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 125 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 125 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d125h0l1.f90: d125h0l1.txt d125h0l1-stamp
+	@echo Python is processing loop diagram 125 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=125 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd125h0.f90: d125h0l1.f90
+d125h0l1d-stamp: d125h0l1d.txt
+	@touch d125h0l1d-stamp
+d125h0l1d.f90: d125h0l1d.txt d125h0l1d-stamp
+	@echo Python is processing derivative 125 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=125 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d125h0l14.txt : d125h0l1.txt d125h0l1d-stamp
+	@echo Form is optimizing loop diagram 125 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d125h0l13.txt # makes sure the file is always created
+	@: > d125h0l12.txt # makes sure the file is always created
+	@: > d125h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 125 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 125 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 125 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 125 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 125 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d125h0l1 \
+		-D DIAG=125 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d125h0l13-stamp d125h0l12-stamp  d125h0l14-stamp
+
+d125h0l13.txt d125h0l12.txt : d125h0l14-stamp
+d125h0l13-stamp d125h0l12-stamp  d125h0l14-stamp: d125h0l14.txt
+d125h0l131.f90: d125h0l13.txt d125h0l13-stamp
+	@echo Python is processing ninja triangles expansion 125 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=125 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d125h0l132.f90: d125h0l12.txt d125h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 125 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=125 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d125h0l121.f90: d125h0l14.txt d125h0l14-stamp
+	@echo Python is processing ninja mu expansion 125 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=125 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d141h0l1.prc : d141h0l1.txt
+d141h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 141 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=141 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d141h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 141 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d141h0l1-stamp
+d141h0l1-stamp: d141h0l1.txt
+d141h0l1d.txt: d141h0l1.txt d141h0l1-stamp
+	@echo Form is generating loop diagram derivatives 141 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 141 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 141 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 141 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 141 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 141 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d141h0l1.f90: d141h0l1.txt d141h0l1-stamp
+	@echo Python is processing loop diagram 141 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=141 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4
+abbrevd141h0.f90: d141h0l1.f90
+d141h0l1d-stamp: d141h0l1d.txt
+	@touch d141h0l1d-stamp
+d141h0l1d.f90: d141h0l1d.txt d141h0l1d-stamp
+	@echo Python is processing derivative 141 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=141 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d141h0l14.txt : d141h0l1.txt d141h0l1d-stamp
+	@echo Form is optimizing loop diagram 141 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d141h0l13.txt # makes sure the file is always created
+	@: > d141h0l12.txt # makes sure the file is always created
+	@: > d141h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 141 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 141 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 141 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 141 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 141 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d141h0l1 \
+		-D DIAG=141 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d141h0l13-stamp d141h0l12-stamp  d141h0l14-stamp
+
+d141h0l13.txt d141h0l12.txt : d141h0l14-stamp
+d141h0l13-stamp d141h0l12-stamp  d141h0l14-stamp: d141h0l14.txt
+d141h0l131.f90: d141h0l13.txt d141h0l13-stamp
+	@echo Python is processing ninja triangles expansion 141 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=141 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d141h0l132.f90: d141h0l12.txt d141h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 141 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=141 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d141h0l121.f90: d141h0l14.txt d141h0l14-stamp
+	@echo Python is processing ninja mu expansion 141 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=141 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2+k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d200h0l1.prc : d200h0l1.txt
+d200h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 200 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=200 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d200h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 200 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d200h0l1-stamp
+d200h0l1-stamp: d200h0l1.txt
+d200h0l1d.txt: d200h0l1.txt d200h0l1-stamp
+	@echo Form is generating loop diagram derivatives 200 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 200 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 200 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 200 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 200 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 200 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 200 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d200h0l1.f90: d200h0l1.txt d200h0l1-stamp
+	@echo Python is processing loop diagram 200 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=200 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3
+abbrevd200h0.f90: d200h0l1.f90
+d200h0l1d-stamp: d200h0l1d.txt
+	@touch d200h0l1d-stamp
+d200h0l1d.f90: d200h0l1d.txt d200h0l1d-stamp
+	@echo Python is processing derivative 200 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=200 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d200h0l14.txt : d200h0l1.txt d200h0l1d-stamp
+	@echo Form is optimizing loop diagram 200 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d200h0l13.txt # makes sure the file is always created
+	@: > d200h0l12.txt # makes sure the file is always created
+	@: > d200h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 200 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 200 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 200 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 200 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 200 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d200h0l1 \
+		-D DIAG=200 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d200h0l13-stamp d200h0l12-stamp  d200h0l14-stamp
+
+d200h0l13.txt d200h0l12.txt : d200h0l14-stamp
+d200h0l13-stamp d200h0l12-stamp  d200h0l14-stamp: d200h0l14.txt
+d200h0l131.f90: d200h0l13.txt d200h0l13-stamp
+	@echo Python is processing ninja triangles expansion 200 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=200 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d200h0l132.f90: d200h0l12.txt d200h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 200 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=200 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d200h0l121.f90: d200h0l14.txt d200h0l14-stamp
+	@echo Python is processing ninja mu expansion 200 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=200 \
+		--GROUP=3  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d192h0l1.prc : d192h0l1.txt
+d192h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 192 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=192 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d192h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 192 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d192h0l1-stamp
+d192h0l1-stamp: d192h0l1.txt
+d192h0l1d.txt: d192h0l1.txt d192h0l1-stamp
+	@echo Form is generating loop diagram derivatives 192 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 192 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 192 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 192 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 192 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 192 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 192 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d192h0l1.f90: d192h0l1.txt d192h0l1-stamp
+	@echo Python is processing loop diagram 192 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=192 \
+		--GROUP=4  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd192h0.f90: d192h0l1.f90
+d192h0l1d-stamp: d192h0l1d.txt
+	@touch d192h0l1d-stamp
+d192h0l1d.f90: d192h0l1d.txt d192h0l1d-stamp
+	@echo Python is processing derivative 192 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=192 \
+		--GROUP=4  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d192h0l14.txt : d192h0l1.txt d192h0l1d-stamp
+	@echo Form is optimizing loop diagram 192 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d192h0l13.txt # makes sure the file is always created
+	@: > d192h0l12.txt # makes sure the file is always created
+	@: > d192h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 192 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 192 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 192 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 192 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 192 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d192h0l1 \
+		-D DIAG=192 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d192h0l13-stamp d192h0l12-stamp  d192h0l14-stamp
+
+d192h0l13.txt d192h0l12.txt : d192h0l14-stamp
+d192h0l13-stamp d192h0l12-stamp  d192h0l14-stamp: d192h0l14.txt
+d192h0l131.f90: d192h0l13.txt d192h0l13-stamp
+	@echo Python is processing ninja triangles expansion 192 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=192 \
+		--GROUP=4  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d192h0l132.f90: d192h0l12.txt d192h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 192 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=192 \
+		--GROUP=4  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d192h0l121.f90: d192h0l14.txt d192h0l14-stamp
+	@echo Python is processing ninja mu expansion 192 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=192 \
+		--GROUP=4  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d54h0l1.prc : d54h0l1.txt
+d54h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 54 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=54 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d54h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 54 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d54h0l1-stamp
+d54h0l1-stamp: d54h0l1.txt
+d54h0l1d.txt: d54h0l1.txt d54h0l1-stamp
+	@echo Form is generating loop diagram derivatives 54 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 54 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 54 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 54 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 54 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 54 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d54h0l1.f90: d54h0l1.txt d54h0l1-stamp
+	@echo Python is processing loop diagram 54 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=54 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2
+abbrevd54h0.f90: d54h0l1.f90
+d54h0l1d-stamp: d54h0l1d.txt
+	@touch d54h0l1d-stamp
+d54h0l1d.f90: d54h0l1d.txt d54h0l1d-stamp
+	@echo Python is processing derivative 54 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=54 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d54h0l14.txt : d54h0l1.txt d54h0l1d-stamp
+	@echo Form is optimizing loop diagram 54 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d54h0l13.txt # makes sure the file is always created
+	@: > d54h0l12.txt # makes sure the file is always created
+	@: > d54h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 54 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 54 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 54 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 54 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 54 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d54h0l1 \
+		-D DIAG=54 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d54h0l13-stamp d54h0l12-stamp  d54h0l14-stamp
+
+d54h0l13.txt d54h0l12.txt : d54h0l14-stamp
+d54h0l13-stamp d54h0l12-stamp  d54h0l14-stamp: d54h0l14.txt
+d54h0l131.f90: d54h0l13.txt d54h0l13-stamp
+	@echo Python is processing ninja triangles expansion 54 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=54 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d54h0l132.f90: d54h0l12.txt d54h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 54 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=54 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d54h0l121.f90: d54h0l14.txt d54h0l14-stamp
+	@echo Python is processing ninja mu expansion 54 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=54 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d147h0l1.prc : d147h0l1.txt
+d147h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 147 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=147 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d147h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 147 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d147h0l1-stamp
+d147h0l1-stamp: d147h0l1.txt
+d147h0l1d.txt: d147h0l1.txt d147h0l1-stamp
+	@echo Form is generating loop diagram derivatives 147 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 147 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 147 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 147 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 147 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 147 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d147h0l1.f90: d147h0l1.txt d147h0l1-stamp
+	@echo Python is processing loop diagram 147 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=147 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2
+abbrevd147h0.f90: d147h0l1.f90
+d147h0l1d-stamp: d147h0l1d.txt
+	@touch d147h0l1d-stamp
+d147h0l1d.f90: d147h0l1d.txt d147h0l1d-stamp
+	@echo Python is processing derivative 147 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=147 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d147h0l14.txt : d147h0l1.txt d147h0l1d-stamp
+	@echo Form is optimizing loop diagram 147 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d147h0l13.txt # makes sure the file is always created
+	@: > d147h0l12.txt # makes sure the file is always created
+	@: > d147h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 147 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 147 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 147 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 147 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 147 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d147h0l1 \
+		-D DIAG=147 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d147h0l13-stamp d147h0l12-stamp  d147h0l14-stamp
+
+d147h0l13.txt d147h0l12.txt : d147h0l14-stamp
+d147h0l13-stamp d147h0l12-stamp  d147h0l14-stamp: d147h0l14.txt
+d147h0l131.f90: d147h0l13.txt d147h0l13-stamp
+	@echo Python is processing ninja triangles expansion 147 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=147 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d147h0l132.f90: d147h0l12.txt d147h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 147 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=147 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d147h0l121.f90: d147h0l14.txt d147h0l14-stamp
+	@echo Python is processing ninja mu expansion 147 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=147 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d188h0l1.prc : d188h0l1.txt
+d188h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 188 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=188 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d188h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 188 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d188h0l1-stamp
+d188h0l1-stamp: d188h0l1.txt
+d188h0l1d.txt: d188h0l1.txt d188h0l1-stamp
+	@echo Form is generating loop diagram derivatives 188 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 188 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 188 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 188 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 188 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 188 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 188 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d188h0l1.f90: d188h0l1.txt d188h0l1-stamp
+	@echo Python is processing loop diagram 188 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=188 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd188h0.f90: d188h0l1.f90
+d188h0l1d-stamp: d188h0l1d.txt
+	@touch d188h0l1d-stamp
+d188h0l1d.f90: d188h0l1d.txt d188h0l1d-stamp
+	@echo Python is processing derivative 188 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=188 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d188h0l14.txt : d188h0l1.txt d188h0l1d-stamp
+	@echo Form is optimizing loop diagram 188 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d188h0l13.txt # makes sure the file is always created
+	@: > d188h0l12.txt # makes sure the file is always created
+	@: > d188h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 188 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 188 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 188 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 188 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 188 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d188h0l1 \
+		-D DIAG=188 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d188h0l13-stamp d188h0l12-stamp  d188h0l14-stamp
+
+d188h0l13.txt d188h0l12.txt : d188h0l14-stamp
+d188h0l13-stamp d188h0l12-stamp  d188h0l14-stamp: d188h0l14.txt
+d188h0l131.f90: d188h0l13.txt d188h0l13-stamp
+	@echo Python is processing ninja triangles expansion 188 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=188 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d188h0l132.f90: d188h0l12.txt d188h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 188 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=188 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d188h0l121.f90: d188h0l14.txt d188h0l14-stamp
+	@echo Python is processing ninja mu expansion 188 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=188 \
+		--GROUP=5  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d202h0l1.prc : d202h0l1.txt
+d202h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 202 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=202 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d202h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 202 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d202h0l1-stamp
+d202h0l1-stamp: d202h0l1.txt
+d202h0l1d.txt: d202h0l1.txt d202h0l1-stamp
+	@echo Form is generating loop diagram derivatives 202 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 202 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 202 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 202 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 202 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 202 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 202 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d202h0l1.f90: d202h0l1.txt d202h0l1-stamp
+	@echo Python is processing loop diagram 202 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=202 \
+		--GROUP=6  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4
+abbrevd202h0.f90: d202h0l1.f90
+d202h0l1d-stamp: d202h0l1d.txt
+	@touch d202h0l1d-stamp
+d202h0l1d.f90: d202h0l1d.txt d202h0l1d-stamp
+	@echo Python is processing derivative 202 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=202 \
+		--GROUP=6  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d202h0l14.txt : d202h0l1.txt d202h0l1d-stamp
+	@echo Form is optimizing loop diagram 202 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d202h0l13.txt # makes sure the file is always created
+	@: > d202h0l12.txt # makes sure the file is always created
+	@: > d202h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 202 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 202 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 202 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 202 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 202 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d202h0l1 \
+		-D DIAG=202 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d202h0l13-stamp d202h0l12-stamp  d202h0l14-stamp
+
+d202h0l13.txt d202h0l12.txt : d202h0l14-stamp
+d202h0l13-stamp d202h0l12-stamp  d202h0l14-stamp: d202h0l14.txt
+d202h0l131.f90: d202h0l13.txt d202h0l13-stamp
+	@echo Python is processing ninja triangles expansion 202 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=202 \
+		--GROUP=6  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d202h0l132.f90: d202h0l12.txt d202h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 202 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=202 \
+		--GROUP=6  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d202h0l121.f90: d202h0l14.txt d202h0l14-stamp
+	@echo Python is processing ninja mu expansion 202 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=202 \
+		--GROUP=6  \
+		--HELICITY=0 \
+		--QSIGN=- \
+		--QSHIFT=-k3-k4 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d121h0l1.prc : d121h0l1.txt
+d121h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 121 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=121 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d121h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 121 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d121h0l1-stamp
+d121h0l1-stamp: d121h0l1.txt
+d121h0l1d.txt: d121h0l1.txt d121h0l1-stamp
+	@echo Form is generating loop diagram derivatives 121 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 121 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 121 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 121 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 121 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 121 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d121h0l1.f90: d121h0l1.txt d121h0l1-stamp
+	@echo Python is processing loop diagram 121 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=121 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0
+abbrevd121h0.f90: d121h0l1.f90
+d121h0l1d-stamp: d121h0l1d.txt
+	@touch d121h0l1d-stamp
+d121h0l1d.f90: d121h0l1d.txt d121h0l1d-stamp
+	@echo Python is processing derivative 121 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=121 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d121h0l14.txt : d121h0l1.txt d121h0l1d-stamp
+	@echo Form is optimizing loop diagram 121 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d121h0l13.txt # makes sure the file is always created
+	@: > d121h0l12.txt # makes sure the file is always created
+	@: > d121h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 121 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 121 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 121 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 121 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 121 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d121h0l1 \
+		-D DIAG=121 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d121h0l13-stamp d121h0l12-stamp  d121h0l14-stamp
+
+d121h0l13.txt d121h0l12.txt : d121h0l14-stamp
+d121h0l13-stamp d121h0l12-stamp  d121h0l14-stamp: d121h0l14.txt
+d121h0l131.f90: d121h0l13.txt d121h0l13-stamp
+	@echo Python is processing ninja triangles expansion 121 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=121 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d121h0l132.f90: d121h0l12.txt d121h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 121 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=121 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d121h0l121.f90: d121h0l14.txt d121h0l14-stamp
+	@echo Python is processing ninja mu expansion 121 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=121 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=0 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d198h0l1.prc : d198h0l1.txt
+d198h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 198 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=198 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d198h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 198 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d198h0l1-stamp
+d198h0l1-stamp: d198h0l1.txt
+d198h0l1d.txt: d198h0l1.txt d198h0l1-stamp
+	@echo Form is generating loop diagram derivatives 198 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 198 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 198 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 198 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 198 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 198 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 198 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d198h0l1.f90: d198h0l1.txt d198h0l1-stamp
+	@echo Python is processing loop diagram 198 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=198 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=-k3+k2-k5
+abbrevd198h0.f90: d198h0l1.f90
+d198h0l1d-stamp: d198h0l1d.txt
+	@touch d198h0l1d-stamp
+d198h0l1d.f90: d198h0l1d.txt d198h0l1d-stamp
+	@echo Python is processing derivative 198 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=198 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=-k3+k2-k5 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d198h0l14.txt : d198h0l1.txt d198h0l1d-stamp
+	@echo Form is optimizing loop diagram 198 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d198h0l13.txt # makes sure the file is always created
+	@: > d198h0l12.txt # makes sure the file is always created
+	@: > d198h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 198 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 198 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 198 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 198 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 198 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d198h0l1 \
+		-D DIAG=198 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d198h0l13-stamp d198h0l12-stamp  d198h0l14-stamp
+
+d198h0l13.txt d198h0l12.txt : d198h0l14-stamp
+d198h0l13-stamp d198h0l12-stamp  d198h0l14-stamp: d198h0l14.txt
+d198h0l131.f90: d198h0l13.txt d198h0l13-stamp
+	@echo Python is processing ninja triangles expansion 198 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=198 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=-k3+k2-k5 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d198h0l132.f90: d198h0l12.txt d198h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 198 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=198 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=-k3+k2-k5 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d198h0l121.f90: d198h0l14.txt d198h0l14-stamp
+	@echo Python is processing ninja mu expansion 198 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=198 \
+		--GROUP=7  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=-k3+k2-k5 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d194h0l1.prc : d194h0l1.txt
+d194h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 194 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=194 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d194h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 194 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d194h0l1-stamp
+d194h0l1-stamp: d194h0l1.txt
+d194h0l1d.txt: d194h0l1.txt d194h0l1-stamp
+	@echo Form is generating loop diagram derivatives 194 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 194 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 194 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 194 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 194 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 194 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 194 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d194h0l1.f90: d194h0l1.txt d194h0l1-stamp
+	@echo Python is processing loop diagram 194 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=194 \
+		--GROUP=8  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd194h0.f90: d194h0l1.f90
+d194h0l1d-stamp: d194h0l1d.txt
+	@touch d194h0l1d-stamp
+d194h0l1d.f90: d194h0l1d.txt d194h0l1d-stamp
+	@echo Python is processing derivative 194 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=194 \
+		--GROUP=8  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d194h0l14.txt : d194h0l1.txt d194h0l1d-stamp
+	@echo Form is optimizing loop diagram 194 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d194h0l13.txt # makes sure the file is always created
+	@: > d194h0l12.txt # makes sure the file is always created
+	@: > d194h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 194 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 194 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 194 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 194 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 194 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d194h0l1 \
+		-D DIAG=194 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d194h0l13-stamp d194h0l12-stamp  d194h0l14-stamp
+
+d194h0l13.txt d194h0l12.txt : d194h0l14-stamp
+d194h0l13-stamp d194h0l12-stamp  d194h0l14-stamp: d194h0l14.txt
+d194h0l131.f90: d194h0l13.txt d194h0l13-stamp
+	@echo Python is processing ninja triangles expansion 194 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=194 \
+		--GROUP=8  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d194h0l132.f90: d194h0l12.txt d194h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 194 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=194 \
+		--GROUP=8  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d194h0l121.f90: d194h0l14.txt d194h0l14-stamp
+	@echo Python is processing ninja mu expansion 194 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=194 \
+		--GROUP=8  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d117h0l1.prc : d117h0l1.txt
+d117h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 117 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=117 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d117h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 117 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d117h0l1-stamp
+d117h0l1-stamp: d117h0l1.txt
+d117h0l1d.txt: d117h0l1.txt d117h0l1-stamp
+	@echo Form is generating loop diagram derivatives 117 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 117 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 117 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 117 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 117 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 117 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d117h0l1.f90: d117h0l1.txt d117h0l1-stamp
+	@echo Python is processing loop diagram 117 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=117 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4
+abbrevd117h0.f90: d117h0l1.f90
+d117h0l1d-stamp: d117h0l1d.txt
+	@touch d117h0l1d-stamp
+d117h0l1d.f90: d117h0l1d.txt d117h0l1d-stamp
+	@echo Python is processing derivative 117 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=117 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d117h0l14.txt : d117h0l1.txt d117h0l1d-stamp
+	@echo Form is optimizing loop diagram 117 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d117h0l13.txt # makes sure the file is always created
+	@: > d117h0l12.txt # makes sure the file is always created
+	@: > d117h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 117 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 117 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 117 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 117 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 117 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d117h0l1 \
+		-D DIAG=117 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d117h0l13-stamp d117h0l12-stamp  d117h0l14-stamp
+
+d117h0l13.txt d117h0l12.txt : d117h0l14-stamp
+d117h0l13-stamp d117h0l12-stamp  d117h0l14-stamp: d117h0l14.txt
+d117h0l131.f90: d117h0l13.txt d117h0l13-stamp
+	@echo Python is processing ninja triangles expansion 117 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=117 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d117h0l132.f90: d117h0l12.txt d117h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 117 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=117 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d117h0l121.f90: d117h0l14.txt d117h0l14-stamp
+	@echo Python is processing ninja mu expansion 117 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=117 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d184h0l1.prc : d184h0l1.txt
+d184h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 184 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=184 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d184h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 184 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d184h0l1-stamp
+d184h0l1-stamp: d184h0l1.txt
+d184h0l1d.txt: d184h0l1.txt d184h0l1-stamp
+	@echo Form is generating loop diagram derivatives 184 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 184 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 184 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 184 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 184 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 184 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 184 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d184h0l1.f90: d184h0l1.txt d184h0l1-stamp
+	@echo Python is processing loop diagram 184 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=184 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd184h0.f90: d184h0l1.f90
+d184h0l1d-stamp: d184h0l1d.txt
+	@touch d184h0l1d-stamp
+d184h0l1d.f90: d184h0l1d.txt d184h0l1d-stamp
+	@echo Python is processing derivative 184 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=184 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d184h0l14.txt : d184h0l1.txt d184h0l1d-stamp
+	@echo Form is optimizing loop diagram 184 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d184h0l13.txt # makes sure the file is always created
+	@: > d184h0l12.txt # makes sure the file is always created
+	@: > d184h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 184 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 184 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 184 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 184 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 184 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d184h0l1 \
+		-D DIAG=184 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d184h0l13-stamp d184h0l12-stamp  d184h0l14-stamp
+
+d184h0l13.txt d184h0l12.txt : d184h0l14-stamp
+d184h0l13-stamp d184h0l12-stamp  d184h0l14-stamp: d184h0l14.txt
+d184h0l131.f90: d184h0l13.txt d184h0l13-stamp
+	@echo Python is processing ninja triangles expansion 184 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=184 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d184h0l132.f90: d184h0l12.txt d184h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 184 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=184 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d184h0l121.f90: d184h0l14.txt d184h0l14-stamp
+	@echo Python is processing ninja mu expansion 184 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=184 \
+		--GROUP=9  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d109h0l1.prc : d109h0l1.txt
+d109h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 109 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=109 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d109h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 109 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d109h0l1-stamp
+d109h0l1-stamp: d109h0l1.txt
+d109h0l1d.txt: d109h0l1.txt d109h0l1-stamp
+	@echo Form is generating loop diagram derivatives 109 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 109 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 109 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 109 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 109 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 109 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d109h0l1.f90: d109h0l1.txt d109h0l1-stamp
+	@echo Python is processing loop diagram 109 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=109 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5
+abbrevd109h0.f90: d109h0l1.f90
+d109h0l1d-stamp: d109h0l1d.txt
+	@touch d109h0l1d-stamp
+d109h0l1d.f90: d109h0l1d.txt d109h0l1d-stamp
+	@echo Python is processing derivative 109 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=109 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d109h0l14.txt : d109h0l1.txt d109h0l1d-stamp
+	@echo Form is optimizing loop diagram 109 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d109h0l13.txt # makes sure the file is always created
+	@: > d109h0l12.txt # makes sure the file is always created
+	@: > d109h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 109 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 109 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 109 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 109 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 109 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d109h0l1 \
+		-D DIAG=109 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d109h0l13-stamp d109h0l12-stamp  d109h0l14-stamp
+
+d109h0l13.txt d109h0l12.txt : d109h0l14-stamp
+d109h0l13-stamp d109h0l12-stamp  d109h0l14-stamp: d109h0l14.txt
+d109h0l131.f90: d109h0l13.txt d109h0l13-stamp
+	@echo Python is processing ninja triangles expansion 109 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=109 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d109h0l132.f90: d109h0l12.txt d109h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 109 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=109 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d109h0l121.f90: d109h0l14.txt d109h0l14-stamp
+	@echo Python is processing ninja mu expansion 109 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=109 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d190h0l1.prc : d190h0l1.txt
+d190h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 190 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=190 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d190h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 190 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d190h0l1-stamp
+d190h0l1-stamp: d190h0l1.txt
+d190h0l1d.txt: d190h0l1.txt d190h0l1-stamp
+	@echo Form is generating loop diagram derivatives 190 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 190 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 190 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 190 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 190 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 190 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 190 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d190h0l1.f90: d190h0l1.txt d190h0l1-stamp
+	@echo Python is processing loop diagram 190 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=190 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd190h0.f90: d190h0l1.f90
+d190h0l1d-stamp: d190h0l1d.txt
+	@touch d190h0l1d-stamp
+d190h0l1d.f90: d190h0l1d.txt d190h0l1d-stamp
+	@echo Python is processing derivative 190 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=190 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d190h0l14.txt : d190h0l1.txt d190h0l1d-stamp
+	@echo Form is optimizing loop diagram 190 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d190h0l13.txt # makes sure the file is always created
+	@: > d190h0l12.txt # makes sure the file is always created
+	@: > d190h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 190 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 190 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 190 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 190 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 190 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d190h0l1 \
+		-D DIAG=190 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d190h0l13-stamp d190h0l12-stamp  d190h0l14-stamp
+
+d190h0l13.txt d190h0l12.txt : d190h0l14-stamp
+d190h0l13-stamp d190h0l12-stamp  d190h0l14-stamp: d190h0l14.txt
+d190h0l131.f90: d190h0l13.txt d190h0l13-stamp
+	@echo Python is processing ninja triangles expansion 190 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=190 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d190h0l132.f90: d190h0l12.txt d190h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 190 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=190 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d190h0l121.f90: d190h0l14.txt d190h0l14-stamp
+	@echo Python is processing ninja mu expansion 190 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=190 \
+		--GROUP=10  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+d34h0l1.prc : d34h0l1.txt
+d34h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 34 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=34 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d34h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 34 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D RANK=3 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d34h0l1-stamp
+d34h0l1-stamp: d34h0l1.txt
+d34h0l1d.txt: d34h0l1.txt d34h0l1-stamp
+	@echo Form is generating loop diagram derivatives 34 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D RANK=3 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 34 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 34 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 34 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 34 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d34h0l1.f90: d34h0l1.txt d34h0l1-stamp
+	@echo Python is processing loop diagram 34 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=34 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5+k4
+abbrevd34h0.f90: d34h0l1.f90
+d34h0l1d-stamp: d34h0l1d.txt
+	@touch d34h0l1d-stamp
+d34h0l1d.f90: d34h0l1d.txt d34h0l1d-stamp
+	@echo Python is processing derivative 34 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=34 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5+k4 \
+		--RANK=3 \
+		--LOOPSIZE=3
+d34h0l14.txt : d34h0l1.txt d34h0l1d-stamp
+	@echo Form is optimizing loop diagram 34 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d34h0l13.txt # makes sure the file is always created
+	@: > d34h0l12.txt # makes sure the file is always created
+	@: > d34h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 34 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 34 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 34 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 34 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 34 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d34h0l1 \
+		-D DIAG=34 \
+		-D LOOPSIZE=3 \
+		-D RANK=3 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d34h0l13-stamp d34h0l12-stamp  d34h0l14-stamp
+
+d34h0l13.txt d34h0l12.txt : d34h0l14-stamp
+d34h0l13-stamp d34h0l12-stamp  d34h0l14-stamp: d34h0l14.txt
+d34h0l131.f90: d34h0l13.txt d34h0l13-stamp
+	@echo Python is processing ninja triangles expansion 34 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=34 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5+k4 \
+		--RANK=3 \
+		--LOOPSIZE=3
+d34h0l132.f90: d34h0l12.txt d34h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 34 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=34 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5+k4 \
+		--RANK=3 \
+		--LOOPSIZE=3
+d34h0l121.f90: d34h0l14.txt d34h0l14-stamp
+	@echo Python is processing ninja mu expansion 34 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=34 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k3+k5+k4 \
+		--RANK=3 \
+		--LOOPSIZE=3
+
+d52h0l1.prc : d52h0l1.txt
+d52h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 52 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=52 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d52h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 52 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d52h0l1-stamp
+d52h0l1-stamp: d52h0l1.txt
+d52h0l1d.txt: d52h0l1.txt d52h0l1-stamp
+	@echo Form is generating loop diagram derivatives 52 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 52 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 52 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 52 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 52 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 52 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d52h0l1.f90: d52h0l1.txt d52h0l1-stamp
+	@echo Python is processing loop diagram 52 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=52 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd52h0.f90: d52h0l1.f90
+d52h0l1d-stamp: d52h0l1d.txt
+	@touch d52h0l1d-stamp
+d52h0l1d.f90: d52h0l1d.txt d52h0l1d-stamp
+	@echo Python is processing derivative 52 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=52 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d52h0l14.txt : d52h0l1.txt d52h0l1d-stamp
+	@echo Form is optimizing loop diagram 52 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d52h0l13.txt # makes sure the file is always created
+	@: > d52h0l12.txt # makes sure the file is always created
+	@: > d52h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 52 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 52 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 52 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 52 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 52 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d52h0l1 \
+		-D DIAG=52 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d52h0l13-stamp d52h0l12-stamp  d52h0l14-stamp
+
+d52h0l13.txt d52h0l12.txt : d52h0l14-stamp
+d52h0l13-stamp d52h0l12-stamp  d52h0l14-stamp: d52h0l14.txt
+d52h0l131.f90: d52h0l13.txt d52h0l13-stamp
+	@echo Python is processing ninja triangles expansion 52 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=52 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d52h0l132.f90: d52h0l12.txt d52h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 52 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=52 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d52h0l121.f90: d52h0l14.txt d52h0l14-stamp
+	@echo Python is processing ninja mu expansion 52 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=52 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d113h0l1.prc : d113h0l1.txt
+d113h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 113 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=113 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d113h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 113 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d113h0l1-stamp
+d113h0l1-stamp: d113h0l1.txt
+d113h0l1d.txt: d113h0l1.txt d113h0l1-stamp
+	@echo Form is generating loop diagram derivatives 113 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 113 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 113 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 113 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 113 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 113 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d113h0l1.f90: d113h0l1.txt d113h0l1-stamp
+	@echo Python is processing loop diagram 113 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=113 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4
+abbrevd113h0.f90: d113h0l1.f90
+d113h0l1d-stamp: d113h0l1d.txt
+	@touch d113h0l1d-stamp
+d113h0l1d.f90: d113h0l1d.txt d113h0l1d-stamp
+	@echo Python is processing derivative 113 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=113 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d113h0l14.txt : d113h0l1.txt d113h0l1d-stamp
+	@echo Form is optimizing loop diagram 113 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d113h0l13.txt # makes sure the file is always created
+	@: > d113h0l12.txt # makes sure the file is always created
+	@: > d113h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 113 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 113 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 113 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 113 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 113 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d113h0l1 \
+		-D DIAG=113 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d113h0l13-stamp d113h0l12-stamp  d113h0l14-stamp
+
+d113h0l13.txt d113h0l12.txt : d113h0l14-stamp
+d113h0l13-stamp d113h0l12-stamp  d113h0l14-stamp: d113h0l14.txt
+d113h0l131.f90: d113h0l13.txt d113h0l13-stamp
+	@echo Python is processing ninja triangles expansion 113 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=113 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d113h0l132.f90: d113h0l12.txt d113h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 113 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=113 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d113h0l121.f90: d113h0l14.txt d113h0l14-stamp
+	@echo Python is processing ninja mu expansion 113 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=113 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k5+k4 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d145h0l1.prc : d145h0l1.txt
+d145h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 145 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=145 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d145h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 145 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d145h0l1-stamp
+d145h0l1-stamp: d145h0l1.txt
+d145h0l1d.txt: d145h0l1.txt d145h0l1-stamp
+	@echo Form is generating loop diagram derivatives 145 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D RANK=4 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 145 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 145 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 145 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 145 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 145 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d145h0l1.f90: d145h0l1.txt d145h0l1-stamp
+	@echo Python is processing loop diagram 145 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=145 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd145h0.f90: d145h0l1.f90
+d145h0l1d-stamp: d145h0l1d.txt
+	@touch d145h0l1d-stamp
+d145h0l1d.f90: d145h0l1d.txt d145h0l1d-stamp
+	@echo Python is processing derivative 145 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=145 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d145h0l14.txt : d145h0l1.txt d145h0l1d-stamp
+	@echo Form is optimizing loop diagram 145 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d145h0l13.txt # makes sure the file is always created
+	@: > d145h0l12.txt # makes sure the file is always created
+	@: > d145h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 145 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 145 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 145 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 145 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 145 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d145h0l1 \
+		-D DIAG=145 \
+		-D LOOPSIZE=4 \
+		-D RANK=4 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d145h0l13-stamp d145h0l12-stamp  d145h0l14-stamp
+
+d145h0l13.txt d145h0l12.txt : d145h0l14-stamp
+d145h0l13-stamp d145h0l12-stamp  d145h0l14-stamp: d145h0l14.txt
+d145h0l131.f90: d145h0l13.txt d145h0l13-stamp
+	@echo Python is processing ninja triangles expansion 145 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=145 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d145h0l132.f90: d145h0l12.txt d145h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 145 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=145 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+d145h0l121.f90: d145h0l14.txt d145h0l14-stamp
+	@echo Python is processing ninja mu expansion 145 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=145 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=4 \
+		--LOOPSIZE=4
+
+d186h0l1.prc : d186h0l1.txt
+d186h0l1.txt: ../diagrams-1.hh
+	@echo Form is processing loop diagram 186 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D LOOPS=1 \
+		-D GROUP=0 \
+		-D DIAG=186 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D OUTFILE=d186h0l1 \
+		-D GENERATEDERIVATIVES=1 \
+		-D DERIVATIVESATZERO=1 \
+		-D GENERATENINJATRIPLE=1 \
+		-D GENERATENINJADOUBLE=1 \
+		../codegen/golem.frm
+	@echo Form is optimizing loop diagram 186 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+		../codegen/finaloptimization.frm
+	@touch d186h0l1-stamp
+d186h0l1-stamp: d186h0l1.txt
+d186h0l1d.txt: d186h0l1.txt d186h0l1-stamp
+	@echo Form is generating loop diagram derivatives 186 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-w$(FORM_THREADS) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D RANK=5 \
+		-D DERIVATIVESATZERO=1 \
+                -D OUTSUFFIX=hh\
+		../codegen/derive.frm
+	@echo Form is optimizing loop diagram 186 rank 0 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D RANK=0 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 186 rank 1 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D RANK=1 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 186 rank 2 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D RANK=2 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 186 rank 3 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D RANK=3 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 186 rank 4 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D RANK=4 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+	@echo Form is optimizing loop diagram 186 rank 5 @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D RANK=5 \
+		-D GENERATEDERIVATIVES=1 \
+		../codegen/finaloptimization.frm
+d186h0l1.f90: d186h0l1.txt d186h0l1-stamp
+	@echo Python is processing loop diagram 186 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran.py \
+		-i $< \
+		--DIAGRAM=186 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2
+abbrevd186h0.f90: d186h0l1.f90
+d186h0l1d-stamp: d186h0l1d.txt
+	@touch d186h0l1d-stamp
+d186h0l1d.f90: d186h0l1d.txt d186h0l1d-stamp
+	@echo Python is processing derivative 186 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_d.py \
+		-i $< \
+		--DIAGRAM=186 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d186h0l14.txt : d186h0l1.txt d186h0l1d-stamp
+	@echo Form is optimizing loop diagram 186 for ninja @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		../codegen/ninja.frm
+	@: > d186h0l13.txt # makes sure the file is always created
+	@: > d186h0l12.txt # makes sure the file is always created
+	@: > d186h0l1mu2.txt # makes sure the file is always created
+	@echo Form is optimizing loop diagram 186 laurent index 31 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=31 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 186 laurent index 32 for triangles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=3 \
+		-D EXPANSIONID=32 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 186 laurent index 21 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=21 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 186 laurent index 22 for bubbles @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=2 \
+		-D EXPANSIONID=22 \
+		../codegen/ninjafinalopt.frm
+	@echo Form is optimizing loop diagram 186 mu expansion for boxes @ Helicity 0
+	@$(FORM) $(FORM_OPT) \
+		-D OUTFILE=d186h0l1 \
+		-D DIAG=186 \
+		-D LOOPSIZE=5 \
+		-D RANK=5 \
+		-D GLOOPSIZE=5 \
+		-D GRANK=5 \
+		-D EXPANSIONCUT=4 \
+		-D EXPANSIONID=Mu2 \
+		../codegen/ninjafinalopt.frm
+		@touch d186h0l13-stamp d186h0l12-stamp  d186h0l14-stamp
+
+d186h0l13.txt d186h0l12.txt : d186h0l14-stamp
+d186h0l13-stamp d186h0l12-stamp  d186h0l14-stamp: d186h0l14.txt
+d186h0l131.f90: d186h0l13.txt d186h0l13-stamp
+	@echo Python is processing ninja triangles expansion 186 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn3.py \
+		-i $< \
+		--DIAGRAM=186 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d186h0l132.f90: d186h0l12.txt d186h0l12-stamp
+	@echo Python is processing ninja bubbles expansion 186 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tn2.py \
+		-i $< \
+		--DIAGRAM=186 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+d186h0l121.f90: d186h0l14.txt d186h0l14-stamp
+	@echo Python is processing ninja mu expansion 186 @ Helicity 0
+	@$(PYTHON) ../codegen/buildfortran_tmu.py \
+		-i $< \
+		--DIAGRAM=186 \
+		--GROUP=11  \
+		--HELICITY=0 \
+		--QSIGN=+ \
+		--QSHIFT=k2 \
+		--RANK=5 \
+		--LOOPSIZE=5
+
+
+
+

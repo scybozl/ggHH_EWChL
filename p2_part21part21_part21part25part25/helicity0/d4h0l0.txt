@@ -1,0 +1,4 @@
+Id diag4  = 1/4*TR^-1*c2*es12*es23^-1*spae1k3*spbk3e1*spae2e3*spbe3e2*mdlGC6*
+      mdlGC31 - 1/4*TR^-1*c1*es12*es23^-1*spae1k3*spbk3e1*spae2e3*spbe3e2*
+      mdlGC6*mdlGC31;
+

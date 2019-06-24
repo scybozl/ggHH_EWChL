@@ -1,0 +1,135 @@
+#####Ninja21
+
+    acd56(1)=dotproduct(ninjaE3,spvae1e2);
+    acd56(2)=dotproduct(ninjaE3,spvae3e1);
+    acd56(3)=dotproduct(ninjaE3,spvae2e3);
+    acd56(4)=Wrapper(abb56,7);
+    acd56(5)=dotproduct(ninjaE3,spvae2e1);
+    acd56(6)=dotproduct(ninjaE3,spvae1e3);
+    acd56(7)=dotproduct(ninjaE3,spvae3e2);
+   acd56(8)=acd56(3)*acd56(2)*acd56(1);
+   acd56(9)=acd56(7)*acd56(6)*acd56(5);
+   acd56(8)=acd56(8) + acd56(9);
+   acd56(8)=acd56(4)*acd56(8);
+
+brack(ninjaidxt2x0mu0) =  0;
+
+brack(ninjaidxt1x0mu0) = acd56(8);
+
+brack(ninjaidxt1x1mu0) =  0;
+
+#####Ninja22
+
+    acd56(1)=dotproduct(ninjaA1,spvae3e1);
+    acd56(2)=dotproduct(ninjaE3,spvae2e3);
+    acd56(3)=dotproduct(ninjaE3,spvae1e2);
+    acd56(4)=Wrapper(abb56,7);
+    acd56(5)=dotproduct(ninjaA1,spvae2e3);
+    acd56(6)=dotproduct(ninjaE3,spvae3e1);
+    acd56(7)=dotproduct(ninjaA1,spvae1e3);
+    acd56(8)=dotproduct(ninjaE3,spvae3e2);
+    acd56(9)=dotproduct(ninjaE3,spvae2e1);
+    acd56(10)=dotproduct(ninjaA1,spvae3e2);
+    acd56(11)=dotproduct(ninjaE3,spvae1e3);
+    acd56(12)=dotproduct(ninjaA1,spvae1e2);
+    acd56(13)=dotproduct(ninjaA1,spvae2e1);
+    acd56(14)=dotproduct(ninjaA0,ninjaE3);
+    acd56(15)=Wrapper(abb56,30);
+    acd56(16)=Wrapper(abb56,27);
+    acd56(17)=Wrapper(abb56,25);
+    acd56(18)=Wrapper(abb56,9);
+    acd56(19)=dotproduct(ninjaA0,spvae3e1);
+    acd56(20)=dotproduct(ninjaA0,spvae2e3);
+    acd56(21)=dotproduct(ninjaA0,spvae1e3);
+    acd56(22)=dotproduct(ninjaA0,spvae3e2);
+    acd56(23)=dotproduct(ninjaA0,spvae1e2);
+    acd56(24)=dotproduct(ninjaA0,spvae2e1);
+    acd56(25)=Wrapper(abb56,4);
+    acd56(26)=Wrapper(abb56,15);
+    acd56(27)=dotproduct(ninjaE3,spvae2k1);
+    acd56(28)=Wrapper(abb56,29);
+    acd56(29)=dotproduct(ninjaE3,spvae1k2);
+    acd56(30)=Wrapper(abb56,34);
+    acd56(31)=dotproduct(ninjaE3,spvae1k3);
+    acd56(32)=Wrapper(abb56,31);
+    acd56(33)=dotproduct(ninjaE3,spvak1e2);
+    acd56(34)=Wrapper(abb56,16);
+    acd56(35)=dotproduct(ninjaE3,spvak2e1);
+    acd56(36)=Wrapper(abb56,19);
+    acd56(37)=dotproduct(ninjaE3,spvak3e1);
+    acd56(38)=Wrapper(abb56,26);
+    acd56(39)=Wrapper(abb56,5);
+    acd56(40)=Wrapper(abb56,6);
+    acd56(41)=Wrapper(abb56,18);
+    acd56(42)=Wrapper(abb56,35);
+    acd56(43)=Wrapper(abb56,32);
+    acd56(44)=Wrapper(abb56,14);
+    acd56(45)=Wrapper(abb56,23);
+    acd56(46)=Wrapper(abb56,28);
+   acd56(47)=acd56(9)*acd56(10);
+   acd56(48)=acd56(8)*acd56(13);
+   acd56(47)=acd56(47) + acd56(48);
+   acd56(47)=acd56(11)*acd56(47);
+   acd56(48)=acd56(3)*acd56(5);
+   acd56(49)=acd56(2)*acd56(12);
+   acd56(48)=acd56(48) + acd56(49);
+   acd56(48)=acd56(6)*acd56(48);
+   acd56(49)=acd56(8)*acd56(9);
+   acd56(50)=acd56(7)*acd56(49);
+   acd56(51)=acd56(2)*acd56(3);
+   acd56(52)=acd56(1)*acd56(51);
+   acd56(47)=acd56(48) + acd56(47) + acd56(50) + acd56(52);
+   acd56(47)=acd56(4)*acd56(47);
+   acd56(48)=acd56(37)*acd56(43);
+   acd56(50)=acd56(35)*acd56(42);
+   acd56(52)=acd56(33)*acd56(39);
+   acd56(53)=2*acd56(14);
+   acd56(54)=acd56(17)*acd56(53);
+   acd56(55)=acd56(9)*acd56(41);
+   acd56(56)=acd56(8)*acd56(40);
+   acd56(48)=acd56(56) + acd56(55) + acd56(54) + acd56(52) + acd56(48) + 
+   acd56(50);
+   acd56(48)=acd56(11)*acd56(48);
+   acd56(50)=acd56(31)*acd56(32);
+   acd56(52)=acd56(29)*acd56(30);
+   acd56(54)=acd56(27)*acd56(28);
+   acd56(55)=acd56(15)*acd56(53);
+   acd56(56)=acd56(3)*acd56(26);
+   acd56(57)=acd56(2)*acd56(25);
+   acd56(50)=acd56(57) + acd56(56) + acd56(55) + acd56(54) + acd56(50) + 
+   acd56(52);
+   acd56(50)=acd56(6)*acd56(50);
+   acd56(52)=acd56(31)*acd56(46);
+   acd56(54)=acd56(29)*acd56(45);
+   acd56(55)=acd56(27)*acd56(44);
+   acd56(56)=acd56(18)*acd56(53);
+   acd56(52)=acd56(56) + acd56(55) + acd56(52) + acd56(54);
+   acd56(52)=acd56(8)*acd56(52);
+   acd56(54)=acd56(37)*acd56(38);
+   acd56(55)=acd56(35)*acd56(36);
+   acd56(56)=acd56(33)*acd56(34);
+   acd56(53)=acd56(16)*acd56(53);
+   acd56(53)=acd56(53) + acd56(56) + acd56(54) + acd56(55);
+   acd56(53)=acd56(2)*acd56(53);
+   acd56(54)=acd56(9)*acd56(22);
+   acd56(55)=acd56(8)*acd56(24);
+   acd56(54)=acd56(54) + acd56(55);
+   acd56(54)=acd56(11)*acd56(54);
+   acd56(55)=acd56(3)*acd56(20);
+   acd56(56)=acd56(2)*acd56(23);
+   acd56(55)=acd56(55) + acd56(56);
+   acd56(55)=acd56(6)*acd56(55);
+   acd56(49)=acd56(21)*acd56(49);
+   acd56(51)=acd56(19)*acd56(51);
+   acd56(49)=acd56(55) + acd56(54) + acd56(49) + acd56(51);
+   acd56(49)=acd56(4)*acd56(49);
+   acd56(48)=acd56(49) + acd56(50) + acd56(48) + acd56(52) + acd56(53);
+
+brack(ninjaidxt0x0mu0) = acd56(48);
+
+brack(ninjaidxt0x0mu2) =  0;
+
+brack(ninjaidxt0x1mu0) = acd56(47);
+
+brack(ninjaidxt0x2mu0) =  0;
+

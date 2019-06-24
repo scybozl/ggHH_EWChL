@@ -1,0 +1,122 @@
+#####Ninja21
+
+
+brack(ninjaidxt2x0mu0) =  0;
+
+brack(ninjaidxt1x0mu0) =  0;
+
+brack(ninjaidxt1x1mu0) =  0;
+
+#####Ninja22
+
+    acd204(1)=dotproduct(ninjaA0,ninjaE3);
+    acd204(2)=dotproduct(ninjaE3,spvae2e3);
+    acd204(3)=Wrapper(abb204,95);
+    acd204(4)=dotproduct(ninjaE3,spvae3e2);
+    acd204(5)=Wrapper(abb204,89);
+    acd204(6)=dotproduct(ninjaE3,spvae3k1);
+    acd204(7)=Wrapper(abb204,10);
+    acd204(8)=dotproduct(ninjaE3,spvak2e1);
+    acd204(9)=Wrapper(abb204,32);
+    acd204(10)=dotproduct(ninjaE3,spvae1k2);
+    acd204(11)=Wrapper(abb204,39);
+    acd204(12)=dotproduct(ninjaE3,spval4e1);
+    acd204(13)=Wrapper(abb204,72);
+    acd204(14)=dotproduct(ninjaE3,spvae1l5);
+    acd204(15)=Wrapper(abb204,110);
+    acd204(16)=dotproduct(ninjaE3,spvae1k1);
+    acd204(17)=Wrapper(abb204,86);
+    acd204(18)=Wrapper(abb204,75);
+    acd204(19)=dotproduct(ninjaE3,spvae1l4);
+    acd204(20)=Wrapper(abb204,93);
+    acd204(21)=Wrapper(abb204,23);
+    acd204(22)=dotproduct(ninjaE3,spvak1e3);
+    acd204(23)=Wrapper(abb204,26);
+    acd204(24)=dotproduct(ninjaE3,spvak1e1);
+    acd204(25)=Wrapper(abb204,88);
+    acd204(26)=dotproduct(ninjaE3,spval5e1);
+    acd204(27)=Wrapper(abb204,116);
+    acd204(28)=Wrapper(abb204,84);
+    acd204(29)=Wrapper(abb204,82);
+    acd204(30)=Wrapper(abb204,21);
+    acd204(31)=Wrapper(abb204,49);
+    acd204(32)=Wrapper(abb204,56);
+    acd204(33)=Wrapper(abb204,38);
+    acd204(34)=Wrapper(abb204,119);
+    acd204(35)=Wrapper(abb204,55);
+    acd204(36)=dotproduct(ninjaE3,spvae1e2);
+    acd204(37)=dotproduct(ninjaE3,spvae3e1);
+    acd204(38)=Wrapper(abb204,99);
+    acd204(39)=Wrapper(abb204,15);
+    acd204(40)=Wrapper(abb204,20);
+    acd204(41)=Wrapper(abb204,91);
+    acd204(42)=Wrapper(abb204,65);
+    acd204(43)=Wrapper(abb204,117);
+    acd204(44)=Wrapper(abb204,101);
+    acd204(45)=Wrapper(abb204,76);
+    acd204(46)=Wrapper(abb204,73);
+    acd204(47)=dotproduct(ninjaE3,spvae2e1);
+    acd204(48)=dotproduct(ninjaE3,spvae1e3);
+   acd204(49)=acd204(26)*acd204(27);
+   acd204(50)=acd204(24)*acd204(25);
+   acd204(51)=acd204(22)*acd204(23);
+   acd204(52)=acd204(19)*acd204(20);
+   acd204(53)=acd204(10)*acd204(21);
+   acd204(54)=acd204(8)*acd204(18);
+   acd204(55)=2*acd204(1);
+   acd204(56)=acd204(5)*acd204(55);
+   acd204(49)=acd204(56) + acd204(54) + acd204(53) + acd204(52) + acd204(51)
+    + acd204(49) + acd204(50);
+   acd204(49)=acd204(49)*acd204(55);
+   acd204(50)=acd204(26)*acd204(43);
+   acd204(51)=acd204(24)*acd204(42);
+   acd204(52)=acd204(22)*acd204(41);
+   acd204(50)=acd204(52) + acd204(50) + acd204(51);
+   acd204(50)=acd204(19)*acd204(50);
+   acd204(51)=acd204(26)*acd204(46);
+   acd204(52)=acd204(24)*acd204(45);
+   acd204(53)=acd204(22)*acd204(44);
+   acd204(51)=acd204(53) + acd204(51) + acd204(52);
+   acd204(51)=acd204(10)*acd204(51);
+   acd204(52)=acd204(19)*acd204(39);
+   acd204(53)=acd204(10)*acd204(40);
+   acd204(52)=acd204(52) + acd204(53);
+   acd204(52)=acd204(8)*acd204(52);
+   acd204(53)= - acd204(38)*acd204(47)*acd204(48);
+   acd204(49)=acd204(49) + acd204(52) + acd204(51) + acd204(53) + acd204(50);
+   acd204(49)=acd204(4)*acd204(49);
+   acd204(50)=acd204(16)*acd204(17);
+   acd204(51)=acd204(14)*acd204(15);
+   acd204(52)=acd204(6)*acd204(7);
+   acd204(53)=acd204(12)*acd204(13);
+   acd204(54)=acd204(10)*acd204(11);
+   acd204(56)=acd204(8)*acd204(9);
+   acd204(57)=acd204(3)*acd204(55);
+   acd204(50)=acd204(57) + acd204(56) + acd204(54) + acd204(53) + acd204(52)
+    + acd204(50) + acd204(51);
+   acd204(50)=acd204(50)*acd204(55);
+   acd204(51)=acd204(16)*acd204(35);
+   acd204(52)=acd204(14)*acd204(34);
+   acd204(53)=acd204(6)*acd204(29);
+   acd204(54)=acd204(10)*acd204(33);
+   acd204(51)=acd204(54) + acd204(53) + acd204(51) + acd204(52);
+   acd204(51)=acd204(12)*acd204(51);
+   acd204(52)=acd204(16)*acd204(32);
+   acd204(53)=acd204(14)*acd204(31);
+   acd204(54)=acd204(6)*acd204(28);
+   acd204(55)= - acd204(10)*acd204(30);
+   acd204(52)=acd204(55) + acd204(54) + acd204(52) + acd204(53);
+   acd204(52)=acd204(8)*acd204(52);
+   acd204(53)= - acd204(38)*acd204(36)*acd204(37);
+   acd204(50)=acd204(50) + acd204(52) + acd204(53) + acd204(51);
+   acd204(50)=acd204(2)*acd204(50);
+   acd204(49)=acd204(49) + acd204(50);
+
+brack(ninjaidxt0x0mu0) = acd204(49);
+
+brack(ninjaidxt0x0mu2) =  0;
+
+brack(ninjaidxt0x1mu0) =  0;
+
+brack(ninjaidxt0x2mu0) =  0;
+

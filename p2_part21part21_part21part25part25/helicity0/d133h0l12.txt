@@ -1,0 +1,112 @@
+#####Ninja21
+
+
+brack(ninjaidxt2x0mu0) =  0;
+
+brack(ninjaidxt1x0mu0) =  0;
+
+brack(ninjaidxt1x1mu0) =  0;
+
+#####Ninja22
+
+    acd133(1)=dotproduct(ninjaA0,ninjaE3);
+    acd133(2)=Wrapper(abb133,11);
+    acd133(3)=dotproduct(ninjaE3,spvak2e1);
+    acd133(4)=Wrapper(abb133,21);
+    acd133(5)=dotproduct(ninjaE3,spvae1k2);
+    acd133(6)=Wrapper(abb133,19);
+    acd133(7)=dotproduct(ninjaE3,spvak1e1);
+    acd133(8)=Wrapper(abb133,9);
+    acd133(9)=dotproduct(ninjaE3,spvae1l5);
+    acd133(10)=Wrapper(abb133,10);
+    acd133(11)=dotproduct(ninjaE3,spvae1k1);
+    acd133(12)=Wrapper(abb133,16);
+    acd133(13)=dotproduct(ninjaE3,spvae1l4);
+    acd133(14)=Wrapper(abb133,46);
+    acd133(15)=dotproduct(ninjaE3,spvak3k1);
+    acd133(16)=Wrapper(abb133,43);
+    acd133(17)=dotproduct(ninjaE3,spvak2k1);
+    acd133(18)=Wrapper(abb133,25);
+    acd133(19)=dotproduct(ninjaE3,spvak1k3);
+    acd133(20)=Wrapper(abb133,52);
+    acd133(21)=dotproduct(ninjaE3,spvak1k2);
+    acd133(22)=Wrapper(abb133,28);
+    acd133(23)=dotproduct(ninjaE3,spval5e1);
+    acd133(24)=Wrapper(abb133,30);
+    acd133(25)=dotproduct(ninjaE3,spval4e1);
+    acd133(26)=Wrapper(abb133,51);
+    acd133(27)=Wrapper(abb133,7);
+    acd133(28)=Wrapper(abb133,26);
+    acd133(29)=Wrapper(abb133,24);
+    acd133(30)=Wrapper(abb133,22);
+    acd133(31)=Wrapper(abb133,23);
+    acd133(32)=Wrapper(abb133,29);
+    acd133(33)=Wrapper(abb133,27);
+    acd133(34)=Wrapper(abb133,38);
+    acd133(35)=Wrapper(abb133,39);
+    acd133(36)=Wrapper(abb133,42);
+    acd133(37)=Wrapper(abb133,33);
+    acd133(38)=Wrapper(abb133,35);
+    acd133(39)=dotproduct(ninjaE3,spvak3e1);
+    acd133(40)=dotproduct(ninjaE3,spvae1k3);
+    acd133(41)=Wrapper(abb133,17);
+    acd133(42)=Wrapper(abb133,55);
+    acd133(43)=Wrapper(abb133,32);
+    acd133(44)=Wrapper(abb133,31);
+    acd133(45)=Wrapper(abb133,48);
+    acd133(46)=Wrapper(abb133,47);
+   acd133(47)=acd133(21)*acd133(22);
+   acd133(48)=acd133(17)*acd133(18);
+   acd133(49)=acd133(23)*acd133(24);
+   acd133(50)=acd133(19)*acd133(20);
+   acd133(51)=acd133(15)*acd133(16);
+   acd133(52)=acd133(11)*acd133(12);
+   acd133(53)=acd133(9)*acd133(10);
+   acd133(54)=acd133(7)*acd133(8);
+   acd133(55)=acd133(25)*acd133(26);
+   acd133(56)=acd133(13)*acd133(14);
+   acd133(57)=acd133(5)*acd133(6);
+   acd133(58)=acd133(3)*acd133(4);
+   acd133(59)=2*acd133(1);
+   acd133(60)= - acd133(2)*acd133(59);
+   acd133(47)=acd133(60) + acd133(58) + acd133(57) + acd133(56) + acd133(55)
+    + acd133(54) + acd133(53) + acd133(52) + acd133(51) + acd133(50) + 
+   acd133(49) + acd133(47) + acd133(48);
+   acd133(47)=acd133(47)*acd133(59);
+   acd133(48)=acd133(15)*acd133(31);
+   acd133(49)=acd133(11)*acd133(29);
+   acd133(50)=acd133(9)*acd133(28);
+   acd133(51)=acd133(13)*acd133(30);
+   acd133(52)=acd133(5)*acd133(27);
+   acd133(48)=acd133(52) + acd133(51) + acd133(50) + acd133(48) + acd133(49);
+   acd133(48)=acd133(3)*acd133(48);
+   acd133(49)=acd133(17)*acd133(46);
+   acd133(50)=acd133(15)*acd133(45);
+   acd133(51)=acd133(11)*acd133(38);
+   acd133(52)=acd133(9)*acd133(37);
+   acd133(49)=acd133(52) + acd133(51) + acd133(49) + acd133(50);
+   acd133(49)=acd133(25)*acd133(49);
+   acd133(50)=acd133(21)*acd133(43);
+   acd133(51)=acd133(23)*acd133(44);
+   acd133(52)=acd133(19)*acd133(42);
+   acd133(53)=acd133(7)*acd133(36);
+   acd133(50)=acd133(53) + acd133(52) + acd133(50) + acd133(51);
+   acd133(50)=acd133(13)*acd133(50);
+   acd133(51)=acd133(23)*acd133(34);
+   acd133(52)=acd133(19)*acd133(33);
+   acd133(53)=acd133(7)*acd133(32);
+   acd133(54)=acd133(25)*acd133(35);
+   acd133(51)=acd133(54) + acd133(53) + acd133(51) + acd133(52);
+   acd133(51)=acd133(5)*acd133(51);
+   acd133(52)=acd133(39)*acd133(40)*acd133(41);
+   acd133(47)=acd133(47) + acd133(48) + acd133(51) + acd133(50) + acd133(52)
+    + acd133(49);
+
+brack(ninjaidxt0x0mu0) = acd133(47);
+
+brack(ninjaidxt0x0mu2) =  0;
+
+brack(ninjaidxt0x1mu0) =  0;
+
+brack(ninjaidxt0x2mu0) =  0;
+

@@ -1,0 +1,156 @@
+#####Derive0
+
+    acd34(1)=dotproduct(qshift,qshift);
+    acd34(2)=Wrapper(abb34,5);
+    acd34(3)=dotproduct(qshift,spvak1k3);
+    acd34(4)=Wrapper(abb34,12);
+    acd34(5)=dotproduct(qshift,spvak2k3);
+    acd34(6)=Wrapper(abb34,20);
+    acd34(7)=dotproduct(qshift,spvak3k1);
+    acd34(8)=Wrapper(abb34,16);
+    acd34(9)=dotproduct(qshift,spvak3k2);
+    acd34(10)=Wrapper(abb34,19);
+    acd34(11)=dotproduct(qshift,spvak1e3);
+    acd34(12)=dotproduct(qshift,spvae3k1);
+    acd34(13)=Wrapper(abb34,18);
+    acd34(14)=Wrapper(abb34,9);
+    acd34(15)=Wrapper(abb34,13);
+    acd34(16)=dotproduct(qshift,spvak2e3);
+    acd34(17)=dotproduct(qshift,spvae3k2);
+    acd34(18)=Wrapper(abb34,17);
+    acd34(19)=Wrapper(abb34,15);
+    acd34(20)=dotproduct(qshift,spvak3e1);
+    acd34(21)=Wrapper(abb34,11);
+    acd34(22)=dotproduct(qshift,spvae1k3);
+    acd34(23)=Wrapper(abb34,10);
+    acd34(24)=dotproduct(qshift,spvae1e3);
+    acd34(25)=dotproduct(qshift,spvae3e1);
+    acd34(26)=Wrapper(abb34,8);
+    acd34(27)=Wrapper(abb34,7);
+    acd34(28)=Wrapper(abb34,6);
+    acd34(29)=Wrapper(abb34,4);
+   acd34(30)=acd34(13)*acd34(11);
+   acd34(30)= - acd34(15) + acd34(30);
+   acd34(30)=acd34(12)*acd34(30);
+   acd34(31)= - acd34(16)*acd34(13);
+   acd34(31)= - acd34(19) + acd34(31);
+   acd34(31)=acd34(17)*acd34(31);
+   acd34(32)=acd34(26)*acd34(24);
+   acd34(32)= - acd34(28) + acd34(32);
+   acd34(32)=acd34(25)*acd34(32);
+   acd34(33)=acd34(2)*acd34(1);
+   acd34(34)= - acd34(4)*acd34(3);
+   acd34(35)= - acd34(6)*acd34(5);
+   acd34(36)= - acd34(8)*acd34(7);
+   acd34(37)= - acd34(10)*acd34(9);
+   acd34(38)= - acd34(14)*acd34(11);
+   acd34(39)= - acd34(18)*acd34(16);
+   acd34(40)= - acd34(21)*acd34(20);
+   acd34(41)= - acd34(23)*acd34(22);
+   acd34(42)= - acd34(27)*acd34(24);
+
+brack = acd34(29) + acd34(30) + acd34(31) + acd34(32) + acd34(33) + acd34(34)
+       + acd34(35) + acd34(36) + acd34(37) + acd34(38) + acd34(39) + acd34(40)
+       + acd34(41) + acd34(42);
+
+#####Derive1
+
+    acd34(1)=SUBSCRIPT(qshift,iv1);
+    acd34(2)=Wrapper(abb34,5);
+    acd34(3)=SUBSCRIPT(spvak1k3,iv1);
+    acd34(4)=Wrapper(abb34,12);
+    acd34(5)=SUBSCRIPT(spvak2k3,iv1);
+    acd34(6)=Wrapper(abb34,20);
+    acd34(7)=SUBSCRIPT(spvak3k1,iv1);
+    acd34(8)=Wrapper(abb34,16);
+    acd34(9)=SUBSCRIPT(spvak3k2,iv1);
+    acd34(10)=Wrapper(abb34,19);
+    acd34(11)=SUBSCRIPT(spvak1e3,iv1);
+    acd34(12)=dotproduct(qshift,spvae3k1);
+    acd34(13)=Wrapper(abb34,18);
+    acd34(14)=Wrapper(abb34,9);
+    acd34(15)=SUBSCRIPT(spvae3k1,iv1);
+    acd34(16)=dotproduct(qshift,spvak1e3);
+    acd34(17)=Wrapper(abb34,13);
+    acd34(18)=SUBSCRIPT(spvak2e3,iv1);
+    acd34(19)=dotproduct(qshift,spvae3k2);
+    acd34(20)=Wrapper(abb34,17);
+    acd34(21)=SUBSCRIPT(spvae3k2,iv1);
+    acd34(22)=dotproduct(qshift,spvak2e3);
+    acd34(23)=Wrapper(abb34,15);
+    acd34(24)=SUBSCRIPT(spvak3e1,iv1);
+    acd34(25)=Wrapper(abb34,11);
+    acd34(26)=SUBSCRIPT(spvae1k3,iv1);
+    acd34(27)=Wrapper(abb34,10);
+    acd34(28)=SUBSCRIPT(spvae1e3,iv1);
+    acd34(29)=dotproduct(qshift,spvae3e1);
+    acd34(30)=Wrapper(abb34,8);
+    acd34(31)=Wrapper(abb34,7);
+    acd34(32)=SUBSCRIPT(spvae3e1,iv1);
+    acd34(33)=dotproduct(qshift,spvae1e3);
+    acd34(34)=Wrapper(abb34,6);
+   acd34(35)= - acd34(12)*acd34(11);
+   acd34(36)= - acd34(16)*acd34(15);
+   acd34(37)=acd34(19)*acd34(18);
+   acd34(38)=acd34(22)*acd34(21);
+   acd34(35)=acd34(38) + acd34(37) + acd34(36) + acd34(35);
+   acd34(35)=acd34(13)*acd34(35);
+   acd34(36)= - acd34(29)*acd34(30);
+   acd34(36)=acd34(31) + acd34(36);
+   acd34(36)=acd34(28)*acd34(36);
+   acd34(37)= - acd34(33)*acd34(30);
+   acd34(37)=acd34(34) + acd34(37);
+   acd34(37)=acd34(32)*acd34(37);
+   acd34(38)=acd34(2)*acd34(1);
+   acd34(39)=acd34(4)*acd34(3);
+   acd34(40)=acd34(6)*acd34(5);
+   acd34(41)=acd34(8)*acd34(7);
+   acd34(42)=acd34(10)*acd34(9);
+   acd34(43)=acd34(14)*acd34(11);
+   acd34(44)=acd34(17)*acd34(15);
+   acd34(45)=acd34(20)*acd34(18);
+   acd34(46)=acd34(23)*acd34(21);
+   acd34(47)=acd34(25)*acd34(24);
+   acd34(48)=acd34(27)*acd34(26);
+
+brack = acd34(35) + acd34(36) + acd34(37) - 2*acd34(38) + acd34(39) + 
+      acd34(40) + acd34(41) + acd34(42) + acd34(43) + acd34(44) + acd34(45) + 
+      acd34(46) + acd34(47) + acd34(48);
+
+#####Derive2
+
+    acd34(1)=d(iv1,iv2);
+    acd34(2)=Wrapper(abb34,5);
+    acd34(3)=SUBSCRIPT(spvak1e3,iv1);
+    acd34(4)=SUBSCRIPT(spvae3k1,iv2);
+    acd34(5)=Wrapper(abb34,18);
+    acd34(6)=SUBSCRIPT(spvak1e3,iv2);
+    acd34(7)=SUBSCRIPT(spvae3k1,iv1);
+    acd34(8)=SUBSCRIPT(spvak2e3,iv1);
+    acd34(9)=SUBSCRIPT(spvae3k2,iv2);
+    acd34(10)=SUBSCRIPT(spvak2e3,iv2);
+    acd34(11)=SUBSCRIPT(spvae3k2,iv1);
+    acd34(12)=SUBSCRIPT(spvae1e3,iv1);
+    acd34(13)=SUBSCRIPT(spvae3e1,iv2);
+    acd34(14)=Wrapper(abb34,8);
+    acd34(15)=SUBSCRIPT(spvae1e3,iv2);
+    acd34(16)=SUBSCRIPT(spvae3e1,iv1);
+   acd34(17)=acd34(4)*acd34(3);
+   acd34(18)=acd34(7)*acd34(6);
+   acd34(19)= - acd34(9)*acd34(8);
+   acd34(20)= - acd34(11)*acd34(10);
+   acd34(17)=acd34(20) + acd34(19) + acd34(18) + acd34(17);
+   acd34(17)=acd34(5)*acd34(17);
+   acd34(18)=acd34(13)*acd34(12);
+   acd34(19)=acd34(16)*acd34(15);
+   acd34(18)=acd34(19) + acd34(18);
+   acd34(18)=acd34(14)*acd34(18);
+   acd34(19)=acd34(2)*acd34(1);
+
+brack = acd34(17) + acd34(18) + 2*acd34(19);
+
+#####Derive3
+
+
+brack =  0;
+

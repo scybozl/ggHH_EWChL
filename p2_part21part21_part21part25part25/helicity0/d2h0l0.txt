@@ -1,0 +1,10 @@
+Id diag2  =  - 1/4*TR^-1*c2*es12^-1*spak1e2*spbe2k1*spak1e3*spbe3k1*spae1k3*
+      spbk3e1*mdlGC6*mdlGC31 + 1/4*TR^-1*c2*es12^-1*es23*spak1e3*spbe3k1*
+      spae1e2*spbe2e1*mdlGC6*mdlGC31 + 1/4*TR^-1*c2*spak1e2*spbe2k1*spae1e3*
+      spbe3e1*mdlGC6*mdlGC31 - 1/4*TR^-1*c2*es45*es12^-1*spak1e2*spbe2k1*
+      spae1e3*spbe3e1*mdlGC6*mdlGC31 + 1/4*TR^-1*c1*es12^-1*spak1e2*spbe2k1*
+      spak1e3*spbe3k1*spae1k3*spbk3e1*mdlGC6*mdlGC31 - 1/4*TR^-1*c1*es12^-1*
+      es23*spak1e3*spbe3k1*spae1e2*spbe2e1*mdlGC6*mdlGC31 - 1/4*TR^-1*c1*
+      spak1e2*spbe2k1*spae1e3*spbe3e1*mdlGC6*mdlGC31 + 1/4*TR^-1*c1*es45*
+      es12^-1*spak1e2*spbe2k1*spae1e3*spbe3e1*mdlGC6*mdlGC31;
+

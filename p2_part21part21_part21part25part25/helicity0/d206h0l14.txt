@@ -1,0 +1,14 @@
+#####NinjaMu2
+
+    acd206(1)=dotproduct(ninjaA0,ninjaA0);
+    acd206(2)=dotproduct(ninjaA0,spvae3e2);
+    acd206(3)=Wrapper(abb206,101);
+    acd206(4)=dotproduct(ninjaA0,spvae2e3);
+    acd206(5)=Wrapper(abb206,103);
+   acd206(6)=acd206(3)*acd206(2);
+   acd206(7)=acd206(5)*acd206(4);
+   acd206(6)=acd206(6) + acd206(7);
+   acd206(6)=acd206(6)*acd206(1)^2;
+
+brack(ninjaidxt0) = acd206(6);
+
