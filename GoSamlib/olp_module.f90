@@ -39,6 +39,13 @@ contains
            & p2_part21part21_part21part25part25_PSP_chk_th2 => PSP_chk_th2, &
            & p2_part21part21_part21part25part25_PSP_chk_th3 => PSP_chk_th3, &
            & p2_part21part21_part21part25part25_PSP_chk_kfactor => PSP_chk_kfactor
+      use p3_part1part21_part1part25part25_matrix, only: p3_part1part21_part1part25part25_initgolem => initgolem
+      use p3_part1part21_part1part25part25_config, only: p3_part1part21_part1part25part25_PSP_rescue => PSP_rescue, &
+           & p3_part1part21_part1part25part25_PSP_verbosity => PSP_verbosity, &
+           & p3_part1part21_part1part25part25_PSP_chk_th1 => PSP_chk_th1, &
+           & p3_part1part21_part1part25part25_PSP_chk_th2 => PSP_chk_th2, &
+           & p3_part1part21_part1part25part25_PSP_chk_th3 => PSP_chk_th3, &
+           & p3_part1part21_part1part25part25_PSP_chk_kfactor => PSP_chk_kfactor
 
       implicit none
       character(kind=c_char,len=1), intent(in) :: contract_file_name

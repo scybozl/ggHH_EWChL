@@ -1,0 +1,73 @@
+#####Derive0
+
+    acd11(1)=dotproduct(qshift,qshift);
+    acd11(2)=Wrapper(abb11,6);
+    acd11(3)=dotproduct(qshift,spvak1k2);
+    acd11(4)=Wrapper(abb11,5);
+    acd11(5)=dotproduct(qshift,spvak2k3);
+    acd11(6)=Wrapper(abb11,10);
+    acd11(7)=dotproduct(qshift,spvak1e2);
+    acd11(8)=dotproduct(qshift,spvae2k3);
+    acd11(9)=Wrapper(abb11,4);
+    acd11(10)=Wrapper(abb11,8);
+    acd11(11)=Wrapper(abb11,12);
+    acd11(12)=Wrapper(abb11,11);
+   acd11(13)=acd11(9)*acd11(7);
+   acd11(13)= - acd11(11) + acd11(13);
+   acd11(13)=acd11(8)*acd11(13);
+   acd11(14)=acd11(2)*acd11(1);
+   acd11(15)= - acd11(4)*acd11(3);
+   acd11(16)= - acd11(6)*acd11(5);
+   acd11(17)= - acd11(10)*acd11(7);
+
+brack = acd11(12) + acd11(13) + acd11(14) + acd11(15) + acd11(16) + acd11(17);
+
+#####Derive1
+
+    acd11(1)=SUBSCRIPT(qshift,iv1);
+    acd11(2)=Wrapper(abb11,6);
+    acd11(3)=SUBSCRIPT(spvak1k2,iv1);
+    acd11(4)=Wrapper(abb11,5);
+    acd11(5)=SUBSCRIPT(spvak2k3,iv1);
+    acd11(6)=Wrapper(abb11,10);
+    acd11(7)=SUBSCRIPT(spvak1e2,iv1);
+    acd11(8)=dotproduct(qshift,spvae2k3);
+    acd11(9)=Wrapper(abb11,4);
+    acd11(10)=Wrapper(abb11,8);
+    acd11(11)=SUBSCRIPT(spvae2k3,iv1);
+    acd11(12)=dotproduct(qshift,spvak1e2);
+    acd11(13)=Wrapper(abb11,12);
+   acd11(14)=acd11(8)*acd11(9);
+   acd11(14)= - acd11(10) + acd11(14);
+   acd11(14)=acd11(7)*acd11(14);
+   acd11(15)=acd11(12)*acd11(9);
+   acd11(15)= - acd11(13) + acd11(15);
+   acd11(15)=acd11(11)*acd11(15);
+   acd11(16)=acd11(2)*acd11(1);
+   acd11(17)= - acd11(4)*acd11(3);
+   acd11(18)= - acd11(6)*acd11(5);
+
+brack = acd11(14) + acd11(15) + 2*acd11(16) + acd11(17) + acd11(18);
+
+#####Derive2
+
+    acd11(1)=d(iv1,iv2);
+    acd11(2)=Wrapper(abb11,6);
+    acd11(3)=SUBSCRIPT(spvak1e2,iv1);
+    acd11(4)=SUBSCRIPT(spvae2k3,iv2);
+    acd11(5)=Wrapper(abb11,4);
+    acd11(6)=SUBSCRIPT(spvak1e2,iv2);
+    acd11(7)=SUBSCRIPT(spvae2k3,iv1);
+   acd11(8)=acd11(4)*acd11(3);
+   acd11(9)=acd11(7)*acd11(6);
+   acd11(8)=acd11(9) + acd11(8);
+   acd11(8)=acd11(5)*acd11(8);
+   acd11(9)=acd11(2)*acd11(1);
+
+brack = acd11(8) + 2*acd11(9);
+
+#####Derive3
+
+
+brack =  0;
+

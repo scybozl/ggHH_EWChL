@@ -1,0 +1,16 @@
+#####Abbreviations
+
+    abb(1)=1/( - mdlMh^2 + es45);
+    abb(2)=1/( - es23 - es12 + es45);
+   abb(3)= - spak1k2*spae2k3*spbk3k2;
+   abb(4)=es23 + es12;
+   abb(4)= - spak1e2*abb(4);
+   abb(3)=abb(4) + abb(3);
+   abb(4)=mdlGC38*abb(1)*mdlGC43;
+   abb(5)=mdlGC31*i_;
+   abb(4)=abb(4) - abb(5);
+   abb(3)=1/2*abb(2)*mdlGC7*spbk3e2*abb(4)*abb(3);
+
+#####Diagrams
+amplitude = c1*abb(3);
+

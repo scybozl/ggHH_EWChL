@@ -1,0 +1,57 @@
+*Abbreviations for diagram d11h2l1. Generated on Wed Jul  3 12:27:56 2019
+
+#####Abbreviations
+
+    abb11(1)=1/( - mdlMh^2 + es45);
+    abb11(2)=1/( - es23 - es12 + es45);
+    abb11(3)=csqrt(mdlMT^2);
+   abb11(4)=abb11(2)*abb11(3);
+   abb11(5)=2*abb11(4);
+   abb11(6)=mdlGC7^3*c1*TR;
+   abb11(5)=abb11(5)*abb11(6);
+   abb11(7)=mdlGC46*i_;
+   abb11(8)=mdlGC43*abb11(1)*mdlGC45;
+   abb11(7)=abb11(7) - abb11(8);
+   abb11(8)=abb11(7)*spbk3e2*spak1e2;
+   abb11(9)=abb11(8)*abb11(5);
+   abb11(10)=spae2k2*spbk3k2;
+   abb11(11)=spak1k3*abb11(10)*spbk3e2;
+   abb11(12)=spbk2e2*spak1k2;
+   abb11(13)=spbk3k1*abb11(12)*spak1e2;
+   abb11(11)=abb11(11) + abb11(13);
+   abb11(11)= - abb11(11)*abb11(7);
+   abb11(13)=abb11(8)*abb11(3)^2;
+   abb11(11)=2*abb11(13) + abb11(11);
+   abb11(11)=abb11(11)*abb11(5);
+   abb11(4)=abb11(6)*abb11(4);
+   abb11(6)=4*abb11(8)*abb11(4);
+   abb11(8)= - abb11(7)*abb11(5);
+   abb11(12)= - abb11(12)*abb11(8);
+   abb11(8)=abb11(10)*abb11(8);
+   abb11(4)= - 8*abb11(7)*abb11(4);
+   abb11(10)= - abb11(5)*abb11(7)*spak1e2*spbk2e2;
+   abb11(5)=abb11(5)*abb11(7)*spbk3e2*spae2k2;
+
+#####R2
+
+R2d11 = abb11(9);
+
+#####Diagram
+
+    acc11(1)=abb11(4);
+    acc11(2)=abb11(5);
+    acc11(3)=abb11(6);
+    acc11(4)=abb11(8);
+    acc11(5)=abb11(10);
+    acc11(6)=abb11(11);
+    acc11(7)=abb11(12);
+   acc11(8)=acc11(1)*Qspvae2k3;
+   acc11(8)=acc11(8) + acc11(4);
+   acc11(8)=Qspvak1e2*acc11(8);
+   acc11(9)=acc11(7)*Qspvae2k3;
+   acc11(10)=Qspvak2k3*acc11(5);
+   acc11(11)=Qspvak1k2*acc11(2);
+   acc11(12)=QspQ*acc11(3);
+
+brack = acc11(6) + acc11(8) + acc11(9) + acc11(10) + acc11(11) + acc11(12);
+

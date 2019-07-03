@@ -1,0 +1,15 @@
+
+OBJEXT ?=o
+OBJEXTG=$(OBJEXT)
+# Module Dependencies:
+p4_part21part1_part1part25part25_matrix.$(OBJEXTG): matrix.$(OBJEXTG)
+p5_partm1part21_partm1part25part25_matrix.$(OBJEXTG): matrix.$(OBJEXTG)
+p6_part21partm1_partm1part25part25_matrix.$(OBJEXTG): matrix.$(OBJEXTG)
+p7_part1partm1_part21part25part25_matrix.$(OBJEXTG): matrix.$(OBJEXTG)
+p3_part1part21_part1part25part25_test.mod: test.$(OBJEXTG)
+p3_part1part21_part1part25part25_matrix.mod: matrix.$(OBJEXTG)
+p4_part21part1_part1part25part25_matrix.mod: p4_part21part1_part1part25part25_matrix.$(OBJEXTG)
+p5_partm1part21_partm1part25part25_matrix.mod: p5_partm1part21_partm1part25part25_matrix.$(OBJEXTG)
+p6_part21partm1_partm1part25part25_matrix.mod: p6_part21partm1_partm1part25part25_matrix.$(OBJEXTG)
+p7_part1partm1_part21part25part25_matrix.mod: p7_part1partm1_part21part25part25_matrix.$(OBJEXTG)
+test.$(OBJEXT): matrix.$(OBJEXT)

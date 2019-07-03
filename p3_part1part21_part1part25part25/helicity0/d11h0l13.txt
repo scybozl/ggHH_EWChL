@@ -1,0 +1,65 @@
+#####Ninja31
+
+    acd11(1)=dotproduct(ninjaE3,spvae2k1);
+    acd11(2)=dotproduct(ninjaE3,spvak3e2);
+    acd11(3)=Wrapper(abb11,4);
+   acd11(4)=acd11(3)*acd11(2)*acd11(1);
+
+brack(ninjaidxt3mu0) =   0;
+
+brack(ninjaidxt2mu0) =  acd11(4);
+
+#####Ninja32
+
+    acd11(1)=dotproduct(ninjaE3,spvae2k1);
+    acd11(2)=dotproduct(ninjaE4,spvak3e2);
+    acd11(3)=Wrapper(abb11,4);
+    acd11(4)=dotproduct(ninjaE3,spvak3e2);
+    acd11(5)=dotproduct(ninjaE4,spvae2k1);
+    acd11(6)=Wrapper(abb11,6);
+    acd11(7)=dotproduct(ninjaA,ninjaE3);
+    acd11(8)=dotproduct(ninjaA,spvae2k1);
+    acd11(9)=dotproduct(ninjaA,spvak3e2);
+    acd11(10)=Wrapper(abb11,8);
+    acd11(11)=Wrapper(abb11,10);
+    acd11(12)=dotproduct(ninjaE3,spvak2k1);
+    acd11(13)=Wrapper(abb11,5);
+    acd11(14)=dotproduct(ninjaE3,spvak3k2);
+    acd11(15)=Wrapper(abb11,12);
+    acd11(16)=dotproduct(ninjaA,ninjaA);
+    acd11(17)=dotproduct(ninjaA,spvak2k1);
+    acd11(18)=dotproduct(ninjaA,spvak3k2);
+    acd11(19)=Wrapper(abb11,11);
+   acd11(20)=acd11(4)*acd11(3);
+   acd11(21)=acd11(20)*acd11(5);
+   acd11(22)=acd11(1)*acd11(3);
+   acd11(23)=acd11(22)*acd11(2);
+   acd11(21)=acd11(6) + acd11(21) + acd11(23);
+   acd11(20)=acd11(8)*acd11(20);
+   acd11(22)=acd11(9)*acd11(22);
+   acd11(23)=acd11(10)*acd11(1);
+   acd11(24)=acd11(11)*acd11(4);
+   acd11(25)=acd11(7)*acd11(6);
+   acd11(26)=acd11(12)*acd11(13);
+   acd11(27)=acd11(14)*acd11(15);
+   acd11(20)=acd11(27) + acd11(26) + 2*acd11(25) + acd11(24) + acd11(23) + 
+   acd11(20) + acd11(22);
+   acd11(22)=ninjaP*acd11(21);
+   acd11(23)=acd11(9)*acd11(3);
+   acd11(23)=acd11(10) + acd11(23);
+   acd11(23)=acd11(8)*acd11(23);
+   acd11(24)=acd11(11)*acd11(9);
+   acd11(25)=acd11(16)*acd11(6);
+   acd11(26)=acd11(17)*acd11(13);
+   acd11(27)=acd11(18)*acd11(15);
+   acd11(22)=acd11(19) + acd11(27) + acd11(26) + acd11(25) + acd11(24) + 
+   acd11(22) + acd11(23);
+
+brack(ninjaidxt1mu0) =  acd11(20);
+
+brack(ninjaidxt1mu2) =   0;
+
+brack(ninjaidxt0mu0) =  acd11(22);
+
+brack(ninjaidxt0mu2) =  acd11(21);
+
