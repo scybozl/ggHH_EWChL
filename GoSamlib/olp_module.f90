@@ -135,7 +135,7 @@ contains
       ! p0_part21part21_part25part25_PSP_chk_th3 = PSP_chk_th3
       ! p0_part21part21_part25part25_PSP_chk_kfactor = PSP_chk_kfactor
       if(stage.lt.0) then
-         call p0_part21part21_part25part25_initgolem(.false.)
+         call p0_part21part21_part25part25_initgolem(.true.)
          call pb_part21part21_part25part25_initgolem(.false.)
          call p2_part21part21_part25part25part21_initgolem(.false.)
          call p9_part21part21_part25part25part21_initgolem(.false.)
@@ -150,7 +150,7 @@ contains
 !         call p7_part1partm1_part25part25part21_initgolem(.false.)
 !         call p14_part1partm1_part25part25part21_initgolem(.false.)
       else
-         call p0_part21part21_part25part25_initgolem(.false.,stage,rndseed)
+         call p0_part21part21_part25part25_initgolem(.true.,stage,rndseed)
          call pb_part21part21_part25part25_initgolem(.false.,stage,rndseed)
          call p2_part21part21_part25part25part21_initgolem(.false.,stage,rndseed)
          call p9_part21part21_part25part25part21_initgolem(.false.,stage,rndseed)
@@ -292,60 +292,84 @@ contains
       select case(label)
       ! Born 1
       case(0)
-              call eval0(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval0(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! Born 2
       case(1)
-              call eval1(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval1(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! gg -> ghh 1
       case(2)
-              call eval2(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval2(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! gg -> ghh 2
       case(9)
-              call eval9(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval9(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! dg -> dhh 1
       case(3)
-              call eval3(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval3(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! dg -> dhh 2
       case(10)
-              call eval10(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval10(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! gd -> dhh 1
       case(4)
-              call eval4(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval4(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! gd -> dhh 2
       case(11)
-              call eval11(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval11(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! db g -> db h h 1
       case(5)
-              call eval5(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval5(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! db g -> db h h 2
       case(12)
-              call eval12(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval12(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! g db -> db h h 1
       case(6)
-              call eval6(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval6(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! g db -> db h h 2
       case(13)
-              call eval13(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval13(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! d db -> h h g
       case(7)
-              call eval7(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval7(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       ! d db -> h h g 2
       case(14)
-              call eval14(momenta(1:20), mu, parameters, res, blha1_mode=.true.)
+              call eval14(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
+      ! db d -> h h g 1
+      case(8)
+              call eval8(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
+      ! d db -> h h g 2
+      case(15)
+              call eval15(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              res(1:3) = alpha_s * one_over_2pi * res(1:3)
+              write(*,*) 'EVAL2 = ', res(1:3)
       case default
          res(:) = 0.0d0
       end select
@@ -369,21 +393,37 @@ contains
 
       select case(label)
       case(0)
-              call eval0(momenta(1:20), mu, parameters, res, acc)
+              call eval0(momenta(1:25), mu, parameters, res, acc)
       case(1)
-              call eval1(momenta(1:20), mu, parameters, res, acc)
+              call eval1(momenta(1:25), mu, parameters, res, acc)
       case(2)
-              call eval2(momenta(1:20), mu, parameters, res, acc)
+              call eval2(momenta(1:25), mu, parameters, res, acc)
       case(3)
-              call eval3(momenta(1:20), mu, parameters, res, acc)
+              call eval3(momenta(1:25), mu, parameters, res, acc)
       case(4)
-              call eval4(momenta(1:20), mu, parameters, res, acc)
+              call eval4(momenta(1:25), mu, parameters, res, acc)
       case(5)
-              call eval5(momenta(1:20), mu, parameters, res, acc)
+              call eval5(momenta(1:25), mu, parameters, res, acc)
       case(6)
-              call eval6(momenta(1:20), mu, parameters, res, acc)
+              call eval6(momenta(1:25), mu, parameters, res, acc)
       case(7)
-              call eval7(momenta(1:20), mu, parameters, res, acc)
+              call eval7(momenta(1:25), mu, parameters, res, acc)
+      case(8)
+              call eval8(momenta(1:25), mu, parameters, res, acc)
+      case(9)
+              call eval9(momenta(1:25), mu, parameters, res, acc)
+      case(10)
+              call eval10(momenta(1:25), mu, parameters, res, acc)
+      case(11)
+              call eval11(momenta(1:25), mu, parameters, res, acc)
+      case(12)
+              call eval12(momenta(1:25), mu, parameters, res, acc)
+      case(13)
+              call eval13(momenta(1:25), mu, parameters, res, acc)
+      case(14)
+              call eval14(momenta(1:25), mu, parameters, res, acc)
+      case(15)
+              call eval15(momenta(1:25), mu, parameters, res, acc)
       case default
          res(:) = 0.0d0
       end select
@@ -398,21 +438,13 @@ contains
       use p9_part21part21_part25part25part21_matrix, only: p9_part21part21_part25part25part21_exitgolem => exitgolem
       use p3_part1part21_part25part25part1_matrix, only: p3_part1part21_part25part25part1_exitgolem => exitgolem
       use p10_part1part21_part25part25part1_matrix, only: p10_part1part21_part25part25part1_exitgolem => exitgolem
-      use p4_part21part1_part25part25part1_matrix, only: p4_part21part1_part25part25part1_exitgolem => exitgolem
-      use p11_part21part1_part25part25part1_matrix, only: p11_part21part1_part25part25part1_exitgolem => exitgolem
-      use p5_partm1part21_part25part25partm1_matrix, only: p5_partm1part21_part25part25partm1_exitgolem => exitgolem
-      use p12_partm1part21_part25part25partm1_matrix, only: p12_partm1part21_part25part25partm1_exitgolem => exitgolem
       implicit none
-      call p0_part21part21_part25part25_exitgolem(.false.)
+      call p0_part21part21_part25part25_exitgolem(.true.)
       call pb_part21part21_part25part25_exitgolem(.false.)
       call p2_part21part21_part25part25part21_exitgolem(.false.)
       call p9_part21part21_part25part25part21_exitgolem(.false.)
       call p3_part1part21_part25part25part1_exitgolem(.false.)
       call p10_part1part21_part25part25part1_exitgolem(.false.)
-      call p4_part21part1_part25part25part1_exitgolem(.false.)
-      call p11_part21part1_part25part25part1_exitgolem(.false.)
-!      call p6_part21partm1_partm1part25part25_exitgolem(.false.)
-!      call p7_part1partm1_part21part25part25_exitgolem(.true.)
    end subroutine OLP_Finalize
 
    subroutine     OLP_Option(line,stat) &
@@ -744,23 +776,22 @@ contains
 
    end subroutine eval2
    !---#] subroutine eval2 :
-
    !---#[ subroutine eval3 :
    subroutine     eval3(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
-      use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
+      use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p3_part1part21_part25part25part1_model, only: parseline
       use p3_part1part21_part25part25part1_kinematics, only: boost_to_cms
       use p3_part1part21_part25part25part1_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p3_part1part21_part25part25part1_groups, only: ninja_exit
+      use p3_part1part21_part25part25part1_groups, only: ninja_exit, quadninja_exit
 
       implicit none
-      real(kind=c_double), dimension(20), intent(in) :: momenta
+      real(kind=c_double), dimension(25), intent(in) :: momenta
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
 
-      real(kind=ki), dimension(4,4) :: vecs
+      real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
       real(kind=c_double), optional :: acc
       logical, optional :: blha1_mode
@@ -787,6 +818,7 @@ contains
 
       call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
       call ninja_exit()
+      call quadninja_exit()
       if (ok) then
          !
       else
@@ -795,7 +827,7 @@ contains
       if(present(acc)) then
          acc=10.0_ki**(-prec) ! point accuracy
       else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
+         if(prec.lt.PSP_chk_li3 .and. PSP_check) then
             ! Give back a Nan so that point is discarded
             zero = log(1.0_ki)
             amp(2)= 1.0_ki/zero
@@ -804,7 +836,7 @@ contains
         ! acc=1E5_ki ! dummy accuracy which is not used
       end if
 
-      
+
       res(1) = real(amp(4), c_double)
       res(2) = real(amp(3), c_double)
       res(3) = real(amp(2), c_double)
@@ -819,7 +851,6 @@ contains
 
    end subroutine eval3
    !---#] subroutine eval3 :
-
    !---#[ subroutine eval4 :
    subroutine     eval4(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
@@ -895,7 +926,6 @@ contains
 
    end subroutine eval4
    !---#] subroutine eval4 :
-
    !---#[ subroutine eval5 :
    subroutine     eval5(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
@@ -971,7 +1001,6 @@ contains
 
    end subroutine eval5
    !---#] subroutine eval5 :
-
    !---#[ subroutine eval6 :
    subroutine     eval6(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
@@ -1047,7 +1076,6 @@ contains
 
    end subroutine eval6
    !---#] subroutine eval6 :
-
    !---#[ subroutine eval7 :
    subroutine     eval7(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
@@ -1123,23 +1151,97 @@ contains
 
    end subroutine eval7
    !---#] subroutine eval7 :
-
-   !---#[ subroutine eval9 :
-   subroutine     eval9(momenta, mu, parameters, res, acc, blha1_mode)
+   !---#[ subroutine eval8 :
+   subroutine     eval8(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
-      use p9_part21part21_part25part25part21_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
-      use p9_part21part21_part25part25part21_model, only: parseline
-      use p9_part21part21_part25part25part21_kinematics, only: boost_to_cms
-      use p9_part21part21_part25part25part21_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p9_part21part21_part25part25part21_groups, only: ninja_exit
+      use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
+      use p3_part1part21_part25part25part1_model, only: parseline
+      use p3_part1part21_part25part25part1_kinematics, only: boost_to_cms
+      use p7_part1partm1_part25part25part21_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
+      use p3_part1part21_part25part25part1_groups, only: ninja_exit, quadninja_exit
 
       implicit none
-      real(kind=c_double), dimension(20), intent(in) :: momenta
+      real(kind=c_double), dimension(25), intent(in) :: momenta
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
 
-      real(kind=ki), dimension(4,4) :: vecs
+      real(kind=ki), dimension(5,4) :: vecs
+      real(kind=ki), dimension(4) :: amp
+      real(kind=c_double), optional :: acc
+      logical, optional :: blha1_mode
+      real(kind=ki) :: zero
+      integer :: i, prec, orig_nlo_prefactors
+      logical :: ok
+
+      call init_event_parameters(2, parameters)
+
+      if(present(blha1_mode)) then
+         if(blha1_mode) then
+            ! save nlo_prefactors and restore later
+            orig_nlo_prefactors=nlo_prefactors
+            nlo_prefactors=0
+         end if
+     end if
+
+      vecs(:,1) = real(momenta(1::5),ki)
+      vecs(:,2) = real(momenta(2::5),ki)
+      vecs(:,3) = real(momenta(3::5),ki)
+      vecs(:,4) = real(momenta(4::5),ki)
+
+      call boost_to_cms(vecs)
+
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call ninja_exit()
+      call quadninja_exit()
+      if (ok) then
+         !
+      else
+         !
+      end if
+      if(present(acc)) then
+         acc=10.0_ki**(-prec) ! point accuracy
+      else
+         if(prec.lt.PSP_chk_li3 .and. PSP_check) then
+            ! Give back a Nan so that point is discarded
+            zero = log(1.0_ki)
+            amp(2)= 1.0_ki/zero
+        end if
+        ! Cannot be assigned if present(acc)=F --> commented out!
+        ! acc=1E5_ki ! dummy accuracy which is not used
+      end if
+
+
+      res(1) = real(amp(4), c_double)
+      res(2) = real(amp(3), c_double)
+      res(3) = real(amp(2), c_double)
+      res(4) = real(amp(1), c_double)
+
+      if(present(blha1_mode)) then
+         if(blha1_mode) then
+            ! restore nlo_prefactors
+            nlo_prefactors = orig_nlo_prefactors
+         end if
+     end if
+
+   end subroutine eval8
+   !---#] subroutine eval8 :
+   !---#[ subroutine eval9 :
+   subroutine     eval9(momenta, mu, parameters, res, acc, blha1_mode)
+      use, intrinsic :: iso_c_binding
+      use p9_part21part21_part25part25part21_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
+      use p9_part21part21_part25part25part21_model, only: parseline
+      use p9_part21part21_part25part25part21_kinematics, only: boost_to_cms
+      use p9_part21part21_part25part25part21_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
+      use p9_part21part21_part25part25part21_groups, only: ninja_exit, quadninja_exit
+
+      implicit none
+      real(kind=c_double), dimension(25), intent(in) :: momenta
+      real(kind=c_double), intent(in) :: mu
+      real(kind=c_double), dimension(10), intent(in) :: parameters
+      real(kind=c_double), dimension(60), intent(out) :: res
+
+      real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
       real(kind=c_double), optional :: acc
       logical, optional :: blha1_mode
@@ -1166,6 +1268,7 @@ contains
 
       call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
       call ninja_exit()
+      call quadninja_exit()
       if (ok) then
          !
       else
@@ -1174,7 +1277,7 @@ contains
       if(present(acc)) then
          acc=10.0_ki**(-prec) ! point accuracy
       else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
+         if(prec.lt.PSP_chk_li3 .and. PSP_check) then
             ! Give back a Nan so that point is discarded
             zero = log(1.0_ki)
             amp(2)= 1.0_ki/zero
@@ -1183,7 +1286,7 @@ contains
         ! acc=1E5_ki ! dummy accuracy which is not used
       end if
 
-      
+
       res(1) = real(amp(4), c_double)
       res(2) = real(amp(3), c_double)
       res(3) = real(amp(2), c_double)
@@ -1198,23 +1301,22 @@ contains
 
    end subroutine eval9
    !---#] subroutine eval9 :
-
    !---#[ subroutine eval10 :
    subroutine     eval10(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
-      use p10_part1part21_part25part25part1_config, only: ki, PSP_chk_th3, nlo_prefactors, PSP_check
+      use p10_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p10_part1part21_part25part25part1_model, only: parseline
       use p10_part1part21_part25part25part1_kinematics, only: boost_to_cms
       use p10_part1part21_part25part25part1_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
-      use p10_part1part21_part25part25part1_groups, only: ninja_exit
+      use p10_part1part21_part25part25part1_groups, only: ninja_exit, quadninja_exit
 
       implicit none
-      real(kind=c_double), dimension(20), intent(in) :: momenta
+      real(kind=c_double), dimension(25), intent(in) :: momenta
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
 
-      real(kind=ki), dimension(4,4) :: vecs
+      real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
       real(kind=c_double), optional :: acc
       logical, optional :: blha1_mode
@@ -1241,6 +1343,7 @@ contains
 
       call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
       call ninja_exit()
+      call quadninja_exit()
       if (ok) then
          !
       else
@@ -1249,7 +1352,7 @@ contains
       if(present(acc)) then
          acc=10.0_ki**(-prec) ! point accuracy
       else
-         if(prec.lt.PSP_chk_th3 .and. PSP_check) then
+         if(prec.lt.PSP_chk_li3 .and. PSP_check) then
             ! Give back a Nan so that point is discarded
             zero = log(1.0_ki)
             amp(2)= 1.0_ki/zero
@@ -1258,7 +1361,7 @@ contains
         ! acc=1E5_ki ! dummy accuracy which is not used
       end if
 
-      
+
       res(1) = real(amp(4), c_double)
       res(2) = real(amp(3), c_double)
       res(3) = real(amp(2), c_double)
@@ -1273,7 +1376,6 @@ contains
 
    end subroutine eval10
    !---#] subroutine eval10 :
-
    !---#[ subroutine eval11 :
    subroutine     eval11(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
@@ -1349,7 +1451,6 @@ contains
 
    end subroutine eval11
    !---#] subroutine eval11 :
-
    !---#[ subroutine eval12 :
    subroutine     eval12(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
@@ -1425,7 +1526,6 @@ contains
 
    end subroutine eval12
    !---#] subroutine eval12 :
-
    !---#[ subroutine eval13 :
    subroutine     eval13(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
@@ -1501,7 +1601,6 @@ contains
 
    end subroutine eval13
    !---#] subroutine eval13 :
-
    !---#[ subroutine eval14 :
    subroutine     eval14(momenta, mu, parameters, res, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
@@ -1577,6 +1676,81 @@ contains
 
    end subroutine eval14
    !---#] subroutine eval14 :
+   !---#[ subroutine eval15 :
+   subroutine     eval15(momenta, mu, parameters, res, acc, blha1_mode)
+      use, intrinsic :: iso_c_binding
+      use p10_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
+      use p10_part1part21_part25part25part1_model, only: parseline
+      use p10_part1part21_part25part25part1_kinematics, only: boost_to_cms
+      use p14_part1partm1_part25part25part21_matrix, only: samplitude, OLP_spin_correlated_lo2, OLP_color_correlated
+      use p10_part1part21_part25part25part1_groups, only: ninja_exit, quadninja_exit
+
+      implicit none
+      real(kind=c_double), dimension(25), intent(in) :: momenta
+      real(kind=c_double), intent(in) :: mu
+      real(kind=c_double), dimension(10), intent(in) :: parameters
+      real(kind=c_double), dimension(60), intent(out) :: res
+
+      real(kind=ki), dimension(5,4) :: vecs
+      real(kind=ki), dimension(4) :: amp
+      real(kind=c_double), optional :: acc
+      logical, optional :: blha1_mode
+      real(kind=ki) :: zero
+      integer :: i, prec, orig_nlo_prefactors
+      logical :: ok
+
+      call init_event_parameters(2, parameters)
+
+      if(present(blha1_mode)) then
+         if(blha1_mode) then
+            ! save nlo_prefactors and restore later
+            orig_nlo_prefactors=nlo_prefactors
+            nlo_prefactors=0
+         end if
+     end if
+
+      vecs(:,1) = real(momenta(1::5),ki)
+      vecs(:,2) = real(momenta(2::5),ki)
+      vecs(:,3) = real(momenta(3::5),ki)
+      vecs(:,4) = real(momenta(4::5),ki)
+
+      call boost_to_cms(vecs)
+
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call ninja_exit()
+      call quadninja_exit()
+      if (ok) then
+         !
+      else
+         !
+      end if
+      if(present(acc)) then
+         acc=10.0_ki**(-prec) ! point accuracy
+      else
+         if(prec.lt.PSP_chk_li3 .and. PSP_check) then
+            ! Give back a Nan so that point is discarded
+            zero = log(1.0_ki)
+            amp(2)= 1.0_ki/zero
+        end if
+        ! Cannot be assigned if present(acc)=F --> commented out!
+        ! acc=1E5_ki ! dummy accuracy which is not used
+      end if
+
+
+      res(1) = real(amp(4), c_double)
+      res(2) = real(amp(3), c_double)
+      res(3) = real(amp(2), c_double)
+      res(4) = real(amp(1), c_double)
+
+      if(present(blha1_mode)) then
+         if(blha1_mode) then
+            ! restore nlo_prefactors
+            nlo_prefactors = orig_nlo_prefactors
+         end if
+     end if
+
+   end subroutine eval15
+   !---#] subroutine eval15 :
 
    !---#[ OLP Polarization vector:
    subroutine OLP_Polvec(p,q,eps) &
@@ -1655,9 +1829,13 @@ contains
       use p0_part21part21_part25part25_model, only: p0_part21part21_part25part25_read_slha => read_slha
       use pb_part21part21_part25part25_model, only: pb_part21part21_part25part25_read_slha => read_slha
       use p2_part21part21_part25part25part21_model, only: p2_part21part21_part25part25part21_read_slha => read_slha
+      use p2_part21part21_part25part25part21_model_qp, only: p2_part21part21_part25part25part21_read_slha_qp => read_slha
       use p9_part21part21_part25part25part21_model, only: p9_part21part21_part25part25part21_read_slha => read_slha
+      use p9_part21part21_part25part25part21_model_qp, only: p9_part21part21_part25part25part21_read_slha_qp => read_slha
       use p3_part1part21_part25part25part1_model, only: p3_part1part21_part25part25part1_read_slha => read_slha
+      use p3_part1part21_part25part25part1_model_qp, only: p3_part1part21_part25part25part1_read_slha_qp => read_slha
       use p10_part1part21_part25part25part1_model, only: p10_part1part21_part25part25part1_read_slha => read_slha
+      use p10_part1part21_part25part25part1_model_qp, only: p10_part1part21_part25part25part1_read_slha_qp => read_slha
       implicit none
       character(len=*), intent(in) :: line
       character(len=512) :: file_name
@@ -1673,8 +1851,16 @@ contains
          call pb_part21part21_part25part25_read_slha(27)
          rewind(unit=27)
          call p2_part21part21_part25part25part21_read_slha(27)
+         call p2_part21part21_part25part25part21_read_slha_qp(27)
          rewind(unit=27)
          call p9_part21part21_part25part25part21_read_slha(27)
+         call p9_part21part21_part25part25part21_read_slha_qp(27)
+         rewind(unit=27)
+         call p3_part1part21_part25part25part1_read_slha(27)
+         call p3_part1part21_part25part25part1_read_slha_qp(27)
+         rewind(unit=27)
+         call p10_part1part21_part25part25part1_read_slha(27)
+         call p10_part1part21_part25part25part1_read_slha_qp(27)
          close(27)
       end if
    end subroutine read_slha_file
