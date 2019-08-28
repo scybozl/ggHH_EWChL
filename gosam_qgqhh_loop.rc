@@ -11,11 +11,11 @@
 #model=smdiag_complex
 model=FeynRules,/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/EWChL_UFO
 
-process_name=p3_part1part21_part1part25part25
+process_name=p3_part1part21_part25part25part1
 #process_path=/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWCHL/GoSam_POWHEG/Virtual/
-process_path=p3_part1part21_part1part25part25
+process_path=p3_part1part21_part25part25part1
 in=d,g
-out=d,h,h
+out=h,h,d
 
 order=QCD,NONE,3
 renorm_beta=false
@@ -30,6 +30,7 @@ zero=mdlMe,mdlMU,mdlMD,mdlMC,mdlMS,mdlMB,mdlymb,mdlWT,mdlWh,mdlWW,mdlWZ
 #model.options=mdlaS=0.07957747,mdlMT=173,mdlymt=173,mdlWW=0,mdlWZ=0
 model.options=mdlMT=173,mdlymt=173
 nlo_prefactors=0
+renorm_beta=false
 
 ##-- symmetries (comma separated list) -----------------------------##
 #    Specifies the symmetries of the amplitude.                      #
@@ -64,10 +65,11 @@ nlo_prefactors=0
 #                                                                    #
 ##------------------------------------------------------------------##
 symmetries=generation,family
-crossings=p4_part21part1_part1part25part25: g d > d h h,\
-          p5_partm1part21_partm1part25part25: d~ g > d~ h h,\
-          p6_part21partm1_partm1part25part25: g d~ > d~ h h,\
-          p7_part1partm1_part21part25part25: d d~ > h h g
+crossings=p4_part21part1_part25part25part1: g d > h h d,\
+          p5_partm1part21_part25part25partm1: d~ g > h h d~,\
+          p6_part21partm1_part25part25partm1: g d~ > h h d~,\
+          p7_part1partm1_part25part25part21: d d~ > h h g,\
+          p8_partm1part1_part25part25part21: d~ d > h h g
 
 ##-- qgraf.verbatim (text) -----------------------------------------##
 #   This option allows to send verbatim lines to the file qgraf.dat. #
@@ -107,7 +109,8 @@ filter.nlo=lambda d:  (d.vertices(part21,part21,part25)+d.vertices(part21,part21
 #  The extension 'olp_badpts' is needed when generating code to be   #
 #  run within the POWHEG-BOX.                                        #
 ##------------------------------------------------------------------##
-extensions=olp_badpts
+extensions=olp_badpts,quadruple
+reduction_programs=ninja
 
 ##-- PSP_check -----------------------------------------------------##
 #    Phase Space Point check parameters:                             #
@@ -123,6 +126,7 @@ extensions=olp_badpts
 #PSP_chk_th2=3
 #PSP_chk_th3=5
 #PSP_chk_kfactor=-1
+PSP_chk_method=LoopInduced
 
 ######################################################################
 # program options: do not change unless you know what you are doing  #

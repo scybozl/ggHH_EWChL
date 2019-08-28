@@ -64,7 +64,7 @@ namespace ninja {
       return data[i];
     }
 
-    // Acces to components with: p[0], p[1], p[2], p[3]
+    // Access to components with: p[0], p[1], p[2], p[3]
     Real operator[] (unsigned i) const
     {
       return data[i];
@@ -138,6 +138,7 @@ namespace ninja {
     friend RealMomentum operator /(const RealMomentum & p, const Real & s );
     friend Real mp(const RealMomentum & p1, const RealMomentum & p2);
     friend Real mp2(const RealMomentum & p);
+    friend Real eucl_mp2(const RealMomentum & p);
     friend class ComplexMomentum;
     friend ComplexMomentum operator+(const RealMomentum & p1,
                                      const ComplexMomentum & p2);
@@ -188,7 +189,7 @@ namespace ninja {
     ComplexMomentum(const RealMomentum & p)
       : data(p.data[0], p.data[1], p.data[2], p.data[3])  {}
 
-    // Acces to components with: p(0), p(1), p(2), p(3)
+    // Access to components with: p(0), p(1), p(2), p(3)
     const Complex operator() (unsigned i) const
     {
       return data[i];
@@ -198,7 +199,7 @@ namespace ninja {
       return data[i];
     }
 
-    // Acces to components with: p[0], p[1], p[2], p[3]
+    // Access to components with: p[0], p[1], p[2], p[3]
     const Complex operator[] (unsigned i) const
     {
       return data[i];
@@ -417,6 +418,13 @@ namespace ninja {
     // but 1 less multiplication
     return p.data[0]*p.data[0]
       -p.data[1]*p.data[1] - p.data[2]*p.data[2] - p.data[3]*p.data[3];
+  }
+
+  // euclidean p^2
+  inline Real eucl_mp2(const RealMomentum & p)
+  {
+    return p.data[0]*p.data[0]
+      +p.data[1]*p.data[1] + p.data[2]*p.data[2] + p.data[3]*p.data[3];
   }
 
 

@@ -62,7 +62,7 @@ module     p0_part21part21_part25part25_config
    integer :: renormalisation = 1
 
    ! if renormalisation.eq.1, include alpha_s renormalisation:
-   logical :: renorm_beta = .false.
+   logical :: renorm_beta = .true.
    ! if renormalisation.eq.1, include massive quark wave function renorm.:
    logical :: renorm_mqwf = .true.
    ! include massive quark contribution for wave function renormalisation

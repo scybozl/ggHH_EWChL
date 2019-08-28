@@ -11,11 +11,11 @@
 #model=smdiag_complex
 model=FeynRules,/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/EWChL_UFO
 
-process_name=p2_part21part21_part21part25part25
+process_name=p2_part21part21_part25part25part21
 #process_path=/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWCHL/GoSam_POWHEG/Virtual/
-process_path=p2_part21part21_part21part25part25
+process_path=p2_part21part21_part25part25part21
 in=g,g
-out=g,h,h
+out=h,h,g
 
 order=QCD,3,3
 
@@ -29,6 +29,7 @@ zero=mdlMe,mdlMU,mdlMD,mdlMC,mdlMS,mdlMB,mdlymb,mdlWT,mdlWh,mdlWW,mdlWZ
 #model.options=mdlaS=0.07957747,mdlMT=173,mdlymt=173,mdlWW=0,mdlWZ=0
 model.options=mdlMT=173,mdlymt=173
 nlo_prefactors=0
+renorm_beta=false
 
 ##-- symmetries (comma separated list) -----------------------------##
 #    Specifies the symmetries of the amplitude.                      #
@@ -98,7 +99,8 @@ filter.nlo=lambda d:  (d.vertices(part21,part21,part25)+d.vertices(part21,part21
 #  The extension 'olp_badpts' is needed when generating code to be   #
 #  run within the POWHEG-BOX.                                        #
 ##------------------------------------------------------------------##
-extensions=olp_badpts
+extensions=olp_badpts,quadruple
+reduction_programs=ninja
 
 ##-- PSP_check -----------------------------------------------------##
 #    Phase Space Point check parameters:                             #

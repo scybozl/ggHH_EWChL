@@ -775,7 +775,7 @@
 *	open(ifile,file=fullname,status='OLD',READONLY,err=100)
 *
 * This has been modified to work with autoconf
-        path='GoSamlib'
+        path='/ptmp/lscyboz/GOSAM-CONTRIB-2.0-qp-new/share'
         fullname = path(1:index(path,' ')-1)
      +            //'/gosam-contrib/'
      +            //name

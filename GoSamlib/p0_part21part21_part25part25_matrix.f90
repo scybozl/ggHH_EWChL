@@ -828,8 +828,8 @@ contains
       pvecs(4,:) = vecs(4,:)
       call init_event(pvecs, -1, -1)
       !---#] reinitialize kinematics:
-      color_vector = 0
 !      color_vector = amplitude0l0()
+      color_vector = 0
       call OLP_color_correlated_lo(color_vector,ampcc_heli)
       ampcc(:) = ampcc(:) + ampcc_heli(:)
       !---#[ reinitialize kinematics:
@@ -839,8 +839,8 @@ contains
       pvecs(4,:) = vecs(3,:)
       call init_event(pvecs, +1, -1)
       !---#] reinitialize kinematics:
-      color_vector = 0
 !      color_vector = amplitude0l0()
+      color_vector = 0
       call OLP_color_correlated_lo(color_vector,ampcc_heli)
       ampcc(:) = ampcc(:) + ampcc_heli(:)
       !---#[ reinitialize kinematics:
@@ -850,8 +850,8 @@ contains
       pvecs(4,:) = vecs(3,:)
       call init_event(pvecs, -1, +1)
       !---#] reinitialize kinematics:
-      color_vector = 0
 !      color_vector = amplitude0l0()
+      color_vector = 0
       call OLP_color_correlated_lo(color_vector,ampcc_heli)
       ampcc(:) = ampcc(:) + ampcc_heli(:)
       !---#[ reinitialize kinematics:
@@ -861,8 +861,8 @@ contains
       pvecs(4,:) = vecs(3,:)
       call init_event(pvecs, +1, +1)
       !---#] reinitialize kinematics:
-      color_vector = 0
 !      color_vector = amplitude0l0()
+      color_vector = 0
       call OLP_color_correlated_lo(color_vector,ampcc_heli)
       ampcc(:) = ampcc(:) + ampcc_heli(:)
 
