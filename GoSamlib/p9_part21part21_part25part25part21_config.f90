@@ -120,16 +120,15 @@ module     p9_part21part21_part25part25part21_config
    !
    ! Note: at the moment it only works for virtual corrections
    ! to Tree level processes.
-   logical :: PSP_check = .true.
+   logical :: PSP_check = .false.
    logical :: PSP_verbosity = .false.
    logical :: PSP_rescue = .false.
-   ! not used (tree-level not available):
    integer :: PSP_chk_th1 = 8
    integer :: PSP_chk_th2 = 3
    integer :: PSP_chk_th3 = 5
    real(ki) :: PSP_chk_kfactor = 1000.0_ki
    
-   ! used instead:
+   ! not used in this process (process is not loop-induced):
    integer :: PSP_chk_li1 = 16
    integer :: PSP_chk_li2 = 7
    integer :: PSP_chk_li3 = 6

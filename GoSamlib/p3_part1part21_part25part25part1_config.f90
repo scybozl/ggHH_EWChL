@@ -120,7 +120,7 @@ module     p3_part1part21_part25part25part1_config
    !
    ! Note: at the moment it only works for virtual corrections
    ! to Tree level processes.
-   logical :: PSP_check = .true.
+   logical :: PSP_check = .false.
    logical :: PSP_verbosity = .false.
    logical :: PSP_rescue = .false.
    ! not used (tree-level not available):

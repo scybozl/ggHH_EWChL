@@ -6,8 +6,9 @@ module     p9_part21part21_part25part25part21_globalsl1
    private
 
    
-   ! col0 is the color index to be returned in the virtual diagrams
-   integer, public :: col0
+   ! amp0 is used to store the LO amplitude between the calls
+   ! for one kinematics.
+   complex(ki), dimension(numcs), public :: amp0
    integer, dimension(numcs), public :: perm
    logical, public :: use_perm
 

@@ -1,6 +1,6 @@
 module     p2_part21part21_part25part25part21_d133h0l1
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p2_part21p &
-   ! &art21_part25part25part21/helicity0d133h0l1.f90
+   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/p2_part21part21_part25p &
+   ! &art25part21/helicity0d133h0l1.f90
    ! generator: buildfortran.py
    use p2_part21part21_part25part25part21_config, only: ki
    use p2_part21part21_part25part25part21_util, only: cond

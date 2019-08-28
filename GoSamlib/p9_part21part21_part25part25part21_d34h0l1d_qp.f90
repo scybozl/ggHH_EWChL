@@ -1,6 +1,6 @@
 module     p9_part21part21_part25part25part21_d34h0l1d_qp
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p9_part21p &
-   ! &art21_part25part25part21/helicity0d34h0l1d_qp.f90
+   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/p9_part21part21_part25p &
+   ! &art25part21/helicity0d34h0l1d_qp.f90
    ! generator: buildfortran_d.py
    use p9_part21part21_part25part25part21_config, only: ki => ki_qp
    use p9_part21part21_part25part25part21_util_qp, only: cond, d => metric_tens&

@@ -11,9 +11,9 @@
 #model=smdiag_complex
 model=FeynRules,/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/EWChL_UFO
 
-process_name=p2_part21part21_part25part25part21
+process_name=p9_part21part21_part25part25part21
 #process_path=/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWCHL/GoSam_POWHEG/Virtual/
-process_path=p2_part21part21_part25part25part21
+process_path=p9_part21part21_part25part25part21
 in=g,g
 out=h,h,g
 

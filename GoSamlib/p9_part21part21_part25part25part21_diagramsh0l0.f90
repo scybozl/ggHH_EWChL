@@ -1,9 +1,9 @@
-module     p2_part21part21_part25part25part21_diagramsh0l0_qp
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p2_part21p &
-   ! &art21_part25part25part21/helicity0diagramsl0_qp.f90
+module     p9_part21part21_part25part25part21_diagramsh0l0
+   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/p9_part21part21_part25p &
+   ! &art25part21/helicity0diagramsl0.f90
    ! generator: buildfortranborn.py
-   use p2_part21part21_part25part25part21_color_qp, only: numcs
-   use p2_part21part21_part25part25part21_config, only: ki => ki_qp
+   use p9_part21part21_part25part25part21_color, only: numcs
+   use p9_part21part21_part25part25part21_config, only: ki
    implicit none
    private
    complex(ki), parameter :: i_ = (0.0_ki, 1.0_ki)
@@ -12,13 +12,13 @@ module     p2_part21part21_part25part25part21_diagramsh0l0_qp
 contains
 !---#[ function amplitude:
    function amplitude()
-      use p2_part21part21_part25part25part21_model_qp
-      use p2_part21part21_part25part25part21_kinematics_qp
-      use p2_part21part21_part25part25part21_color_qp
-      use p2_part21part21_part25part25part21_config, only: debug_lo_diagrams, &
+      use p9_part21part21_part25part25part21_model
+      use p9_part21part21_part25part25part21_kinematics
+      use p9_part21part21_part25part25part21_color
+      use p9_part21part21_part25part25part21_config, only: debug_lo_diagrams, &
         & use_sorted_sum
-      use p2_part21part21_part25part25part21_accu_qp, only: sorted_sum
-      use p2_part21part21_part25part25part21_util_qp, only: inspect_lo_diagram
+      use p9_part21part21_part25part25part21_accu, only: sorted_sum
+      use p9_part21part21_part25part25part21_util, only: inspect_lo_diagram
       implicit none
       complex(ki), dimension(numcs) :: amplitude
       complex(ki), dimension(14) :: abb
@@ -86,4 +86,4 @@ contains
 !      end if
    end function     amplitude
 !---#] function amplitude:
-end module p2_part21part21_part25part25part21_diagramsh0l0_qp
+end module p9_part21part21_part25part25part21_diagramsh0l0

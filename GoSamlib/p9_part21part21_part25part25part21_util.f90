@@ -208,11 +208,11 @@ contains
       write(ch,'(A13)') "</lo-diagram>"
    end subroutine inspect_lo_diagram
 
-!   subroutine     inspect_nlo_diagram(values, d, h, c, unit)
+!   subroutine     inspect_nlo_diagram(values, d, h, unit)
 !      implicit none
 !
 !      complex(ki), dimension(0:2), intent(in) :: values
-!      integer, intent(in) :: d, h, c
+!      integer, intent(in) :: d, h
 !      integer, intent(in), optional :: unit
 !
 !      integer :: ch
@@ -223,14 +223,14 @@ contains
 !              ch = 5
 !      end if
 !
-!      write(ch,'(A12,I6,A1,I3,A1,I3,A11,G23.16,A1,G23.16,A2)') &
-!         & "evt.set_nlo(", d, ",", h, ",", c, &
+!      write(ch,'(A12,I6,A1,I3,A11,G23.16,A1,G23.16,A2)') &
+!         & "evt.set_nlo(", d, ",", h, &
 !         & ",2,complex(", real(values(2)), ",", aimag(values(2)), "))"
-!      write(ch,'(A12,I6,A1,I3,A1,I3,A11,G23.16,A1,G23.16,A2)') &
-!         & "evt.set_nlo(", d, ",", h, ",", c, &
+!      write(ch,'(A12,I6,A1,I3,A11,G23.16,A1,G23.16,A2)') &
+!         & "evt.set_nlo(", d, ",", h, &
 !         & ",1,complex(", real(values(1)), ",", aimag(values(1)), "))"
-!      write(ch,'(A12,I6,A1,I3,A1,I3,A11,G23.16,A1,G23.16,A2)') &
-!         & "evt.set_nlo(", d, ",", h, ",", c, &
+!      write(ch,'(A12,I6,A1,I3,A11,G23.16,A1,G23.16,A2)') &
+!         & "evt.set_nlo(", d, ",", h, &
 !         & ",0,complex(", real(values(0)), ",", aimag(values(0)), "))"
 !   end subroutine inspect_nlo_diagram
 
