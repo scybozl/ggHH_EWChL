@@ -167,9 +167,9 @@ C     Spin-correlated Born amplitudes
                   enddo
 
 C--   Print for checking purposes:
-c$$$                  print *, j, "check/born=", check/born
-c$$$                  print *, "bmunu",j,":"
-c$$$                  print *, bmunu(:,0,j)
+c                  print *, j, "check/born=", check/born
+c                  print *, "bmunu",j,":"
+c                  print *, bmunu(:,0,j)
 c$$$                  print *, bmunu(:,1,j)
 c$$$                  print *, bmunu(:,2,j)
 c$$$                  print *, bmunu(:,3,j)

@@ -17,7 +17,7 @@ cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       ph_Hmass = powheginput('hmass')
 
       ph_GF= powheginput('#gfermi')
-      if (ph_GF.le.0d0) ph_GF  = 0.116637D-04
+      if (ph_GF.le.0d0) ph_GF  = 0.116639D-04
       ph_topmass = powheginput('#topmass')
       if (ph_topmass.le.0d0) ph_topmass  = 173.0d0
       ph_Zmass = powheginput("#Zmass")
@@ -111,11 +111,11 @@ C     Parameter definition
 c      call OLP_Option_qp(line,ierr)
 c      call check_gosam_err(param,ierr)
 
-c$$$      param = 'GF='
-c$$$      write(value,'(F20.10)') ph_GF
-c$$$      line = trim(param)//trim(adjustl(value))
-c$$$      call OLP_Option(line,ierr)
-c$$$      call check_gosam_err(param,ierr)
+      param = 'mdlGf='
+      write(value,'(F20.10)') ph_GF
+      line = trim(param)//trim(adjustl(value))
+      call OLP_Option(line,ierr)
+      call check_gosam_err(param,ierr)
 c$$$      call OLP_Option_qp(line,ierr)
 c$$$      call check_gosam_err(param,ierr)
 

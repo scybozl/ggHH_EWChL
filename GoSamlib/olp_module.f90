@@ -294,82 +294,66 @@ contains
       case(0)
               call eval0(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! Born 2
       case(1)
               call eval1(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! gg -> ghh 1
       case(2)
               call eval2(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! gg -> ghh 2
       case(9)
               call eval9(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! dg -> dhh 1
       case(3)
               call eval3(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! dg -> dhh 2
       case(10)
               call eval10(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! gd -> dhh 1
       case(4)
               call eval4(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! gd -> dhh 2
       case(11)
               call eval11(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! db g -> db h h 1
       case(5)
               call eval5(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! db g -> db h h 2
       case(12)
               call eval12(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! g db -> db h h 1
       case(6)
               call eval6(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! g db -> db h h 2
       case(13)
               call eval13(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! d db -> h h g
       case(7)
               call eval7(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! d db -> h h g 2
       case(14)
               call eval14(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! db d -> h h g 1
       case(8)
               call eval8(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       ! d db -> h h g 2
       case(15)
               call eval15(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
-              write(*,*) 'EVAL2 = ', res(1:3)
       case default
          res(:) = 0.0d0
       end select
@@ -1787,6 +1771,7 @@ contains
       use, intrinsic :: iso_c_binding
       use p0_part21part21_part25part25_model, only: p0_part21part21_part25part25_print_parameter => print_parameter
       use pb_part21part21_part25part25_model, only: pb_part21part21_part25part25_print_parameter => print_parameter
+      use p2_part21part21_part25part25part21_model, only: p2_part21part21_part25part25part21_print_parameter => print_parameter
       implicit none
       character(kind=c_char,len=1), intent(in) :: filename
       integer :: ierr, l
@@ -1817,7 +1802,10 @@ contains
       call p0_part21part21_part25part25_print_parameter(.false.,27)
       write (27, *)
       write (27, "(A)") "####### Setup of SubProcess pb_part21part21_part25part25 #######"
-      call pb_part21part21_part25part25_print_parameter(.true.,27)
+      call pb_part21part21_part25part25_print_parameter(.false.,27)
+      write (27, *)
+      write (27, "(A)") "####### Setup of SubProcess p2_part21part21_part25part25part21 #######"
+      call p2_part21part21_part25part25part21_print_parameter(.true.,27)
       write (27, *)
 
       close(27)
