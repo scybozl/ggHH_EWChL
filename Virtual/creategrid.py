@@ -50,24 +50,46 @@ def combinegrids(grid_temp, cHHH):
     cHHH_grids = [incr + '_cHHH_-1.0.grid',
                   incr + '_cHHH_0.0.grid',
                   incr + '_cHHH_1.0.grid']
-    amps = []
+    amps  = []
+    ME2s  = []
+    dME2s = []
 
     for grid in cHHH_grids:
         amps.append(np.loadtxt(grid, unpack=True))
     print "Loaded grids ", cHHH_grids
 
+    C = np.array([[1.,-1.,1.],[1.,0.,0.],[1.,1.,1.]])
+    Cinv = np.linalg.inv(C)
+    coeffs = np.array([1.,cHHH,cHHH**2])
+
     # Check that the grids have the same values for s, t
     for amp in amps[1:]:
+
         if not (np.array_equal(amp[0], amps[0][0]) and np.array_equal(amp[1], amps[0][1])):
             print "The virtual grids do not contain the same phase-space points!"
 
-        cHHH_amp = 1 / 2. * amps[2][2] * cHHH * (cHHH + 1.0) + amps[0][2] * 1 / 2. * cHHH * (cHHH - 1.0) - amps[1][
-            2] * (cHHH - 1.0) * (cHHH + 1.0)
-        cHHH_err = np.sqrt(
-            1 / 4. * pow(amps[2][3] * cHHH * (cHHH + 1.0), 2) + 1 / 4. * pow(amps[0][3] * cHHH * (cHHH - 1.0), 2) + pow(
-                amps[1][3] * (cHHH - 1.0) * (cHHH + 1.0), 2))
+#    cHHH_amp = 1 / 2. * amps[2][2] * cHHH * (cHHH + 1.0) + amps[0][2] * 1 / 2. * cHHH * (cHHH - 1.0) - amps[1][
+#            2] * (cHHH - 1.0) * (cHHH + 1.0)
+#    cHHH_err = np.sqrt(
+#            1 / 4. * pow(amps[2][3] * cHHH * (cHHH + 1.0), 2) + 1 / 4. * pow(amps[0][3] * cHHH * (cHHH - 1.0), 2) + pow(
+#                amps[1][3] * (cHHH - 1.0) * (cHHH + 1.0), 2))
 
-        np.savetxt(grid_temp, np.transpose([amps[0][0], amps[0][1], cHHH_amp, cHHH_err]))
+#    np.savetxt(grid_temp, np.transpose([amps[0][0], amps[0][1], cHHH_amp, cHHH_err]))
+
+    for i, psp in enumerate(amps[0][0]):
+   
+        A = np.matmul(Cinv, np.array([[amps[0][2][i]], [amps[1][2][i]], [amps[2][2][i]]]))
+        ME2 = np.matmul(coeffs, A)
+
+        # Compute the uncertainties on the final PSP amplitude (uncorr. between PSPs, corr. between A coeffs)
+        sigmaF = np.array([[amps[0][3][i]**2,0.,0.],[0.,amps[1][3][i]**2,0.],[0.,0.,amps[2][3][i]**2]])
+        dA = np.matmul(Cinv, np.matmul(sigmaF, np.transpose(Cinv)))
+        dME2 = np.matmul(coeffs, np.matmul(coeffs, dA))
+
+        ME2s.append(ME2)
+        dME2s.append(np.sqrt(dME2))
+
+    np.savetxt(grid_temp, np.transpose([amps[0][0], amps[0][1], ME2s, dME2s]))
 
     print "Saved grid ", grid_temp
     os.system("rm -f " + lockname)
