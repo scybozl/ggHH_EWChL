@@ -20,7 +20,7 @@
       common/cmtdep/mtdep
       integer hdecaymode
       common/chdecaymode/hdecaymode
-      real * 8 cHHH
+      real * 8 cHHH,ct,ctt,cg,cgg
 c     check nlegborn. This is only a sanity check while we are TESTING
 c     the code and we change often from one process to the other
       if (nlegborn.ne.4) then
@@ -111,9 +111,14 @@ c     index of the first LIGHT coloured parton in the final state
 ***********            INITIALIZE VIRTUAL             ***************
 *********************************************************************
 
-      if (mtdep.eq.3) then
-         cHHH = powheginput('#cHHH')
-         call initgrids(cHHH)
+      if (mtdep.eq.3.or.mtdep.eq.5) then
+         cHHH = powheginput('#chhh')
+         ct = powheginput('#ct')
+         ctt = powheginput('#cthh')
+         cg = powheginput('#cgg')
+         cgg = powheginput('#cgghh')
+         write(*,*) 'PROC ', ct, ctt, cg, cgg
+         call initgrids(cHHH,ct,ctt,cg,cgg)
       endif
 
 *********************************************************************

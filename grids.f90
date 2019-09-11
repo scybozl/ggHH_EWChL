@@ -1,12 +1,15 @@
-subroutine initgrids(cHHH)
+subroutine initgrids(cHHH,ct,ctt,cg,cgg)
   use, intrinsic :: iso_c_binding
   implicit none
   real(c_double) :: s, t, result, expected
-  real * 8 cHHH
-  character(len=50) :: gridname
-  character(len=32,kind=C_CHAR) :: c_gridname
+  real * 8 cHHH,ct,ctt,cg,cgg
+  character(len=80) :: gridname
+  character(len=100,kind=C_CHAR) :: c_gridname
   type(c_ptr) :: grid
   common/cbgrid/grid
+  integer mtdep
+  common/cmtdep/mtdep
+
   
   interface
      subroutine python_initialize() bind(c)
@@ -30,10 +33,10 @@ subroutine initgrids(cHHH)
        implicit none
      end subroutine python_printinfo
 
-     subroutine combine_grids(grid_temp, cHHH) bind(c)
+     subroutine combine_grids(grid_temp, cHHH, ct, ctt, cg, cgg) bind(c)
        use, intrinsic :: iso_c_binding
        implicit none
-       real(c_double), intent(in), value :: cHHH
+       real(c_double), intent(in), value :: cHHH, ct, ctt, cg, cgg
        character(kind=c_char) :: grid_temp
      end subroutine combine_grids
 
@@ -54,11 +57,18 @@ subroutine initgrids(cHHH)
   call python_initialize
   call python_printinfo
 
-  write(gridname, "(A15,SP,ES11.4,A5)") "Virt_full_cHHH_", cHHH, ".grid"
+  if (mtdep.ne.5) then
+    write(gridname, "(A10,SP,ES11.4,A,ES11.4,A,ES11.4,A,ES11.4,A,ES11.4,A5)") &
+           "Virt_full_", cHHH, "_", ct,"_", ctt, "_", cg, "_", cgg, ".grid"
+    c_gridname = TRIM(gridname)//C_NULL_CHAR
+    write(*,*) "grids.f90 name ", c_gridname
 
-  c_gridname = TRIM(gridname)//C_NULL_CHAR
+    call combine_grids(c_gridname,cHHH,ct,ctt,cg,cgg)
+  else
+    c_gridname = TRIM("grid.in")//C_NULL_CHAR
+  endif
 
-  call combine_grids(c_gridname, cHHH)
+
   grid = grid_initialize(c_gridname)
 
   ! s = 2.56513D6

@@ -43,9 +43,33 @@ void python_printinfo()
 };
 // EOF - Helper Functions (mostly for Fortran)
 
-void combine_grids(const char* grid_temp, double cHHH)
+void combine_grids(const char* grid_temp, double cHHH, double ct, double ctt, double cg, double cgg)
 {
-    char* cHHH_values[3] = {"-1.0", "0.0", "1.0"};
+    char* values[23] = {"10.0_2.0_1.0_1.0_10.0",
+                       "10.0_5.0_6.0_5.0_3.0",
+                       "10.0_7.0_10.0_5.0_9.0",
+                       "1.0_4.0_9.0_10.0_5.0",
+                       "1.0_5.0_8.0_6.0_3.0",
+                       "2.0_5.0_1.0_4.0_4.0",
+                       "4.0_1.0_4.0_3.0_6.0",
+                       "5.0_4.0_6.0_4.0_9.0",
+                       "6.0_1.0_6.0_2.0_8.0",
+                       "6.0_6.0_4.0_7.0_9.0",
+                       "6.0_6.0_9.0_6.0_9.0",
+                       "7.0_3.0_5.0_8.0_10.0",
+                       "7.0_5.0_8.0_2.0_7.0",
+                       "8.0_1.0_9.0_8.0_3.0",
+                       "8.0_3.0_1.0_6.0_9.0",
+                       "8.0_4.0_2.0_6.0_4.0",
+                       "8.0_4.0_9.0_7.0_5.0",
+                       "8.0_5.0_4.0_6.0_4.0",
+                       "8.0_7.0_10.0_9.0_3.0",
+                       "8.0_8.0_4.0_3.0_5.0",
+                       "9.0_5.0_10.0_3.0_9.0",
+                       "9.0_7.0_8.0_10.0_8.0",
+                       "9.0_8.0_10.0_2.0_10.0"};
+//    char* cHHH_values[3] = {"-1.0", "0.0", "1.0"};
+    printf("cHHH = %f, ct = %f, ctt = %f, cg = %f, cgg = %f\n,", cHHH, ct, ctt, cg, cgg);
 
     int search_paths = 1;
     char* delims = ":";
@@ -55,17 +79,20 @@ void combine_grids(const char* grid_temp, double cHHH)
     char* pythonpath = strdup(getenv("PYTHONPATH"));
     char* result = strtok( pythonpath, delims );
 
-    char grid_tmp[16];
-    strncpy(grid_tmp, grid_temp, 10); // Only take the first characters to look for the three basic cHHH grids
-    grid_tmp[10]='\0';
+    char grid_tmp[10];
+    strncpy(grid_tmp, grid_temp, 9); // Only take the first characters to look for the three basic cHHH grids
+    printf("grid_tmp %s %i\n", grid_tmp, strlen(grid_tmp));
+    grid_tmp[9]='\0';
+    printf("grid_temp %s %i\n", grid_temp, strlen(grid_temp));
+    printf("grid_tmp %s %i\n", grid_tmp, strlen(grid_tmp));
 
-    for (int i=0; i<3; ++i) {
-      size_t len_grid_name = strlen(grid_tmp) + strlen("cHHH_") + strlen(cHHH_values[i]) + strlen(".grid") + 1;  // +14 for _(cHHH).grid
+    for (int i=0; i<(sizeof(values) / sizeof(values[0])); ++i) {
+      size_t len_grid_name = strlen(grid_tmp) + strlen("_") + strlen(values[i]) + strlen(".grid") + 1;  // +14 for _***.grid
       char* grid_name = (char*) malloc(len_grid_name);
       memcpy(grid_name, grid_tmp, strlen(grid_tmp));
-      memcpy(grid_name + strlen(grid_tmp), "cHHH_", strlen("cHHH_"));
-      memcpy(grid_name + strlen(grid_tmp) + strlen("cHHH_"), cHHH_values[i], strlen(cHHH_values[i]));
-      memcpy(grid_name + strlen(grid_tmp) + strlen("cHHH_") + strlen(cHHH_values[i]), ".grid", strlen(".grid"));
+      memcpy(grid_name + strlen(grid_tmp), "_", strlen("_"));
+      memcpy(grid_name + strlen(grid_tmp) + strlen("_"), values[i], strlen(values[i]));
+      memcpy(grid_name + strlen(grid_tmp) + strlen("_") + strlen(values[i]), ".grid", strlen(".grid"));
       grid_name[len_grid_name-1] = '\0';
 
     // Check if grid_name is accessible as-is    
@@ -136,7 +163,39 @@ void combine_grids(const char* grid_temp, double cHHH)
     }
     assert(pcHHHValue != NULL);
 
-    PyObject* pGridNameTuple = PyTuple_Pack(2,pGridName,pcHHHValue);
+    PyObject* pctValue = PyFloat_FromDouble(ct);
+    if(pctValue == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create Python double from ct: please check that ct is a valid double\n");
+    }
+    assert(pctValue != NULL);
+
+    PyObject* pcttValue = PyFloat_FromDouble(ctt);
+    if(pcttValue == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create Python double from ctt: please check that ctt is a valid double\n");
+    }
+    assert(pcttValue != NULL);
+
+    PyObject* pcgValue = PyFloat_FromDouble(cg);
+    if(pcgValue == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create Python double from cg: please check that cg is a valid double\n");
+    }
+    assert(pcgValue != NULL);
+
+    PyObject* pcggValue = PyFloat_FromDouble(cgg);
+    if(pcggValue == NULL)
+    {
+        PyErr_Print();
+        printf("ERROR: Failed to create Python double from cgg: please check that cgg is a valid double\n");
+    }
+    assert(pcggValue != NULL);
+
+    PyObject* pGridNameTuple = PyTuple_Pack(6,pGridName,pcHHHValue,pctValue,pcttValue,pcgValue,pcggValue);
     if(pGridNameTuple == NULL)
     {
         PyErr_Print();

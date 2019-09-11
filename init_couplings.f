@@ -223,6 +223,7 @@ C     Initialize virtual code
 
       call OLP_Start(path,ioerr,parallelstage,rndiwhichseed)
       call check_gosam_err('olp_start routine',ierr)
+c      call OLP_PrintParameter("param.out")
 c      call OLP_Start_qp(path,ioerr,parallelstage,rndiwhichseed)
 c      call check_gosam_err('olp_start routine',ierr)
       end

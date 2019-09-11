@@ -1,8 +1,0 @@
-#####NinjaMu2
-
-    acd109(1)=dotproduct(ninjaA0,ninjaA0);
-    acd109(2)=Wrapper(abb109,35);
-   acd109(3)=acd109(2)*acd109(1)^2;
-
-brack(ninjaidxt0) = acd109(3);
-
