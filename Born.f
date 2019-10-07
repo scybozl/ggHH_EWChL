@@ -101,6 +101,8 @@ c     pause
 c   compare Born Glover/Bij expressions to values from grid
          call ME2born_full(p,born,mpol)
          call ME2born_grid(p,born1)
+         write(*,*) "Born_full = ", born
+         write(*,*) "Born_grid = ", born1
          write(*,*) "--> Born_full/Born_grid: ", born/born1
          born=born1
 c      pause
@@ -210,18 +212,50 @@ c     invariants, abbreviations:
       real * 8 square_Lorentz_vector
       external square_Lorentz_vector
       real * 8 s,denH,MH2
-      real * 8 NA
-      parameter(NA=8.0d0)
+      real * 8 NA,TR
+      parameter(NA=8.0d0,TR=0.5d0)
       real * 8 modg1,modg2
       real * 8 ao2pi
+c      real * 8 tmp
+      real * 8 ct,chhh,ctt,cg,cgg
+
       MH2   = ph_Hmass2
       s     = square_Lorentz_vector(p(:,1)+p(:,2))
-      denH  = 1/(s-MH2)
+      denH  = 1/(s-MH2)*ph_mdlchhh
       ao2pi = st_alpha/(2d0*pi)
 
-      modg1 = 4d0/9d0
-      modg1 = modg1 - 8d0/3d0*MH2*ph_mdlchhh*denH
-      modg1 = modg1 + 4d0*(MH2*ph_mdlchhh*denH)**2
+      ct = ph_mdlct
+      chhh = ph_mdlchhh
+      ctt = 2d0*ph_mdlcthh
+      cg = ph_mdlcgg/8d0
+      cgg = ph_mdlcgghh/4d0
+
+c      modg1 = 4d0/9d0
+c      modg1 = modg1 - 8d0/3d0*MH2*ph_mdlchhh*denH
+c      modg1 = modg1 + 4d0*(MH2*ph_mdlchhh*denH)**2
+c      write(*,*) 'modg1 = ', modg1
+c      tmp = modg1
+
+      modg1 = 2*(
+     $      + 32*cgg**2
+     $     + 16./3.*ctt*cgg
+     $     + 2./9.*ctt**2
+     $     - 16./3.*ct**2*cgg
+     $     - 4./9.*ct**2*ctt
+     $     + 2./9.*ct**4
+     $     + 192*MH2*denH*cg*cgg
+     $     + 16*MH2*denH*ctt*cg
+     $     + 16*MH2*denH*ct*cgg
+     $     + 4./3.*MH2*denH*ct*ctt
+     $     - 16*MH2*denH*ct**2*cg
+     $     - 4./3.*MH2*denH*ct**3
+     $     + 288*MH2**2*denH**2*cg**2
+     4     + 48*MH2**2*denH**2*ct*cg
+     $     + 2*MH2**2*denH**2*ct**2
+     $     )
+
+c      write(*,*) 'modg1_new = ', modg1
+c      write(*,*) 'Ratio (should be one) = ', tmp/modg1
 
       modg2 = 0
 
@@ -368,10 +402,11 @@ c Wrapper function for calling the python grid function
       include 'pwhg_rnd.h' ! rndiwhichseed
       real * 8 grid_born
       real * 8 s,t
-      character(len=500) :: res  ! Buffer for function result
-      character(len=500) :: arg  ! Buffer for function argument
-      character(len=16) :: pyin
-      character(len=17) :: pyout
+      real * 8 gridvirt
+c      character(len=500) :: res  ! Buffer for function result
+c      character(len=500) :: arg  ! Buffer for function argument
+c      character(len=16) :: pyin
+c      character(len=17) :: pyout
       integer parallelstage,rndiwhichseed
       common/cpwhg_info/parallelstage,rndiwhichseed
       logical verbose
@@ -379,43 +414,45 @@ c Wrapper function for calling the python grid function
       verbose = .false.
 
 c     Use input seed to determine which FIFOs to use, e.g. seed = 1 => FIFOs: pyInputPipe-0001, pyOutputPipe-0001
-      pyin = "pyInputPipe-"
-      pyout = "pyOutputPipe-"
-      write(pyin,'(A12,I0.4)') pyin,rndiwhichseed
-      write(pyout,'(A13,I0.4)') pyout,rndiwhichseed
+c      pyin = "pyInputPipe-"
+c      pyout = "pyOutputPipe-"
+c      write(pyin,'(A12,I0.4)') pyin,rndiwhichseed
+c      write(pyout,'(A13,I0.4)') pyout,rndiwhichseed
       if (verbose) then
-         write(*,*) "Using FIFOs:"
-         write(*,*) pyin
-         write(*,*) pyout
+c         write(*,*) "Using FIFOs:"
+c         write(*,*) pyin
+c         write(*,*) pyout
 
 c         Build input to python grid
          write(*,*) "Input to grid_born:"
-         write(*,*) s
-         write(*,*) t
+         write(*,*) "s = ", s
+         write(*,*) "t = ", t
       endif
-      write(arg,'(ES50.40E4,A,ES50.40E4)') s,',',t
-      if (verbose) then
-         write(*,*) "Will send the following char(len=500) to python:"
-         write(*,*) arg
-      endif
+c      write(arg,'(ES50.40E4,A,ES50.40E4)') s,',',t
+c      if (verbose) then
+c         write(*,*) "Will send the following char(len=500) to python:"
+c         write(*,*) arg
+c      endif
 
 c     Send input to python script
-      open(1,file=pyin,position='asis',action='write')
-      write(1,'(A)',advance='no') arg
-      close(1)
+c      open(1,file=pyin,position='asis',action='write')
+c      write(1,'(A)',advance='no') arg
+c      close(1)
 
 c     Receive result from python script
-      open(2,file=pyout,position='asis',action='read')
-      read(2,'(A)') res
-      close(2)
+c      open(2,file=pyout,position='asis',action='read')
+c      read(2,'(A)') res
+c      close(2)
 
 c     Parse result of python grid
 
-      if (verbose) then
-         write(*,*) "Got the following character(len=500) from python:"
-         write(*,*) res
-      endif
-      read(res,*) grid_born
+c      if (verbose) then
+c         write(*,*) "Got the following character(len=500) from python:"
+c         write(*,*) res
+c      endif
+c      read(res,*) grid_born
+
+      grid_born = gridvirt(s,t)
 
       if (verbose) then
          write(*,*) "Output of grid_born:"

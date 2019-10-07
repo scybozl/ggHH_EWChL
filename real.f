@@ -218,8 +218,9 @@ c     Since this contribution is the square of a one-loop calculation, this fact
       write(*,*) 'h   ', p(:,4)
       write(*,*) 'p3  ', p(:,5)
       write(*,*) '-----------------------------------------------------'
-      write(*,*) 'loop squared   ', res(3)
-      write(*,*) '    ----> amp2 =  ', amp2
+      write(*,*) 'processid = ', processid
+c      write(*,*) 'processid = ', processid, ' ,loop squared   ', res(3)
+c      write(*,*) '    ----> amp2 =  ', amp2
 
 c     add SM/BSM interference and tree contributions
       processid=processid+7
@@ -234,9 +235,12 @@ c     add SM/BSM interference and tree contributions
 c     $            + res(3) * (4d0*pi*st_alpha)**2 
 c     $                     * 1d0/(16d0*pi**2)**2
 c     $                     * 8d0 * pi
-      write(*,*) 'bsm inter   ', res(3)
-      write(*,*) 'bsm square  ', res(4)
+c      write(*,*) 'bsm inter   ', res(3)
+c      write(*,*) 'bsm square  ', res(4)
       write(*,*) '    ----> amp2 =  ', amp2
+c      write(*,*) '(alpha_EW = ', ph_alphaem, ')'
+c      write(*,*) '(alpha = ', st_alpha, ')'
+
 c     cancel as/(2pi) associated with amp2. It will be put back by real_ampsq
       amp2 = amp2/(st_alpha/(2d0*pi))
 

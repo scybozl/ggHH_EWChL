@@ -1771,7 +1771,7 @@ contains
       use, intrinsic :: iso_c_binding
       use p0_part21part21_part25part25_model, only: p0_part21part21_part25part25_print_parameter => print_parameter
       use pb_part21part21_part25part25_model, only: pb_part21part21_part25part25_print_parameter => print_parameter
-      use p2_part21part21_part25part25part21_model, only: p2_part21part21_part25part25part21_print_parameter => print_parameter
+      use p2_part21part21_part25part25part21_model_qp, only: p2_part21part21_part25part25part21_print_parameter => print_parameter
       implicit none
       character(kind=c_char,len=1), intent(in) :: filename
       integer :: ierr, l
@@ -1805,6 +1805,9 @@ contains
       call pb_part21part21_part25part25_print_parameter(.false.,27)
       write (27, *)
       write (27, "(A)") "####### Setup of SubProcess p2_part21part21_part25part25part21 #######"
+      call p2_part21part21_part25part25part21_print_parameter(.true.,27)
+      write (27, *)
+      write (27, "(A)") "####### Setup of SubProcess p2_part21part21_part25part25part21_qp #######"
       call p2_part21part21_part25part25part21_print_parameter(.true.,27)
       write (27, *)
 
