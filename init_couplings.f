@@ -1,6 +1,7 @@
       subroutine init_couplings
       implicit none
       include 'PhysPars.h'
+      include 'pwhg_flg.h'
       include 'pwhg_st.h'
       include 'pwhg_math.h'
       include 'nlegborn.h'
@@ -11,6 +12,8 @@
       integer i,j
       real *8 powheginput
       external powheginput
+      integer mtdep
+
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 cccccc   INDEPENDENT QUANTITIES
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -38,6 +41,19 @@ cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       if (ph_mdlcgg.le.-99d0) ph_mdlcgg = 0.0d0
       ph_mdlcgghh = powheginput("#cgghh")
       if (ph_mdlcgghh.le.-99d0) ph_mdlcgghh = 0.0d0
+
+      mtdep = powheginput("#mtdep")
+
+C--   No HTL reals or virtuals for non-SM values of couplings
+C--   (except for chhh)
+
+      if(.not.flg_bornonly.and.(mtdep.ne.3).and.
+     $ ((ph_mdlct.ne.1).or.(ph_mdlcthh.ne.0)
+     $ .or.(ph_mdlcgg.ne.0).or.(ph_mdlcgghh.ne.0))) then
+         write(*,*) "Non-SM couplings not implemented for HTL virt/real"
+         write(*,*) "Abort!"
+         call exit(1)
+      endif
 
       ph_sthw2 = abs(1d0-(ph_Wmass/ph_Zmass)**2)
       ph_alphaem = ph_Wmass**2*ph_sthw2*8d0*ph_GF/sqrt(2d0)/4d0/pi

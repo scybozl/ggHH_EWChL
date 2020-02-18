@@ -61,7 +61,6 @@ subroutine initgrids(cHHH,ct,ctt,cg,cgg)
     write(gridname, "(A10,SP,ES11.4,A,ES11.4,A,ES11.4,A,ES11.4,A,ES11.4,A5)") &
            "Virt_full_", cHHH, "_", ct,"_", ctt, "_", cg, "_", cgg, ".grid"
     c_gridname = TRIM(gridname)//C_NULL_CHAR
-    write(*,*) "grids.f90 name ", c_gridname
 
     call combine_grids(c_gridname,cHHH,ct,ctt,cg,cgg)
   else

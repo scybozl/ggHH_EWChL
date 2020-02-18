@@ -490,7 +490,6 @@ c     additional variables
       params(1)=1d0
       call OLP_EvalSubProcess(processid,pgosam,muren,params,res)
       amp2=res(3)
-      write(*,*) res(3) 
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
 C     GOSAM returns this result with NO gs factor ==>
 C     virt_gosam ->  virt_gosam * (gs^2)^AlphasPower =
@@ -511,7 +510,6 @@ c     There is an extra factor of 8*pi from the instrisic GoSam normalization (4
       muren=sqrt(st_muren2)
       params(1)=1d0
       call OLP_EvalSubProcess(processid,pgosam,muren,params,res)
-      write(*,*) st_alpha, res
 
       amp2 = amp2 + res(4) * (4d0*pi*st_alpha)**2 
      $                     * 1d0/(16d0*pi**2)

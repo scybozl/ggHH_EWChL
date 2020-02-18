@@ -1,6 +1,6 @@
 module     p3_part1part21_part25part25part1_d84h0l1
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p3_part1pa &
-   ! &rt21_part25part25part1/helicity0d84h0l1.f90
+   ! file: /draco/u/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p3_part1part2 &
+   ! &1_part25part25part1/helicity0d84h0l1.f90
    ! generator: buildfortran.py
    use p3_part1part21_part25part25part1_config, only: ki
    use p3_part1part21_part25part25part1_util, only: cond

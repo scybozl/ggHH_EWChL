@@ -61,13 +61,14 @@ contains
       endif
    end subroutine exitgolem
 
-   subroutine     samplitude(vecs, scale2, amp, prec, ok, h)
+   subroutine     samplitude(vecs, scale2, amp, prec, icheck, ok, h)
       use p10_part1part21_part25part25part1_matrix, only: orig_sub => samplitude
       implicit none
       real(ki), dimension(5, 4), intent(in) :: vecs
       real(ki), intent(in) :: scale2
       real(ki), dimension(4), intent(out) :: amp
       integer, intent(out) :: prec
+      integer, intent(in) :: icheck
       logical, intent(out), optional :: ok
       integer, intent(in), optional :: h
 
@@ -77,12 +78,12 @@ contains
 
       if (present(ok)) then
          if (present(h)) then
-            call orig_sub(new_vecs, scale2, amp, prec, ok, h)
+            call orig_sub(new_vecs, scale2, amp, prec, icheck, ok, h)
          else
-            call orig_sub(new_vecs, scale2, amp, prec, ok)
+            call orig_sub(new_vecs, scale2, amp, prec, icheck, ok)
          end if
       else
-         call orig_sub(new_vecs, scale2, amp, prec, ok)
+         call orig_sub(new_vecs, scale2, amp, prec, icheck, ok)
       end if
 
       amp = amp * prefactor()

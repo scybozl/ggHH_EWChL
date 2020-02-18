@@ -36,6 +36,8 @@ testrun/
 runLO_*/
 runNLO_*/
 runLHE_*/
+test_*
+plots*
 
 # Generated FORM
 *.tmp

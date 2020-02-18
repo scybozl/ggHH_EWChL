@@ -131,6 +131,8 @@ c     additional variables
       parameter (dim_mom_array=50)
       real * 8 pgosam(dim_mom_array)
       real * 8 params(10),muren,res(4)
+      real :: start1, finish1, start2, finish2
+      integer icheck
       data(rflav_gosam(i,    0),i=1,nlegs)/
      $      0,
      $      0,
@@ -198,7 +200,9 @@ c     transfer the flavor list into a list with only down quark or antiquark
  222  call gosam_momenta_r(p,pgosam)
       muren=sqrt(st_muren2)
       params(1)=1d0
-      call OLP_EvalSubProcess(processid,pgosam,muren,params,res)
+c      call cpu_time(start1)
+      call OLP_EvalSubProcess(processid,pgosam,muren,params,res,icheck)
+c      call cpu_time(finish1)
       amp2=res(3)
 
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -206,38 +210,32 @@ C     GOSAM returns this result with NO gs factor ==>
 C     virt_gosam ->  virt_gosam * (gs^2)^AlphasPower =
 C     virt_gosam * (4*pi*st_alpha)^AlphasPower
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-c      amp2=amp2 * (4d0*pi*ph_alphaem)**2
+
       amp2=amp2  * (4d0*pi*st_alpha)**3
 c     The libraries for the  scalar integrals need an extra factor of 1/(16*pi^2)
 c     Since this contribution is the square of a one-loop calculation, this factor has to be squared
      $          * 2d0/(16*pi**2)**2
-      write(*,*) '-----------------------------------------------------'
-      write(*,*) 'p1  ', p(:,1)
-      write(*,*) 'p2  ', p(:,2)
-      write(*,*) 'h   ', p(:,3)
-      write(*,*) 'h   ', p(:,4)
-      write(*,*) 'p3  ', p(:,5)
-      write(*,*) '-----------------------------------------------------'
-      write(*,*) 'processid = ', processid
-c      write(*,*) 'processid = ', processid, ' ,loop squared   ', res(3)
-c      write(*,*) '    ----> amp2 =  ', amp2
 
 c     add SM/BSM interference and tree contributions
       processid=processid+7
       call gosam_momenta_r(p,pgosam)
       muren=sqrt(st_muren2)
       params(1)=1d0
-      call OLP_EvalSubProcess(processid,pgosam,muren,params,res)
+c      call cpu_time(start2)
+      call OLP_EvalSubProcess(processid,pgosam,muren,params,res,icheck)
+c      call cpu_time(finish2)
       amp2 = amp2 + res(4) * (4d0*pi*st_alpha)**3
      $                     * 1d0/(4d0*pi)**3
      $            + res(3) * (4d0*pi*st_alpha)**3
      $                     * 1d0/(4d0*pi)**3
-c     $            + res(3) * (4d0*pi*st_alpha)**2 
-c     $                     * 1d0/(16d0*pi**2)**2
-c     $                     * 8d0 * pi
-c      write(*,*) 'bsm inter   ', res(3)
-c      write(*,*) 'bsm square  ', res(4)
-      write(*,*) '    ----> amp2 =  ', amp2
+
+c    Check processing time (SM x BSM automatic rescue if icheck = 3)
+c
+c      write(*,*) '#####################################################'
+c      write(*,*) "Time elapsed SM: ", finish1-start1
+c      write(*,*) "Time elapsed SM x BSM: ", finish2-start2
+c     
+c      endif
 c      write(*,*) '(alpha_EW = ', ph_alphaem, ')'
 c      write(*,*) '(alpha = ', st_alpha, ')'
 

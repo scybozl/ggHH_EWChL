@@ -194,7 +194,7 @@ contains
    !---#] subroutine exitgolem :
 
    !---#[ subroutine samplitude :
-   subroutine     samplitude(vecs, scale2, amp, prec, ok, h)
+   subroutine     samplitude(vecs, scale2, amp, prec, ichecked, ok, h)
       use p9_part21part21_part25part25part21_kinematics_qp, only: adjust_kinematics_qp => adjust_kinematics
       use p9_part21part21_part25part25part21_model
       implicit none
@@ -211,6 +211,7 @@ contains
       real(ki) :: rat2, kfac, zero, angle
       real(ki), dimension(2:3) :: irp
       integer, intent(out) :: prec
+      integer, intent(in) :: ichecked
       logical, intent(out), optional :: ok
       integer, intent(in), optional :: h
       integer spprec1, fpprec1, spprec2, fpprec2
@@ -219,10 +220,12 @@ contains
       amprot=0.0_ki
       ampres=0.0_ki
       ampresrot=0.0_ki
-      icheck = 1
+      icheck = ichecked
       angle = 1.234_ki
       fpprec1 = 18
       fpprec2 = 18
+      spprec2 = 20
+      prec = 20 ! Set precision to unrealistically high value
       scales2(:) = (/0.0_ki, &
      &              mdlMh, &
      &              mdlMh/)
@@ -237,57 +240,20 @@ contains
       endif
       ! RESCUE SYSTEM
       if(PSP_check) then
-         ! poles should be zero for loop-induced processes
-         if(ampdef(2) .ne. 0.0_ki .and. ampdef(3) .ne. 0.0_ki) then
-            spprec1 = -int(log10(abs((ampdef(3)/ampdef(2)))))
-         else
-            spprec1 = 18
-         endif
-         kfac = 0.0_ki
-         if(spprec1.lt.PSP_chk_li1) then                                       ! RESCUE
-            icheck=3
-            fpprec1=-10        ! Set -10 as finite part precision
-         endif
-
+         ! If SM amplitude needed rescue, automatically rescue SMxBSM
          if(icheck.eq.3.and.PSP_rescue) then
+            reduction_interoperation = reduction_interoperation_rescue
             scale2_qp = real(scale2,ki_qp)
-            call refine_momenta_to_qp(5,vecs,vecs_qp,2+1,scales2)
+            !call refine_momenta_to_qp(5,vecs,vecs_qp,2+1,scales2)
+            vecs_qp = vecs
             call adjust_kinematics_qp(vecs_qp)
             call samplitudel01_qp(vecs_qp, scale2_qp, amp_qp, rat2_qp, ok, h)
-            call ir_subtraction_qp(vecs_qp, scale2_qp, irp_qp, h)
             ampres = real(amp_qp,ki)
-            irp = real(irp_qp,ki)
             amp=ampres
-            ! poles should be zero for loop-induced processes
-            if(ampres(2) .ne. 0.0_ki .and. ampres(3) .ne. 0.0_ki) then
-               spprec2 = -int(log10(abs(ampres(3)/ampres(2))))
-            else
-               spprec2 = 16
-            endif
             kfac = 0.0_ki
-            if(spprec2.lt.PSP_chk_li4) then ! DISCARD
-               icheck=3
-               fpprec2=-10        ! Set -10 as finite part precision
-            endif
-            ! if(icheck.eq.2) then
-            !    do irot = 1,5
-            !       vecsrot(irot,1) = vecs(irot,1)
-            !       vecsrot(irot,2) = vecs(irot,2)*Cos(angle)-vecs(irot,3)*Sin(angle)
-            !       vecsrot(irot,3) = vecs(irot,2)*Sin(angle)+vecs(irot,3)*Cos(angle)
-            !       vecsrot(irot,4) = vecs(irot,4)
-            !    enddo
-            !    ! call adjust_kinematics(vecsrot)
-            !    call samplitudel01(vecsrot, scale2, ampresrot, rat2, ok, h)
-            !    if((ampresrot(2)-ampres(2)) .ne. 0.0_ki) then
-            !       fpprec2 = -int(log10(abs((ampresrot(2)-ampres(2))/((ampresrot(2)+ampres(2))/2.0_ki))))
-            !    else
-            !       fpprec2 = 16
-            !    endif
-            !    if(fpprec2.ge.PSP_chk_li3) icheck=1                         ! ACCEPTED
-            !    if(fpprec2.lt.PSP_chk_li3) icheck=3                         ! DISCARD
-            ! endif
             reduction_interoperation = tmp_red_int
-            prec = min(spprec2,fpprec2)
+            !prec = min(spprec2,fpprec2)
+            prec = 20
          endif
 
          if(icheck.eq.3.and.PSP_verbosity) then

@@ -1,0 +1,13 @@
+---
+nodes: 1
+ntasks-per-node: 32
+partition: "short"
+time: "04:00:00"
+email: "scyboz@mpp.mpg.de"
+python_path: ".:/mpcdf/soft/SLE_12_SP4/packages/x86_64/anaconda/2/2019.03/lib/python2.7/site-packages/:$PWD"
+batch_command: "sbatch"
+script_template: "draco_mpi.sh-save"
+powheg_input_template: "powheg.input-save"
+prg: "../pwhg_main"
+...
+

@@ -62,7 +62,7 @@ module     pb_part21part21_part25part25_config
    integer :: renormalisation = 1
 
    ! if renormalisation.eq.1, include alpha_s renormalisation:
-   logical :: renorm_beta = .true.
+   logical :: renorm_beta = .false.
    ! if renormalisation.eq.1, include massive quark wave function renorm.:
    logical :: renorm_mqwf = .true.
    ! include massive quark contribution for wave function renormalisation
@@ -120,9 +120,9 @@ module     pb_part21part21_part25part25_config
    !
    ! Note: at the moment it only works for virtual corrections
    ! to Tree level processes.
-   logical :: PSP_check = .false.
+   logical :: PSP_check = .true.
    logical :: PSP_verbosity = .false.
-   logical :: PSP_rescue = .false.
+   logical :: PSP_rescue = .true.
    integer :: PSP_chk_th1 = 8
    integer :: PSP_chk_th2 = 3
    integer :: PSP_chk_th3 = 5

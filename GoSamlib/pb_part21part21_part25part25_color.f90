@@ -1,5 +1,5 @@
 module     pb_part21part21_part25part25_color
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/pb_part21part21_part25part25/common/color.f90 
+   ! file: /draco/u/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/pb_part21part21_part25part25/common/color.f90 
    ! generator: buildcolor.py
    use pb_part21part21_part25part25_config, only: ki
    use pb_part21part21_part25part25_model, only: NC, Nf
@@ -39,8 +39,8 @@ contains
       cabb(1)=NC**2
       cabb(1)=cabb(1)-1.0_ki
       cabb(2)=cabb(1)*TR**2
-      cabb(3)=cabb(2)*NC
-      cabb(1)=-2.0_ki*NC*cabb(1)*TR**3
+      cabb(3)=NC*cabb(2)
+      cabb(1)=-2.0_ki*TR**3*cabb(1)*NC
       T1T1(1,1)=cabb(3)
       T1T2(1,1)=cabb(1)
       T2T2(1,1)=cabb(3)

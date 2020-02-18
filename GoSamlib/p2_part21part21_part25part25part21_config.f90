@@ -121,8 +121,8 @@ module     p2_part21part21_part25part25part21_config
    ! Note: at the moment it only works for virtual corrections
    ! to Tree level processes.
    logical :: PSP_check = .true.
-   logical :: PSP_verbosity = .false.
-   logical :: PSP_rescue = .false.
+   logical :: PSP_verbosity = .true.
+   logical :: PSP_rescue = .true.
    ! not used (tree-level not available):
    integer :: PSP_chk_th1 = 8
    integer :: PSP_chk_th2 = 3
@@ -131,8 +131,8 @@ module     p2_part21part21_part25part25part21_config
    
    ! used instead:
    integer :: PSP_chk_li1 = 16
-   integer :: PSP_chk_li2 = 5
-   integer :: PSP_chk_li3 = 2
+   integer :: PSP_chk_li2 = 7
+   integer :: PSP_chk_li3 = 6
    integer :: PSP_chk_li4 = 19
 
 

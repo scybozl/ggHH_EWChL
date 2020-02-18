@@ -1,5 +1,5 @@
 module     p3_part1part21_part25part25part1_color
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p3_part1part21_part25part25part1/common/color.f90 
+   ! file: /draco/u/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p3_part1part21_part25part25part1/common/color.f90 
    ! generator: buildcolor.py
    use p3_part1part21_part25part25part1_config, only: ki
    use p3_part1part21_part25part25part1_model, only: NC, Nf

@@ -1,5 +1,5 @@
 module     p10_part1part21_part25part25part1_color_qp
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p10_part1part21_part25part25part1/common/color.f90 
+   ! file: /draco/u/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p10_part1part21_part25part25part1/common/color.f90 
    ! generator: buildcolor.py
    use p10_part1part21_part25part25part1_config, only: ki => ki_qp
    use p10_part1part21_part25part25part1_model_qp, only: NC, Nf

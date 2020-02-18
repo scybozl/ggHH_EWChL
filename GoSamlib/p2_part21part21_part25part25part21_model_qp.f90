@@ -1,6 +1,5 @@
 module     p2_part21part21_part25part25part21_model_qp
-   ! Model parameters for the model: FeynRules,/ptmp/lscyboz/POWHEG-BOX-V2/ggHH &
-   ! &_EWChL/EWChL_UFO
+   ! Model parameters for the model: FeynRules,EWChL_UFO
    use p2_part21part21_part25part25part21_config, only: ki => ki_qp, &
    & renormalisation, reduction_interoperation, &
    & reduction_interoperation_rescue, deltaOS, &

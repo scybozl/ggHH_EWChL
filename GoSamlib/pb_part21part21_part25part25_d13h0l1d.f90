@@ -1,6 +1,6 @@
 module     pb_part21part21_part25part25_d13h0l1d
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/pb_part21p &
-   ! &art21_part25part25/helicity0d13h0l1d.f90
+   ! file: /draco/u/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/pb_part21part &
+   ! &21_part25part25/helicity0d13h0l1d.f90
    ! generator: buildfortran_d.py
    use pb_part21part21_part25part25_config, only: ki
    use pb_part21part21_part25part25_util, only: cond, d => metric_tensor

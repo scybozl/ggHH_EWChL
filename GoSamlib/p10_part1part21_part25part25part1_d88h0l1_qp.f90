@@ -1,6 +1,6 @@
 module     p10_part1part21_part25part25part1_d88h0l1_qp
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p10_part1p &
-   ! &art21_part25part25part1/helicity0d88h0l1_qp.f90
+   ! file: /draco/u/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p10_part1part &
+   ! &21_part25part25part1/helicity0d88h0l1_qp.f90
    ! generator: buildfortran.py
    use p10_part1part21_part25part25part1_config, only: ki => ki_qp
    use p10_part1part21_part25part25part1_util_qp, only: cond

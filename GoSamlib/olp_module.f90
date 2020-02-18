@@ -274,7 +274,7 @@ contains
 
 
    ! BLHA1 interface
-   subroutine     OLP_EvalSubProcess(label, momenta, mu,  parameters, res) &
+   subroutine     OLP_EvalSubProcess(label, momenta, mu,  parameters, res, icheck) &
    & bind(C,name="olp_evalsubprocess_")
       use, intrinsic :: iso_c_binding
       implicit none
@@ -283,6 +283,7 @@ contains
       real(kind=c_double), dimension(50), intent(in) :: momenta
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer, intent(inout) :: icheck
       integer(kind=c_int) :: succ
       real(kind=c_double) :: alpha_s
       real(kind=c_double), parameter :: one_over_2pi = 0.15915494309189533577d0
@@ -300,59 +301,59 @@ contains
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! gg -> ghh 1
       case(2)
-              call eval2(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval2(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! gg -> ghh 2
       case(9)
-              call eval9(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval9(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! dg -> dhh 1
       case(3)
-              call eval3(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval3(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! dg -> dhh 2
       case(10)
-              call eval10(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval10(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! gd -> dhh 1
       case(4)
-              call eval4(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval4(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! gd -> dhh 2
       case(11)
-              call eval11(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval11(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! db g -> db h h 1
       case(5)
-              call eval5(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval5(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! db g -> db h h 2
       case(12)
-              call eval12(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval12(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! g db -> db h h 1
       case(6)
-              call eval6(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval6(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! g db -> db h h 2
       case(13)
-              call eval13(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval13(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! d db -> h h g
       case(7)
-              call eval7(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval7(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! d db -> h h g 2
       case(14)
-              call eval14(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval14(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! db d -> h h g 1
       case(8)
-              call eval8(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval8(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       ! d db -> h h g 2
       case(15)
-              call eval15(momenta(1:25), mu, parameters, res, blha1_mode=.true.)
+              call eval15(momenta(1:25), mu, parameters, res, icheck, blha1_mode=.true.)
               res(1:3) = alpha_s * one_over_2pi * res(1:3)
       case default
          res(:) = 0.0d0
@@ -361,7 +362,7 @@ contains
    end subroutine OLP_EvalSubProcess
 
    ! BLHA2 interface
-   subroutine     OLP_EvalSubProcess2(label, momenta, mu, res, acc) &
+   subroutine     OLP_EvalSubProcess2(label, momenta, mu, res, acc, icheck) &
    & bind(C,name="olp_evalsubprocess2_")
       use, intrinsic :: iso_c_binding
       implicit none
@@ -370,6 +371,7 @@ contains
       real(kind=c_double), dimension(50), intent(in) :: momenta
       real(kind=c_double), dimension(60), intent(out) :: res
       real(kind=c_double), intent(out) :: acc
+      integer icheck
 
       real(kind=c_double), dimension(10) :: parameters
 
@@ -381,33 +383,33 @@ contains
       case(1)
               call eval1(momenta(1:25), mu, parameters, res, acc)
       case(2)
-              call eval2(momenta(1:25), mu, parameters, res, acc)
+              call eval2(momenta(1:25), mu, parameters, res, icheck, acc)
       case(3)
-              call eval3(momenta(1:25), mu, parameters, res, acc)
+              call eval3(momenta(1:25), mu, parameters, res, icheck, acc)
       case(4)
-              call eval4(momenta(1:25), mu, parameters, res, acc)
+              call eval4(momenta(1:25), mu, parameters, res, icheck, acc)
       case(5)
-              call eval5(momenta(1:25), mu, parameters, res, acc)
+              call eval5(momenta(1:25), mu, parameters, res, icheck, acc)
       case(6)
-              call eval6(momenta(1:25), mu, parameters, res, acc)
+              call eval6(momenta(1:25), mu, parameters, res, icheck, acc)
       case(7)
-              call eval7(momenta(1:25), mu, parameters, res, acc)
+              call eval7(momenta(1:25), mu, parameters, res, icheck, acc)
       case(8)
-              call eval8(momenta(1:25), mu, parameters, res, acc)
+              call eval8(momenta(1:25), mu, parameters, res, icheck, acc)
       case(9)
-              call eval9(momenta(1:25), mu, parameters, res, acc)
+              call eval9(momenta(1:25), mu, parameters, res, icheck, acc=acc)
       case(10)
-              call eval10(momenta(1:25), mu, parameters, res, acc)
+              call eval10(momenta(1:25), mu, parameters, res, icheck, acc)
       case(11)
-              call eval11(momenta(1:25), mu, parameters, res, acc)
+              call eval11(momenta(1:25), mu, parameters, res, icheck, acc)
       case(12)
-              call eval12(momenta(1:25), mu, parameters, res, acc)
+              call eval12(momenta(1:25), mu, parameters, res, icheck, acc)
       case(13)
-              call eval13(momenta(1:25), mu, parameters, res, acc)
+              call eval13(momenta(1:25), mu, parameters, res, icheck, acc)
       case(14)
-              call eval14(momenta(1:25), mu, parameters, res, acc)
+              call eval14(momenta(1:25), mu, parameters, res, icheck, acc)
       case(15)
-              call eval15(momenta(1:25), mu, parameters, res, acc)
+              call eval15(momenta(1:25), mu, parameters, res, icheck, acc)
       case default
          res(:) = 0.0d0
       end select
@@ -686,7 +688,7 @@ contains
    !---#] subroutine eval1 :
 
    !---#[ subroutine eval2 :
-   subroutine     eval2(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval2(momenta, mu, parameters, res, icheck, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p2_part21part21_part25part25part21_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p2_part21part21_part25part25part21_model, only: parseline
@@ -699,6 +701,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer icheck
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -725,7 +728,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, icheck, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -761,7 +764,7 @@ contains
    end subroutine eval2
    !---#] subroutine eval2 :
    !---#[ subroutine eval3 :
-   subroutine     eval3(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval3(momenta, mu, parameters, res, icheck, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p3_part1part21_part25part25part1_model, only: parseline
@@ -774,6 +777,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer icheck
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -800,7 +804,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, icheck, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -836,7 +840,7 @@ contains
    end subroutine eval3
    !---#] subroutine eval3 :
    !---#[ subroutine eval4 :
-   subroutine     eval4(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval4(momenta, mu, parameters, res, icheck, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p3_part1part21_part25part25part1_model, only: parseline
@@ -849,6 +853,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer icheck
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -875,7 +880,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, icheck, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -911,7 +916,7 @@ contains
    end subroutine eval4
    !---#] subroutine eval4 :
    !---#[ subroutine eval5 :
-   subroutine     eval5(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval5(momenta, mu, parameters, res, icheck, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p3_part1part21_part25part25part1_model, only: parseline
@@ -924,6 +929,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer icheck
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -950,7 +956,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, icheck, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -960,12 +966,12 @@ contains
       end if
       if(present(acc)) then
          acc=10.0_ki**(-prec) ! point accuracy
-      else
-         if(prec.lt.PSP_chk_li3 .and. PSP_check) then
-            ! Give back a Nan so that point is discarded
-            zero = log(1.0_ki)
-            amp(2)= 1.0_ki/zero
-        end if
+!      else
+!         if(prec.lt.PSP_chk_li3 .and. PSP_check) then
+!            ! Give back a Nan so that point is discarded
+!            zero = log(1.0_ki)
+!            amp(2)= 1.0_ki/zero
+!        end if
         ! Cannot be assigned if present(acc)=F --> commented out!
         ! acc=1E5_ki ! dummy accuracy which is not used
       end if
@@ -986,7 +992,7 @@ contains
    end subroutine eval5
    !---#] subroutine eval5 :
    !---#[ subroutine eval6 :
-   subroutine     eval6(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval6(momenta, mu, parameters, res, icheck, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p3_part1part21_part25part25part1_model, only: parseline
@@ -999,6 +1005,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer icheck
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1025,7 +1032,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, icheck, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1061,7 +1068,7 @@ contains
    end subroutine eval6
    !---#] subroutine eval6 :
    !---#[ subroutine eval7 :
-   subroutine     eval7(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval7(momenta, mu, parameters, res, icheck, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p3_part1part21_part25part25part1_model, only: parseline
@@ -1074,6 +1081,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer icheck
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1100,7 +1108,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, icheck, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1136,7 +1144,7 @@ contains
    end subroutine eval7
    !---#] subroutine eval7 :
    !---#[ subroutine eval8 :
-   subroutine     eval8(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval8(momenta, mu, parameters, res, icheck, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p3_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p3_part1part21_part25part25part1_model, only: parseline
@@ -1149,6 +1157,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer icheck
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1175,7 +1184,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, icheck, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1211,7 +1220,7 @@ contains
    end subroutine eval8
    !---#] subroutine eval8 :
    !---#[ subroutine eval9 :
-   subroutine     eval9(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval9(momenta, mu, parameters, res, ichecked, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p9_part21part21_part25part25part21_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p9_part21part21_part25part25part21_model, only: parseline
@@ -1224,6 +1233,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer, intent(in) :: ichecked
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1250,7 +1260,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ichecked, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1286,7 +1296,7 @@ contains
    end subroutine eval9
    !---#] subroutine eval9 :
    !---#[ subroutine eval10 :
-   subroutine     eval10(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval10(momenta, mu, parameters, res, ichecked, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p10_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p10_part1part21_part25part25part1_model, only: parseline
@@ -1299,6 +1309,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer, intent(in) :: ichecked
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1325,7 +1336,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ichecked, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1361,7 +1372,7 @@ contains
    end subroutine eval10
    !---#] subroutine eval10 :
    !---#[ subroutine eval11 :
-   subroutine     eval11(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval11(momenta, mu, parameters, res, ichecked, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p10_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p10_part1part21_part25part25part1_model, only: parseline
@@ -1374,6 +1385,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer, intent(in) :: ichecked
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1400,7 +1412,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ichecked, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1436,7 +1448,7 @@ contains
    end subroutine eval11
    !---#] subroutine eval11 :
    !---#[ subroutine eval12 :
-   subroutine     eval12(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval12(momenta, mu, parameters, res, ichecked, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p10_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p10_part1part21_part25part25part1_model, only: parseline
@@ -1449,6 +1461,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer, intent(in) :: ichecked
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1475,7 +1488,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ichecked, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1511,7 +1524,7 @@ contains
    end subroutine eval12
    !---#] subroutine eval12 :
    !---#[ subroutine eval13 :
-   subroutine     eval13(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval13(momenta, mu, parameters, res, ichecked, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p10_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p10_part1part21_part25part25part1_model, only: parseline
@@ -1524,6 +1537,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer, intent(in) :: ichecked
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1550,7 +1564,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ichecked, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1586,7 +1600,7 @@ contains
    end subroutine eval13
    !---#] subroutine eval13 :
    !---#[ subroutine eval14 :
-   subroutine     eval14(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval14(momenta, mu, parameters, res, ichecked, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p10_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p10_part1part21_part25part25part1_model, only: parseline
@@ -1599,6 +1613,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer, intent(in) :: ichecked
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1625,7 +1640,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ichecked, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1661,7 +1676,7 @@ contains
    end subroutine eval14
    !---#] subroutine eval14 :
    !---#[ subroutine eval15 :
-   subroutine     eval15(momenta, mu, parameters, res, acc, blha1_mode)
+   subroutine     eval15(momenta, mu, parameters, res, ichecked, acc, blha1_mode)
       use, intrinsic :: iso_c_binding
       use p10_part1part21_part25part25part1_config, only: ki, PSP_chk_li3, nlo_prefactors, PSP_check
       use p10_part1part21_part25part25part1_model, only: parseline
@@ -1674,6 +1689,7 @@ contains
       real(kind=c_double), intent(in) :: mu
       real(kind=c_double), dimension(10), intent(in) :: parameters
       real(kind=c_double), dimension(60), intent(out) :: res
+      integer, intent(in) :: ichecked
 
       real(kind=ki), dimension(5,4) :: vecs
       real(kind=ki), dimension(4) :: amp
@@ -1700,7 +1716,7 @@ contains
 
       call boost_to_cms(vecs)
 
-      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ok)
+      call samplitude(vecs, real(mu,ki)*real(mu,ki), amp, prec, ichecked, ok)
       call ninja_exit()
       call quadninja_exit()
       if (ok) then
@@ -1771,7 +1787,7 @@ contains
       use, intrinsic :: iso_c_binding
       use p0_part21part21_part25part25_model, only: p0_part21part21_part25part25_print_parameter => print_parameter
       use pb_part21part21_part25part25_model, only: pb_part21part21_part25part25_print_parameter => print_parameter
-      use p2_part21part21_part25part25part21_model_qp, only: p2_part21part21_part25part25part21_print_parameter => print_parameter
+      use p2_part21part21_part25part25part21_model, only: p2_part21part21_part25part25part21_print_parameter => print_parameter
       implicit none
       character(kind=c_char,len=1), intent(in) :: filename
       integer :: ierr, l
@@ -1802,12 +1818,9 @@ contains
       call p0_part21part21_part25part25_print_parameter(.false.,27)
       write (27, *)
       write (27, "(A)") "####### Setup of SubProcess pb_part21part21_part25part25 #######"
-      call pb_part21part21_part25part25_print_parameter(.false.,27)
+      call pb_part21part21_part25part25_print_parameter(.true.,27)
       write (27, *)
       write (27, "(A)") "####### Setup of SubProcess p2_part21part21_part25part25part21 #######"
-      call p2_part21part21_part25part25part21_print_parameter(.true.,27)
-      write (27, *)
-      write (27, "(A)") "####### Setup of SubProcess p2_part21part21_part25part25part21_qp #######"
       call p2_part21part21_part25part25part21_print_parameter(.true.,27)
       write (27, *)
 

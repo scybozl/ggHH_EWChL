@@ -1,6 +1,6 @@
 module     p10_part1part21_part25part25part1_diagramsh2l0
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/p10_part1part21_part25p &
-   ! &art25part1/helicity2diagramsl0.f90
+   ! file: /draco/u/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p10_part1part &
+   ! &21_part25part25part1/helicity2diagramsl0.f90
    ! generator: buildfortranborn.py
    use p10_part1part21_part25part25part1_color, only: numcs
    use p10_part1part21_part25part25part1_config, only: ki

@@ -2,7 +2,7 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
 /* Where data are placed to. */
-#define DATADIR "/home/pcl305a/luisonig/Documents/GoSamPowheg/POWHEG-BOX-V2/GoSamStuff/GoSam-contrib-2.0/share"
+#define DATADIR "/u/lscyboz/GOSAM-CONTRIB-qp/share"
 
 /* Define to dummy `main' function (if any) required to link to the Fortran
    libraries. */
@@ -72,7 +72,8 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #define HAVE_UNISTD_H 1
 
-/* Define to the sub-directory where libtool stores uninstalled libraries. */
+/* Define to the sub-directory in which libtool stores uninstalled libraries.
+   */
 #define LT_OBJDIR ".libs/"
 
 /* Define to 1 if this an internal is a source file. */

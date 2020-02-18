@@ -30,7 +30,7 @@ CC=gcc
 CXX=g++
 ## of boolean in gfortran.
 #FFLAGS= -Wall -Wimplicit-interface -fbounds-check -g -O2
-FFLAGS= -g -O2
+FFLAGS= -g -O2 -std=legacy
 ## For floating point exception trapping  uncomment the following
 #FPE=-ffpe-trap=invalid,zero,overflow,underflow
 ## Use -O2 optimization
@@ -68,7 +68,7 @@ INCLUDE0=$(PWD)
 INCLUDE1=$(shell dirname $(PWD))/include
 INCLUDE2=$(PWD)/GoSamlib
 INCLUDE3=$(PWD)/Virtual
-FF+= $(FFLAGS) $(FPE) $(OPT) $(DEBUG) -I$(INCLUDE0) -I$(INCLUDE1) -I$(INCLUDE2) -I$(INCLUDE3)
+FF+= $(FFLAGS) $(FPE) $(OPT) $(DEBUG) -I$(INCLUDE0) -I$(INCLUDE1) -I$(INCLUDE2) -I$(INCLUDE3) 
 LIBS+=-lz -lquadmath
 
 INCLUDE =$(wildcard ../include/*.h *.h include/*.h)

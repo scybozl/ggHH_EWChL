@@ -1,6 +1,6 @@
 module     p9_part21part21_part25part25part21_diagramsh0l0_qp
-   ! file: /draco/ptmp/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/p9_part21part21_part25p &
-   ! &art25part21/helicity0diagramsl0_qp.f90
+   ! file: /draco/u/lscyboz/POWHEG-BOX-V2/ggHH_EWChL/GoSam_POWHEG/p9_part21part &
+   ! &21_part25part25part21/helicity0diagramsl0_qp.f90
    ! generator: buildfortranborn.py
    use p9_part21part21_part25part25part21_color_qp, only: numcs
    use p9_part21part21_part25part25part21_config, only: ki => ki_qp
