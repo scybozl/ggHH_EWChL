@@ -14,6 +14,7 @@
 #include "ThePEG/Persistency/PersistentIStream.h"
 #include "ThePEG/Config/HepMCHelper.h"
 #include "HepMC/IO_GenEvent.h"
+#include "ThePEG/Vectors/HepMCConverter.h"
 
 #include "herwig7_interface.h"
 
