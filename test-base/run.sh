@@ -35,9 +35,9 @@ function runthem {
 	    then
 		ln -s ../Virtual/creategrid.py creategrid.py
 	    fi
-	    if [ ! -f Virt_full_cHHH_-1.0.grid ] || [ ! -f Virt_full_cHHH_0.0.grid ] || [ ! -f Virt_full_cHHH_1.0.grid ]
+	    if [ ! -f Virt_full_*E*.grid ]
 	    then
-		for grid in ../Virtual/Virt_full_cHHH_*.grid; do ln -s $grid ${grid##*/}; done
+		for grid in ../Virtual/Virt_full_*E*.grid; do ln -s $grid ${grid##*/}; done
 	    fi
 	fi
 	# launch powheg
@@ -69,18 +69,23 @@ parstage=2
 echo "***********************************************"
 echo " stage " $parstage
 echo "***********************************************"
-
-cat powheg.input-save | sed "s/mtdep.*/mtdep $mode/ ; s/parallelstage.*/parallelstage $parstage/">powheg.input
+for xgrid in $(seq 1 $nxgriditeration)
+do
+echo "***********************************************"
+echo " iteration " $xgrid
+echo "***********************************************"
+cat powheg.input-save | sed "s/mtdep.*/mtdep $mode/ ; s/parallelstage.*/parallelstage $parstage/ ; s/xgriditeration.*/xgriditeration $xgrid/">powheg.input
 cp powheg.input powheg.input-$parstage
 logfile=run-$parstage
 runthem $mode
 wait
 rm powheg.input
+done
 
 termin=$(date +"%s")
 difftimelps=$(($termin-$begin))
 echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed since script start."
-#exit
+exit
 
 parstage=3
 echo "***********************************************"
