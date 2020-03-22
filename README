@@ -16,7 +16,7 @@ If the script run.sh is not used, the following commands have to be given (once)
 
  ln -s ../Virtual/events.cdf events.cdf
  ln -s ../Virtual/creategrid.py creategrid.py
- for grid in ../Virtual/Virt_full_cHHH_*.grid; do ln -s $grid ${grid##*/}; done
+ for grid in ../Virtual/Virt_full_*.grid; do ln -s $grid ${grid##*/}; done
 
 Note that the script ./run.sh will perform POWHEG's parallelstages 1-4 sequentially. 
 The time taken for all 3 steps may exceed wall clock limits on a cluster. 

@@ -33,7 +33,7 @@ def combinegrids(grid_temp, cHHH, ct, ctt, cg, cgg):
     if os.stat("lock").st_nlink > 2:
         # Wait for other instance to create grid
         while not os.path.exists(grid_temp):
-            print "Waiting for ", str(grid_temp), " to be created"
+            print("Waiting for " + str(grid_temp) + " to be created")
             time.sleep(5)
         # Cleanup our symlink and return
         os.system("rm -f " + lockname)
@@ -45,9 +45,9 @@ def combinegrids(grid_temp, cHHH, ct, ctt, cg, cgg):
     # Grid numbering format
     np.set_printoptions(formatter={'float': '{:.18E}'.format})
 
-    print "******************************************************************************************"
-    print " Combining grids for chhh = ", cHHH, ", ct = ", ct, ", ctt = ", ctt, ", cg = ", cg, ", cgg = ", cgg
-    print "******************************************************************************************"
+    print("******************************************************************************************")
+    print(" Combining grids for chhh = " + str(cHHH) + ", ct = " + str(ct) + ", ctt = " + str(ctt) +", cg = " + str(cg) + ", cgg = " + str(cgg))
+    print("******************************************************************************************")
 
     # Build grid for give value of cHHH
     incr = re.split('(_)', grid_temp)
@@ -82,7 +82,7 @@ def combinegrids(grid_temp, cHHH, ct, ctt, cg, cgg):
 
     for grid in cHHH_grids:
         amps.append(np.loadtxt(grid, unpack=True))
-    print "Grids loaded."
+    print("Grids loaded.")
 
     C = np.array([[14641/279841., 1., 121/2116., 121/1024., 64/81., 
   121/529., 1331/24334., 11/46., 11/32., 8/9., 
@@ -195,7 +195,7 @@ def combinegrids(grid_temp, cHHH, ct, ctt, cg, cgg):
       for amp2 in amps[0:]:
 
         if not (np.array_equal(amp[0], amp2[0]) and np.array_equal(amp[1], amp2[1])):
-            print "The virtual grids do not contain the same phase-space points!"
+            print("The virtual grids do not contain the same phase-space points!")
     for i, psp in enumerate(amps[0][0]):
         A = np.matmul(Cinv, np.transpose(np.array([ [amps[j][2][i] for j in range(len(cHHH_grids))] ])))
 #        A = np.matmul(Cinv, np.array([[amps[0][2][i]], [amps[1][2][i]], [amps[2][2][i]]]))
@@ -211,7 +211,7 @@ def combinegrids(grid_temp, cHHH, ct, ctt, cg, cgg):
 
     np.savetxt(grid_temp, np.transpose([amps[0][0], amps[0][1], ME2s, dME2s]))
 
-    print "Saved grid ", grid_temp
+    print("Saved grid " + str(grid_temp))
     os.system("rm -f " + lockname)
 
 class Bin:
@@ -342,7 +342,7 @@ class Grid:
         ij = itertools.product(range(orders[0] + 1), range(orders[1] + 1))
         for k, (i, j) in enumerate(ij):
             G[:, k] = x ** i * y ** j
-        m, _, _, _ = np.linalg.lstsq(G, z)
+        m, _, _, _ = np.linalg.lstsq(G, z, rcond=None)
         return m
 
     def polyval2d(self, x, y, m, orders):
@@ -365,12 +365,12 @@ class Grid:
 
     def gridpoints(self, sample=False, flag='k', extendToBorder=False, returnError=False):
         if flag == 'k':
-            return [[k, d.gety(sample)] for k, d in self.data.iteritems()]
+            return [[k, d.gety(sample)] for k, d in self.data.items()]
         if flag == 'x':
             if (returnError):
-                res = [[self.x(k), d.gety(sample), d.gete()] for k, d in self.data.iteritems()]
+                res = [[self.x(k), d.gety(sample), d.gete()] for k, d in self.data.items()]
             else:
-                res = [[self.x(k), d.gety(sample)] for k, d in self.data.iteritems()]
+                res = [[self.x(k), d.gety(sample)] for k, d in self.data.items()]
             if (extendToBorder):
                 for d in range(self.dim):
                     nbin = self.nbin.copy()
@@ -390,11 +390,11 @@ class Grid:
                     res += [[x.copy(), self.data[tuple(k)].gety(sample)], ]
             return res
         if flag == 'plain':
-            return [self.x(k).tolist() + [d.gety(sample), ] for k, d in self.data.iteritems()]
+            return [self.x(k).tolist() + [d.gety(sample), ] for k, d in self.data.items()]
 
     def printgrid(self):
-        for k, d in self.data.iteritems():
-            print k, d, d.n
+        for k, d in self.data.items():
+            print(k, d, d.n)
 
     def addPoint(self, data):
         if (type(data[-1]) is float or type(data[-1]) is np.float64):
@@ -410,7 +410,7 @@ class Grid:
         self.interpolators = []
         self.nsamples = nsamples
         for i in range(nsamples):
-            temp = zip(*self.gridpoints(sample=(nsamples != 1), flag='x', extendToBorder=True))
+            temp = list(zip(*self.gridpoints(sample=(nsamples != 1), flag='x', extendToBorder=True)))
             self.interpolators.append(interpolate.CloughTocher2DInterpolator(list(temp[0]), temp[1], fill_value=0.))
             #      temp=zip(*self.gridpoints(sample=(nsamples!=1),flag='plain',extendToBorder=False))
             #      self.interpolators.append(interpolate.SmoothBivariateSpline(temp[0],temp[1],temp[2],bbox=[0.,1.,0.,1.]))
@@ -427,7 +427,7 @@ class Grid:
                 xx = self.x(k)
                 dat = [np.append(self.x(x + kmin), self.data[tuple(x + kmin)].gety(sample=(nsamples != 1))) for x in
                        np.ndindex(*(degree + 1))]
-                x, y, z = np.asarray(zip(*dat))
+                x, y, z = np.asarray(list(zip(*dat)))
                 #        z=np.asarray(zip(*dat)[2])
                 self.pol[k, i] = self.polyfit2d(x, y, z, orders=degree)
 

@@ -1,7 +1,7 @@
 
 #include "hhgrid.h"
 
-#include <python2.7/Python.h>
+#include <Python.h>
 #include <stdlib.h> // setenv, strdup, strtok, NULL
 #include <assert.h> // assert
 #include <unistd.h> // access
@@ -19,7 +19,7 @@ void python_initialize()
 
 void python_decref(PyObject* grid)
 {
-    Py_DECREF(grid);
+    Py_XDECREF(grid);
 };
 
 void python_finalize()
@@ -29,16 +29,16 @@ void python_finalize()
 
 void python_printinfo()
 {
-    const char* programFullPath = Py_GetProgramFullPath();
+    const wchar_t* programFullPath = Py_GetProgramFullPath();
     const char* getVersion = Py_GetVersion();
-    const char* getPythonHome = Py_GetPythonHome();
-    const char* getPath = Py_GetPath();
+    const wchar_t* getPythonHome = Py_GetPythonHome();
+    const wchar_t* getPath = Py_GetPath();
 
     printf("== Python Parameters ==\n");
-    printf("Py_GetProgramFullPath: %s\n", programFullPath);
+    printf("Py_GetProgramFullPath: %ls\n", programFullPath);
     printf("Py_GetVersion: %s\n", getVersion);
-    printf("Py_GetPythonHome: %s\n", getPythonHome);
-    printf("Py_GetPath: %s\n", getPath);
+    printf("Py_GetPythonHome: %ls\n", getPythonHome);
+    printf("Py_GetPath: %ls\n", getPath);
     printf("\n");
 };
 // EOF - Helper Functions (mostly for Fortran)
@@ -138,11 +138,11 @@ void combine_grids(const char* grid_temp, double cHHH, double ct, double ctt, do
     if(pFct == NULL)
     {
         PyErr_Print();
-        printf("ERROR: Failed to locate CreateGrid class: please check that you have the latest version of creategrid.py and Python 2.7.x\n");
+        printf("ERROR: Failed to locate CreateGrid class: please check that you have the latest version of creategrid.py and Python 3.x\n");
     }
     assert(pFct != NULL);
 
-    PyObject* pGridName = PyString_FromString(grid_temp);
+    PyObject* pGridName = PyUnicode_FromString(grid_temp);
     if(pGridName == NULL)
     {
         PyErr_Print();
@@ -194,7 +194,7 @@ void combine_grids(const char* grid_temp, double cHHH, double ct, double ctt, do
     if(pGridNameTuple == NULL)
     {
         PyErr_Print();
-        printf("ERROR: Failed to create Python tuple: please check that your Python version is 2.7.x\n");
+        printf("ERROR: Failed to create Python tuple: please check that your Python version is 3.x\n");
     }
     assert(pGridNameTuple != NULL);
 
@@ -202,19 +202,19 @@ void combine_grids(const char* grid_temp, double cHHH, double ct, double ctt, do
     if(pFunct == NULL)
     {
         PyErr_Print();
-        printf("ERROR: Failed to call combinegrids: please check that you have the latest version of creategrid.py and Python 2.7.x\n");
+        printf("ERROR: Failed to call combinegrids: please check that you have the latest version of creategrid.py and Python 3.x\n");
     }
     assert(pFunct != NULL);
 
     // Cleanup
     free(pythonpath);
     free(grid_file_path);
-    Py_DECREF(pModule);
-    Py_DECREF(pFct);
-    Py_DECREF(pGridName);
-    Py_DECREF(pcHHHValue);
-    Py_DECREF(pGridNameTuple);
-    Py_DECREF(pFunct);
+    Py_XDECREF(pModule);
+    Py_XDECREF(pFct);
+    Py_XDECREF(pGridName);
+    Py_XDECREF(pcHHHValue);
+    Py_XDECREF(pGridNameTuple);
+    Py_XDECREF(pFunct);
 };
 
 PyObject* grid_initialize(const char* grid_name)
@@ -278,11 +278,17 @@ PyObject* grid_initialize(const char* grid_name)
     if(pClass == NULL)
     {
         PyErr_Print();
-        printf("ERROR: Failed to locate CreateGrid class: please check that you have the latest version of creategrid.py and Python 2.7.x\n");
+        printf("ERROR: Failed to locate CreateGrid class: please check that you have the latest version of creategrid.py and Python 3.x\n");
     }
     assert(pClass != NULL);
 
-    PyObject* pGridName = PyString_FromString(grid_file_path);
+    if(!PyCallable_Check(pClass))
+    {
+        PyErr_Print();
+        printf("ERROR: CreateGrid is not callable: please check that you have the latest version of creategrid.py and Python 3.x\n");
+    }
+
+    PyObject* pGridName = PyUnicode_FromString(grid_file_path);
     if(pGridName == NULL)
     {
         PyErr_Print();
@@ -294,25 +300,25 @@ PyObject* grid_initialize(const char* grid_name)
     if(pGridNameTuple == NULL)
     {
         PyErr_Print();
-        printf("ERROR: Failed to create Python tuple: please check that your Python version is 2.7.x\n");
+        printf("ERROR: Failed to create Python tuple: please check that your Python version is 3.x\n");
     }
     assert(pGridNameTuple != NULL);
 
-    PyObject* pInstance = PyInstance_New(pClass, pGridNameTuple, NULL);
+    PyObject* pInstance = PyObject_CallObject(pClass, pGridNameTuple);
     if(pInstance == NULL)
     {
         PyErr_Print();
-        printf("ERROR: Failed to create instance of CreateGrid: please check that you have the latest version of creategrid.py and Python 2.7.x\n");
+        printf("ERROR: Failed to create instance of CreateGrid: please check that you have the latest version of creategrid.py and Python 3.x\n");
     }
     assert(pInstance != NULL);
 
     // Cleanup
     free(pythonpath);
     free(grid_file_path);
-    Py_DECREF(pModule);
-    Py_DECREF(pClass);
-    Py_DECREF(pGridName);
-    Py_DECREF(pGridNameTuple);
+    Py_XDECREF(pModule);
+    Py_XDECREF(pClass);
+    Py_XDECREF(pGridName);
+    Py_XDECREF(pGridNameTuple);
 
     return pInstance;
 };
@@ -330,7 +336,7 @@ double grid_virt(PyObject* grid, double s, double t)
     double result = PyFloat_AsDouble(pResult);
 
     // Cleanup
-    Py_DECREF(pResult);
+    Py_XDECREF(pResult);
 
     return result;
 };

@@ -30,7 +30,7 @@ CC=gcc
 CXX=g++
 ## of boolean in gfortran.
 #FFLAGS= -Wall -Wimplicit-interface -fbounds-check -g -O2
-FFLAGS= -g -O2 -std=legacy
+FFLAGS= -g -O2 -std=legacy -fno-lto
 ## For floating point exception trapping  uncomment the following
 #FPE=-ffpe-trap=invalid,zero,overflow,underflow
 ## Use -O2 optimization
@@ -110,10 +110,8 @@ NINJAFLAGS=-DHAVE_CONFIG_H -I./GoSamlib  -O2
 NINJAFLAGSQP=-DHAVE_CONFIG_H -I./GoSamlib -I./Gosamlib/quadsources -O2
 
 # VirtualGrids
-#LIBS+=-l:$(shell python2.7-config --prefix)/lib/libpython2.7.so # $(shell python2.7-config --ldflags)
-LIBS+=-L$(shell python2.7-config --prefix)/lib -lpython2.7  # $(shell python2.7-config --ldflags)
-CCFLAGS+=-I$(shell python2.7-config --prefix)/include
-CCFLAGS+=$(shell python2.7-config --cflags)
+LIBS+= $(shell python3-config --ldflags)
+CCFLAGS+=$(shell python3-config --cflags)
 
 pwhg_cpHTO_reweight.o: pwhg_cpHTO_reweight.f $(INCLUDE)
 	$(FF) -c $(MOD) -o $(OBJDIR)/$@ $<
@@ -170,7 +168,7 @@ PWHG=pwhg_main.o pwhg_init.o bbinit.o lhefwrite.o LesHouches.o phi3m.o  \
 
 # target to generate LHEF output
 pwhg_main:gosamlib.a $(PWHG)
-	$(FF) $(patsubst %,$(OBJDIR)/%,$(PWHG)) $(LIBS) $(LIBSFASTJET) $(STATIC)  $(OBJ)/gosamlib.a -o $@ -lstdc++
+	$(FF) $(patsubst %,$(OBJDIR)/%,$(PWHG)) $(LIBS) $(LIBSFASTJET) $(STATIC) -static-libgfortran  $(OBJ)/gosamlib.a -o $@ -lstdc++
 
 
 gosamlib.a: $(GOSAMLIBS)
