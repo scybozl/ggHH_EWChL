@@ -21,7 +21,7 @@ LOGFILE='%(powheg_log_filename)s'
 export PYTHONPATH="%(python_path)s:$PYTHONPATH"
 #---- ----------------------- ----#
 
-module purge && module load gcc/6 anaconda/3/2019.03 git
+module purge && module load gcc/8 anaconda/3/2019.03 git
 
 RUNDIR=$PWD
 
