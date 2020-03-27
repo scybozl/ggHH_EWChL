@@ -25,20 +25,23 @@ function runthem {
     export PYTHONPATH=$PWD:$PYTHONPATH
     for i in $(seq 1 $ncores)
     do
-	if [ "$1" = "3" ]
-	then
-	    if [ ! -f events.cdf ]
-	    then
-		ln -s ../Virtual/events.cdf events.cdf
-	    fi
-	    if [ ! -f creategrid.py ]
-	    then
-		ln -s ../Virtual/creategrid.py creategrid.py
-	    fi
-	    if [ ! -f Virt_full_*E*.grid ]
-	    then
-		for grid in ../Virtual/Virt_full_*E*.grid; do ln -s $grid ${grid##*/}; done
-	    fi
+        if [ "$1" = "3" ]
+        then
+            if [ ! -f events.cdf ]
+            then
+                ln -s ../Virtual/events.cdf events.cdf
+            fi
+            if [ ! -f creategrid.py ]
+            then
+                ln -s ../Virtual/creategrid.py creategrid.py
+            fi
+            for grid in ../Virtual/Virt_full_*.grid 
+            do
+                if [ ! -f $grid ]
+                then
+                    ln -s $grid ${grid##*/}
+                fi
+            done
 	fi
 	# launch powheg
 	echo $i | $prg > $logfile-$i.log 2>&1 &
