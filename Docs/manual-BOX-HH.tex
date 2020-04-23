@@ -179,9 +179,9 @@ usual. To ensure that the linked files are found, we recommend to add the run su
 The python code {\tt creategrid.py} will then combine the virtual grids generated with different values of the Higgs couplings
 to produce a new file {\tt Virt\_full*E*.grid} corresponding to the values of the couplings chosen in the {\tt powheg.input} file.
 
-The python code for the grid is written in python 2.7 and relies on the {\tt numpy} and {\tt sympy} packages, which 
-the user should install separately. When building the {\tt ggHH} process the Makefile will find the embedded python 2.7 library
-via a call to {\tt python2.7-config}, which the user should ensure is configured correctly and points to the correct library.
+The python code for the grid is written in python 3 and relies on the {\tt numpy} and {\tt sympy} packages, which 
+the user should install separately. When building the {\tt ggHH} process the Makefile will find the embedded python 3 library
+via a call to {\tt python3-config}, which the user should ensure is configured correctly and points to the correct library.
 Note that on some systems the Python/C API does not search for packages (such as {\tt numpy} and {\tt sympy}) in the same 
 paths as the python executable would. Therefore the user should ensure that these packages can be found also by an embedded python program.
 
