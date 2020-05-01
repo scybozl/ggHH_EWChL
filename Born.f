@@ -123,7 +123,6 @@ C     Born spin- and color-correlated:
                bmunu(mu,nu,j)=0d0
             enddo
          enddo
-	 check=0d0
          do k=j+1,nlegs
             bornjk(j,k)=0d0
             bornjk(k,j)=bornjk(j,k)
@@ -168,17 +167,17 @@ C     Spin-correlated Born amplitudes
                   enddo
 
 C--   Print for checking purposes:
-c                  print *, j, "check/born=", check/born
-c                  print *, "bmunu",j,":"
-c                  print *, bmunu(:,0,j)
-c                  print *, bmunu(:,1,j)
-c                  print *, bmunu(:,2,j)
-c                  print *, bmunu(:,3,j)
-c                  print *, "bmunu2:"
-c                  print *, bmunu(:,0,2)
-c                  print *, bmunu(:,1,2)
-c                  print *, bmunu(:,2,2)
-c                  print *, bmunu(:,3,2)
+c$$$                  print *, j, "check/born=", check/born
+c$$$                  print *, "bmunu",j,":"
+c$$$                  print *, bmunu(:,0,j)
+c$$$                  print *, bmunu(:,1,j)
+c$$$                  print *, bmunu(:,2,j)
+c$$$                  print *, bmunu(:,3,j)
+c$$$                  print *, "bmunu2:"
+c$$$                  print *, bmunu(:,0,2)
+c$$$                  print *, bmunu(:,1,2)
+c$$$                  print *, bmunu(:,2,2)
+c$$$                  print *, bmunu(:,3,2)
                endif
             endif
 
@@ -192,7 +191,7 @@ C--   Rule from 2.98 in FNO2007, leads to B_ij=Cj * B, where i#j
                endif
             enddo
          endif
-      enddo ! end loop over nleg label j
+      enddo
       end
 
       subroutine ME2born_htl(p, amp2)
