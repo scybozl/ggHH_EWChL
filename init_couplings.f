@@ -35,9 +35,9 @@ cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       if (ph_mdlchhh.le.-99d0) ph_mdlchhh = 1.0d0
       ph_mdlct = powheginput("#ct")
       if (ph_mdlct.le.-99d0) ph_mdlct = 1.0d0
-      ph_mdlcthh = powheginput("#cthh")
+      ph_mdlcthh = powheginput("#ctt")
       if (ph_mdlcthh.le.-99d0) ph_mdlcthh = 0.0d0
-      ph_mdlcgg = powheginput("#cgg")
+      ph_mdlcgg = powheginput("#cggh")
       if (ph_mdlcgg.le.-99d0) ph_mdlcgg = 0.0d0
       ph_mdlcgghh = powheginput("#cgghh")
       if (ph_mdlcgghh.le.-99d0) ph_mdlcgghh = 0.0d0
@@ -82,8 +82,8 @@ cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       write(*,*) 'top mass = ',ph_topmass
       write(*,*) 'chhh  = ',ph_mdlchhh
       write(*,*) 'ct    = ',ph_mdlct
-      write(*,*) 'cthh  = ',ph_mdlcthh
-      write(*,*) 'cgg   = ',ph_mdlcgg
+      write(*,*) 'ctt   = ',ph_mdlcthh
+      write(*,*) 'cggh  = ',ph_mdlcgg
       write(*,*) 'cgghh = ',ph_mdlcgghh
       write(*,*) '*************************************'
       write(*,*)
@@ -196,7 +196,7 @@ c      call check_gosam_err(param,ierr)
       param = 'mdlcthh='
       write(value,'(F20.10)') ph_mdlcthh
       line = trim(param)//trim(adjustl(value))
-      write(*,*) "cthh set in GoSam to ", ph_mdlcthh
+      write(*,*) "ctt set in GoSam to ", ph_mdlcthh
       call OLP_Option(line,ierr)
       call check_gosam_err(param,ierr)
 c      call OLP_Option_qp(line,ierr)
@@ -205,7 +205,7 @@ c      call check_gosam_err(param,ierr)
       param = 'mdlcgg='
       write(value,'(F20.10)') ph_mdlcgg
       line = trim(param)//trim(adjustl(value))
-      write(*,*) "cgg set in GoSam to ", ph_mdlcgg
+      write(*,*) "cggh set in GoSam to ", ph_mdlcgg
       call OLP_Option(line,ierr)
       call check_gosam_err(param,ierr)
 c      call OLP_Option_qp(line,ierr)

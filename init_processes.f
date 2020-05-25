@@ -114,8 +114,8 @@ c     index of the first LIGHT coloured parton in the final state
       if (mtdep.eq.3.or.mtdep.eq.5) then
          cHHH = powheginput('#chhh')
          ct = powheginput('#ct')
-         ctt = powheginput('#cthh')
-         cg = powheginput('#cgg')
+         ctt = powheginput('#ctt')
+         cg = powheginput('#cggh')
          cgg = powheginput('#cgghh')
          write(*,*) 'PROC ', ct, ctt, cg, cgg
          call initgrids(cHHH,ct,ctt,cg,cgg)
