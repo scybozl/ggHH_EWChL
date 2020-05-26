@@ -116,7 +116,8 @@ changing the flag {\tt mtdep} in the \POWHEGBOX{} run card {\tt powheg.input-sav
 The possible choices and the corresponding calculations are the following:
 \begin{description}
  \item[{\tt mtdep=0}:]{computation using basic HEFT. All amplitudes
-   are computed in the $m_t\to\infty$ limit.}
+   are computed in the $m_t\to\infty$ limit.\textbf{This mode can only be run for variations of 
+   the trilinear coupling $c_{hhh}$.}}
  \item[{\tt mtdep=1}:]{computation using Born-improved HEFT. In this
    approximation the fixed-order part is computed at NLO in the HEFT
    and reweighted pointwise in the phase-space by the LO matrix
@@ -133,9 +134,8 @@ The possible choices and the corresponding calculations are the following:
  \item[{\tt mtdep=3}:]{computation with full top quark mass dependence.}
 \end{description}
 
-Note that both the Born-improved HEFT ({\tt mtdep=1}) and the \ftapprox ({\tt mtdep=2}) modes can only be run for the
-SM case, as well as for variations of the trilinear Higgs coupling $c_{hhh}$. The variation of
-any of the other couplings will result in an output error message and the program will exit.
+Note that both the pure HEFT ({\tt mtdep=0}), Born-improved HEFT ({\tt mtdep=1}) and the \ftapprox ({\tt mtdep=2}) modes can only be run for the
+SM case, as well as for variations of the trilinear Higgs coupling $c_{hhh}$, or for all coupling variations but only at LO ({\tt bornonly=1}). Variation of the wrong couplings will result in an output error message and the program will exit.
 
 The {\tt run.sh} script in the {\tt testrun} folder allows to perform 
 the runs of the different stages of \POWHEG{} easily.
