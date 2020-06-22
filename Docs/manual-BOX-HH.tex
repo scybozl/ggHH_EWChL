@@ -205,17 +205,17 @@ However, when running with {\tt mtdep = 3},
 the top mass should be kept fixed at $m_h=125$\,GeV and $m_t=173$\,GeV}, and the widths should be zero.
 Otherwise the two-loop virtual part would contain a different top or Higgs mass than the rest of the calculation.
 
-The ratio of the Higgs couplings to their SM values, as defined in the context of the Electroweak Chiral Lagrangian (see~\cite{Buchalla:2018yce} and references within), can be varied directly in the {\tt powheg.input} card. These are, with their SM values as default:
+The value of the Higgs couplings as defined in the context of the Electroweak Chiral Lagrangian (see~\cite{Buchalla:2018yce} and references within), can be varied directly in the {\tt powheg.input} card. These are, with their SM values as default:
 
 \begin{description}
 \item[{\tt chhh=1.0}:] { the ratio of the Higgs trilinear coupling to its SM value,}
 \item[{\tt ct=1.0}:] { the ratio of the Higgs Yukawa coupling to the top quark to its SM value,}
-\item[{\tt cthh=0.0}:] { the effective coupling of two Higgs bosons to a top quark pair,}
-\item[{\tt cgg=0.0}:] { the effective contact coupling of two gluons to the Higgs boson,}
+\item[{\tt ctt=0.0}:] { the effective coupling of two Higgs bosons to a top quark pair,}
+\item[{\tt cggh=0.0}:] { the effective contact coupling of two gluons to the Higgs boson,}
 \item[{\tt cgghh=0.0}:] { the effective quartic contact coupling of two gluons to a Higgs pair.}
 \end{description}
 
-With the exception of the trilinear coupling {\tt chhh}, the Higgs couplings cannot be varied with either {\tt mtdep=1} or {\tt mtdep=2}.
+With the exception of the trilinear coupling {\tt chhh}, the Higgs couplings can only be varied with {\tt mtdep=3} at NLO (or in any run mode at LO).
 
 The \POWHEGBOX{} offers the possibility to use a damping factor $h=\texttt{hdamp}$ of the
 form~\cite{Alioli:2008tz,Alioli:2009je}
