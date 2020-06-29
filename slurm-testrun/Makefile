@@ -3,12 +3,12 @@ all: run-stamp pwgNLO.top plots-stamp
 
 run-stamp: powheg.input-save
 	echo "See README!"
-	#python pwhg_launch.py --configuration=draco.yaml --parallelstage=1 --xgriditeration=1
-	#python pwhg_launch.py --configuration=draco.yaml --parallelstage=1 --xgriditeration=2
-	#python pwhg_launch.py --configuration=draco.yaml --parallelstage=1 --xgriditeration=3
-	#python pwhg_launch.py --configuration=draco.yaml --parallelstage=2 --xgriditeration=3
-	#python pwhg_launch.py --configuration=draco.yaml --parallelstage=3 --xgriditeration=3
-	#python pwhg_launch.py --configuration=draco.yaml --parallelstage=4 --xgriditeration=3
+	#python pwhg_launch.py --configuration=slurm.yaml --parallelstage=1 --xgriditeration=1
+	#python pwhg_launch.py --configuration=slurm.yaml --parallelstage=1 --xgriditeration=2
+	#python pwhg_launch.py --configuration=slurm.yaml --parallelstage=1 --xgriditeration=3
+	#python pwhg_launch.py --configuration=slurm.yaml --parallelstage=2 --xgriditeration=3
+	#python pwhg_launch.py --configuration=slurm.yaml --parallelstage=3 --xgriditeration=3
+	#python pwhg_launch.py --configuration=slurm.yaml --parallelstage=4 --xgriditeration=3
 	#touch run-stamp
 
 pwgNLO.top: run-stamp

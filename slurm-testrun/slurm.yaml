@@ -6,7 +6,7 @@ time: "24:00:00"
 email: "sjones@mpp.mpg.de"
 python_path: ".:$PWD:$ANACONDA_HOME/lib/python3.7/site-packages"
 batch_command: "sbatch"
-script_template: "draco_mpi.sh-save"
+script_template: "slurm_mpi.sh-save"
 powheg_input_template: "powheg.input-save"
 prg: "../pwhg_main"
 ...
