@@ -125,6 +125,9 @@ pwhg_cpHTO_reweight.o: pwhg_cpHTO_reweight.f $(INCLUDE)
 %.o: %.f90 $(INCLUDE) | $(OBJDIR)
 	$(FF) -c $(MOD) -o $(OBJDIR)/$@ $<
 
+%_qp.o: %_qp.f90 $(INCLUDE) quadninjago.o | $(OBJDIR)
+	$(FF) -c $(MOD) -o $(OBJDIR)/$@ $<
+
 %.o: %.F90 $(INCLUDE) | $(OBJDIR)
 	$(FF) -DHAVE_CONFIG_H -c $(MOD) -o $(OBJDIR)/$@ $<
 
