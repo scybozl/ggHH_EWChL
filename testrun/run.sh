@@ -69,11 +69,7 @@ parstage=2
 echo "***********************************************"
 echo " stage " $parstage
 echo "***********************************************"
-for xgrid in $(seq 1 $nxgriditeration)
-do
-echo "***********************************************"
-echo " iteration " $xgrid
-echo "***********************************************"
+
 cat powheg.input-save | sed "s/mtdep.*/mtdep $mode/ ; s/parallelstage.*/parallelstage $parstage/ ; s/xgriditeration.*/xgriditeration $xgrid/">powheg.input
 cp powheg.input powheg.input-$parstage
 logfile=run-$parstage
@@ -85,7 +81,7 @@ done
 termin=$(date +"%s")
 difftimelps=$(($termin-$begin))
 echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed since script start."
-exit
+#exit
 
 parstage=3
 echo "***********************************************"

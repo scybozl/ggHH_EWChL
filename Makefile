@@ -147,9 +147,10 @@ pwhg_cpHTO_reweight.o: pwhg_cpHTO_reweight.f $(INCLUDE)
 	$(CXX) $(DEBUG) -c -o $(OBJDIR)/$@ $^ $(NINJAFLAGSQP) $(FJCXXFLAGS)
 
 # PYTHIA 8
-PYTHIA8LOCATION=$(shell pythia8-config --prefix)
+#PYTHIA8LOCATION=$(shell pythia8-config --prefix)
+PYTHIA8LOCATION=/usr/
 FJCXXFLAGS+=-I$(PYTHIA8LOCATION)/include -I$(PYTHIA8LOCATION)/include/Pythia8 -I$(PYTHIA8LOCATION)/include/Pythia8Plugins
-LIBPYTHIA8=-L$(PYTHIA8LOCATION)/lib/ -lpythia8  -lstdc++ -ldl -lz
+LIBPYTHIA8=-L$(PYTHIA8LOCATION)/lib64/ -lpythia8  -lstdc++ -ldl -lz
 LIBHEPMC=$(shell pythia8-config --hepmc)
 
 USER=init_couplings.o init_processes.o Born_phsp.o Born.o virtual.o MEborn.o grids.o D0functions.o \

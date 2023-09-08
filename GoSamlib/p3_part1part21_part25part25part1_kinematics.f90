@@ -840,9 +840,9 @@ contains
       integer :: i
 
       ! Put particles onshell.
-      vecs(1,1) = sqrt(vecs(1,2)**2 + vecs(1,3)**2 + vecs(1,4)**2)
-      vecs(2,1) = sqrt(vecs(2,2)**2 + vecs(2,3)**2 + vecs(2,4)**2)
-      vecs(3,1) = sqrt(vecs(3,2)**2 + vecs(3,3)**2 + vecs(3,4)**2 + mdlMh**2)
+      vecs(1,1) = sign(sqrt(vecs(1,2)**2 + vecs(1,3)**2 + vecs(1,4)**2),vecs(1,1))
+      vecs(2,1) = sign(sqrt(vecs(2,2)**2 + vecs(2,3)**2 + vecs(2,4)**2),vecs(2,1))
+      vecs(3,1) = sign(sqrt(vecs(3,2)**2 + vecs(3,3)**2 + vecs(3,4)**2 + mdlMh**2),vecs(3,1))
       s0 = mdlMh**2
       s1 = 0.0_ki
       ! Momentum conservation in x- and y- direction

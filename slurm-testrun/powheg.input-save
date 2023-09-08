@@ -35,6 +35,8 @@ ebeam2 7000d0        ! energy of beam 2
 ! To be set only if using LHA pdfs
 lhans1 90400         ! pdf set for hadron 1 (LHA numbering)
 lhans2 90400 	     ! pdf set for hadron 2 (LHA numbering)
+alphas_from_pdf 1    ! calls alpha_s from pdf instead of POWHEG function
+
 ! To be set only if using internal mlm pdf
 # ndns1 131          ! pdf set for hadron 1 (mlm numbering)
 # ndns2 131          ! pdf set for hadron 2 (mlm numbering)
