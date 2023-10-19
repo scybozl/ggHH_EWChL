@@ -3,6 +3,8 @@ subroutine initgrids(cHHH,ct,ctt,cg,cgg)
   implicit none
   real(c_double) :: s, t, result, expected
   real * 8 cHHH,ct,ctt,cg,cgg
+  real * 8 :: renfac=1.0
+  integer :: EFTcount=3, usesmeft=0, lhaid=90400
   character(len=80) :: gridname
   character(len=100,kind=C_CHAR) :: c_gridname
   type(c_ptr) :: grid
@@ -33,10 +35,11 @@ subroutine initgrids(cHHH,ct,ctt,cg,cgg)
        implicit none
      end subroutine python_printinfo
 
-     subroutine combine_grids(grid_temp, cHHH, ct, ctt, cg, cgg) bind(c)
+     subroutine combine_grids(grid_temp, cHHH, ct, ctt, cg, cgg, EFTcount, usesmeft, lhaid, renfac) bind(c)
        use, intrinsic :: iso_c_binding
        implicit none
-       real(c_double), intent(in), value :: cHHH, ct, ctt, cg, cgg
+       real(c_double), intent(in), value :: cHHH, ct, ctt, cg, cgg, renfac
+       integer(c_int), intent(in), value :: EFTcount, usesmeft, lhaid
        character(kind=c_char) :: grid_temp
      end subroutine combine_grids
 
@@ -62,7 +65,7 @@ subroutine initgrids(cHHH,ct,ctt,cg,cgg)
            "Virt_full_", cHHH, "_", ct,"_", ctt, "_", cg, "_", cgg, ".grid"
     c_gridname = TRIM(gridname)//C_NULL_CHAR
 
-    call combine_grids(c_gridname,cHHH,ct,ctt,cg,cgg)
+    call combine_grids(c_gridname,cHHH,ct,ctt,cg,cgg,EFTcount,usesmeft,lhaid,renfac)
   else
     c_gridname = TRIM("grid.in")//C_NULL_CHAR
   endif
